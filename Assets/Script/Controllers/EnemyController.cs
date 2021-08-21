@@ -8,10 +8,8 @@ public abstract class EnemyController : MonoBehaviour
     {
         PlayerController player = FindObjectOfType<PlayerController>();
 
-        if (player == null)
-        {
-            Debug.Log("no hay PLAYER en la escena ! ! !");
-        }
+        if (player == null)Debug.Log("no hay PLAYER en la escena ! ! !");
+        else if (player != null) Debug.LogWarning("encontramos un Player ! ! !");
     }
 
     protected void FollowPlayer()
