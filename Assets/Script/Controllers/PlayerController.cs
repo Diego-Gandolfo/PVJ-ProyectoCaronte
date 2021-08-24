@@ -4,6 +4,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField]private float maxSpeed;
+    [SerializeField] private float sprintMultiplyer;
     private Animator animator;
     private Rigidbody rigidBody;
     private bool canMove;
@@ -16,7 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
-
+        speed = maxSpeed;
     }
 
     // Update is called once per frame
@@ -35,7 +37,7 @@ public class PlayerController : MonoBehaviour
             rotX = 0;
         }
         transform.rotation = Quaternion.Euler(new Vector3(-rotY, rotX,0 ));
-
+        Sprint();
     }
     
     void Move()
@@ -58,6 +60,20 @@ public class PlayerController : MonoBehaviour
     public void WeaponShoot()
     {
         weapon.Shoot();
+    }
+    private void Sprint()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed = speed * sprintMultiplyer;
+            animator.speed *= 2;
+                
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = maxSpeed;
+            animator.speed /= 2;
+        }
     }
 
 }
