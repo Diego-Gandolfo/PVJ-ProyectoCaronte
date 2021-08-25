@@ -6,6 +6,7 @@ public class HealthController : MonoBehaviour, IDamageable
 {
     public int MaxHealth => maxHealth;
     [SerializeField] private int maxHealth;
+    public int CurrentHealth { get => currentHealth; }
     private int currentHealth;
 
     //este booleano lo uso para que solo me debuguee la vida del player y no la de los enemigos. 

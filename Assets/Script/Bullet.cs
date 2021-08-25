@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private float delayToDestroy = 0.1f;
     [SerializeField] private float bulletSpeed;
-    [SerializeField] private float damage;
+    [SerializeField] private int damage;
     [SerializeField] private float lifeTime;
     [SerializeField] private LayerMask hittableMask;
+
     private void Update()
     {
         lifeTime -= Time.deltaTime;
@@ -17,11 +19,19 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if ((hittableMask & 1 << collision.gameObject.layer) != 0)
+        if ((hittableMask & 1 << other.gameObject.layer) != 0)
         {
-            Destroy(gameObject);
+            HealthController enemyHealth = other.GetComponent<HealthController>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(damage);
+                Debug.Log($"después de este disparo, la vida del enemigo es { enemyHealth.CurrentHealth }");
+            }
+
+            Destroy(gameObject, delayToDestroy);
         }
     }
 }

@@ -85,7 +85,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6903580764886999615}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -103,11 +103,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 10
-  damage: 0
+  damage: 10
   lifeTime: 5
   hittableMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8
 --- !u!96 &4279247450337289250
 TrailRenderer:
   serializedVersion: 2
