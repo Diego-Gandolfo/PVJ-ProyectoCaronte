@@ -12,9 +12,13 @@ public class HealthController : MonoBehaviour, IDamageable
     //este booleano lo uso para que solo me debuguee la vida del player y no la de los enemigos. 
     [SerializeField] private bool isPlayer;
 
+    private Animator animator;
+
     private void Start()
     {
         currentHealth = maxHealth;
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -31,13 +35,8 @@ public class HealthController : MonoBehaviour, IDamageable
         if (currentHealth > 0)
         {
             currentHealth -= damage;
-
-            Animator animator = GetComponentInChildren<Animator>();
-            if (animator != null)
-            {
-                Debug.Log("encontré un animator para el enemy");
-                animator.SetTrigger("TakeDamage");
-            }
+            Debug.Log("encontré un animator para el enemy");
+            animator.SetTrigger("TakeDamage");
         }
 
         if (currentHealth <= 0) Die();
@@ -45,6 +44,7 @@ public class HealthController : MonoBehaviour, IDamageable
 
     public virtual void Die()
     {
+        //animator.SetTrigger("Die");
         float delay = 0.1f;
         Destroy(gameObject, delay);
     }
