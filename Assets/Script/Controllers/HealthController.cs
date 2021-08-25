@@ -32,8 +32,9 @@ public class HealthController : MonoBehaviour, IDamageable
         if (currentHealth <= 0) Die();
     }
 
-    private void Die()
+    public virtual void Die()
     {
-        Debug.Log($"soy { name } y morí");
+        float delay = 0.1f;
+        Destroy(gameObject, delay);
     }
 }
