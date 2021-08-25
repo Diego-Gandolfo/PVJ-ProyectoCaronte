@@ -12,9 +12,9 @@ TagManager:
   - Enemy
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Interactable
+  - Crystal
   - 
   - 
   - 
