@@ -42,7 +42,6 @@ public class CrystalManager : MonoBehaviour
 
     public void UpdateCrystalCounter()
     {
-        print(crystalCounter);
         text.text = crystalCounter.ToString();
     }
 }

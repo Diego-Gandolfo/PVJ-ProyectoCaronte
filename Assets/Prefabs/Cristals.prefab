@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 7018809224524959324}
   - component: {fileID: 3859329849068829040}
   - component: {fileID: 259463907579742986}
+  - component: {fileID: 1020481247481633536}
   m_Layer: 7
   m_Name: Cristals
   m_TagString: Untagged
@@ -155,8 +156,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.5576258, y: 4.971733, z: 4.968097}
-  m_Center: {x: -0.04981041, y: 1.7522275, z: 0.0934279}
+  m_Size: {x: 4.305377, y: 4.971733, z: 8.148582}
+  m_Center: {x: 0.09377003, y: 1.7522275, z: 0.060039908}
 --- !u!114 &259463907579742986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +171,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 1
+--- !u!114 &1020481247481633536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7018809224524959325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &7361937954820096360
 GameObject:
   m_ObjectHideFlags: 0
