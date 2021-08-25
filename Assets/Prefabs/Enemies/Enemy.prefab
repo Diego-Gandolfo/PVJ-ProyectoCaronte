@@ -1570,7 +1570,7 @@ GameObject:
   - component: {fileID: 1606273537691291278}
   - component: {fileID: 6762182698497422356}
   m_Layer: 3
-  m_Name: "Enemy Components\xE7"
+  m_Name: Enemy Components
   m_TagString: Enemy
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1645,7 +1645,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &8249418959779145978
 GameObject:
