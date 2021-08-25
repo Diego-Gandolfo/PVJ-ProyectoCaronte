@@ -15,15 +15,11 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         mouseWheelValue = Input.mouseScrollDelta.y;
-        Mathf.Clamp(cinemachineVirtualCamera.m_Lens.FieldOfView, 25f, 50);
-        if (Input.mouseScrollDelta.y != 0)
+       float cmFieldOfView = Mathf.Clamp(cinemachineVirtualCamera.m_Lens.FieldOfView, 25f, 60f);
+        if (mouseWheelValue != 0)
         {
-            if (cinemachineVirtualCamera.m_Lens.FieldOfView <= 50)
-                cinemachineVirtualCamera.m_Lens.FieldOfView += Input.mouseScrollDelta.y;
-            else if (cinemachineVirtualCamera.m_Lens.FieldOfView >= 25)
-            {
-                cinemachineVirtualCamera.m_Lens.FieldOfView -= Input.mouseScrollDelta.y;
-            }
+            cmFieldOfView += -mouseWheelValue;
         }
+        cinemachineVirtualCamera.m_Lens.FieldOfView = cmFieldOfView;
     }
 }
