@@ -28,7 +28,18 @@ public class HealthController : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        if (currentHealth > 0) currentHealth -= damage;
+        if (currentHealth > 0)
+        {
+            currentHealth -= damage;
+
+            Animator animator = GetComponentInChildren<Animator>();
+            if (animator != null)
+            {
+                Debug.Log("encontré un animator para el enemy");
+                animator.SetTrigger("TakeDamage");
+            }
+        }
+
         if (currentHealth <= 0) Die();
     }
 

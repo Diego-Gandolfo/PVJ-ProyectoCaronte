@@ -6,11 +6,13 @@ public class EnemyMeleeManagement : EnemyController
 {
     [SerializeField] private float speed;
     [SerializeField] private float distance;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         RecognizePlayer();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class EnemyMeleeManagement : EnemyController
         {
             transform.LookAt(player.transform.position);
             this.transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+            animator.SetBool("Walk Forward", true);
         }
     }
 }
