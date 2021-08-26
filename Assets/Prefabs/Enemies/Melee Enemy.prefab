@@ -1617,6 +1617,7 @@ MonoBehaviour:
   speed: 0
   distance: 0
   hasAnimator: 0
+  canDamage: 0
   damage: 10
 --- !u!1 &7521643662446928162
 GameObject:
@@ -1669,6 +1670,7 @@ MonoBehaviour:
   speed: 1
   distance: 3
   hasAnimator: 1
+  canDamage: 0
 --- !u!114 &7521643662446928173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1724,7 +1726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4758468330628262320}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Melee Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
