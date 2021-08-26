@@ -1556,6 +1556,67 @@ Transform:
   m_Father: {fileID: 3243107741558250695}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4584598643745495831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2405041456944250098}
+  - component: {fileID: 8166773970742453246}
+  - component: {fileID: 7475419243464927563}
+  m_Layer: 3
+  m_Name: Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2405041456944250098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4584598643745495831}
+  m_LocalRotation: {x: -0.12977687, y: -0, z: -0, w: 0.99154323}
+  m_LocalPosition: {x: 0, y: 0.456, z: 2.104}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7521643662446928172}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -14.913, y: 0, z: 0}
+--- !u!136 &8166773970742453246
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4584598643745495831}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.20886144
+  m_Height: 1.3804978
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.29113856, z: -0.1902489}
+--- !u!114 &7475419243464927563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4584598643745495831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84f05d2978db14041beef3d37a6de7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  distance: 0
+  damage: 10
 --- !u!1 &7521643662446928162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,6 +1649,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3243107741558250695}
+  - {fileID: 2405041456944250098}
   m_Father: {fileID: 4758468330628262320}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
