@@ -4,17 +4,14 @@ using UnityEngine;
 
 public abstract class EnemyController : MonoBehaviour
 {
+    protected PlayerController player;
+
     protected void RecognizePlayer()
     {
-        PlayerController player = FindObjectOfType<PlayerController>();
-
-        if (player == null)Debug.Log("no hay PLAYER en la escena ! ! !");
-        else if (player != null) Debug.LogWarning("encontramos un Player ! ! !");
+        player = FindObjectOfType<PlayerController>();
     }
 
-    protected void FollowPlayer()
+    public virtual void AttackPlayer()
     {
-        //TODO: Lógica de "Follow Player"
-        //calcular distancia entre player y transform.position y de ahí un MoveTowards ?
-    }
+    } 
 }
