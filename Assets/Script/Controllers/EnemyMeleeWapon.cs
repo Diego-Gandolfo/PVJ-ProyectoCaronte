@@ -8,15 +8,30 @@ public class EnemyMeleeWapon : EnemyMeleeManagement
 
     public override void AttackPlayer()
     {
-        base.AttackPlayer();
-        player.GetComponent<HealthController>().TakeDamage(damage);
+        if (canDamage)
+        {
+            canDamage = false;
+            base.AttackPlayer();
+            player.GetComponent<HealthController>().TakeDamage(damage);
+        }
+
     }
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+    //    {
+    //        AttackPlayer();
+    //    }
+    //}
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             AttackPlayer();
+
+
         }
     }
 }

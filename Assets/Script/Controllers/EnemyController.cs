@@ -9,9 +9,6 @@ public abstract class EnemyController : MonoBehaviour
     protected void RecognizePlayer()
     {
         player = FindObjectOfType<PlayerController>();
-
-        //if (player == null)Debug.Log("no hay PLAYER en la escena ! ! !");
-        //else if (player != null) Debug.LogWarning("encontramos un Player ! ! !");
     }
 
     public virtual void AttackPlayer()
