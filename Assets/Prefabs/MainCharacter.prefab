@@ -306,9 +306,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  maxSpeed: 2
   sprintMultiplyer: 2
   rotationSensibility: {x: 300, y: 100, z: 0}
+  jumpImpulseForce: 7
   weapon: {fileID: 848122629700931951}
 --- !u!1 &1302233618278817182
 GameObject:
