@@ -1566,7 +1566,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2405041456944250098}
   - component: {fileID: 8166773970742453246}
-  - component: {fileID: 7475419243464927563}
   m_Layer: 3
   m_Name: Weapon
   m_TagString: Untagged
@@ -1602,21 +1601,6 @@ CapsuleCollider:
   m_Height: 1.3804978
   m_Direction: 2
   m_Center: {x: 0, y: 0.29113856, z: -0.1902489}
---- !u!114 &7475419243464927563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4584598643745495831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84f05d2978db14041beef3d37a6de7f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  distance: 0
-  damage: 10
 --- !u!1 &7521643662446928162
 GameObject:
   m_ObjectHideFlags: 0
