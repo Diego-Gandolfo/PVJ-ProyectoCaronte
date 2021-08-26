@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
-        currentSpeed = speed;
+        Initialize();
     }
 
     private void Update()
@@ -76,6 +76,14 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Private Methods
+
+    private void Initialize()
+    {
+        currentSpeed = speed;
+        canMove = true;
+        canRotate = true;
+        canJump = true;
+    }
 
     private void Move()
     {
