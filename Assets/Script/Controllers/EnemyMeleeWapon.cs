@@ -6,30 +6,17 @@ public class EnemyMeleeWapon : EnemyMeleeManagement
 {
     [SerializeField] private int damage;
 
-    // Start is called before the first frame update
-    void Start()
+    public override void AttackPlayer()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.AttackPlayer();
+        player.GetComponent<HealthController>().TakeDamage(damage);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer.Equals("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            HealthController playerHealth = other.GetComponent<HealthController>();
-            playerHealth.TakeDamage(damage);
+            AttackPlayer();
         }
-    }
-
-    public override void AttackPlayer()
-    {
-        base.AttackPlayer();
-
     }
 }

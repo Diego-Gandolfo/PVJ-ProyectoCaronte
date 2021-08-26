@@ -7,7 +7,7 @@ public class HealthController : MonoBehaviour, IDamageable
     public int MaxHealth => maxHealth;
     [SerializeField] private int maxHealth;
     public int CurrentHealth { get => currentHealth; }
-    private int currentHealth;
+    [SerializeField] private int currentHealth;
 
     //este booleano lo uso para que solo me debuguee la vida del player y no la de los enemigos. 
     [SerializeField] private bool isPlayer;
@@ -23,11 +23,11 @@ public class HealthController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (isPlayer && Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(10);
-            Debug.LogError($"soy { name } y mi vida actual es: { currentHealth } ");
-        }  
+        //if (isPlayer && Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    TakeDamage(10);
+        //    Debug.LogError($"soy { name } y mi vida actual es: { currentHealth } ");
+        //}  
     }
 
     public void TakeDamage(int damage)

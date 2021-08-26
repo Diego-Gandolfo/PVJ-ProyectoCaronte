@@ -6,7 +6,9 @@ public class EnemyMeleeManagement : EnemyController
 {
     [SerializeField] private float speed;
     [SerializeField] private float distance;
+
     private Animator animator;
+    public bool hasAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,13 @@ public class EnemyMeleeManagement : EnemyController
         {
             transform.LookAt(player.transform.position);
             this.transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-            animator.SetBool("Walk Forward", true);
+            if (hasAnimator) animator.SetBool("Walk Forward", true);
         }
+    }
+
+    public override void AttackPlayer()
+    {
+        base.AttackPlayer();
+        
     }
 }

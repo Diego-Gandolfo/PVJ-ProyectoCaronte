@@ -199,9 +199,9 @@ GameObject:
   - component: {fileID: 2974037318335174037}
   - component: {fileID: 5561194953819672892}
   - component: {fileID: 1434150396799790331}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MainCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,6 +306,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  maxSpeed: 0
+  sprintMultiplyer: 0
   rotationSensibility: {x: 300, y: 100, z: 0}
   weapon: {fileID: 848122629700931951}
 --- !u!1 &1302233618278817182
