@@ -52,24 +52,27 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (canMove)
+        if (!GameManager.instance.IsGameFreeze)
         {
-            Move();
-            Sprint();
-        }
+            if (canMove)
+            {
+                Move();
+                Sprint();
+            }
 
-        if (canRotate)
-        {
-            Rotate();
-        }
+            if (canRotate)
+            {
+                Rotate();
+            }
 
-        if (canJump)
-        {
-            Jump();
-        }
-        else
-        {
-            CheckGround();
+            if (canJump)
+            {
+                Jump();
+            }
+            else
+            {
+                CheckGround();
+            }
         }
     }
 

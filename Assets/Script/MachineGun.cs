@@ -17,16 +17,19 @@ public class MachineGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (!GameManager.instance.IsGameFreeze)
         {
-            animator.SetBool("IsShooting", true);
-            owner.SetCanMove(false);
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                animator.SetBool("IsShooting", true);
+                owner.SetCanMove(false);
 
-        }
-        else
-        {
-            animator.SetBool("IsShooting", false);
-            owner.SetCanMove(true);
+            }
+            else
+            {
+                animator.SetBool("IsShooting", false);
+                owner.SetCanMove(true);
+            }
         }
     }
     public void Shoot()
