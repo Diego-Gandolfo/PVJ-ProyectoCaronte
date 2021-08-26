@@ -8,6 +8,7 @@ public class PauseMenuController : MonoBehaviour
 {
     [Header("AllMenus Settings")]
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject hud;
 
     /* SE VAN A DESCOMENTAR CUANDO ESTEN ARMADOS */
     //[SerializeField] private AudioSource musicLevel = null;
@@ -51,6 +52,7 @@ public class PauseMenuController : MonoBehaviour
         Time.timeScale = 0;
         GameManager.instance.IsGameFreeze = true;
         isActive = true;
+        hud.SetActive(false);
         pauseMenu.SetActive(true);
         //musicLevel.volume -= lowerVolume;
         //timerObject.SetActive(false);
@@ -62,6 +64,7 @@ public class PauseMenuController : MonoBehaviour
         GameManager.instance.IsGameFreeze = false;
         isActive = false;
         pauseMenu.SetActive(false);
+        hud.SetActive(true);
         //musicLevel.volume += lowerVolume;
         //timerObject.SetActive(true);
     }

@@ -576,6 +576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 7590055663916245644}
+  hud: {fileID: 451446165}
   resumeButton: {fileID: 6126216243472143763}
   restartButton: {fileID: 3582724072264193857}
   quitButton: {fileID: 6646025596458831736}
