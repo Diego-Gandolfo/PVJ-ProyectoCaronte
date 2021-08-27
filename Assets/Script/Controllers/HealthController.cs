@@ -35,8 +35,8 @@ public class HealthController : MonoBehaviour, IDamageable
         if (currentHealth > 0)
         {
             currentHealth -= damage;
-            Debug.Log("encontré un animator para el enemy");
-            animator.SetTrigger("TakeDamage");
+            //Debug.Log("encontré un animator para el enemy"); // Esto lo comente para que no este tirando el Debug (recueden borrarlos cuando ya no son necesarios)
+            //animator.SetTrigger("TakeDamage"); // De momento esto no hace nada, asi que lo dejo comentado
         }
 
         if (currentHealth <= 0) Die();
@@ -46,6 +46,7 @@ public class HealthController : MonoBehaviour, IDamageable
     {
         //animator.SetTrigger("Die");
         float delay = 0.1f;
-        Destroy(gameObject, delay);
+        if (isPlayer) GameManager.instance?.GameOver();
+        else Destroy(gameObject, delay);
     }
 }

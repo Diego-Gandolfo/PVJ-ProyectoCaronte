@@ -22,7 +22,7 @@ public class CrystalManager : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject); // Esto lo comente porque como esta puesto en un hijo, no funciona
         }
 
     }
@@ -31,6 +31,7 @@ public class CrystalManager : MonoBehaviour
     {
         crystalCounter += number;
         UpdateCrystalCounter();
+        CheckCrystalsAmountForDemoQuest();
     }
 
     public void RemoveCrystal(int number)
@@ -39,9 +40,17 @@ public class CrystalManager : MonoBehaviour
         UpdateCrystalCounter();
     }
 
-
     public void UpdateCrystalCounter()
     {
         text.text = crystalCounter.ToString();
+    }
+
+    // Temporal para la DemoQuest
+    private void CheckCrystalsAmountForDemoQuest() {
+        if (crystalCounter >= 30) Invoke("Victory", 0.5f);
+    }
+
+    private void Victory() {
+        GameManager.instance?.Victory();
     }
 }
