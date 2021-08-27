@@ -46,7 +46,7 @@ public class EnemyMeleeManagement : EnemyController
 
     private void FollowPlayer()
     {
-        if (Vector3.Distance(player.transform.position, this.transform.position) >= distance)
+        if (Vector3.Distance(player.transform.position, this.transform.position) <= distance)
         {
             transform.LookAt(player.transform.position);
             this.transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);

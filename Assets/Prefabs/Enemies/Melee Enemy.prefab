@@ -1668,7 +1668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  distance: 3
+  distance: 15
   hasAnimator: 1
   canDamage: 0
 --- !u!114 &7521643662446928173
