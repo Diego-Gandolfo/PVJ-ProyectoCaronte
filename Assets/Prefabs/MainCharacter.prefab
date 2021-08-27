@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 2974037318335174037}
   - component: {fileID: 5561194953819672892}
   - component: {fileID: 1434150396799790331}
+  - component: {fileID: 2002105341743234121}
   m_Layer: 6
   m_Name: MainCharacter
   m_TagString: Player
@@ -305,11 +306,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa57067ac3772c7468cc6a69ba89856f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  maxSpeed: 0
-  sprintMultiplyer: 0
+  speed: 2
+  sprintMultiplyer: 2
   rotationSensibility: {x: 300, y: 100, z: 0}
+  jumpImpulseForce: 7
   weapon: {fileID: 848122629700931951}
+--- !u!114 &2002105341743234121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859750694658385290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9921d6892c10b45b336aefd459447b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  isPlayer: 1
 --- !u!1 &1302233618278817182
 GameObject:
   m_ObjectHideFlags: 0

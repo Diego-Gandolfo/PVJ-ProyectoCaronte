@@ -16,7 +16,7 @@ public class CrystalPickUpTrigger : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F) && canPickUp)
+        if(Input.GetKeyDown(KeyCode.E) && canPickUp)
         {
             Interact();
         }
