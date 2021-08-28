@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class EnemyMeleeWapon : EnemyMeleeManagement
 {
+    #region Serialize Fields
+
     [SerializeField] private int damage;
 
-    public override void AttackPlayer()
-    {
-        if (canDamage)
-        {
-            canDamage = false;
-            base.AttackPlayer();
-            player.GetComponent<HealthController>().TakeDamage(damage);
-        }
+    #endregion
 
-    }
+    #region Unity Methods
 
     //private void OnTriggerEnter(Collider other)
     //{
@@ -34,4 +29,21 @@ public class EnemyMeleeWapon : EnemyMeleeManagement
 
         }
     }
+
+    #endregion
+
+    #region Public Methods
+
+    public override void AttackPlayer()
+    {
+        if (canDamage)
+        {
+            canDamage = false;
+            base.AttackPlayer();
+            player.GetComponent<HealthController>().TakeDamage(damage);
+        }
+
+    }
+
+    #endregion
 }

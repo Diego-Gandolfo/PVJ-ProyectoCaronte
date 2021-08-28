@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour, IDamageable
 {
-    public int MaxHealth => maxHealth;
-    [SerializeField] private int maxHealth;
-    public int CurrentHealth { get => currentHealth; }
-    [SerializeField] private int currentHealth;
+    #region Serialize Fields
 
-    //este booleano lo uso para que solo me debuguee la vida del player y no la de los enemigos. 
-    [SerializeField] private bool isPlayer;
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int currentHealth;
+    [SerializeField] private bool isPlayer; //este booleano lo uso para que solo me debuguee la vida del player y no la de los enemigos. 
+
+    #endregion
+
+    #region Private Fields
 
     private Animator animator;
+
+    #endregion
+
+    #region Propertys
+
+    public int MaxHealth => maxHealth;
+    public int CurrentHealth { get => currentHealth; }
+
+    #endregion
+
+    #region Unity Methods
 
     private void Start()
     {
@@ -21,22 +34,16 @@ public class HealthController : MonoBehaviour, IDamageable
         animator = GetComponentInChildren<Animator>();
     }
 
-    private void Update()
-    {
-        //if (isPlayer && Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    TakeDamage(10);
-        //    Debug.LogError($"soy { name } y mi vida actual es: { currentHealth } ");
-        //}  
-    }
+    #endregion
+
+    #region Public Methods
 
     public void TakeDamage(int damage)
     {
         if (currentHealth > 0)
         {
             currentHealth -= damage;
-            //Debug.Log("encontré un animator para el enemy"); // Esto lo comente para que no este tirando el Debug (recueden borrarlos cuando ya no son necesarios)
-            //animator.SetTrigger("TakeDamage"); // De momento esto no hace nada, asi que lo dejo comentado
+            if (!isPlayer) animator.SetTrigger("TakeDamage"); // TODO: hacer la animacion del Player para TakeDamage
         }
 
         if (currentHealth <= 0) Die();
@@ -49,4 +56,6 @@ public class HealthController : MonoBehaviour, IDamageable
         if (isPlayer) GameManager.instance?.GameOver();
         else Destroy(gameObject, delay);
     }
+
+    #endregion
 }

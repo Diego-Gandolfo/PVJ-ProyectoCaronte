@@ -7,14 +7,14 @@ public class PlayerController : MonoBehaviour
     #region Serialize Fields
 
     [Header("Movement")]
-    [SerializeField] private float speed; // Esta es la que se llamaba maxSpeed, pero el nombre no era descriptivo
-    [SerializeField] private float sprintMultiplyer;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float sprintSpeed;
 
     [Header("Rotation")]
     [SerializeField] private Vector3 rotationSensibility;
 
     [Header("Jump")]
-    [SerializeField] private float jumpImpulseForce; // El impulso que se le dara al saltar
+    [SerializeField] private float jumpImpulseForce;
 
     [Header("Attack")]
     [SerializeField] private MachineGun weapon;
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     // Movement
     private bool canMove;
-    private float currentSpeed; // Esta es la que antes se llamaba speed, pero no tiene sentido que sea serializada si en el Start se le pisa el valor
+    private float currentSpeed;
 
     // Rotation
     private bool canRotate;
@@ -37,7 +37,15 @@ public class PlayerController : MonoBehaviour
     private float rotY;
 
     // Jump
-    private bool canJump; // Si tiene permitido saltar
+    private bool canJump;
+
+    #endregion
+
+    #region Propertys
+
+    public float MoveSpeed => moveSpeed;
+    public float SprintSpeed => sprintSpeed;
+    public float CurrentSpeed => currentSpeed;
 
     #endregion
 
@@ -82,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
     private void Initialize()
     {
-        currentSpeed = speed;
+        currentSpeed = moveSpeed;
         canMove = true;
         canRotate = true;
         canJump = true;
@@ -108,15 +116,15 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            currentSpeed = currentSpeed * sprintMultiplyer;
-            animator.speed *= 2;
+            currentSpeed = sprintSpeed;
+            animator.speed = 2f;
 
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            currentSpeed = speed;
-            animator.speed /= 2;
+            currentSpeed = moveSpeed;
+            animator.speed = 1f;
         }
     }
 

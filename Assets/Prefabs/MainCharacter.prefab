@@ -306,8 +306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa57067ac3772c7468cc6a69ba89856f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  sprintMultiplyer: 2
+  moveSpeed: 2
+  sprintSpeed: 4
   rotationSensibility: {x: 300, y: 100, z: 0}
   jumpImpulseForce: 7
   weapon: {fileID: 848122629700931951}
