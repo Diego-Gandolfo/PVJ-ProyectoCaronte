@@ -17,7 +17,7 @@ public class EnemyMeleeManagement : EnemyController
 
     #region Protected Fields
 
-    [SerializeField] protected bool canDamage;
+    protected bool canDamage;
 
     #endregion
 
