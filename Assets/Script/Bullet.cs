@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float delayToDestroy = 0.1f;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private int damage;
     [SerializeField] private float lifeTime;
     [SerializeField] private LayerMask hittableMask;
-
+    [SerializeField] private ParticleSystem shootParticles;
+    private void Start()
+    {
+        shootParticles = GetComponent<ParticleSystem>();
+    }
     private void Update()
     {
         lifeTime -= Time.deltaTime;
@@ -20,18 +23,24 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if ((hittableMask & 1 << other.gameObject.layer) != 0)
+        if (other.gameObject.GetComponent<HealthController>() != null)
         {
-            HealthController enemyHealth = other.GetComponent<HealthController>();
-            if (enemyHealth != null)
-            {
-                enemyHealth.TakeDamage(damage);
-                Debug.Log($"después de este disparo, la vida del enemigo es { enemyHealth.CurrentHealth }");
-            }
-
-            Destroy(gameObject, delayToDestroy);
+            HealthController enemyHealth = other.gameObject.GetComponent<HealthController>();
+            enemyHealth.TakeDamage(damage);
+           Debug.Log($"después de este disparo, la vida del enemigo es { enemyHealth.CurrentHealth }");
+        }
+        OnDestroy();
+    }
+    private void OnDestroy()
+    {
+        Destroy(gameObject.GetComponent<Collider>());
+        Destroy(gameObject.GetComponent<MeshRenderer>());
+        Destroy(gameObject.GetComponent<TrailRenderer>());
+        if (!shootParticles.isPlaying)
+        {
+            shootParticles.Play();
         }
     }
 }

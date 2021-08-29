@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MachineGun : MonoBehaviour
 {
-    [SerializeField] private Bullet bulletPrefab;
+    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private PlayerController owner;
     public Animator animator;
