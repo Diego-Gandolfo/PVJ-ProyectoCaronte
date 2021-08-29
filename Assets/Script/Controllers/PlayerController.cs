@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
+        GetComponent<HealthController>().SetLifeBar(HUDManager.instance.GetLifeBar()); //Seteamos una ves el LifeBar;
         Initialize();
     }
 

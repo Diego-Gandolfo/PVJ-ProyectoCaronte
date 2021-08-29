@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
     [SerializeField] private PromptTrigger promptTrigger;
-
+    [SerializeField] private LifeBarController lifeBar;
     public static HUDManager instance; 
 
     void Awake()
@@ -35,6 +36,11 @@ public class HUDManager : MonoBehaviour
     public void ChangeCrystalAmount(int value)
     {
         //Do something
+    }
+
+    public LifeBarController GetLifeBar()
+    {
+        return lifeBar;
     }
 
 }

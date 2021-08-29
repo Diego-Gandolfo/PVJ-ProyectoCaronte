@@ -9,12 +9,13 @@ public class HealthController : MonoBehaviour, IDamageable
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
     [SerializeField] private bool isPlayer; //este booleano lo uso para que solo me debuguee la vida del player y no la de los enemigos. 
-
+    
     #endregion
 
     #region Private Fields
 
     private Animator animator;
+    private LifeBarController lifeBar;
 
     #endregion
 
@@ -32,6 +33,10 @@ public class HealthController : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
 
         animator = GetComponentInChildren<Animator>();
+        lifeBar = GetComponent<LifeBarController>();
+
+        if (lifeBar != null)
+            lifeBar.UpdateLifeBar(currentHealth, maxHealth);
     }
 
     #endregion
@@ -47,6 +52,9 @@ public class HealthController : MonoBehaviour, IDamageable
         }
 
         if (currentHealth <= 0) Die();
+
+        if (lifeBar != null)
+            lifeBar.UpdateLifeBar(currentHealth, maxHealth);
     }
 
     public virtual void Die()
@@ -57,5 +65,10 @@ public class HealthController : MonoBehaviour, IDamageable
         else Destroy(gameObject, delay);
     }
 
+    public void SetLifeBar(LifeBarController controller)
+    {
+        lifeBar = controller;
+        lifeBar.UpdateLifeBar(currentHealth, maxHealth);
+    }
     #endregion
 }
