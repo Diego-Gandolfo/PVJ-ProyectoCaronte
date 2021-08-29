@@ -5,13 +5,21 @@ using UnityEngine.UI;
 
 public class LifeBarController : MonoBehaviour
 {
-    [SerializeField] private Image lifeBar;
+    [SerializeField] private GameObject lifeBar;
+    [SerializeField] private Image lifeBarImage;
     [SerializeField] private Text percentage;
 
     public void UpdateLifeBar(int currentHealth, int maxHealth)
     {
-        lifeBar.fillAmount = (float) currentHealth / maxHealth;
+        if(lifeBarImage != null)
+            lifeBarImage.fillAmount = (float) currentHealth / maxHealth;
 
-        percentage.text = (currentHealth * 100 / maxHealth).ToString();
+        if(percentage != null)
+            percentage.text = (currentHealth * 100 / maxHealth).ToString();
+    }
+
+    public void VisibleBar(bool boolean)
+    {
+        lifeBar.SetActive(boolean);
     }
 }
