@@ -9,6 +9,8 @@ public class LifeBarController : MonoBehaviour
     [SerializeField] private Image lifeBarImage;
     [SerializeField] private Text percentage;
 
+    public bool IsVisible { get; private set; }
+
     public void UpdateLifeBar(int currentHealth, int maxHealth)
     {
         if(lifeBarImage != null)
@@ -18,8 +20,9 @@ public class LifeBarController : MonoBehaviour
             percentage.text = (currentHealth * 100 / maxHealth).ToString();
     }
 
-    public void VisibleBar(bool boolean)
+    public void SetBarVisible(bool boolean)
     {
-        lifeBar.SetActive(boolean);
+        IsVisible = boolean;
+        lifeBar.SetActive(IsVisible);
     }
 }

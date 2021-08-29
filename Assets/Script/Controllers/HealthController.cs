@@ -54,7 +54,16 @@ public class HealthController : MonoBehaviour, IDamageable
         if (currentHealth <= 0) Die();
 
         if (lifeBar != null)
+        {
+            if (!lifeBar.IsVisible)
+            {
+                lifeBar.SetBarVisible(true);
+            }
+
             lifeBar.UpdateLifeBar(currentHealth, maxHealth);
+        }
+
+
     }
 
     public virtual void Die()

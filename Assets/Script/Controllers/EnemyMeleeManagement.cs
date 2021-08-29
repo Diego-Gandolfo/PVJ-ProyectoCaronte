@@ -26,6 +26,9 @@ public class EnemyMeleeManagement : EnemyController
     // Components
     private Animator animator;
     private PlayerController playerController;
+    private Outline outline;
+    private LifeBarController lifeBar;
+    private HealthController healthController;
 
     // Parameters
     private float timeToDamageAgain = 2.0f;
@@ -42,6 +45,10 @@ public class EnemyMeleeManagement : EnemyController
         RecognizePlayer();
         animator = GetComponentInChildren<Animator>();
         playerController = player.GetComponent<PlayerController>();
+        lifeBar = GetComponent<LifeBarController>();
+        outline = GetComponent<Outline>();
+        healthController = GetComponent<HealthController>();
+        lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
         canDamage = true;
     }
 
@@ -49,6 +56,7 @@ public class EnemyMeleeManagement : EnemyController
     {
         CheckPlayerDistance();
         FollowPlayer();
+        CheckVisibleData();
 
         if (!canDamage) AttackCooldown();
     }
@@ -84,6 +92,13 @@ public class EnemyMeleeManagement : EnemyController
         {
             if (animator != null) animator.SetBool("Walk Forward", false);
         }
+    }
+
+    private void CheckVisibleData()
+    {
+        outline.enabled = mustFollow;
+        if(healthController.CurrentHealth != healthController.MaxHealth)
+            lifeBar.SetBarVisible(mustFollow);
     }
 
     private void AttackCooldown()
