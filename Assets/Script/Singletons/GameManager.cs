@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public string CurrentLevel { get; set; }
     public bool IsGameFreeze { get; set; }
 
+    public PlayerController Player => player;
+    private PlayerController player;
+
     public void Awake()
     {
         if (instance != null)
@@ -33,5 +36,10 @@ public class GameManager : MonoBehaviour
     public void Victory()
     {
         SceneManager.LoadScene("Victory");
+    }
+
+    public void SetPlayer(PlayerController player)
+    {
+        this.player = player;
     }
 }

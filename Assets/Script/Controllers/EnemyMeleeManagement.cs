@@ -44,7 +44,7 @@ public class EnemyMeleeManagement : EnemyController
     {
         RecognizePlayer();
         animator = GetComponentInChildren<Animator>();
-        playerController = player.GetComponent<PlayerController>();
+        //playerController = player.GetComponent<PlayerController>();
         lifeBar = GetComponent<LifeBarController>();
         outline = GetComponent<Outline>();
         healthController = GetComponent<HealthController>();
@@ -67,7 +67,7 @@ public class EnemyMeleeManagement : EnemyController
 
     private void CheckPlayerDistance()
     {
-        distance = playerController.CurrentSpeed == playerController.MoveSpeed ? whenPlayerMoving : whenPlayerSprinting;
+        distance = player.CurrentSpeed == player.MoveSpeed ? whenPlayerMoving : whenPlayerSprinting;
 
         if (Vector3.Distance(player.transform.position, this.transform.position) <= distance)
         {
