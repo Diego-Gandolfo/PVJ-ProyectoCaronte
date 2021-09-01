@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private PlayerController player;
 
-    private void Start()
+    private void Awake()
     {
         GameManager.instance.SetPlayer(player);
     }

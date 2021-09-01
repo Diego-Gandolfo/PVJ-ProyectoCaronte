@@ -42,12 +42,12 @@ public class EnemyMeleeManagement : EnemyController
 
     private void Start()
     {
+        healthController = GetComponent<HealthController>();
+        outline = GetComponent<Outline>();
         RecognizePlayer();
         animator = GetComponentInChildren<Animator>();
         //playerController = player.GetComponent<PlayerController>();
         lifeBar = GetComponent<LifeBarController>();
-        outline = GetComponent<Outline>();
-        healthController = GetComponent<HealthController>();
         lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
         canDamage = true;
     }

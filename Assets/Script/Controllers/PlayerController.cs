@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             canJump = false;
-            var jumpForce = transform.up * jumpImpulseForce;
+            var jumpForce = Vector3.up * jumpImpulseForce;
             rigidBody.AddForce(jumpForce, ForceMode.Impulse);
         }
     }
