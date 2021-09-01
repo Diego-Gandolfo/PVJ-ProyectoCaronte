@@ -28,8 +28,7 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.GetComponent<HealthController>() != null)
         {
             HealthController enemyHealth = other.gameObject.GetComponent<HealthController>();
-            enemyHealth.TakeDamage(damage);
-           Debug.Log($"después de este disparo, la vida del enemigo es { enemyHealth.CurrentHealth }");
+            enemyHealth.TakeDamage(damage);     
         }
         OnDestroy();
     }

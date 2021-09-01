@@ -11,13 +11,16 @@ public class LifeBarController : MonoBehaviour
 
     public bool IsVisible { get; private set; }
 
+    private void Update()
+    {
+    }
     public void UpdateLifeBar(int currentHealth, int maxHealth)
     {
         if(lifeBarImage != null)
             lifeBarImage.fillAmount = (float) currentHealth / maxHealth;
 
-        if(percentage != null)
-            percentage.text = (currentHealth * 100 / maxHealth).ToString();
+        //if(percentage != null)
+        //    percentage.text = (currentHealth * 100 / maxHealth).ToString();
     }
 
     public void SetBarVisible(bool boolean)

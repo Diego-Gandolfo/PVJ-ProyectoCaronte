@@ -12,6 +12,9 @@ public class EnemyMeleeWapon : EnemyMeleeManagement
 
     #region Unity Methods
 
+    public override void Start() { }
+    public override void Update() { }
+
     //private void OnTriggerEnter(Collider other)
     //{
     //    if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -25,8 +28,6 @@ public class EnemyMeleeWapon : EnemyMeleeManagement
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             AttackPlayer();
-
-
         }
     }
 
