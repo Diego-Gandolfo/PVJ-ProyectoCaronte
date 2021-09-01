@@ -200,7 +200,6 @@ GameObject:
   - component: {fileID: 5561194953819672892}
   - component: {fileID: 1434150396799790331}
   - component: {fileID: 2002105341743234121}
-  - component: {fileID: 273167937819796755}
   m_Layer: 6
   m_Name: MainCharacter
   m_TagString: Player
@@ -325,24 +324,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9921d6892c10b45b336aefd459447b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   currentHealth: 0
   isPlayer: 1
---- !u!114 &273167937819796755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859750694658385290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9dc59a4687faf94e97f1cfe5796d98e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeBar: {fileID: 0}
-  lifeBarImage: {fileID: 0}
-  percentage: {fileID: 0}
 --- !u!1 &1302233618278817182
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,7 +1225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4273876704462793089}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.003, y: 0.23370841, z: 0.244}
+  m_LocalPosition: {x: 0.057, y: 0.274, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4368234925807164453}
@@ -1384,7 +1368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c081a9a6b471d5c4f8988a434dcdc818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 6903580764886999615, guid: fa7e67293d9c0a04dadaf7a4e4e61c3a,
+    type: 3}
   firePoint: {fileID: 4368234924497453366}
   owner: {fileID: 1434150396799790331}
   animator: {fileID: 0}
