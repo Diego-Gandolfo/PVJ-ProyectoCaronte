@@ -20,6 +20,7 @@ public class GravityBody : MonoBehaviour
     #region Propertys
 
     public Rigidbody Rigidbody => _rigidbody;
+    public GravityAttractor Attractor => _attractor;
 
     #endregion
 

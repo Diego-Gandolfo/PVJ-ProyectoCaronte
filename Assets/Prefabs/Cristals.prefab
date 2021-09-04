@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 3859329849068829040}
   - component: {fileID: 259463907579742986}
   - component: {fileID: 1020481247481633536}
-  - component: {fileID: 5563463299626917514}
+  - component: {fileID: 5882326699293203058}
   m_Layer: 7
   m_Name: Cristals
   m_TagString: Untagged
@@ -190,7 +190,7 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &5563463299626917514
+--- !u!114 &5882326699293203058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

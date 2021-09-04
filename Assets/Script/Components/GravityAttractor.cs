@@ -50,5 +50,10 @@ public class GravityAttractor : MonoBehaviour
         _gravityBodysList.Add(gravityBody);
     }
 
+    public void RemoveGravityBody(GravityBody gravityBody)
+    {
+        _gravityBodysList.Remove(gravityBody);
+    }
+
     #endregion
 }
