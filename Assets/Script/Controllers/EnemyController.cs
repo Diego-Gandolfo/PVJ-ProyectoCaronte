@@ -14,7 +14,7 @@ public abstract class EnemyController : MonoBehaviour
 
     protected void RecognizePlayer()
     {
-        player = FindObjectOfType<PlayerController>();
+        player = GameManager.instance.Player;
     }
 
     #endregion

@@ -34,10 +34,6 @@ public class PlayerController : MonoBehaviour
     // Rotation
     private bool canRotate;
     private float rotX;
-    private float rotY;
-
-    // Jump
-    private bool canJump;
 
     #endregion
 
@@ -74,13 +70,9 @@ public class PlayerController : MonoBehaviour
                 Rotate();
             }
 
-            if (canJump)
+            if (CheckIsGrounded())
             {
                 Jump();
-            }
-            else
-            {
-                CheckGround();
             }
         }
     }
@@ -94,7 +86,6 @@ public class PlayerController : MonoBehaviour
         currentSpeed = moveSpeed;
         canMove = true;
         canRotate = true;
-        canJump = true;
     }
 
     private void Move()
@@ -131,39 +122,43 @@ public class PlayerController : MonoBehaviour
 
     private void Rotate()
     {
-        rotX += Input.GetAxis("Mouse X") * Time.deltaTime * rotationSensibility.x;
-        rotY += Input.GetAxis("Mouse Y") * Time.deltaTime * rotationSensibility.y;
-        rotY = Mathf.Clamp(rotY, -20, 20);
+        rotX = Input.GetAxis("Mouse X") * Time.deltaTime * rotationSensibility.x;
 
-        if (rotX >= 360)
-        {
-            rotX = 0;
-        }
+        if (rotX >= 360) rotX = 0;
 
-        transform.rotation = Quaternion.Euler(new Vector3(-rotY, rotX, 0));
+        transform.Rotate(transform.up, rotX, Space.World);
+
+        // La otra parte, "Mouse Y", se hace en el Script LookUpDown
     }
 
     private void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            canJump = false;
             var jumpForce = transform.up * jumpImpulseForce;
             rigidBody.AddForce(jumpForce, ForceMode.Impulse);
         }
     }
 
-    private void CheckGround()
+    public bool CheckIsGrounded()
     {
         RaycastHit hit;
-        Ray ray = new Ray(transform.position, Vector3.down);
+        Ray ray = new Ray(transform.position, -transform.up);
 
-        if (Physics.Raycast(ray, out hit, .2f))
+        if (Physics.Raycast(ray, out hit, 0.25f))
         {
             if (hit.collider != null)
             {
-                canJump = true;
+                return true;
             }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -179,11 +174,6 @@ public class PlayerController : MonoBehaviour
     public void SetCanRotate(bool value)
     {
         canRotate = value;
-    }
-
-    public void SetCanJump(bool value)
-    {
-        canJump = value;
     }
 
     public void WeaponShoot()

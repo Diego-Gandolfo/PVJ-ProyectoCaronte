@@ -40,19 +40,20 @@ public class EnemyMeleeManagement : EnemyController
 
     #region Unity Methods
 
-    private void Start()
+    public virtual void Start()
     {
+        healthController = GetComponent<HealthController>();
+        outline = GetComponent<Outline>();
         RecognizePlayer();
         animator = GetComponentInChildren<Animator>();
-        playerController = player.GetComponent<PlayerController>();
         lifeBar = GetComponent<LifeBarController>();
-        outline = GetComponent<Outline>();
-        healthController = GetComponent<HealthController>();
         lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
+
+
         canDamage = true;
     }
 
-    private void Update()
+    public virtual void Update()
     {
         CheckPlayerDistance();
         FollowPlayer();
@@ -67,7 +68,7 @@ public class EnemyMeleeManagement : EnemyController
 
     private void CheckPlayerDistance()
     {
-        distance = playerController.CurrentSpeed == playerController.MoveSpeed ? whenPlayerMoving : whenPlayerSprinting;
+        distance = player.CurrentSpeed == player.MoveSpeed ? whenPlayerMoving : whenPlayerSprinting;
 
         if (Vector3.Distance(player.transform.position, this.transform.position) <= distance)
         {
@@ -97,6 +98,7 @@ public class EnemyMeleeManagement : EnemyController
     private void CheckVisibleData()
     {
         outline.enabled = mustFollow;
+
         if(healthController.CurrentHealth != healthController.MaxHealth)
             lifeBar.SetBarVisible(mustFollow);
     }

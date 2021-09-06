@@ -34,6 +34,7 @@ public class MachineGun : MonoBehaviour
     }
     public void Shoot()
     {
+
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
 }

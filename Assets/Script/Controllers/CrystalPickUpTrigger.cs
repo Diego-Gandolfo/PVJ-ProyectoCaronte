@@ -47,6 +47,11 @@ public class CrystalPickUpTrigger : MonoBehaviour
         CrystalManager.instance.AddCrystal(value); //Agarramos el numero actual de contador y le sumamos uno.
         HUDManager.instance.ShowPrompt(false);
         outline.enabled = false;
+
+        var gravityBody = gameObject.GetComponent<GravityBody>();
+        if (gravityBody != null)
+            gravityBody.Attractor.RemoveGravityBody(gravityBody);
+
         Destroy(gameObject); //Nos destruimos        
     }
 }
