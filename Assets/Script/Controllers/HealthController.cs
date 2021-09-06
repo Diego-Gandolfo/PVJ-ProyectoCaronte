@@ -51,7 +51,10 @@ public class HealthController : MonoBehaviour, IDamageable
             if (!isPlayer) animator.SetTrigger("TakeDamage"); // TODO: hacer la animacion del Player para TakeDamage
         }
 
-        if (currentHealth <= 0) Die();
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
 
         if (lifeBar != null)
         {
@@ -62,16 +65,25 @@ public class HealthController : MonoBehaviour, IDamageable
 
             lifeBar.UpdateLifeBar(currentHealth, maxHealth);
         }
+    }
 
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P)) TakeDamage(10);
     }
 
     public virtual void Die()
     {
-        //animator.SetTrigger("Die");
-        float delay = 0.1f;
-        if (isPlayer) GameManager.instance?.GameOver();
-        else Destroy(gameObject, delay);
+        if (isPlayer)
+        {
+            RespawnManager.instance.Respawn();
+        }
+
+        else if (!isPlayer)
+        {
+            float delay = 0.1f;
+            Destroy(gameObject, delay);
+        }
     }
 
     public void SetLifeBar(LifeBarController controller)
