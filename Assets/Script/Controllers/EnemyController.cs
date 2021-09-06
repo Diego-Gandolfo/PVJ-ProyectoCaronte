@@ -19,7 +19,6 @@ public abstract class EnemyController : MonoBehaviour
 
     #endregion
 
-
     private void Update()
     {
         if (player.GetComponent<HealthController>() != null)

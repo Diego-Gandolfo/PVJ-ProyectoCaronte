@@ -77,6 +77,7 @@ public class HealthController : MonoBehaviour, IDamageable
         if (isPlayer)
         {
             RespawnManager.instance.Respawn();
+            ResetValues();
         }
 
         else if (!isPlayer)
@@ -90,6 +91,11 @@ public class HealthController : MonoBehaviour, IDamageable
     {
         lifeBar = controller;
         lifeBar.UpdateLifeBar(currentHealth, maxHealth);
+    }
+
+    public void ResetValues()
+    {
+        currentHealth = maxHealth;
     }
     #endregion
 }
