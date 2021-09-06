@@ -228,7 +228,7 @@ PrefabInstance:
     - target: {fileID: 5446838657608549714, guid: ad9e4fc8c3794fc469052657fa18d217,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -96
+      value: -167
       objectReference: {fileID: 0}
     - target: {fileID: 5446838657608549714, guid: ad9e4fc8c3794fc469052657fa18d217,
         type: 3}
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -555,7 +555,7 @@ PrefabInstance:
     - target: {fileID: 5446838657608549714, guid: ad9e4fc8c3794fc469052657fa18d217,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -362
+      value: -433
       objectReference: {fileID: 0}
     - target: {fileID: 5446838657608549714, guid: ad9e4fc8c3794fc469052657fa18d217,
         type: 3}
@@ -707,7 +707,7 @@ PrefabInstance:
     - target: {fileID: 5446838657608549714, guid: ad9e4fc8c3794fc469052657fa18d217,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -230.4405
+      value: -301.4405
       objectReference: {fileID: 0}
     - target: {fileID: 5446838657608549714, guid: ad9e4fc8c3794fc469052657fa18d217,
         type: 3}
@@ -1009,8 +1009,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2.4686, y: 313}
-  m_SizeDelta: {x: 1983.8, y: 234.4066}
+  m_AnchoredPosition: {x: 2.4686, y: 280.1988}
+  m_SizeDelta: {x: 1983.8, y: 446.9588}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1795475239
 MonoBehaviour:
@@ -1045,7 +1045,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Victory
+  m_Text: "mission \nacomplished"
 --- !u!222 &1795475240
 CanvasRenderer:
   m_ObjectHideFlags: 0
