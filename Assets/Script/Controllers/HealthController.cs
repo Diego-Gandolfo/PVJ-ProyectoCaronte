@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthController : MonoBehaviour, IDamageable
 {
@@ -20,7 +21,7 @@ public class HealthController : MonoBehaviour, IDamageable
     #endregion
 
     #region Propertys
-
+    public UnityEvent OnDie = new UnityEvent();
     public int MaxHealth => maxHealth;
     public int CurrentHealth { get => currentHealth; }
 
@@ -48,7 +49,7 @@ public class HealthController : MonoBehaviour, IDamageable
         if (currentHealth > 0)
         {
             currentHealth -= damage;
-            if (!isPlayer) animator.SetTrigger("TakeDamage"); // TODO: hacer la animacion del Player para TakeDamage
+            if (!isPlayer && animator != null) animator.SetTrigger("TakeDamage"); // TODO: hacer la animacion del Player para TakeDamage
         }
 
         if (currentHealth <= 0)
@@ -74,17 +75,19 @@ public class HealthController : MonoBehaviour, IDamageable
 
     public virtual void Die()
     {
-        if (isPlayer)
-        {
-            RespawnManager.instance.Respawn();
-            ResetValues();
-        }
+        OnDie?.Invoke();
+        
+        //if (isPlayer)
+        //{
+        //    RespawnManager.instance.Respawn();
+        //    ResetValues();
+        //}
 
-        else if (!isPlayer)
-        {
-            float delay = 0.1f;
-            Destroy(gameObject, delay);
-        }
+        //else if (!isPlayer)
+        //{
+        //    float delay = 0.1f;
+        //    Destroy(gameObject, delay);
+        //}
     }
 
     public void SetLifeBar(LifeBarController controller)

@@ -104,7 +104,8 @@ GameObject:
   - component: {fileID: 7650491387225036007}
   - component: {fileID: 7018809224524959324}
   - component: {fileID: 3859329849068829040}
-  - component: {fileID: 259463907579742986}
+  - component: {fileID: 5726625833171096771}
+  - component: {fileID: 115085884605970724}
   - component: {fileID: 1020481247481633536}
   - component: {fileID: 5882326699293203058}
   m_Layer: 7
@@ -159,7 +160,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.305377, y: 4.971733, z: 8.148582}
   m_Center: {x: 0.09377003, y: 1.7522275, z: 0.060039908}
---- !u!114 &259463907579742986
+--- !u!114 &5726625833171096771
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,10 +169,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 7018809224524959325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66883deac06c02a4284f889b8d27cccf, type: 3}
+  m_Script: {fileID: 11500000, guid: 1206e274aa13baa44926b11fd312e334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 1
+  crystalPickUpPrefab: {fileID: 0}
+--- !u!114 &115085884605970724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7018809224524959325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9921d6892c10b45b336aefd459447b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  currentHealth: 0
+  isPlayer: 0
+  OnDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1020481247481633536
 MonoBehaviour:
   m_ObjectHideFlags: 0

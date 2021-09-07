@@ -5,33 +5,32 @@ using UnityEngine;
 public abstract class EnemyController : MonoBehaviour
 {
     #region Protected Fields
-
     protected PlayerController player;
-
+    protected HealthController healthController;
     #endregion
 
     #region Protected Methods
+    protected void Start()
+    {
+        healthController = GetComponent<HealthController>();
+        healthController.OnDie.AddListener(OnDieListener);
+    }
 
     protected void RecognizePlayer()
     {
         player = GameManager.instance.Player;
     }
-
     #endregion
 
-    private void Update()
-    {
-        if (player.GetComponent<HealthController>() != null)
-        {
-            Debug.LogWarning("HAY HEALTH CONTROLLER");
-        }
-    }
-
     #region Public Methods
-
     public virtual void AttackPlayer()
     {
-    } 
+    }
 
+    public virtual void OnDieListener()
+    {
+        float delay = 0.1f;
+        Destroy(gameObject, delay);
+    }
     #endregion
 }
