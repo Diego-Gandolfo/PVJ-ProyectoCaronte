@@ -9,19 +9,18 @@ public class HealthController : MonoBehaviour, IDamageable
 
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
-    [SerializeField] private bool isPlayer; //este booleano lo uso para que solo me debuguee la vida del player y no la de los enemigos. 
-    
+
     #endregion
 
     #region Private Fields
 
-    private Animator animator;
     private LifeBarController lifeBar;
 
     #endregion
 
     #region Propertys
     public UnityEvent OnDie = new UnityEvent();
+    public UnityEvent OnTakeDamage = new UnityEvent();
     public int MaxHealth => maxHealth;
     public int CurrentHealth { get => currentHealth; }
 
@@ -32,10 +31,7 @@ public class HealthController : MonoBehaviour, IDamageable
     private void Start()
     {
         currentHealth = maxHealth;
-
-        animator = GetComponentInChildren<Animator>();
         lifeBar = GetComponent<LifeBarController>();
-
         if (lifeBar != null)
             lifeBar.UpdateLifeBar(currentHealth, maxHealth);
     }
@@ -49,7 +45,7 @@ public class HealthController : MonoBehaviour, IDamageable
         if (currentHealth > 0)
         {
             currentHealth -= damage;
-            if (!isPlayer && animator != null) animator.SetTrigger("TakeDamage"); // TODO: hacer la animacion del Player para TakeDamage
+            OnTakeDamage?.Invoke();
         }
 
         if (currentHealth <= 0)
@@ -60,9 +56,7 @@ public class HealthController : MonoBehaviour, IDamageable
         if (lifeBar != null)
         {
             if (!lifeBar.IsVisible)
-            {
                 lifeBar.SetBarVisible(true);
-            }
 
             lifeBar.UpdateLifeBar(currentHealth, maxHealth);
         }
@@ -76,18 +70,6 @@ public class HealthController : MonoBehaviour, IDamageable
     public virtual void Die()
     {
         OnDie?.Invoke();
-        
-        //if (isPlayer)
-        //{
-        //    RespawnManager.instance.Respawn();
-        //    ResetValues();
-        //}
-
-        //else if (!isPlayer)
-        //{
-        //    float delay = 0.1f;
-        //    Destroy(gameObject, delay);
-        //}
     }
 
     public void SetLifeBar(LifeBarController controller)

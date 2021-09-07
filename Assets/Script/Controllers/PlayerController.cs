@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
         healthController = GetComponent<HealthController>();
         healthController.OnDie.AddListener(OnDieListener);
+        healthController.OnTakeDamage.AddListener(OnTakeDamage);
         healthController.SetLifeBar(HUDManager.instance.GetLifeBar()); //Seteamos una ves el LifeBar;
         Initialize();
     }
@@ -143,6 +144,11 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    private void OnTakeDamage()
+    {
+        //TODO: hacer la animacion del Player para TakeDamage
+    }
+
     private void OnDieListener()
     {
         RespawnManager.instance.Respawn();
