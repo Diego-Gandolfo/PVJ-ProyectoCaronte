@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthController : MonoBehaviour, IDamageable
 {
@@ -8,19 +9,18 @@ public class HealthController : MonoBehaviour, IDamageable
 
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
-    [SerializeField] private bool isPlayer; //este booleano lo uso para que solo me debuguee la vida del player y no la de los enemigos. 
-    
+
     #endregion
 
     #region Private Fields
 
-    private Animator animator;
     private LifeBarController lifeBar;
 
     #endregion
 
     #region Propertys
-
+    public UnityEvent OnDie = new UnityEvent();
+    public UnityEvent OnTakeDamage = new UnityEvent();
     public int MaxHealth => maxHealth;
     public int CurrentHealth { get => currentHealth; }
 
@@ -31,10 +31,7 @@ public class HealthController : MonoBehaviour, IDamageable
     private void Start()
     {
         currentHealth = maxHealth;
-
-        animator = GetComponentInChildren<Animator>();
         lifeBar = GetComponent<LifeBarController>();
-
         if (lifeBar != null)
             lifeBar.UpdateLifeBar(currentHealth, maxHealth);
     }
@@ -48,36 +45,42 @@ public class HealthController : MonoBehaviour, IDamageable
         if (currentHealth > 0)
         {
             currentHealth -= damage;
-            if (!isPlayer) animator.SetTrigger("TakeDamage"); // TODO: hacer la animacion del Player para TakeDamage
+            OnTakeDamage?.Invoke();
         }
 
-        if (currentHealth <= 0) Die();
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
 
         if (lifeBar != null)
         {
             if (!lifeBar.IsVisible)
-            {
                 lifeBar.SetBarVisible(true);
-            }
 
             lifeBar.UpdateLifeBar(currentHealth, maxHealth);
         }
+    }
 
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P)) TakeDamage(10); //TODO: BORRAR 
     }
 
     public virtual void Die()
     {
-        //animator.SetTrigger("Die");
-        float delay = 0.1f;
-        if (isPlayer) GameManager.instance?.GameOver();
-        else Destroy(gameObject, delay);
+        OnDie?.Invoke();
     }
 
     public void SetLifeBar(LifeBarController controller)
     {
         lifeBar = controller;
         lifeBar.UpdateLifeBar(currentHealth, maxHealth);
+    }
+
+    public void ResetValues()
+    {
+        currentHealth = maxHealth;
     }
     #endregion
 }

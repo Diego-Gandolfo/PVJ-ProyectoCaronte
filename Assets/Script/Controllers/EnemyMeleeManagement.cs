@@ -16,44 +16,24 @@ public class EnemyMeleeManagement : EnemyController
     #endregion
 
     #region Protected Fields
-
     protected bool canDamage;
-
     #endregion
 
     #region Private Fields
-
-    // Components
-    private Animator animator;
-    private PlayerController playerController;
-    private Outline outline;
-    private LifeBarController lifeBar;
-    private HealthController healthController;
-
-    // Parameters
     private float timeToDamageAgain = 2.0f;
     private float currentTimeToDamage = 0.0f;
     private float distance;
     private bool mustFollow;
-
     #endregion
 
     #region Unity Methods
-
-    public virtual void Start()
+    public override void Start()
     {
-        healthController = GetComponent<HealthController>();
-        outline = GetComponent<Outline>();
-        RecognizePlayer();
-        animator = GetComponentInChildren<Animator>();
-        lifeBar = GetComponent<LifeBarController>();
-        lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
-
-
+        base.Start();
         canDamage = true;
     }
 
-    public virtual void Update()
+    public void Update()
     {
         CheckPlayerDistance();
         FollowPlayer();
@@ -65,7 +45,6 @@ public class EnemyMeleeManagement : EnemyController
     #endregion
 
     #region Private Methods
-
     private void CheckPlayerDistance()
     {
         distance = player.CurrentSpeed == player.MoveSpeed ? whenPlayerMoving : whenPlayerSprinting;
@@ -119,7 +98,6 @@ public class EnemyMeleeManagement : EnemyController
 
     public override void AttackPlayer()
     {
-        base.AttackPlayer();
     }
 
     #endregion

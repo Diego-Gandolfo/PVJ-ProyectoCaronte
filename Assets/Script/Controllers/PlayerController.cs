@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     // Components
     private Animator animator;
     private Rigidbody rigidBody;
+    protected HealthController healthController;
 
     // Movement
     private bool canMove;
@@ -51,7 +52,10 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
-        GetComponent<HealthController>().SetLifeBar(HUDManager.instance.GetLifeBar()); //Seteamos una ves el LifeBar;
+        healthController = GetComponent<HealthController>();
+        healthController.OnDie.AddListener(OnDieListener);
+        healthController.OnTakeDamage.AddListener(OnTakeDamage);
+        healthController.SetLifeBar(HUDManager.instance.GetLifeBar()); //Seteamos una ves el LifeBar;
         Initialize();
     }
 
@@ -139,7 +143,20 @@ public class PlayerController : MonoBehaviour
             rigidBody.AddForce(jumpForce, ForceMode.Impulse);
         }
     }
+    
+    private void OnTakeDamage()
+    {
+        //TODO: hacer la animacion del Player para TakeDamage
+    }
 
+    private void OnDieListener()
+    {
+        RespawnManager.instance.Respawn();
+        healthController.ResetValues();
+    }
+    #endregion
+
+    #region Public Methods
     public bool CheckIsGrounded()
     {
         RaycastHit hit;
@@ -161,10 +178,6 @@ public class PlayerController : MonoBehaviour
             return false;
         }
     }
-
-    #endregion
-
-    #region Public Methods
 
     public void SetCanMove(bool enableMovement)
     {

@@ -35,14 +35,4 @@ public class GravityBody : MonoBehaviour
     }
 
     #endregion
-
-    #region Public Methods
-
-    public void AssignAttractor(GravityAttractor attractor)
-    {
-        _attractor = attractor;
-        _attractor.AddGravityBody(this);
-    }
-
-    #endregion
 }
