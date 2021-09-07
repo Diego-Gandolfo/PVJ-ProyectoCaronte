@@ -18,7 +18,7 @@ public class GravityAttractor : MonoBehaviour
 
     #region Unity Methods
 
-    private void Update()
+    private void FixedUpdate()
     {
         AttractGravityBodys();
     }
@@ -53,7 +53,14 @@ public class GravityAttractor : MonoBehaviour
 
     public void AddGravityBody(GravityBody gravityBody)
     {
-        _gravityBodysList.Add(gravityBody);
+        if (!_gravityBodysList.Contains(gravityBody)) // sino está en la lista
+            _gravityBodysList.Add(gravityBody); // lo agregamos
+    }
+
+    public void RemoveGravityBody(GravityBody gravityBody)
+    {
+        if (_gravityBodysList.Contains(gravityBody)) // si está en la lista
+            _gravityBodysList.Remove(gravityBody); // lo sacamos
     }
 
     #endregion

@@ -26,6 +26,15 @@ public class CrystalController : MonoBehaviour
     {
         var spawn = Instantiate(crystalDrop);
         spawn.transform.position = transform.position;
+
+        var spawnGravityBody = spawn.GetComponent<GravityBody>();
+
+        if (spawnGravityBody != null)
+        {
+            var myGravityBody = GetComponent<GravityBody>();
+            spawnGravityBody.AssignAttractor(myGravityBody.GravityAttractor);
+        }
+
         Destroy(gameObject);
     }
 }
