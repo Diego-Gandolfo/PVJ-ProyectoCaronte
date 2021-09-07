@@ -11,7 +11,7 @@ public class InteractableController : MonoBehaviour
     private void Start()
     {
         outline = GetComponent<Outline>();
-        outline.enabled = true;
+        outline.enabled = false;
     }
 
     private void Update()
@@ -48,8 +48,9 @@ public class InteractableController : MonoBehaviour
         outline.enabled = false; //apagamos el outline
 
         //var gravityBody = gameObject.GetComponent<GravityBody>(); //Lo sacamos de la lista de gravedad
-        //if (gravityBody != null)
-        //    gravityBody.Attractor.RemoveGravityBody(gravityBody);
+        //if (gravityBody != null) 
+        //    gravityBody.Attractor.RemoveGravityBody(gravityBody); 
+        //TODO: VER DIEGO TEMA GRAVEDAD
 
         interactable.Interact(); //Acá es donde cada interactable hace los suyo  
     }

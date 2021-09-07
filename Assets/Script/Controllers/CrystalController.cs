@@ -5,7 +5,6 @@ using UnityEngine;
 public class CrystalController : MonoBehaviour
 {
     [SerializeField] private GameObject crystalDrop;
-    [SerializeField] private Transform crystalDropSpawnPoint;
     private Outline outline;
     private HealthController healthController;
 
@@ -25,13 +24,11 @@ public class CrystalController : MonoBehaviour
 
     private void OnDieListener()
     {
-        print("hola");
-        
-        Instantiate(crystalDrop, crystalDropSpawnPoint);
-        print("drop");
+        var spawn = Instantiate(crystalDrop);
+        spawn.transform.position = transform.position;
         Destroy(gameObject);
-        //Spawneas los cristales para pickear y te destruis
-        //var gravityBody = gameObject.GetComponent<GravityBody>();
+
+        //var gravityBody = gameObject.GetComponent<GravityBody>();         //TODO: VER DIEGO TEMA GRAVEDAD
         //if (gravityBody != null)
         //    gravityBody.Attractor.RemoveGravityBody(gravityBody);
     }

@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(InteractableController))]
-public class CrystalPickUpTrigger : MonoBehaviour, IInteractable
+public class CrystalInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private int value = 1;
 
     void Start()
     {
         GetComponent<InteractableController>().interactable = this;
-        print("naci");
     }
 
     public void Interact()
