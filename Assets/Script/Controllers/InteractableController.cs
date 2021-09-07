@@ -47,11 +47,6 @@ public class InteractableController : MonoBehaviour
         HUDManager.instance.ShowPrompt(false); //Le sacamos el prompt 
         outline.enabled = false; //apagamos el outline
 
-        //var gravityBody = gameObject.GetComponent<GravityBody>(); //Lo sacamos de la lista de gravedad
-        //if (gravityBody != null) 
-        //    gravityBody.Attractor.RemoveGravityBody(gravityBody); 
-        //TODO: VER DIEGO TEMA GRAVEDAD
-
         interactable.Interact(); //Acá es donde cada interactable hace los suyo  
     }
 }
