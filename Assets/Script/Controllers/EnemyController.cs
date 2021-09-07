@@ -21,7 +21,7 @@ public abstract class EnemyController : MonoBehaviour
         healthController = GetComponent<HealthController>();
         healthController.OnDie.AddListener(OnDieListener);
         healthController.OnTakeDamage.AddListener(OnTakeDamage);
-        lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
+        if(lifeBar != null) lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
         player = GameManager.instance.Player;
     }
     #endregion
