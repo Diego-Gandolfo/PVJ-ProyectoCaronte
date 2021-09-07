@@ -32,6 +32,7 @@ public class GravityBody : MonoBehaviour
         _rigidbody.useGravity = false;
         _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
         if (_attractor != null) _attractor.AddGravityBody(this);
+        else Debug.LogWarning($"{gameObject.name} tiene el Componente 'GravityBody' pero no tiene un Attractor asignado");
     }
 
     #endregion

@@ -27,9 +27,5 @@ public class CrystalController : MonoBehaviour
         var spawn = Instantiate(crystalDrop);
         spawn.transform.position = transform.position;
         Destroy(gameObject);
-
-        //var gravityBody = gameObject.GetComponent<GravityBody>();         //TODO: VER DIEGO TEMA GRAVEDAD
-        //if (gravityBody != null)
-        //    gravityBody.Attractor.RemoveGravityBody(gravityBody);
     }
 }

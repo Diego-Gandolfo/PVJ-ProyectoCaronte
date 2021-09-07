@@ -13,7 +13,6 @@ public class GravityAttractor : MonoBehaviour
     #region Private Fields
 
     private List<GravityBody> _gravityBodysList = new List<GravityBody>();
-    //private readonly float _rotationSpeed = 50f;
 
     #endregion
 
@@ -30,14 +29,21 @@ public class GravityAttractor : MonoBehaviour
 
     private void AttractGravityBodys()
     {
-        for (int i = 0; i < _gravityBodysList.Count; i++)
+        for (int i = _gravityBodysList.Count - 1; i >= 0; i--)
         {
-            var body = _gravityBodysList[i];
-            var gravityUp = (body.transform.position - transform.position).normalized;
+            var body = _gravityBodysList[i]; // agarramos el body a usar
 
-            body.Rigidbody.AddForce(gravityUp * _gravity);
+            if (body == null) // si es nulo es que fue destruido
+            {
+                _gravityBodysList.RemoveAt(i); // entonces lo quitamos de la lista
+                return; // nos salteamos el resto del for
+            }
 
-            body.transform.rotation = Quaternion.FromToRotation(body.transform.up, gravityUp) * body.transform.rotation;
+            var gravityUp = (body.transform.position - transform.position).normalized; // determinamos cual es el vector up
+
+            body.Rigidbody.AddForce(gravityUp * _gravity); // le aplicamos la fuerza
+
+            body.transform.rotation = Quaternion.FromToRotation(body.transform.up, gravityUp) * body.transform.rotation; // lo rotamos para que quede "vertical" con el vector up
         }
     }
 
@@ -48,11 +54,6 @@ public class GravityAttractor : MonoBehaviour
     public void AddGravityBody(GravityBody gravityBody)
     {
         _gravityBodysList.Add(gravityBody);
-    }
-
-    public void RemoveGravityBody(GravityBody gravityBody)
-    {
-        _gravityBodysList.Remove(gravityBody);
     }
 
     #endregion
