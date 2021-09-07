@@ -2,27 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMeleeWapon : EnemyMeleeManagement
+public class EnemyMeleeWapon : MonoBehaviour
 {
-    #region Serialize Fields
-
     [SerializeField] private int damage;
 
-    #endregion
+    private PlayerController player;
+    private bool canDoDamage;
 
-    #region Unity Methods
+    private float timeToDamageAgain = 2.0f;
+    private float timeToDamage = 0.0f;
+    
 
-    public override void Start() { }
-    public override void Update() { }
+    private void Start() 
+    {
+        player = GameManager.instance.Player;
+        canDoDamage = true;
+        timeToDamage = timeToDamageAgain;
+    }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-    //    {
-    //        AttackPlayer();
-    //    }
-    //}
-
+    private void Update()
+    {
+        if (canDoDamage == false)
+        {
+            timeToDamage += Time.deltaTime;
+            if (timeToDamage >= timeToDamageAgain)
+            {
+                canDoDamage = true;
+                timeToDamage = 0.0f;
+            }
+        }
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -31,19 +40,16 @@ public class EnemyMeleeWapon : EnemyMeleeManagement
         }
     }
 
-    #endregion
-
     #region Public Methods
 
-    public override void AttackPlayer()
+    private void AttackPlayer()
     {
-        if (canDamage)
+        if (canDoDamage)
         {
-            canDamage = false;
-            base.AttackPlayer();
-            player.GetComponent<HealthController>().TakeDamage(damage);
+             HealthController hp = player.GetComponent<HealthController>();
+             hp.TakeDamage(10);
+             canDoDamage = false;
         }
-
     }
 
     #endregion

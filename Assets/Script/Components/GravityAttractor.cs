@@ -13,7 +13,7 @@ public class GravityAttractor : MonoBehaviour
     #region Private Fields
 
     private List<GravityBody> _gravityBodysList = new List<GravityBody>();
-    private readonly float _rotationSpeed = 50f;
+    //private readonly float _rotationSpeed = 50f;
 
     #endregion
 

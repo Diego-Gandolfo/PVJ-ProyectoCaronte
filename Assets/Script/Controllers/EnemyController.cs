@@ -19,6 +19,14 @@ public abstract class EnemyController : MonoBehaviour
 
     #endregion
 
+    private void Update()
+    {
+        if (player.GetComponent<HealthController>() != null)
+        {
+            Debug.LogWarning("HAY HEALTH CONTROLLER");
+        }
+    }
+
     #region Public Methods
 
     public virtual void AttackPlayer()

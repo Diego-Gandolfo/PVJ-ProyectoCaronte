@@ -75,8 +75,8 @@ GameObject:
   - component: {fileID: 2974037318335174037}
   - component: {fileID: 5561194953819672892}
   - component: {fileID: 1434150396799790331}
-  - component: {fileID: 2002105341743234121}
   - component: {fileID: 1945481972}
+  - component: {fileID: 6355265869036301437}
   m_Layer: 6
   m_Name: MainCharacter
   m_TagString: Player
@@ -189,21 +189,6 @@ MonoBehaviour:
   rotationSensibility: {x: 300, y: 100, z: 0}
   jumpImpulseForce: 7
   weapon: {fileID: 3457291127151309888}
---- !u!114 &2002105341743234121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859750694658385290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b9921d6892c10b45b336aefd459447b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 20
-  currentHealth: 0
-  isPlayer: 1
 --- !u!114 &1945481972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +202,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attractor: {fileID: 0}
+--- !u!114 &6355265869036301437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859750694658385290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9921d6892c10b45b336aefd459447b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  currentHealth: 0
+  isPlayer: 1
 --- !u!1 &951006845917179496
 GameObject:
   m_ObjectHideFlags: 0

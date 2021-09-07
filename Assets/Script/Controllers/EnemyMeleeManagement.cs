@@ -49,7 +49,6 @@ public class EnemyMeleeManagement : EnemyController
         lifeBar = GetComponent<LifeBarController>();
         lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
 
-
         canDamage = true;
     }
 
@@ -119,7 +118,6 @@ public class EnemyMeleeManagement : EnemyController
 
     public override void AttackPlayer()
     {
-        base.AttackPlayer();
     }
 
     #endregion
