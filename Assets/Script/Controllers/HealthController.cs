@@ -88,6 +88,7 @@ public class HealthController : MonoBehaviour, IDamageable
     public void ResetValues()
     {
         currentHealth = maxHealth;
+        OnUpdateLife?.Invoke(currentHealth, MaxHealth);
     }
     #endregion
 }
