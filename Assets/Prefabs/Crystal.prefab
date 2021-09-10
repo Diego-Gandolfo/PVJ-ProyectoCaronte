@@ -232,7 +232,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7018809224524959325}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229e6f39001792843ad7c466ddcf4abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attractor: {fileID: 0}
+  _gravityAttractor: {fileID: 0}
 --- !u!1 &7361937954820096360
 GameObject:
   m_ObjectHideFlags: 0

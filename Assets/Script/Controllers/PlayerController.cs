@@ -31,11 +31,11 @@ public class PlayerController : MonoBehaviour
     // Movement
     private bool canMove;
     private float currentSpeed;
+    private bool canRun;
 
     // Rotation
     private bool canRotate;
     private float rotX;
-
     #endregion
 
     #region Propertys
@@ -110,14 +110,12 @@ public class PlayerController : MonoBehaviour
 
     private void Sprint()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            currentSpeed = sprintSpeed;
-            animator.speed = 2f;
 
+            OnRunning();
         }
-
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        else
         {
             currentSpeed = moveSpeed;
             animator.speed = 1f;
@@ -192,7 +190,12 @@ public class PlayerController : MonoBehaviour
     public void WeaponShoot()
     {
         weapon.Shoot();
+        animator.speed = 1f;
     }
-
+    public void OnRunning()
+    {
+         currentSpeed = sprintSpeed;
+         animator.speed = 2f;
+    }
     #endregion
 }

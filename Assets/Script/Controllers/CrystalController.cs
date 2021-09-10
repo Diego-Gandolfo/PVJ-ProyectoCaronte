@@ -18,8 +18,6 @@ public class CrystalController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) //No se si es mega necesario
     {
-        if (collision.gameObject.layer == 7)
-            outline.enabled = true;
     }
 
     private void OnDieListener()
@@ -32,9 +30,10 @@ public class CrystalController : MonoBehaviour
         if (spawnGravityBody != null)
         {
             var myGravityBody = GetComponent<GravityBody>();
+            if(myGravityBody != null && myGravityBody.GravityAttractor != null)
             spawnGravityBody.AssignAttractor(myGravityBody.GravityAttractor);
         }
-
-        Destroy(gameObject);
+        
+        gameObject.SetActive(false);
     }
 }
