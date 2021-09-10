@@ -55,7 +55,6 @@ public class PlayerController : MonoBehaviour
         healthController = GetComponent<HealthController>();
         healthController.OnDie.AddListener(OnDieListener);
         healthController.OnTakeDamage.AddListener(OnTakeDamage);
-        healthController.SetLifeBar(HUDManager.instance.GetLifeBar()); //Seteamos una ves el LifeBar;
         Initialize();
     }
 
