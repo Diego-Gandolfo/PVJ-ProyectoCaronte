@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class OxygenRechargeAreaController : MonoBehaviour
 {
-    [SerializeField] private float oxygenRegenerationPerSecond;
-    [SerializeField] private float timerOfRegeneration;
+    [SerializeField] private float oxygenRegenerationPerSecond = 0.5f;
+    [SerializeField] private float timerOfRegeneration = 1f;
     private OxygenSystemController currentOxygenUser;
     private float currentTime;
     //private bool isDeployed;
@@ -30,13 +30,20 @@ public class OxygenRechargeAreaController : MonoBehaviour
     {
         OxygenSystemController oxygen = other.gameObject.GetComponent<OxygenSystemController>();
         if(oxygen != null)
+        {
             currentOxygenUser = oxygen;
+            currentOxygenUser.IsInSafeZone(true);
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
         OxygenSystemController oxygen = other.gameObject.GetComponent<OxygenSystemController>();
         if (oxygen == currentOxygenUser) //si el que se fue del area de trigger, coincide con el guardado
+        {
+            currentOxygenUser.IsInSafeZone(false);
             currentOxygenUser = null;
+        }
     }
 }

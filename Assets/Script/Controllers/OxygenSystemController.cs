@@ -9,9 +9,10 @@ public class OxygenSystemController : MonoBehaviour
     [SerializeField] private float maxOxygen;
     [SerializeField] private float currentOxygen;
     [SerializeField] private float oxygenConsumptionPerSecond;
-    [SerializeField] private float timerOfConsumption = 60f;
+    [SerializeField] private float timerOfConsumption = 1f;
     [SerializeField] private int asphyxiationDamage;
 
+    private bool isInSafeZone;
     private HealthController healtController;
     private float currentTime;
 
@@ -29,7 +30,7 @@ public class OxygenSystemController : MonoBehaviour
     void Update() 
     {
         currentTime -= Time.deltaTime;
-        if (currentTime <= 0)
+        if (currentTime <= 0 && !isInSafeZone)
         {
             if (CheckOxygenLevel())
                 ConsumeOxygen();
@@ -41,6 +42,7 @@ public class OxygenSystemController : MonoBehaviour
         }
     }
 
+    #region Private Methods
     private bool CheckOxygenLevel()
     {
         return currentOxygen > 0;
@@ -56,7 +58,9 @@ public class OxygenSystemController : MonoBehaviour
         healtController.TakeDamage(asphyxiationDamage);
         //OnAsphyxiation?.Invoke(); //(No borrar) TODO: UI/Sound effect for lack of oxygen, 
     }
+    #endregion
 
+    #region Public Methods
     public void RegenerateOxygen(float oxygenRegen)
     {
         if(currentOxygen < maxOxygen)
@@ -69,4 +73,10 @@ public class OxygenSystemController : MonoBehaviour
             OnChangeInOxygen?.Invoke(currentOxygen, maxOxygen);
         }
     }
+
+    public void IsInSafeZone(bool value)
+    {
+        isInSafeZone = value;
+    }
+    #endregion
 }
