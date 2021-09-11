@@ -41,5 +41,6 @@ public class GameManager : MonoBehaviour
     public void SetPlayer(PlayerController player)
     {
         this.player = player;
+        print(this.player);
     }
 }

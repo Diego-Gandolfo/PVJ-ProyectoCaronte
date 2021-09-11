@@ -50,6 +50,11 @@ public class PlayerController : MonoBehaviour
 
     #region Unity Methods
 
+    private void Awake()
+    {
+        GameManager.instance.SetPlayer(this);
+    }
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -91,6 +96,8 @@ public class PlayerController : MonoBehaviour
         currentSpeed = moveSpeed;
         canMove = true;
         canRotate = true;
+
+        
     }
 
     private void Move()
