@@ -8,6 +8,6 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.instance.SetPlayer(player);
+        //GameManager.instance.SetPlayer(player);
     }
 }
