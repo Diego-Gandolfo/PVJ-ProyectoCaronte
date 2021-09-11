@@ -11,10 +11,10 @@ public class OxygenBar : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.Player.GetComponent<OxygenSystemController>().OnChangeInOxygen += UpdateLifeBar;
+        GameManager.instance.Player.GetComponent<OxygenSystemController>().OnChangeInOxygen += UpdateOxygenBar;
     }
 
-    public void UpdateLifeBar(float currentOxygen, float maxOxygen)
+    public void UpdateOxygenBar(float currentOxygen, float maxOxygen)
     {
         var percentage = currentOxygen / maxOxygen;
         if (oxygenBarImage != null)

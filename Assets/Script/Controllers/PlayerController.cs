@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody rigidBody;
     protected HealthController healthController;
+    private OxygenSystemController oxygenSystem;
 
     // Movement
     private bool canMove;
@@ -46,6 +47,8 @@ public class PlayerController : MonoBehaviour
     public float SprintSpeed => sprintSpeed;
     public float CurrentSpeed => currentSpeed;
 
+
+
     #endregion
 
     #region Unity Methods
@@ -62,6 +65,7 @@ public class PlayerController : MonoBehaviour
         healthController = GetComponent<HealthController>();
         healthController.OnDie.AddListener(OnDieListener);
         healthController.OnTakeDamage.AddListener(OnTakeDamage);
+        oxygenSystem = GetComponent<OxygenSystemController>();
         Initialize();
     }
 
@@ -159,6 +163,7 @@ public class PlayerController : MonoBehaviour
     {
         RespawnManager.instance.Respawn();
         healthController.ResetValues();
+        oxygenSystem.ResetValues();
     }
     #endregion
 

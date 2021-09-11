@@ -23,22 +23,24 @@ public class OxygenSystemController : MonoBehaviour
     void Start()
     {
         healtController = GetComponent<HealthController>();
-        currentOxygen = maxOxygen;
-        currentTime = timerOfConsumption;
+        ResetValues();
     }
 
     void Update() 
     {
-        currentTime -= Time.deltaTime;
-        if (currentTime <= 0 && !isInSafeZone)
+        if (!isInSafeZone)
         {
-            if (CheckOxygenLevel())
-                ConsumeOxygen();
-            else
-                Asphyxiation();
-            
-            currentTime = timerOfConsumption;
-            OnChangeInOxygen?.Invoke(currentOxygen, maxOxygen);
+            currentTime -= Time.deltaTime;
+            if (currentTime <= 0)
+            {
+                if (CheckOxygenLevel())
+                    ConsumeOxygen();
+                else
+                    Asphyxiation();
+
+                currentTime = timerOfConsumption;
+                OnChangeInOxygen?.Invoke(currentOxygen, maxOxygen);
+            }
         }
     }
 
@@ -77,6 +79,14 @@ public class OxygenSystemController : MonoBehaviour
     public void IsInSafeZone(bool value)
     {
         isInSafeZone = value;
+        if(isInSafeZone)
+            currentTime = timerOfConsumption;
+    }
+
+    public void ResetValues()
+    {
+        currentOxygen = maxOxygen;
+        currentTime = timerOfConsumption;
     }
     #endregion
 }

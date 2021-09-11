@@ -17,8 +17,6 @@ public abstract class EnemyController : MonoBehaviour
     public virtual void Start()
     {
         player = GameManager.instance.Player;
-        print(player);
-
         animator = GetComponentInChildren<Animator>();
         outline = GetComponent<Outline>();
         lifeBar = GetComponent<LifeBarController>();

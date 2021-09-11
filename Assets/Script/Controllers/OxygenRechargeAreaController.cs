@@ -40,7 +40,7 @@ public class OxygenRechargeAreaController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         OxygenSystemController oxygen = other.gameObject.GetComponent<OxygenSystemController>();
-        if (oxygen == currentOxygenUser) //si el que se fue del area de trigger, coincide con el guardado
+        if (oxygen == currentOxygenUser && currentOxygenUser != null) //si el que se fue del area de trigger, coincide con el guardado
         {
             currentOxygenUser.IsInSafeZone(false);
             currentOxygenUser = null;
