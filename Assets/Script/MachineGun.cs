@@ -8,7 +8,10 @@ public class MachineGun : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private PlayerController owner;
     public Animator animator;
-   [SerializeField]private Transform crossHair;
+    [SerializeField]private Transform crossHair;
+    [SerializeField] private float minDistance; // distancia minima para que calcule el forward del disparo con el crosshair
+    [SerializeField] private LayerMask layerMask;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,32 +38,15 @@ public class MachineGun : MonoBehaviour
     }
     public void Shoot()
     {
-        //Vector3 pos;
-        //pos.x = Input.mousePosition.x;
-        //pos.y = Input.mousePosition.y;
-        //pos.z = Vector3.Distance(firePoint.position, crossHair.transform.position);
-        //pos = Camera.main.ScreenToWorldPoint(pos);
-
-        //var bulletClone = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        //bulletClone.transform.forward = firePoint.position - pos;
-
-        //RaycastHit hit;
-
-        //if(Physics.Raycast(crossHair.position, crossHair.forward, out hit, Mathf.Infinity))
-        //{
-        //    var bulletClone = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        //    print(hit.point);
-        //    bulletClone.transform.forward = Vector3.Distance(hit.point, firePoint.position) > 0.5f ? (hit.point - firePoint.position) : bulletClone.transform.forward;
-        //}
-
         RaycastHit hit;
-        var ray = Camera.main.ScreenPointToRay(Camera.main.transform.forward);
 
-        if (Physics.Raycast(ray, out hit))
+        Physics.Raycast(crossHair.position, crossHair.forward, out hit, Mathf.Infinity, layerMask);
+
+        var bulletClone = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+        if (Vector3.Distance(hit.point, crossHair.position) > minDistance)
         {
-            var bulletClone = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            print(hit.point);
-            bulletClone.transform.forward = firePoint.position - hit.point;
+            bulletClone.transform.forward = hit.point - firePoint.position;
         }
     }
 }
