@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(HealthController))]
+[RequireComponent(typeof(OxygenSystemController))]
 public class PlayerController : MonoBehaviour
 {
     #region Serialize Fields
