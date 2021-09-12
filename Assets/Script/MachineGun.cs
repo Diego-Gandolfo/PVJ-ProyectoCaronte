@@ -11,11 +11,16 @@ public class MachineGun : MonoBehaviour
     [SerializeField]private Transform crossHair;
     [SerializeField] private float minDistance; // distancia minima para que calcule el forward del disparo con el crosshair
     [SerializeField] private LayerMask layerMask;
-
+    [SerializeField] private float maxShootingTime;
+    [SerializeField] private float currentShootingTime;
+    [SerializeField] private ParticleSystem shootingParticles;
+    private bool canShoot;
     // Start is called before the first frame update
     void Start()
     {
         animator = owner.GetComponent<Animator>();
+        var particles = shootingParticles.main;
+        particles.duration = maxShootingTime;
     }
 
     // Update is called once per frame
@@ -23,18 +28,27 @@ public class MachineGun : MonoBehaviour
     {
         if (!GameManager.instance.IsGameFreeze)
         {
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0) && canShoot)
             {
                 animator.SetBool("IsShooting", true);
                 owner.SetCanMove(false);
+                currentShootingTime += Time.deltaTime;
+                
+                if(currentShootingTime >= maxShootingTime)
+                {
+                    OnOverHeat();
+                }
 
             }
             else
             {
-                animator.SetBool("IsShooting", false);
-                owner.SetCanMove(true);
+                StopShooting();
             }
         }
+        if(currentShootingTime < 0)
+        {
+            currentShootingTime = 0;
+        } 
     }
     public void Shoot()
     {
@@ -48,5 +62,25 @@ public class MachineGun : MonoBehaviour
         {
             bulletClone.transform.forward = hit.point - firePoint.position;
         }
+    }
+    private void StopShooting()
+    {
+        if(currentShootingTime > 0)
+        {
+        currentShootingTime -= Time.deltaTime;
+
+        }
+        else
+        {
+            canShoot = true;
+        }
+        animator.SetBool("IsShooting", false);
+        owner.SetCanMove(true);
+    }
+    private void OnOverHeat()
+    {
+        shootingParticles.Play();
+        StopShooting();
+        canShoot = false;
     }
 }
