@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour
                 Jump();
             }
         }
+        IsAiming();
     }
 
     #endregion
@@ -164,6 +165,19 @@ public class PlayerController : MonoBehaviour
         RespawnManager.instance.Respawn();
         healthController.ResetValues();
         oxygenSystem.ResetValues();
+    }
+    private void IsAiming()
+    {
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            canMove = false;
+           animator.SetBool("IsAiming", true);
+        }
+        else
+        {
+            animator.SetBool("IsAiming", false);
+            canMove = true;
+        }
     }
     #endregion
 
