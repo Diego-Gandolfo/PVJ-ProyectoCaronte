@@ -6,12 +6,13 @@ public class CameraController : MonoBehaviour
 {
     private CinemachineVirtualCamera cinemachineVirtualCamera;
     public float mouseWheelValue;
-
     //Zoom values x = min y= default z= max
     [SerializeField] private Vector3 zoomValues;
+    [SerializeField] private float minDistance;
+    [SerializeField] private LayerMask layers;
+    [SerializeField] private Transform target;
     private void Start()
     {
-        cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
 
 
     }
@@ -24,22 +25,24 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            cinemachineVirtualCamera.m_Lens.FieldOfView = zoomValues.z;
+            Camera.main.fieldOfView = zoomValues.z;
         }
         else
         {
-            cinemachineVirtualCamera.m_Lens.FieldOfView = zoomValues.y;
+            Camera.main.fieldOfView = zoomValues.y;
         }
 
     }
-    //private void OnWheelScroll()
-    //{
-        //mouseWheelValue = Input.mouseScrollDelta.y;
-        //float cmFieldOfView = Mathf.Clamp(cinemachineVirtualCamera.m_Lens.FieldOfView, zoomValues.z, zoomValues.x);
-        // if (mouseWheelValue < 0)
-        // {
-        //     cmFieldOfView += -mouseWheelValue;
-        // }
-        //cinemachineVirtualCamera.m_Lens.FieldOfView = cmFieldOfView;
+            //private void OnWheelScroll()
+            //{
+            //mouseWheelValue = Input.mouseScrollDelta.y;
+            //float cmFieldOfView = Mathf.Clamp(cinemachineVirtualCamera.m_Lens.FieldOfView, zoomValues.z, zoomValues.x);
+            // if (mouseWheelValue < 0)
+            // {
+            //     cmFieldOfView += -mouseWheelValue;
+            // }
+            //cinemachineVirtualCamera.m_Lens.FieldOfView = cmFieldOfView;
+            //}
+    //    }
     //}
 }

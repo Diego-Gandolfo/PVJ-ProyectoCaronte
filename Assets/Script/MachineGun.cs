@@ -44,6 +44,7 @@ public class MachineGun : MonoBehaviour
             {
                 StopShooting();
             }
+        Debug.DrawRay(crossHair.position, crossHair.forward,Color.red);
         }
         if(currentShootingTime < 0)
         {
@@ -55,12 +56,15 @@ public class MachineGun : MonoBehaviour
         RaycastHit hit;
 
         Physics.Raycast(crossHair.position, crossHair.forward, out hit, Mathf.Infinity, layerMask);
-
         var bulletClone = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
         if (Vector3.Distance(hit.point, crossHair.position) > minDistance)
         {
             bulletClone.transform.forward = hit.point - firePoint.position;
+        }
+        else if (hit.collider)
+        {
+            bulletClone.transform.forward = firePoint.transform.forward;
         }
     }
     private void StopShooting()
