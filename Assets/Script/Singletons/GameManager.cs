@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         }
 
         IsGameFreeze = false;
-        CurrentLevel = "Demo_Final";
+        CurrentLevel = "Level";
     }
 
     public void GameOver()
