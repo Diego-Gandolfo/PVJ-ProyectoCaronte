@@ -71,6 +71,7 @@ public class PauseMenuController : MonoBehaviour
 
     private void OnResumeHandler()
     {
+        print("MENU");
         //AudioManager.instance.PlaySound(SoundClips.MouseClick);
         ExitMenu();
     }
