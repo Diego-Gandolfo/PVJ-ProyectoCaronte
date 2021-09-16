@@ -20,12 +20,11 @@ public class HUDManager : MonoBehaviour
             instance = this;
             //DontDestroyOnLoad(gameObject); // Esto lo comente porque como esta puesto en un hijo, no funciona
         }
-
     }
 
-    void Update()
+    private void Start()
     {
-        
+        lifeBar.SetHealthController(GameManager.instance.Player.GetComponent<HealthController>());
     }
 
     public void ShowPrompt(bool value)

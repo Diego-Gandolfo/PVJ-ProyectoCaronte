@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,11 +19,16 @@ public class HealthController : MonoBehaviour, IDamageable
 
     #endregion
 
-    #region Propertys
+    #region Events
     public UnityEvent OnDie = new UnityEvent();
     public UnityEvent OnTakeDamage = new UnityEvent();
+    public Action<int, int> OnUpdateLife; //currentLife, MaxLife
+    #endregion
+
+    #region Propertys
+
     public int MaxHealth => maxHealth;
-    public int CurrentHealth { get => currentHealth; }
+    public int CurrentHealth  => currentHealth;
 
     #endregion
 
@@ -45,6 +51,7 @@ public class HealthController : MonoBehaviour, IDamageable
         if (currentHealth > 0)
         {
             currentHealth -= damage;
+            OnUpdateLife?.Invoke(currentHealth, MaxHealth);
             OnTakeDamage?.Invoke();
         }
 
@@ -81,6 +88,7 @@ public class HealthController : MonoBehaviour, IDamageable
     public void ResetValues()
     {
         currentHealth = maxHealth;
+        OnUpdateLife?.Invoke(currentHealth, MaxHealth);
     }
     #endregion
 }

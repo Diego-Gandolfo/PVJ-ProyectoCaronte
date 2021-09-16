@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(HealthController))]
+[RequireComponent(typeof(OxygenSystemController))]
 public class PlayerController : MonoBehaviour
 {
     #region Serialize Fields
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody rigidBody;
     protected HealthController healthController;
+    private OxygenSystemController oxygenSystem;
 
     // Movement
     private bool canMove;
@@ -44,9 +47,16 @@ public class PlayerController : MonoBehaviour
     public float SprintSpeed => sprintSpeed;
     public float CurrentSpeed => currentSpeed;
 
+
+
     #endregion
 
     #region Unity Methods
+
+    private void Awake()
+    {
+        GameManager.instance.SetPlayer(this);
+    }
 
     private void Start()
     {
@@ -55,7 +65,7 @@ public class PlayerController : MonoBehaviour
         healthController = GetComponent<HealthController>();
         healthController.OnDie.AddListener(OnDieListener);
         healthController.OnTakeDamage.AddListener(OnTakeDamage);
-        healthController.SetLifeBar(HUDManager.instance.GetLifeBar()); //Seteamos una ves el LifeBar;
+        oxygenSystem = GetComponent<OxygenSystemController>();
         Initialize();
     }
 
@@ -79,6 +89,7 @@ public class PlayerController : MonoBehaviour
                 Jump();
             }
         }
+        IsAiming();
     }
 
     #endregion
@@ -90,6 +101,8 @@ public class PlayerController : MonoBehaviour
         currentSpeed = moveSpeed;
         canMove = true;
         canRotate = true;
+
+        
     }
 
     private void Move()
@@ -151,6 +164,20 @@ public class PlayerController : MonoBehaviour
     {
         RespawnManager.instance.Respawn();
         healthController.ResetValues();
+        oxygenSystem.ResetValues();
+    }
+    private void IsAiming()
+    {
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            canMove = false;
+           animator.SetBool("IsAiming", true);
+        }
+        else
+        {
+            animator.SetBool("IsAiming", false);
+            canMove = true;
+        }
     }
     #endregion
 

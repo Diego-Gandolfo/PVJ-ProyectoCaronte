@@ -13,8 +13,10 @@ public abstract class EnemyController : MonoBehaviour
     #endregion
 
     #region Protected Methods
+
     public virtual void Start()
     {
+        player = GameManager.instance.Player;
         animator = GetComponentInChildren<Animator>();
         outline = GetComponent<Outline>();
         lifeBar = GetComponent<LifeBarController>();
@@ -22,7 +24,7 @@ public abstract class EnemyController : MonoBehaviour
         healthController.OnDie.AddListener(OnDieListener);
         healthController.OnTakeDamage.AddListener(OnTakeDamage);
         if(lifeBar != null) lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
-        player = GameManager.instance.Player;
+
     }
     #endregion
 
