@@ -765,7 +765,7 @@ MonoBehaviour:
   playButton: {fileID: 1306701865}
   creditsButton: {fileID: 874446297}
   exitButton: {fileID: 247323315}
-  level01: Demo_Final
+  level01: Level
   goBackCreditsButton: {fileID: 50121670}
 --- !u!1 &1240146943
 GameObject:

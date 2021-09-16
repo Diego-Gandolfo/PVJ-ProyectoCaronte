@@ -16,7 +16,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Button exitButton = null;
 
     private bool mainMenuCheck;
-    [SerializeField] private string level01 = "Demo_Final";
+    [SerializeField] private string level01 = "Level";
 
     [Header("Credits Settings")]
     [SerializeField] private Button goBackCreditsButton;
