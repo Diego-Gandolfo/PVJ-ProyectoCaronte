@@ -10,4 +10,21 @@ public class LevelManager : MonoBehaviour
     {
         //GameManager.instance.SetPlayer(player);
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+            if (!HUDManager.instance.IsQuestVisible)
+            {
+                HUDManager.instance.VisibleQuest(true);
+                HUDManager.instance.UpdateQuest("En una galaxia muy muy lejana, buscar cristales");
+                print("prendido");
+            }
+            else
+            {
+                HUDManager.instance.VisibleQuest(false);
+                print("apagado");
+            }   
+    }
+
 }

@@ -7,7 +7,12 @@ public class HUDManager : MonoBehaviour
 {
     [SerializeField] private PromptTrigger promptTrigger;
     [SerializeField] private LifeBarController lifeBar;
-    public static HUDManager instance; 
+    [SerializeField] private CrystalManager crystalController;
+    private QuestManager questManager;
+
+    public static HUDManager instance;
+
+    public bool IsQuestVisible { get; private set; }
 
     void Awake()
     {
@@ -24,6 +29,8 @@ public class HUDManager : MonoBehaviour
 
     private void Start()
     {
+        questManager = GetComponent<QuestManager>();
+        IsQuestVisible = true;
         lifeBar.SetHealthController(GameManager.instance.Player.GetComponent<HealthController>());
     }
 
@@ -42,4 +49,16 @@ public class HUDManager : MonoBehaviour
         return lifeBar;
     }
 
+    public void VisibleQuest(bool value)
+    {
+        questManager.QuestVisible(value);
+        IsQuestVisible = value;
+    }
+
+    public void UpdateQuest(string message, string title = null)
+    {
+        questManager.UpdateMessage(message);
+        if (title != null)
+            questManager.UpdateTitle(title);
+    }
 }
