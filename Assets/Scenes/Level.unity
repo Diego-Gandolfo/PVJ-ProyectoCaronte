@@ -344,6 +344,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1345339079, guid: 4430fef4e20440b4b9b726a77adac163, type: 3}
+      propertyPath: _cameraVelocity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1345339079, guid: 4430fef4e20440b4b9b726a77adac163, type: 3}
+      propertyPath: _closeFOVModifier
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1345339079, guid: 4430fef4e20440b4b9b726a77adac163, type: 3}
+      propertyPath: _closePositionModifier.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1945481972, guid: 4430fef4e20440b4b9b726a77adac163, type: 3}
       propertyPath: _gravityAttractor
       value: 
