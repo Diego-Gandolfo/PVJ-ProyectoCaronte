@@ -1170,6 +1170,18 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &344852664 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5381296747396720703, guid: 91b595f2545c3854abad3e9515ef3610,
+    type: 3}
+  m_PrefabInstance: {fileID: 1052928932}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &366099050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,6 +1551,43 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &456721918 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4517377117309417322, guid: 91b595f2545c3854abad3e9515ef3610,
+    type: 3}
+  m_PrefabInstance: {fileID: 1052928932}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &459435493 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9017885117204092140, guid: 91b595f2545c3854abad3e9515ef3610,
+    type: 3}
+  m_PrefabInstance: {fileID: 1052928932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &459435495
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459435493}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 98601dab30023d04db70b362b8575b94, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &460517167
 GameObject:
   m_ObjectHideFlags: 0
@@ -2462,6 +2511,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamparita
       objectReference: {fileID: 0}
+    - target: {fileID: 3082366027080120318, guid: 4c1a637f385da1b468c990ded3ab3ec0,
+        type: 3}
+      propertyPath: oxygenRegenerationPerSecond
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3280651285175858850, guid: 4c1a637f385da1b468c990ded3ab3ec0,
         type: 3}
       propertyPath: m_RootOrder
@@ -2728,10 +2782,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4517377117309417322, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5381296747396720703, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5451814276302004526, guid: 91b595f2545c3854abad3e9515ef3610,
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179519192462309706, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.28235295
       objectReference: {fileID: 0}
     - target: {fileID: 8422945726429451277, guid: 91b595f2545c3854abad3e9515ef3610,
         type: 3}
@@ -2837,6 +2906,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687478210555102137, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687478210555102137, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687478210555102137, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687478210555102137, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687478210555102137, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687478210555102137, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -887
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687478210555102137, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 396
+      objectReference: {fileID: 0}
+    - target: {fileID: 8883511139949814160, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 138.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 8883511139949814160, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -21.303
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91b595f2545c3854abad3e9515ef3610, type: 3}
@@ -3058,6 +3172,68 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1157266193}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1198889106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198889108}
+  - component: {fileID: 1198889107}
+  m_Layer: 0
+  m_Name: DemoQuest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1198889107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198889106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db14b02b298233841846d88c83afc7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _questBox: {fileID: 459435493}
+  _titleMessage: {fileID: 344852664}
+  _questMessage: {fileID: 456721918}
+  _animator: {fileID: 459435495}
+  _oxigenTimeToStart: 1
+  _oxigenTitle: Take a breath
+  _oxigenQuest: 'Activate the
+
+    <b>Oxigen Generator</b>
+
+    <size=15><i>(is movin''
+    near you)</i></size>'
+  _crystalTimeToStart: 5
+  _crystalTitle: Search & Collect
+  _crystalQuest: 'Find
+
+    <b>30 CRYSTALS</b>
+
+    <size=15><i>(shoot''em to break)</i></size>'
+--- !u!4 &1198889108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198889106}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 79.06395, y: 21.189232, z: -34.226906}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1222592355
 PrefabInstance:
   m_ObjectHideFlags: 0

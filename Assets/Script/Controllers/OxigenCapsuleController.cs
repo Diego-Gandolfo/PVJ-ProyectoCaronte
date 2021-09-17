@@ -28,7 +28,7 @@ public class OxigenCapsuleController : MonoBehaviour, IInteractable
         animator.SetBool("IsActive", true);
         forceField.SetActive(true);
         interactableController.ActivateOnce();
-        
+        DemoQuest.Instance.StartCrystalQuest();
     }
     private void OnDisable()
     {
