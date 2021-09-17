@@ -3211,7 +3211,7 @@ MonoBehaviour:
 
     <b>Oxigen Generator</b>
 
-    <size=15><i>(is movin''
+    <size=20><i>(is movin''
     near you)</i></size>'
   _crystalTimeToStart: 5
   _crystalTitle: Search & Collect
@@ -3219,7 +3219,7 @@ MonoBehaviour:
 
     <b>30 CRYSTALS</b>
 
-    <size=15><i>(shoot''em to break)</i></size>'
+    <size=20><i>(shoot''em to break)</i></size>'
 --- !u!4 &1198889108
 Transform:
   m_ObjectHideFlags: 0
