@@ -8,12 +8,10 @@ public class TraspassParticlesRender : MonoBehaviour
     void OnBecameInvisible()
     {
         particlesToDeactivate.Stop();
-        print("Desactivado");
     }
     void OnBecameVisible()
     {
         particlesToDeactivate.Play();
-        print("activado");
     }
     private void Start()
     {

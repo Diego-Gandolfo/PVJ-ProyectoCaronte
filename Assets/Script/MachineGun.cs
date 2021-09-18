@@ -21,6 +21,7 @@ public class MachineGun : MonoBehaviour
         animator = owner.GetComponent<Animator>();
         var particles = shootingParticles.main;
         particles.duration = maxShootingTime;
+        crossHair.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -49,7 +50,15 @@ public class MachineGun : MonoBehaviour
         if(currentShootingTime < 0)
         {
             currentShootingTime = 0;
-        } 
+        }
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            crossHair.gameObject.SetActive(true);
+        }
+        else
+        {
+            crossHair.gameObject.SetActive(false);
+        }
     }
     public void Shoot()
     {
