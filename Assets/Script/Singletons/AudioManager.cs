@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum SoundClips
 {
-
+    Shoot
 }
 
 public class AudioManager : MonoBehaviour
@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] private AudioSource soundsAudioSource;
+    [SerializeField] private AudioClip shoot;
 
     public void Awake()
     {
@@ -41,6 +42,10 @@ public class AudioManager : MonoBehaviour
     {
         switch (soundClip)
         {
+            case SoundClips.Shoot:
+                soundsAudioSource.PlayOneShot(shoot);
+                break;
+
             default:
                 break;
         }
