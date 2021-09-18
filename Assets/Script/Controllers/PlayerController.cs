@@ -217,6 +217,7 @@ public class PlayerController : MonoBehaviour
     public void WeaponShoot()
     {
         weapon.Shoot();
+        AudioManager.instance.PlaySound(SoundClips.Shoot);
         animator.speed = 1f;
     }
     public void OnRunning()
