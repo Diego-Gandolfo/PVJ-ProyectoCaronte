@@ -101,8 +101,6 @@ public class PlayerController : MonoBehaviour
         currentSpeed = moveSpeed;
         canMove = true;
         canRotate = true;
-
-        
     }
 
     private void Move()
@@ -150,6 +148,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            AudioManager.instance.PlaySound(SoundClips.Jump);
+
             var jumpForce = transform.up * jumpImpulseForce;
             rigidBody.AddForce(jumpForce, ForceMode.Impulse);
         }

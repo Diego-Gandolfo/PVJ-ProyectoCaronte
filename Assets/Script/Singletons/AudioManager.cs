@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum SoundClips
 {
-    Shoot
+    Shoot,
+    Jump
 }
 
 public class AudioManager : MonoBehaviour
@@ -19,6 +20,10 @@ public class AudioManager : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] private AudioSource soundsAudioSource;
     [SerializeField] private AudioClip shoot;
+    [SerializeField] private AudioClip jump;
+    [SerializeField] private AudioClip jumpOne;
+    [SerializeField] private AudioClip jumpTwo;
+    [SerializeField] private AudioClip jumpThree;
 
     public void Awake()
     {
@@ -45,6 +50,20 @@ public class AudioManager : MonoBehaviour
             case SoundClips.Shoot:
                 soundsAudioSource.volume = 1f;
                 soundsAudioSource.PlayOneShot(shoot);
+                break;
+
+            case SoundClips.Jump:
+                soundsAudioSource.volume = 1f;
+
+                int random = Random.Range(0, 3);
+                if (random == 1)
+                    soundsAudioSource.PlayOneShot(jumpOne);
+                else if (random == 2)
+                    soundsAudioSource.PlayOneShot(jumpTwo);
+                else if (random == 3)
+                    soundsAudioSource.PlayOneShot(jumpThree);
+                else
+                    soundsAudioSource.PlayOneShot(jump);
                 break;
 
             default:
