@@ -64,7 +64,7 @@ public class EnemyMeleeManagement : EnemyController
     {
         if (mustFollow)
         {
-            transform.LookAt(player.transform.position);
+            transform.LookAt(player.transform.position, player.transform.up);
             this.transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
             if (animator != null) animator.SetBool("Walk Forward", true);
         }
