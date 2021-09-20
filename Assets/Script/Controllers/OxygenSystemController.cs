@@ -53,6 +53,13 @@ public class OxygenSystemController : MonoBehaviour
     private void ConsumeOxygen()
     {
         currentOxygen -= oxygenConsumptionPerSecond;
+        if (currentOxygen <= 20)
+            PlayHeartbeatSound();
+    }
+
+    private void PlayHeartbeatSound()
+    {
+        AudioManager.instance.PlaySound(SoundClips.Heartbeat);
     }
 
     private void Asphyxiation()

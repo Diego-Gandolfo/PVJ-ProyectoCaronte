@@ -5,7 +5,8 @@ using UnityEngine;
 public enum SoundClips
 {
     Shoot,
-    Jump
+    Jump,
+    Heartbeat
 }
 
 public class AudioManager : MonoBehaviour
@@ -20,7 +21,7 @@ public class AudioManager : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] private AudioSource soundsAudioSource;
     [SerializeField] private AudioClip shoot;
-    [SerializeField] private AudioClip jump;
+    [SerializeField] private AudioClip heartbeat;
     [SerializeField] private AudioClip jumpOne;
     [SerializeField] private AudioClip jumpTwo;
     [SerializeField] private AudioClip jumpThree;
@@ -52,8 +53,13 @@ public class AudioManager : MonoBehaviour
                 soundsAudioSource.PlayOneShot(shoot);
                 break;
 
+            case SoundClips.Heartbeat:
+                soundsAudioSource.volume = 1.8f;
+                soundsAudioSource.PlayOneShot(heartbeat);
+                break;
+
             case SoundClips.Jump:
-                soundsAudioSource.volume = 1f;
+                soundsAudioSource.volume = 0.5f;
 
                 int random = Random.Range(0, 3);
                 if (random == 1)
@@ -63,7 +69,7 @@ public class AudioManager : MonoBehaviour
                 else if (random == 3)
                     soundsAudioSource.PlayOneShot(jumpThree);
                 else
-                    soundsAudioSource.PlayOneShot(jump);
+                    soundsAudioSource.PlayOneShot(jumpOne);
                 break;
 
             default:
