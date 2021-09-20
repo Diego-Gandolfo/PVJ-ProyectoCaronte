@@ -50,10 +50,10 @@ MonoBehaviour:
   music: {fileID: 0}
   soundsAudioSource: {fileID: 5932468904319362853}
   shoot: {fileID: 8300000, guid: d942fc96f8672d040b3aa97ec0bc31ca, type: 3}
-  jump: {fileID: 8300000, guid: c76ec11d1fa1dd74a899a5574bfd5860, type: 3}
-  jumpOne: {fileID: 8300000, guid: c76ec11d1fa1dd74a899a5574bfd5860, type: 3}
-  jumpTwo: {fileID: 8300000, guid: 79595d96098b2954b95ddd8bb569e405, type: 3}
-  jumpThree: {fileID: 8300000, guid: 48b5c59b5a9f234498b553cb451d18d3, type: 3}
+  jump: {fileID: 8300000, guid: 6ee3335c1c97c9b418d29b9b18c7193f, type: 3}
+  jumpOne: {fileID: 8300000, guid: 0c26937a9ec913d408899397b76ad5e7, type: 3}
+  jumpTwo: {fileID: 8300000, guid: 1bfedc965aa1b9e499feb9dd3f7761a4, type: 3}
+  jumpThree: {fileID: 8300000, guid: 0c26937a9ec913d408899397b76ad5e7, type: 3}
 --- !u!1 &4814295448939889778
 GameObject:
   m_ObjectHideFlags: 0
