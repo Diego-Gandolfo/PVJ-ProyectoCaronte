@@ -1,22 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(HealthController))]
 [RequireComponent(typeof(OxygenSystemController))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : ActorController
 {
     #region Serialize Fields
-
-    [Header("Movement")]
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float sprintSpeed;
-
-    [Header("Rotation")]
-    [SerializeField] private Vector3 rotationSensibility;
-
     [Header("Jump")]
-    [SerializeField] private float jumpImpulseForce;
     [SerializeField] private Transform jumpPoint;
     [SerializeField] private LayerMask surfaceList;
     [SerializeField] private Vector3 surfaceJumpDetection;
@@ -27,185 +19,94 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Private Fields
-
     // Components
-    private Animator animator;
     private Rigidbody rigidBody;
-    protected HealthController healthController;
     private OxygenSystemController oxygenSystem;
 
     // Movement
-    private bool canMove;
+    private bool isUsingWeapon;
     private float currentSpeed;
-    private bool canRun;
-
-    // Rotation
-    private bool canRotate;
-    private float rotX;
     #endregion
 
     #region Propertys
-
-    public float MoveSpeed => moveSpeed;
-    public float SprintSpeed => sprintSpeed;
-    public float CurrentSpeed => currentSpeed;
+    public bool IsSprinting { get; private set; }
 
     #endregion
 
     #region Unity Methods
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         GameManager.instance.SetPlayer(this);
+        animator = GetComponent<Animator>();
+        rigidBody = GetComponent<Rigidbody>();
+        oxygenSystem = GetComponent<OxygenSystemController>();
+        currentSpeed = _actorStats.OriginalSpeed;
     }
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
-        rigidBody = GetComponent<Rigidbody>();
-        healthController = GetComponent<HealthController>();
-        healthController.OnDie.AddListener(OnDieListener);
-        healthController.OnTakeDamage.AddListener(OnTakeDamage);
-        oxygenSystem = GetComponent<OxygenSystemController>();
-        Initialize();
-    }
-
-    private void Update()
-    {
-        if (!GameManager.instance.IsGameFreeze)
-        {
-            if (canMove)
-            {
-                Move();
-                Sprint();
-            }
-
-            if (canRotate)
-            {
-                Rotate();
-            }
-
-            if (CheckIfCanJump())
-            {
-                Jump();
-            }
-        }
-        IsAiming();
+        SubscribeEvents();
     }
 
     #endregion
 
     #region Private Methods
-
-    private void Initialize()
+    private void SubscribeEvents()
     {
-        currentSpeed = moveSpeed;
-        canMove = true;
-        canRotate = true;
-
-        
+        InputController.instance.OnMove += Move;
+        InputController.instance.OnRotate += Rotate;
+        InputController.instance.OnShoot += CanShoot;
+        InputController.instance.OnJump += Jump;
+        InputController.instance.OnSprint += Sprint;
+        InputController.instance.OnAim += IsAiming;
     }
 
-    private void Move()
+    private void Move(float horizontal, float vertical)
     {
-        var moveX = Input.GetAxis("Horizontal");
-        var moveZ = Input.GetAxis("Vertical");
-
-        Vector3 movement = transform.right * moveX + transform.forward * moveZ;
-
-        if (canMove)
+        if (!isUsingWeapon)
         {
+            Vector3 movement = transform.right * horizontal + transform.forward * vertical;
             transform.position += movement * currentSpeed * Time.deltaTime;
         }
-
-        animator.SetFloat("Speed", moveZ);
-        animator.SetFloat("HorizontalSpeed", moveX);
+        animator.SetFloat("Speed", vertical);
+        animator.SetFloat("HorizontalSpeed", horizontal);
     }
 
-    private void Sprint()
+    private void Sprint(bool value)
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (!isUsingWeapon)
         {
-
-            OnRunning();
-        }
-        else
-        {
-            currentSpeed = moveSpeed;
-            animator.speed = 1f;
+            IsSprinting = value;
+            if (IsSprinting)
+            {
+                currentSpeed = _actorStats.BuffedSpeed;
+                animator.speed = 2f;
+            }
+            else
+            {
+                currentSpeed = _actorStats.OriginalSpeed;
+                animator.speed = 1f;
+            }
         }
     }
 
-    private void Rotate()
+    private void Rotate(float rotX)
     {
-        rotX = Input.GetAxis("Mouse X") * Time.deltaTime * rotationSensibility.x;
-
-        if (rotX >= 360) rotX = 0;
-
-        transform.Rotate(transform.up, rotX, Space.World);
-
-        // La otra parte, "Mouse Y", se hace en el Script LookUpDown
+        transform.Rotate(transform.up, rotX, Space.World); // La otra parte, "Mouse Y", se hace en el Script LookUpDown
     }
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (CheckIfCanJump())
         {
-            var jumpForce = transform.up * jumpImpulseForce;
+            var jumpForce = transform.up * _actorStats.JumpForce;
             rigidBody.AddForce(jumpForce, ForceMode.Impulse);
         }
     }
-    
-    private void OnTakeDamage()
-    {
-        //TODO: hacer la animacion del Player para TakeDamage
-    }
 
-    private void OnDieListener()
-    {
-        RespawnManager.instance.Respawn();
-        healthController.ResetValues();
-        oxygenSystem.ResetValues();
-    }
-    private void IsAiming()
-    {
-        if (Input.GetKey(KeyCode.Mouse1))
-        {
-            canMove = false;
-           animator.SetBool("IsAiming", true);
-        }
-        else
-        {
-            animator.SetBool("IsAiming", false);
-            canMove = true;
-        }
-    }
-    #endregion
-
-    #region Public Methods
-    public bool CheckIsGrounded()
-    {
-        RaycastHit hit;
-        Ray ray = new Ray(transform.position, -transform.up);
-
-        if (Physics.Raycast(ray, out hit, 0.25f))
-        {
-            if (hit.collider != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public bool CheckIfCanJump()
+    private bool CheckIfCanJump()
     {
         Collider[] collider = Physics.OverlapBox(jumpPoint.position, surfaceJumpDetection, Quaternion.identity, surfaceList);
         bool answer = false;
@@ -215,31 +116,37 @@ public class PlayerController : MonoBehaviour
         return answer;
     }
 
-    public void SetCanMove(bool enableMovement)
+    protected override void OnDie()
     {
-        canMove = enableMovement;
+        base.OnDie();
+        RespawnManager.instance.Respawn();
+        HealthController.ResetValues();
+        oxygenSystem.ResetValues();
     }
 
-    public void SetCanRotate(bool value)
+    private void IsAiming(bool value)
     {
-        canRotate = value;
+        isUsingWeapon = value;
+        weapon.IsAiming(value);
+        animator.SetBool("IsAiming", value);
     }
 
-    public void WeaponShoot()
+    private void CanShoot(bool value) //Acá recibe el input de si esta disparando o no a traves de un GetKeyDown or GetKeyUp
     {
-        weapon.Shoot();
+        weapon.CanShoot(value);
+        isUsingWeapon = value;
         animator.speed = 1f;
     }
-    public void OnRunning()
-    {
-         currentSpeed = sprintSpeed;
-         animator.speed = 2f;
-    }
-    #endregion
 
-    private void OnDrawGizmosSelected()
+    private void Shoot() //Mega necesario por un tema de como funciona la animacion del player, no se puede transferir al weapon, sigue chillando. 
+    {
+        weapon.Shoot();
+    }
+
+    private void OnDrawGizmosSelected() //Solo para ver el area del collider del ground detection, se puede borrar
     {
         if (jumpPoint != null)
             Gizmos.DrawWireCube(jumpPoint.position, surfaceJumpDetection);
     }
+    #endregion
 }

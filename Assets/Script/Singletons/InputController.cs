@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    public static InputController instance;
-
-
     [Header("Rotation")]
-    [SerializeField] private Vector3 rotationSensibility;
+    [SerializeField] private Vector3 rotationSensibility = new Vector3(300f, 100f, 0);
+
+    public static InputController instance;
 
     #region KeyCodes
     private string horizontalAxis = "Horizontal";
@@ -23,11 +22,11 @@ public class InputController : MonoBehaviour
 
     #region Events
     public Action OnPause;
-    public Action OnShoot;
-    public Action OnPhysicalAttack;
     public Action OnDash;
     public Action OnJump;
-    public Action OnSprint;
+    public Action<bool> OnShoot;
+    public Action<bool> OnAim;
+    public Action<bool> OnSprint;
     public Action<float, float> OnMove;
     public Action<float> OnRotate;
     #endregion
@@ -63,7 +62,6 @@ public class InputController : MonoBehaviour
     #endregion
 
     #region Private
-
     private void CheckRotate()
     {
         var rotX = Input.GetAxis("Mouse X") * Time.deltaTime * rotationSensibility.x;
@@ -79,16 +77,21 @@ public class InputController : MonoBehaviour
         float vertical = Input.GetAxis(verticalAxis);
         OnMove?.Invoke(horizontal, vertical);
     }
+
     private void CheckShoot()
     {
         if (Input.GetKeyDown(shoot))
-            OnShoot?.Invoke();
+            OnShoot?.Invoke(true);
+        else if (Input.GetKeyUp(shoot))
+            OnShoot?.Invoke(false);
     }
 
     private void CheckAiming()
     {
         if (Input.GetKeyDown(aiming))
-            OnPhysicalAttack?.Invoke();
+            OnAim?.Invoke(true);
+        else if(Input.GetKeyUp(aiming))
+            OnAim?.Invoke(false);
     }
 
     private void CheckJump()
@@ -106,7 +109,9 @@ public class InputController : MonoBehaviour
     private void CheckSprint()
     {
         if (Input.GetKeyDown(sprint))
-            OnSprint?.Invoke();
+            OnSprint?.Invoke(true);
+        else if (Input.GetKeyUp(sprint))
+            OnSprint?.Invoke(false);
     }
     #endregion
 }

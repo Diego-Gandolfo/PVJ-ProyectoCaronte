@@ -65,9 +65,9 @@ ModelImporter:
       curves: []
       events:
       - time: 0.030562347
-        functionName: WeaponShoot
+        functionName: Shoot
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: fa57067ac3772c7468cc6a69ba89856f,
+        objectReferenceParameter: {fileID: 11500000, guid: c081a9a6b471d5c4f8988a434dcdc818,
           type: 3}
         floatParameter: 0
         intParameter: 0

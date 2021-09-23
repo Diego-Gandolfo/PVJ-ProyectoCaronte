@@ -7,8 +7,8 @@ public class HUDManager : MonoBehaviour
 {
     [SerializeField] private PromptTrigger promptTrigger;
     [SerializeField] private LifeBarController lifeBar;
-    [SerializeField] private CrystalManager crystalController;
-    private QuestManager questManager;
+    [SerializeField] private UICrystalCounter crystalController;
+    private UIQuestManager questManager;
 
     public static HUDManager instance;
 
@@ -29,7 +29,7 @@ public class HUDManager : MonoBehaviour
 
     private void Start()
     {
-        questManager = GetComponent<QuestManager>();
+        questManager = GetComponent<UIQuestManager>();
         IsQuestVisible = true;
         lifeBar.SetHealthController(GameManager.instance.Player.GetComponent<HealthController>());
     }

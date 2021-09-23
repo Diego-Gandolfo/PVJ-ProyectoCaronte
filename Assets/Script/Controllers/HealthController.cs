@@ -6,56 +6,34 @@ using UnityEngine.Events;
 
 public class HealthController : MonoBehaviour, IDamageable
 {
-    #region Serialize Fields
-
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int currentHealth;
-
-    #endregion
-
     #region Private Fields
-
+    private ActorStats _actorStats;
     private LifeBarController lifeBar;
-
     #endregion
 
     #region Events
-    public UnityEvent OnDie = new UnityEvent();
-    public UnityEvent OnTakeDamage = new UnityEvent();
+    public Action OnDie;
+    public Action OnTakeDamage;
     public Action<int, int> OnUpdateLife; //currentLife, MaxLife
     #endregion
 
     #region Propertys
-
-    public int MaxHealth => maxHealth;
-    public int CurrentHealth  => currentHealth;
-
-    #endregion
-
-    #region Unity Methods
-
-    private void Start()
-    {
-        currentHealth = maxHealth;
-        lifeBar = GetComponent<LifeBarController>();
-        if (lifeBar != null)
-            lifeBar.UpdateLifeBar(currentHealth, maxHealth);
-    }
-
+    public int MaxHealth => _actorStats.MaxLife;
+    public int CurrentHealth { get; private set; }
     #endregion
 
     #region Public Methods
 
     public void TakeDamage(int damage)
     {
-        if (currentHealth > 0)
+        if (CurrentHealth > 0)
         {
-            currentHealth -= damage;
-            OnUpdateLife?.Invoke(currentHealth, MaxHealth);
+            CurrentHealth -= damage;
+            OnUpdateLife?.Invoke(CurrentHealth, MaxHealth);
             OnTakeDamage?.Invoke();
         }
 
-        if (currentHealth <= 0)
+        if (CurrentHealth <= 0)
         {
             Die();
         }
@@ -65,7 +43,7 @@ public class HealthController : MonoBehaviour, IDamageable
             if (!lifeBar.IsVisible)
                 lifeBar.SetBarVisible(true);
 
-            lifeBar.UpdateLifeBar(currentHealth, maxHealth);
+            lifeBar.UpdateLifeBar(CurrentHealth, MaxHealth);
         }
     }
 
@@ -82,13 +60,22 @@ public class HealthController : MonoBehaviour, IDamageable
     public void SetLifeBar(LifeBarController controller)
     {
         lifeBar = controller;
-        lifeBar.UpdateLifeBar(currentHealth, maxHealth);
+        lifeBar.UpdateLifeBar(CurrentHealth, MaxHealth);
     }
 
     public void ResetValues()
     {
-        currentHealth = maxHealth;
-        OnUpdateLife?.Invoke(currentHealth, MaxHealth);
+        CurrentHealth = MaxHealth;
+        OnUpdateLife?.Invoke(CurrentHealth, MaxHealth);
+    }
+
+    public void SetStats(ActorStats actor)
+    {
+        _actorStats = actor;
+        CurrentHealth = MaxHealth;
+        lifeBar = GetComponent<LifeBarController>();
+        if (lifeBar != null)
+            lifeBar.UpdateLifeBar(CurrentHealth, MaxHealth);
     }
     #endregion
 }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(HealthController))]
+[RequireComponent(typeof(Outline))]
 public class CrystalController : MonoBehaviour
 {
     [SerializeField] private GameObject crystalDrop;
@@ -13,7 +15,7 @@ public class CrystalController : MonoBehaviour
         outline = GetComponent<Outline>();
         outline.enabled = false;
         healthController = GetComponent<HealthController>();
-        healthController.OnDie.AddListener(OnDieListener);
+        healthController.OnDie += OnDieListener;
     }
 
     private void OnCollisionEnter(Collision collision) //No se si es mega necesario
