@@ -15,6 +15,7 @@ public class MachineGun : MonoBehaviour
     [SerializeField] private float currentShootingTime;
     [SerializeField] private ParticleSystem shootingParticles;
     private bool canShoot;
+    private bool isAiming;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +34,7 @@ public class MachineGun : MonoBehaviour
             {
                 animator.SetBool("IsShooting", true);
                 owner.SetCanMove(false);
-                currentShootingTime += Time.deltaTime;
+                currentShootingTime += Time.deltaTime; // sacar el time delta time por un tema de como funciona con el calculo por frame.
                 
                 if(currentShootingTime >= maxShootingTime)
                 {
@@ -51,29 +52,22 @@ public class MachineGun : MonoBehaviour
         {
             currentShootingTime = 0;
         }
-        if (Input.GetKey(KeyCode.Mouse1))
-        {
-            crossHair.gameObject.SetActive(true);
-        }
-        else
-        {
-            crossHair.gameObject.SetActive(false);
-        }
+        isAiming = CheckAim();
     }
     public void Shoot()
     {
         RaycastHit hit;
 
-        Physics.Raycast(crossHair.position, crossHair.forward, out hit, Mathf.Infinity, layerMask);
+        var hasHit = Physics.Raycast(crossHair.position, crossHair.forward, out hit, Mathf.Infinity, layerMask);
         var bulletClone = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-        if (Vector3.Distance(hit.point, crossHair.position) > minDistance)
+        if (Vector3.Distance(hit.point, crossHair.position) > minDistance && hit.point != Vector3.zero && isAiming)
         {
             bulletClone.transform.forward = hit.point - firePoint.position;
         }
-        else if (hit.collider)
+        else
         {
-            bulletClone.transform.forward = firePoint.transform.forward;
+           bulletClone.transform.forward = firePoint.transform.forward;
         }
     }
     private void StopShooting()
@@ -95,5 +89,18 @@ public class MachineGun : MonoBehaviour
         shootingParticles.Play();
         StopShooting();
         canShoot = false;
+    }
+    private bool CheckAim()
+    {
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            crossHair.gameObject.SetActive(true);
+            return true;
+        }
+        else
+        {
+            crossHair.gameObject.SetActive(false);
+            return false;
+        }
     }
 }

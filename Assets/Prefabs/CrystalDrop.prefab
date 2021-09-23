@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2158928093949884883}
   - component: {fileID: 2158928093949884882}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 535699615032329542}
   - component: {fileID: 1020481247481633536}
   - component: {fileID: 5882326699293203058}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CrystalDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
