@@ -4938,6 +4938,7 @@ Transform:
   - {fileID: 4489791566223376175}
   - {fileID: 1345755572}
   - {fileID: 2902544411585000321}
+  - {fileID: 3798678069488343739}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 96.21, z: 0}
@@ -5025,6 +5026,11 @@ MonoBehaviour:
   sprintSpeed: 4
   rotationSensibility: {x: 300, y: 100, z: 0}
   jumpImpulseForce: 7
+  jumpPoint: {fileID: 3798678069488343739}
+  surfaceList:
+    serializedVersion: 2
+    m_Bits: 256
+  surfaceJumpDetection: {x: 0.5, y: 0.1, z: 0.7}
   weapon: {fileID: 3457291127151309888}
 --- !u!114 &1945481972
 MonoBehaviour:
@@ -5355,6 +5361,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3235395019358154417}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2752615775286280236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3798678069488343739}
+  m_Layer: 6
+  m_Name: JumpPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3798678069488343739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2752615775286280236}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.142, y: 0.011, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4368234925807164453}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2866927790958698207
 GameObject:
@@ -7553,12 +7589,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2902544412439138439, guid: 301a21b0c07a0cd48a95c061ec50a28f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 301a21b0c07a0cd48a95c061ec50a28f, type: 3}
---- !u!1 &2902544411585000324 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2902544411814234541, guid: 301a21b0c07a0cd48a95c061ec50a28f,
-    type: 3}
-  m_PrefabInstance: {fileID: 933902889}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2902544411585000321 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2902544411814234536, guid: 301a21b0c07a0cd48a95c061ec50a28f,
@@ -7568,6 +7598,12 @@ Transform:
 --- !u!20 &2902544411585000326 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2902544411814234543, guid: 301a21b0c07a0cd48a95c061ec50a28f,
+    type: 3}
+  m_PrefabInstance: {fileID: 933902889}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2902544411585000324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2902544411814234541, guid: 301a21b0c07a0cd48a95c061ec50a28f,
     type: 3}
   m_PrefabInstance: {fileID: 933902889}
   m_PrefabAsset: {fileID: 0}

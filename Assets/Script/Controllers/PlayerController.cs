@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jump")]
     [SerializeField] private float jumpImpulseForce;
+    [SerializeField] private Transform jumpPoint;
+    [SerializeField] private LayerMask surfaceList;
+    [SerializeField] private Vector3 surfaceJumpDetection;
 
     [Header("Attack")]
     [SerializeField] private MachineGun weapon;
@@ -46,8 +49,6 @@ public class PlayerController : MonoBehaviour
     public float MoveSpeed => moveSpeed;
     public float SprintSpeed => sprintSpeed;
     public float CurrentSpeed => currentSpeed;
-
-
 
     #endregion
 
@@ -84,7 +85,7 @@ public class PlayerController : MonoBehaviour
                 Rotate();
             }
 
-            if (CheckIsGrounded())
+            if (CheckIfCanJump())
             {
                 Jump();
             }
@@ -204,6 +205,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool CheckIfCanJump()
+    {
+        Collider[] collider = Physics.OverlapBox(jumpPoint.position, surfaceJumpDetection, Quaternion.identity, surfaceList);
+        bool answer = false;
+        if (collider.Length > 0)
+            answer = true;
+
+        return answer;
+    }
+
     public void SetCanMove(bool enableMovement)
     {
         canMove = enableMovement;
@@ -225,4 +236,10 @@ public class PlayerController : MonoBehaviour
          animator.speed = 2f;
     }
     #endregion
+
+    private void OnDrawGizmosSelected()
+    {
+        if (jumpPoint != null)
+            Gizmos.DrawWireCube(jumpPoint.position, surfaceJumpDetection);
+    }
 }
