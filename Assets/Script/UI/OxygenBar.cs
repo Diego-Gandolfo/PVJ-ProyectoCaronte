@@ -16,8 +16,7 @@ public class OxygenBar : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.Player.GetComponent<OxygenSystemController>().OnChangeInOxygen += UpdateOxygenBar;
-
+        GameManager.instance.OnPlayerAssing += OnPlayerAssing;
         vignetteImageAnimator = vignetteImage.GetComponent<Animator>();
         oxygenBarAnimator = oxygenBar.GetComponentInChildren<Animator>();
     }
@@ -52,5 +51,11 @@ public class OxygenBar : MonoBehaviour
     {
         isVisible = value;
         oxygenBar.SetActive(isVisible);
+    }
+
+    protected void OnPlayerAssing(PlayerController player)
+    {
+        GameManager.instance.OnPlayerAssing -= OnPlayerAssing;
+        player.GetComponent<OxygenSystemController>().OnChangeInOxygen += UpdateOxygenBar;
     }
 }

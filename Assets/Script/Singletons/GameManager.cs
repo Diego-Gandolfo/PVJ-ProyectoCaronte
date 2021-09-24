@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,9 @@ public class GameManager : MonoBehaviour
     public string CurrentLevel { get; set; }
     public bool IsGameFreeze { get; set; }
 
-    public PlayerController Player => player;
-    private PlayerController player;
+    public PlayerController Player { get; private set; }
+
+    public Action<PlayerController> OnPlayerAssing;
 
     public void Awake()
     {
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     public void SetPlayer(PlayerController player)
     {
-        this.player = player;
+        Player = player;
+        OnPlayerAssing?.Invoke(player);
     }
 }

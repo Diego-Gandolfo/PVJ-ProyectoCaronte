@@ -20,15 +20,14 @@ public class EnemyMeleeManagement : EnemyController
     #endregion
 
     #region Unity Methods
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
         canDamage = true;
     }
 
-    public override void Update()
+    protected void Update()
     {
-        base.Update();
         CheckPlayerDistance();
         FollowPlayer();
         CheckVisibleData();
