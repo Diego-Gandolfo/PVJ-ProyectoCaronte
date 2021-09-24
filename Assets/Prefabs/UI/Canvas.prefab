@@ -56,7 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   promptTrigger: {fileID: 1224196653}
   lifeBar: {fileID: 4761198740244342890}
-  crystalController: {fileID: 618521562}
+  crystalController: {fileID: 0}
 --- !u!114 &7973899834842125907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,7 +81,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 618521561}
-  - component: {fileID: 618521562}
+  - component: {fileID: 856657792058153521}
   m_Layer: 5
   m_Name: CrystalManager
   m_TagString: Untagged
@@ -109,7 +109,7 @@ RectTransform:
   m_AnchoredPosition: {x: 753, y: 392}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &618521562
+--- !u!114 &856657792058153521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 618521560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 253a6b46a677b7c4aba4f4d415c320d2, type: 3}
+  m_Script: {fileID: 11500000, guid: f37c1f117c44f3948b21c82bfc67b71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1108928881}
@@ -822,8 +822,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 31.829, y: -30.9586}
-  m_SizeDelta: {x: 226.5, y: 119.4065}
+  m_AnchoredPosition: {x: 31.829, y: -21.303}
+  m_SizeDelta: {x: 226.5, y: 138.72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8622766958415526629
 CanvasRenderer:
@@ -1582,6 +1582,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8687478210555102137}
+  - component: {fileID: 459435495}
   m_Layer: 5
   m_Name: QuestBox
   m_TagString: Untagged
@@ -1611,6 +1612,25 @@ RectTransform:
   m_AnchoredPosition: {x: -887, y: 396}
   m_SizeDelta: {x: -20, y: -12}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &459435495
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017885117204092140}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 98601dab30023d04db70b362b8575b94, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &135742536516946636
 PrefabInstance:
   m_ObjectHideFlags: 0
