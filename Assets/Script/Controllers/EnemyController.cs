@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyController : MonoBehaviour
+[RequireComponent(typeof(LifeBarController))]
+[RequireComponent(typeof(Outline))]
+public abstract class EnemyController : ActorController
 {
     #region Protected Fields
     protected PlayerController player;
-    protected HealthController healthController;
-    protected Animator animator;
     protected Outline outline;
     protected LifeBarController lifeBar;
     #endregion
@@ -17,30 +17,24 @@ public abstract class EnemyController : MonoBehaviour
     public virtual void Start()
     {
         player = GameManager.instance.Player;
-        animator = GetComponentInChildren<Animator>();
         outline = GetComponent<Outline>();
         lifeBar = GetComponent<LifeBarController>();
-        healthController = GetComponent<HealthController>();
-        healthController.OnDie.AddListener(OnDieListener);
-        healthController.OnTakeDamage.AddListener(OnTakeDamage);
-        if(lifeBar != null) lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
-
+        if(lifeBar != null) 
+            lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
     }
     #endregion
 
     #region Public Methods
-    public virtual void AttackPlayer()
-    {
-    }
 
-    public virtual void OnTakeDamage()
+    protected override void OnTakeDamage()
     {
         if (animator != null) //TODO: Verificar si todos los enemigos van a tener un animator
             animator.SetTrigger("TakeDamage");
     }
 
-    public virtual void OnDieListener()
+    protected override void OnDie()
     {
+        base.OnDie();
         float delay = 0.1f;
         Destroy(gameObject, delay);
     }

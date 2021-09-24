@@ -14,7 +14,7 @@ public class CrystalInteractable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        CrystalManager.instance.AddCrystal(value); //Agarramos el numero actual de contador y le sumamos uno.
+        UICrystalCounter.instance.AddCrystal(value); //Agarramos el numero actual de contador y le sumamos uno.
         Destroy(gameObject); //Nos destruimos        
     }
 }

@@ -1736,6 +1736,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7521643662446928172}
+  - component: {fileID: 1463940773371982307}
   - component: {fileID: 7521643662446928163}
   - component: {fileID: 7521643662446928173}
   - component: {fileID: 2180820321459515961}
@@ -1767,6 +1768,25 @@ Transform:
   m_Father: {fileID: 4758468330628262320}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1463940773371982307
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521643662446928162}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 66ca9bf0145725543a1e8a693589f362, type: 3}
+  m_Controller: {fileID: 9100000, guid: e761ace889a78a946967af8d6890f71d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7521643662446928163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1779,9 +1799,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19908ca145c4b9c4e8500d0a75b6d805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _actorStats: {fileID: 11400000, guid: dcf6b3e6b1dcb6c41b878e8b90c02863, type: 2}
+  _attackStats: {fileID: 11400000, guid: 84718f264bdb56549b33e724e4c8898a, type: 2}
   whenPlayerMoving: 10
   whenPlayerSprinting: 25
-  speed: 1
 --- !u!114 &7521643662446928173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1794,14 +1815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9921d6892c10b45b336aefd459447b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
-  currentHealth: 0
-  OnDie:
-    m_PersistentCalls:
-      m_Calls: []
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &2180820321459515961
 MonoBehaviour:
   m_ObjectHideFlags: 0

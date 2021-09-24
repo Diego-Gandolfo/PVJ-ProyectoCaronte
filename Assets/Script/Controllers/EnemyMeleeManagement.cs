@@ -5,21 +5,14 @@ using UnityEngine;
 public class EnemyMeleeManagement : EnemyController
 {
     #region Serialize Fields
-
     [Header("Detection Distance")]
     [SerializeField] private float whenPlayerMoving = 10f;
     [SerializeField] private float whenPlayerSprinting = 25f;
 
-    [Header("Movement")]
-    [SerializeField] private float speed;
-
-    #endregion
-
-    #region Protected Fields
-    protected bool canDamage;
     #endregion
 
     #region Private Fields
+    private bool canDamage;
     private float timeToDamageAgain = 2.0f;
     private float currentTimeToDamage = 0.0f;
     private float distance;
@@ -47,8 +40,7 @@ public class EnemyMeleeManagement : EnemyController
     #region Private Methods
     private void CheckPlayerDistance()
     {
-        distance = player.CurrentSpeed == player.MoveSpeed ? whenPlayerMoving : whenPlayerSprinting;
-
+        distance = !player.IsSprinting ? whenPlayerMoving : whenPlayerSprinting;
         if (Vector3.Distance(player.transform.position, this.transform.position) <= distance)
         {
             mustFollow = true;
@@ -65,20 +57,17 @@ public class EnemyMeleeManagement : EnemyController
         if (mustFollow)
         {
             transform.LookAt(player.transform.position, player.transform.up);
-            this.transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-            if (animator != null) animator.SetBool("Walk Forward", true);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
         }
-        else
-        {
-            if (animator != null) animator.SetBool("Walk Forward", false);
-        }
+
+        if (animator != null) animator.SetBool("Walk Forward", mustFollow);
     }
 
     private void CheckVisibleData()
     {
         outline.enabled = mustFollow;
 
-        if(healthController.CurrentHealth != healthController.MaxHealth)
+        if(HealthController.CurrentHealth != HealthController.MaxHealth)
             lifeBar.SetBarVisible(mustFollow);
     }
 
@@ -90,14 +79,6 @@ public class EnemyMeleeManagement : EnemyController
             canDamage = true;
             currentTimeToDamage = 0.0f;
         }
-    }
-
-    #endregion
-
-    #region Public Methods
-
-    public override void AttackPlayer()
-    {
     }
 
     #endregion

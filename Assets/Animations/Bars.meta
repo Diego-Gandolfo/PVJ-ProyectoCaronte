@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Animations/Bars.meta
 guid: 527f917cf7e551b4da41819bda272c68
 folderAsset: yes
+=======
+guid: 74aae76dcfba8e147b4900869ddb017b
+>>>>>>> develop:Assets/Stylize Snow Texture/Scene/Stylize Rock Texture.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

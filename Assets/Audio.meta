@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Audio.meta
 guid: 77b0e19a9c7f2f44db780accd6147a36
 folderAsset: yes
+=======
+guid: aea658dd0da2a4642aa873bb43974f6e
+>>>>>>> develop:Assets/Stylize Snow Texture/Scene/Stylize Snow.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
