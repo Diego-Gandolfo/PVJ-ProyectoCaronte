@@ -105,6 +105,8 @@ public class PlayerController : ActorController
     {
         if (CheckIfGrounded())
         {
+            AudioManager.instance.PlaySound(SoundClips.Jump);
+
             var jumpForce = transform.up * _actorStats.JumpForce;
             rigidBody.AddForce(jumpForce, ForceMode.Impulse);
         }
@@ -151,6 +153,7 @@ public class PlayerController : ActorController
 
     private void Shoot() //Mega necesario por un tema de como funciona la animacion del player, no se puede transferir al weapon, sigue chillando. 
     {
+        AudioManager.instance.PlaySound(SoundClips.Shoot);
         weapon.Shoot();
     }
     #endregion
