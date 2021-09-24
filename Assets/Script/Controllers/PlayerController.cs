@@ -25,6 +25,8 @@ public class PlayerController : ActorController
 
     // Movement
     private bool isUsingWeapon;
+    private bool aiming;
+    private bool shooting;
     private float currentSpeed;
     private float distanceGround = 1.1f;
     #endregion
@@ -54,6 +56,10 @@ public class PlayerController : ActorController
         SubscribeEvents();
     }
 
+    private void Update()
+    {
+        CanMove();
+    }
     #endregion
 
     #region Private Methods
@@ -137,21 +143,33 @@ public class PlayerController : ActorController
 
     private void IsAiming(bool value)
     {
-        isUsingWeapon = value;
+        aiming = value;
         weapon.IsAiming(value);
         animator.SetBool("IsAiming", value);
+        print(aiming);
     }
 
     private void CanShoot(bool value) //Acá recibe el input de si esta disparando o no a traves de un GetKeyDown or GetKeyUp
     {
         IsShooting?.Invoke(value);
-        isUsingWeapon = value;
+        shooting = value;
         animator.speed = 1f;
     }
 
     private void Shoot() //Mega necesario por un tema de como funciona la animacion del player, no se puede transferir al weapon, sigue chillando. 
     {
         weapon.Shoot();
+    }
+    void CanMove()
+    {
+        if(aiming || shooting)
+        {
+            isUsingWeapon = true;
+        }
+        else
+        {
+            isUsingWeapon = false;
+        }
     }
     #endregion
 }
