@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class CrystalManager : MonoBehaviour
 {
-    public static CrystalManager instance;
-
+    [SerializeField] private AudioClip soundAlarm;
     [SerializeField] private float soundtimerCD = 1f;
     private List<CrystalGroups> crystalsGroups = new List<CrystalGroups>();
     private PlayerController player;
 
+    public static CrystalManager instance;
+
     public float SoundTimer => soundtimerCD;
     public Transform PlayerLocation => player.transform;
+    public AudioClip Sound => soundAlarm;
 
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class CrystalManager : MonoBehaviour
     private void Start()
     {
         player = GameManager.instance.Player;
+        
     }
 
     private void Update()

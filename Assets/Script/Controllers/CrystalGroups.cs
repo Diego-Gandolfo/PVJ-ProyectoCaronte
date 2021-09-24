@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class CrystalGroups : MonoBehaviour
 {
     [SerializeField] private Transform crystalGroup;
@@ -10,6 +11,7 @@ public class CrystalGroups : MonoBehaviour
     private List<CrystalController> crystalList = new List<CrystalController>();
     private bool canSound;
     private float timer;
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -37,12 +39,16 @@ public class CrystalGroups : MonoBehaviour
         if (timer >= 0)
             timer -= Time.deltaTime;
 
-        if (canSound && timer <= 0)
+        if (canSound )
         {
+            
             var distance = Vector3.Distance(crystalGroup.position, CrystalManager.instance.PlayerLocation.position); //Check Player Distance from radius around crystals so if he there, the alarm doesn't sound. 
-            if (distance < radious)
+            print(distance);
+            if (distance > radious && timer <= 0)
             {
                 //TODO: Sound from crystals and UI animation
+                print(gameObject.name);
+                audioSource.PlayOneShot(CrystalManager.instance.Sound);
                 timer = CrystalManager.instance.SoundTimer;
             }
 
