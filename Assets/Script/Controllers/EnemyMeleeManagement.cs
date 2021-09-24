@@ -58,12 +58,9 @@ public class EnemyMeleeManagement : EnemyController
         {
             transform.LookAt(player.transform.position, player.transform.up);
             this.transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
-            if (animator != null) animator.SetBool("Walk Forward", true);
         }
-        else
-        {
-            if (animator != null) animator.SetBool("Walk Forward", false);
-        }
+
+        if (animator != null) animator.SetBool("Walk Forward", mustFollow);
     }
 
     private void CheckVisibleData()
