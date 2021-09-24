@@ -26,8 +26,9 @@ public class EnemyMeleeManagement : EnemyController
         canDamage = true;
     }
 
-    public void Update()
+    public override void Update()
     {
+        base.Update();
         CheckPlayerDistance();
         FollowPlayer();
         CheckVisibleData();

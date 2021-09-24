@@ -43,7 +43,7 @@ public class PlayerController : ActorController
     protected override void Awake()
     {
         base.Awake();
-        GameManager.instance.SetPlayer(this);
+        
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
         oxygenSystem = GetComponent<OxygenSystemController>();
@@ -54,6 +54,7 @@ public class PlayerController : ActorController
     private void Start()
     {
         SubscribeEvents();
+        GameManager.instance.SetPlayer(this);
     }
 
     private void Update()

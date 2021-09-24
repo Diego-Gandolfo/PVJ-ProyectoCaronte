@@ -16,14 +16,20 @@ public abstract class EnemyController : ActorController
 
     public virtual void Start()
     {
-        player = GameManager.instance.Player;
+        
         outline = GetComponent<Outline>();
         lifeBar = GetComponent<LifeBarController>();
         if(lifeBar != null) 
             lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
     }
     #endregion
-
+    public virtual void Update()
+    {
+        if(player == null)
+        {
+            player = GameManager.instance.Player;
+        }
+    }
     #region Public Methods
 
     protected override void OnTakeDamage()
