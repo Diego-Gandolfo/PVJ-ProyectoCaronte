@@ -8,6 +8,7 @@ public class CrystalManager : MonoBehaviour
     [SerializeField] private float soundtimerCD = 1f;
     private List<CrystalGroups> crystalsGroups = new List<CrystalGroups>();
     private PlayerController player;
+    private CrystalGroups currentPlaying;
 
     public static CrystalManager instance;
 
@@ -50,20 +51,29 @@ public class CrystalManager : MonoBehaviour
 
     private void CheckNearCrystal()
     {
-        CrystalGroups nearest = crystalsGroups[0];
-        float shortestDistance = Vector3.Distance(crystalsGroups[0].transform.position, PlayerLocation.position);
-
-        for (int i = crystalsGroups.Count - 1; i >= 0; i--) //Cuando termine este for, deberia tener la posicion más cercana seguro. 
+        if(crystalsGroups.Count > 0)
         {
-            var distance = Vector3.Distance(crystalsGroups[i].transform.position, PlayerLocation.position);
+            CrystalGroups nearest = crystalsGroups[0];
+            float shortestDistance = Vector3.Distance(crystalsGroups[0].transform.position, PlayerLocation.position);
 
-            if (distance < shortestDistance)
+            for (int i = crystalsGroups.Count - 1; i >= 0; i--) //Cuando termine este for, deberia tener la posicion más cercana seguro. 
             {
-                shortestDistance = distance;
-                nearest = crystalsGroups[i];
-            }
-        }
+                var distance = Vector3.Distance(crystalsGroups[i].transform.position, PlayerLocation.position);
 
-        nearest.ShowLocation(true); // y a esa le dice mostrate.
+                if (distance < shortestDistance)
+                {
+                    shortestDistance = distance;
+                    nearest = crystalsGroups[i];
+                }
+            }
+
+            if(nearest != currentPlaying)
+            {
+                currentPlaying.ShowLocation(false);
+                nearest.ShowLocation(true); // y a esa le dice mostrate.
+                currentPlaying = nearest;
+            }
+
+        }
     }
 }
