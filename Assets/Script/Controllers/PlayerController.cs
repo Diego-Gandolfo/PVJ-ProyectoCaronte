@@ -32,6 +32,8 @@ public class PlayerController : ActorController
     #region Propertys
     public bool IsSprinting { get; private set; }
 
+    public Action<bool> IsShooting;
+
     #endregion
 
     #region Unity Methods
@@ -44,6 +46,7 @@ public class PlayerController : ActorController
         rigidBody = GetComponent<Rigidbody>();
         oxygenSystem = GetComponent<OxygenSystemController>();
         currentSpeed = _actorStats.OriginalSpeed;
+        weapon.SetPlayer(this);
     }
 
     private void Start()
@@ -141,7 +144,7 @@ public class PlayerController : ActorController
 
     private void CanShoot(bool value) //Acá recibe el input de si esta disparando o no a traves de un GetKeyDown or GetKeyUp
     {
-        weapon.CanShoot(value);
+        IsShooting?.Invoke(value);
         isUsingWeapon = value;
         animator.speed = 1f;
     }

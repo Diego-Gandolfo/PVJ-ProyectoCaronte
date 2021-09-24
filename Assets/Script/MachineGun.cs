@@ -6,23 +6,20 @@ public class MachineGun : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private PlayerController owner;
-    [SerializeField] private float cooldownPerBullet = 0.5f;
     [SerializeField] private Transform crossHair;
     [SerializeField] private float minDistance; // distancia minima para que calcule el forward del disparo con el crosshair
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float maxShootingTime;
-    [SerializeField] private float currentShootingTime;
     [SerializeField] private ParticleSystem shootingParticles;
     private bool canShoot;
     private bool isShooting;
     private bool isAiming;
+    private float currentShootingTime;
+
     private Animator animator;
-    private float timerBulletCD;
 
     void Start()
     {
-        animator = owner.GetComponent<Animator>();
         var particles = shootingParticles.main;
         particles.duration = maxShootingTime;
         crossHair.gameObject.SetActive(false);
@@ -32,40 +29,27 @@ public class MachineGun : MonoBehaviour
     {
         if (!GameManager.instance.IsGameFreeze)
         {
-            if (isShooting)
+            if (isShooting && canShoot)
             {
-                if (canShoot)
-                {
-                    canShoot = false;
-                    timerBulletCD = cooldownPerBullet;
-                }
+                animator.SetBool("IsShooting", true);
 
                 currentShootingTime += Time.deltaTime; // sacar el time delta time por un tema de como funciona con el calculo por frame.
-                
-                if(currentShootingTime >= maxShootingTime)
+
+                if (currentShootingTime >= maxShootingTime)
+                {
                     OnOverHeat();
+                }
             }
             else
             {
                 StopShooting();
             }
 
-            timerBulletCD -= Time.deltaTime;
-
-            if (timerBulletCD <= 0 && !canShoot)
-                canShoot = true;
-
             if (currentShootingTime < 0)
                 currentShootingTime = 0;
 
             Debug.DrawRay(crossHair.position, crossHair.forward,Color.red);
         }
-    }
-
-    public void CanShoot(bool value)
-    {
-        isShooting = value;
-        animator.SetBool("IsShooting", isShooting);
     }
 
     public void Shoot()
@@ -76,13 +60,9 @@ public class MachineGun : MonoBehaviour
         var bulletClone = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
         if (Vector3.Distance(hit.point, crossHair.position) > minDistance && hit.point != Vector3.zero && isAiming)
-        {
             bulletClone.transform.forward = hit.point - firePoint.position;
-        }
         else
-        {
             bulletClone.transform.forward = firePoint.transform.forward;
-        }
     }
 
     private void StopShooting()
@@ -93,9 +73,9 @@ public class MachineGun : MonoBehaviour
             canShoot = false;
         }
         else
-        {
             canShoot = true;
-        }
+
+        animator.SetBool("IsShooting", false);
     }
 
     private void OnOverHeat()
@@ -107,5 +87,16 @@ public class MachineGun : MonoBehaviour
     public void IsAiming(bool value)
     {
         crossHair.gameObject.SetActive(value);
+    }
+
+    public void SetPlayer(PlayerController player)
+    {
+        player.IsShooting += CanShoot;
+        animator = player.GetComponent<Animator>();
+    }
+
+    public void CanShoot(bool value)
+    {
+        isShooting = value;
     }
 }
