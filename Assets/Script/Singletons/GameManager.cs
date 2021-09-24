@@ -8,9 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public string CurrentLevel { get; set; }
     public bool IsGameFreeze { get; set; }
-
-    public PlayerController Player => player;
-    private PlayerController player;
+    public PlayerController Player { get; private set; }
 
     public void Awake()
     {
@@ -40,6 +38,6 @@ public class GameManager : MonoBehaviour
 
     public void SetPlayer(PlayerController player)
     {
-        this.player = player;
+        Player = player;
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,10 @@ using UnityEngine;
 public class CrystalController : MonoBehaviour
 {
     [SerializeField] private GameObject crystalDrop;
+    [SerializeField] private int spawningMaxNumber;
     private Outline outline;
     private HealthController healthController;
+    public Action<CrystalController> OnDie;
 
     void Start()
     {
@@ -16,10 +19,6 @@ public class CrystalController : MonoBehaviour
         outline.enabled = false;
         healthController = GetComponent<HealthController>();
         healthController.OnDie += OnDieListener;
-    }
-
-    private void OnCollisionEnter(Collision collision) //No se si es mega necesario
-    {
     }
 
     private void OnDieListener()
@@ -37,5 +36,6 @@ public class CrystalController : MonoBehaviour
         }
         
         gameObject.SetActive(false);
+        OnDie?.Invoke(this);
     }
 }
