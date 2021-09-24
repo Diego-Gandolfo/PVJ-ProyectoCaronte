@@ -59,14 +59,14 @@ public class AudioManager : MonoBehaviour
                 break;
 
             case SoundClips.Jump:
-                soundsAudioSource.volume = 0.5f;
+                soundsAudioSource.volume = 1f;
 
                 int random = Random.Range(0, 3);
-                if (random == 1)
+                if (random == 0)
                     soundsAudioSource.PlayOneShot(jumpOne);
-                else if (random == 2)
+                else if (random == 1)
                     soundsAudioSource.PlayOneShot(jumpTwo);
-                else if (random == 3)
+                else if (random == 2)
                     soundsAudioSource.PlayOneShot(jumpThree);
                 else
                     soundsAudioSource.PlayOneShot(jumpOne);

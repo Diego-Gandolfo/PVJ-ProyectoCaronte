@@ -1193,6 +1193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oxygenBar: {fileID: 5270544857574740169}
   oxygenBarImage: {fileID: 7666055345476575392}
+  vignetteImage: {fileID: 8483114567504384125}
 --- !u!1 &5270544857574740169
 GameObject:
   m_ObjectHideFlags: 0
