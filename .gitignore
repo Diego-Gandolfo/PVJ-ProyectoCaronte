@@ -58,3 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Assets/Models/SimpleNaturePack/SimpleNaturePack_HDRP_2018.4.unitypackage.meta
+Assets/Models/SimpleNaturePack/SimpleNaturePack_LWRP_2018.4.unitypackage.meta
+Assets/Models/SimpleNaturePack/SimpleNaturePack_URP_2019.3.unitypackage.meta
