@@ -9,9 +9,9 @@ public class PlayerController : ActorController
 {
     #region Serialize Fields
     [Header("Jump")]
-    [SerializeField] private Transform jumpPoint;
+    [SerializeField] private Transform[] jumpPoints;
     [SerializeField] private LayerMask surfaceList;
-    [SerializeField] private Vector3 surfaceJumpDetection;
+
 
     [Header("Attack")]
     [SerializeField] private MachineGun weapon;
@@ -26,6 +26,7 @@ public class PlayerController : ActorController
     // Movement
     private bool isUsingWeapon;
     private float currentSpeed;
+    private float distanceGround = 1.1f;
     #endregion
 
     #region Propertys
@@ -99,20 +100,27 @@ public class PlayerController : ActorController
 
     private void Jump()
     {
-        if (CheckIfCanJump())
+        if (CheckIfGrounded())
         {
             var jumpForce = transform.up * _actorStats.JumpForce;
             rigidBody.AddForce(jumpForce, ForceMode.Impulse);
         }
     }
 
-    private bool CheckIfCanJump()
+    private bool CheckIfGrounded()
     {
-        Collider[] collider = Physics.OverlapBox(jumpPoint.position, surfaceJumpDetection, Quaternion.identity, surfaceList);
         bool answer = false;
-        if (collider.Length > 0)
-            answer = true;
+        foreach (var jump in jumpPoints)
+        {
+            RaycastHit hit;
+            Ray ray = new Ray(jump.position, -transform.up);
 
+            if (Physics.Raycast(ray, out hit, distanceGround, surfaceList))
+            {
+                if (hit.collider != null)
+                    answer = true;
+            }
+        }
         return answer;
     }
 
@@ -141,12 +149,6 @@ public class PlayerController : ActorController
     private void Shoot() //Mega necesario por un tema de como funciona la animacion del player, no se puede transferir al weapon, sigue chillando. 
     {
         weapon.Shoot();
-    }
-
-    private void OnDrawGizmosSelected() //Solo para ver el area del collider del ground detection, se puede borrar
-    {
-        if (jumpPoint != null)
-            Gizmos.DrawWireCube(jumpPoint.position, surfaceJumpDetection);
     }
     #endregion
 }

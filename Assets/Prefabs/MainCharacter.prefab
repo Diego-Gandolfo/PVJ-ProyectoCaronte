@@ -4939,6 +4939,7 @@ Transform:
   - {fileID: 1345755572}
   - {fileID: 2902544411585000321}
   - {fileID: 3798678069488343739}
+  - {fileID: 1583126159781108109}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 96.21, z: 0}
@@ -5024,11 +5025,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actorStats: {fileID: 11400000, guid: eb19110176585bf4e83fc330dc1d4e8c, type: 2}
   _attackStats: {fileID: 11400000, guid: 6d327f4df3696ca41a24ac64e34843f7, type: 2}
-  jumpPoint: {fileID: 3798678069488343739}
+  jumpPoints:
+  - {fileID: 3798678069488343739}
+  - {fileID: 1583126159781108109}
   surfaceList:
     serializedVersion: 2
-    m_Bits: 256
-  surfaceJumpDetection: {x: 0.5, y: 0.1, z: 0.7}
+    m_Bits: 257
   weapon: {fileID: 3457291127151309888}
 --- !u!114 &1945481972
 MonoBehaviour:
@@ -5362,7 +5364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3798678069488343739}
   m_Layer: 6
-  m_Name: JumpPoint
+  m_Name: JumpPointLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5376,7 +5378,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2752615775286280236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.142, y: 0.011, z: 0}
+  m_LocalPosition: {x: -0.1867, y: 0.011, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4368234925807164453}
@@ -6469,6 +6471,36 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0674787, y: 0.015475417, z: -0.00000011920929}
     m_Extent: {x: 0.20784079, y: 0.063513406, z: 0.26176816}
   m_DirtyAABB: 0
+--- !u!1 &5263960517535884234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1583126159781108109}
+  m_Layer: 6
+  m_Name: JumpPointRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1583126159781108109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5263960517535884234}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.085, y: 0.011, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4368234925807164453}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5361606400632895011
 GameObject:
   m_ObjectHideFlags: 0
