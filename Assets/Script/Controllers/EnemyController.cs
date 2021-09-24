@@ -14,13 +14,18 @@ public abstract class EnemyController : ActorController
 
     #region Protected Methods
 
+    protected override void Awake()
+    {
+        base.Awake();
+        outline = GetComponent<Outline>();
+        outline.enabled = false;
+        lifeBar = GetComponent<LifeBarController>();
+        if (lifeBar != null)
+            lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
+    }
     protected virtual void Start()
     {
         GameManager.instance.OnPlayerAssing += OnPlayerAssing;
-        outline = GetComponent<Outline>();
-        lifeBar = GetComponent<LifeBarController>();
-        if(lifeBar != null) 
-            lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
     }
     #endregion
 

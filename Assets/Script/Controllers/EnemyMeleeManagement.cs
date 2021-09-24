@@ -28,11 +28,14 @@ public class EnemyMeleeManagement : EnemyController
 
     protected void Update()
     {
-        CheckPlayerDistance();
-        FollowPlayer();
-        CheckVisibleData();
+        if(player != null)
+        {
+            CheckPlayerDistance();
+            FollowPlayer();
+            CheckVisibleData();
 
-        if (!canDamage) AttackCooldown();
+            if (!canDamage) AttackCooldown();
+        }
     }
 
     #endregion
