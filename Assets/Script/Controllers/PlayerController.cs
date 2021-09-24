@@ -146,7 +146,6 @@ public class PlayerController : ActorController
         aiming = value;
         weapon.IsAiming(value);
         animator.SetBool("IsAiming", value);
-        print(aiming);
     }
 
     private void CanShoot(bool value) //Acá recibe el input de si esta disparando o no a traves de un GetKeyDown or GetKeyUp

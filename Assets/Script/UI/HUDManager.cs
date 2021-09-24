@@ -7,6 +7,7 @@ public class HUDManager : MonoBehaviour
 {
     [SerializeField] private PromptTrigger promptTrigger;
     [SerializeField] private LifeBarController lifeBar;
+    [SerializeField] private Image overHeatImage;
     [SerializeField] private UICrystalCounter crystalController;
     private UIQuestManager questManager;
 
@@ -60,5 +61,9 @@ public class HUDManager : MonoBehaviour
         questManager.UpdateMessage(message);
         if (title != null)
             questManager.UpdateTitle(title);
+    }
+    public void UpdateOverHeat(float currentHeat,float  maxHeat)
+    {
+        overHeatImage.fillAmount = (float)currentHeat / maxHeat;
     }
 }
