@@ -6262,15 +6262,12 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6903580764886999615, guid: fa7e67293d9c0a04dadaf7a4e4e61c3a,
     type: 3}
   firePoint: {fileID: 4368234924497453366}
-  owner: {fileID: 1434150396799790331}
-  cooldownPerBullet: 0.5
   crossHair: {fileID: 9016468469215341998}
   minDistance: 1
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
   maxShootingTime: 3
-  currentShootingTime: 0
   shootingParticles: {fileID: 1004675564}
 --- !u!1 &4870838804330255143
 GameObject:
