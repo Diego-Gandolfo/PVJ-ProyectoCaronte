@@ -6,10 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Outline))]
 public abstract class EnemyController : ActorController
 {
-    [SerializeField] protected Vector3 _detectionRadius = new Vector3(30f, 5f, 30f);
+    [SerializeField] protected Vector3 _detectionArea = new Vector3(30f, 5f, 30f); //Area de deteccion completa del enemigo. 
 
     #region Protected Fields
-    protected PlayerController player;
     protected Outline outline;
     protected LifeBarController lifeBar;
     #endregion
@@ -23,10 +22,6 @@ public abstract class EnemyController : ActorController
         lifeBar = GetComponent<LifeBarController>();
         if (lifeBar != null)
             lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
-    }
-    protected virtual void Start()
-    {
-        GameManager.instance.OnPlayerAssing += OnPlayerAssing;
     }
     #endregion
 
@@ -43,12 +38,6 @@ public abstract class EnemyController : ActorController
         base.OnDie();
         float delay = 0.1f;
         Destroy(gameObject, delay);
-    }
-
-    protected void OnPlayerAssing(PlayerController player)
-    {
-        this.player = player;
-        GameManager.instance.OnPlayerAssing -= OnPlayerAssing;
     }
     #endregion
 }

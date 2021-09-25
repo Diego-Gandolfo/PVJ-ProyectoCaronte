@@ -5,27 +5,19 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyMeleeWeapon))]
 public class EnemyMeleeController : EnemyController
 {
-    #region Serialize Fields
     [SerializeField] [Range(1, 50)] protected float _attackRadius;
-    [SerializeField] private bool canDrawWires;
-    [SerializeField] private float whenPlayerMoving = 10f;
-    [SerializeField] private float whenPlayerSprinting = 25f;
-    #endregion
-
+    [SerializeField] private float minimumDetectionDistance = 10f; //Esta seria la distancia para detectarlo cuando camina. 
 
     #region Private
     private EnemyMeleeWeapon weapon;
     private bool canFollow;
     private bool playerInRange;
-    private float distance;
     #endregion
 
     #region Unity Methods
-    protected override void Start()
+    private void Start()
     {
-        base.Start();
         weapon = GetComponent<EnemyMeleeWeapon>();
-        print(weapon.name);
         weapon.SetStats(_attackStats);
     }
 
@@ -34,7 +26,6 @@ public class EnemyMeleeController : EnemyController
         DetectTarget();
         CheckVisibleData();
 
-        print(weapon.IsAttacking + " can follow: " + canFollow);
         if(canFollow && !playerInRange)
             animator.SetBool("Walk Forward", true);
         else
@@ -47,19 +38,16 @@ public class EnemyMeleeController : EnemyController
 
     private void DetectTarget()
     {
-        Collider[] _collisions = Physics.OverlapBox(transform.position, _detectionRadius, Quaternion.identity, _attackStats.TargetList);
+        Collider[] _collisions = Physics.OverlapBox(transform.position, _detectionArea, Quaternion.identity, _attackStats.TargetList);
 
         if (_collisions.Length > 0)
         {
             PlayerController player = _collisions[0].GetComponent<PlayerController>();
             if (player != null)
-            {
-                FollowPlayer(player);
-            }
+                CheckPlayerDistance(player);
         } else
-        {
             canFollow = false;
-        }
+
     }
 
     private void CanAttack()
@@ -76,9 +64,7 @@ public class EnemyMeleeController : EnemyController
             }        
         } 
         else
-        {
             playerInRange = false;
-        }
     }
 
     private void FollowPlayer(PlayerController player)
@@ -90,7 +76,6 @@ public class EnemyMeleeController : EnemyController
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
         }
         CanAttack();
-
     }
 
     private void CheckVisibleData()
@@ -106,27 +91,24 @@ public class EnemyMeleeController : EnemyController
 
     private void CheckPlayerDistance(PlayerController player)
     {
-        //distance = !player.IsSprinting ? whenPlayerMoving : whenPlayerSprinting;
-        //if (Vector3.Distance(player.transform.position, this.transform.position) <= distance)
-        //{
-        //    canFollow = true;
-        //}
+        if (!player.IsSprinting)
+        {
+            if (Vector3.Distance(player.transform.position, this.transform.position) <= minimumDetectionDistance)
+                FollowPlayer(player);
 
-        //if (Vector3.Distance(player.transform.position, this.transform.position) >= whenPlayerSprinting)
-        //{
-        //    canFollow = false;
-        //}
+        } else //Si el player esta en la zona de deteccion y esta sprinteando 
+            FollowPlayer(player);
+
+        if (canFollow) //Si ya estaba persiguiendo, seguilo. 
+            FollowPlayer(player);
     }
 
 
     private void OnDrawGizmos()
     {
-        if (canDrawWires)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(weapon.AttackPoint.position, _attackRadius);
-            Gizmos.DrawWireCube(transform.position, _detectionRadius);
-        }
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, _detectionArea);
+        //Gizmos.DrawWireSphere(weapon.AttackPoint.position, _attackRadius);
     }
 
     #endregion

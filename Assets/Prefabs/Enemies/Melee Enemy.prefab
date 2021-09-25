@@ -1862,9 +1862,9 @@ MonoBehaviour:
   _actorStats: {fileID: 11400000, guid: dcf6b3e6b1dcb6c41b878e8b90c02863, type: 2}
   _attackStats: {fileID: 11400000, guid: 84718f264bdb56549b33e724e4c8898a, type: 2}
   _detectionRadius: {x: 30, y: 5, z: 30}
+  _detectionSprintingArea: {x: 30, y: 5, z: 30}
+  _detectionWalkingArea: {x: 20, y: 5, z: 20}
   _attackRadius: 1
-  weapon: {fileID: 0}
-  canDrawWires: 0
   whenPlayerMoving: 10
   whenPlayerSprinting: 25
 --- !u!114 &4369962038243472794
