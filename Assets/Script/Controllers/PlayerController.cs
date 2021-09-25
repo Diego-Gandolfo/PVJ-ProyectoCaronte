@@ -2,12 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 [RequireComponent(typeof(HealthController))]
 [RequireComponent(typeof(OxygenSystemController))]
 public class PlayerController : ActorController
 {
     #region Serialize Fields
+    [SerializeField] CinemachineVirtualCamera aimVirtualCamera;
+    [SerializeField] private Transform firepoint;
+    [SerializeField] private LayerMask target;
+    
     [Header("Jump")]
     [SerializeField] private Transform[] jumpPoints;
     [SerializeField] private LayerMask surfaceList;
@@ -29,12 +34,16 @@ public class PlayerController : ActorController
     private bool shooting;
     private float currentSpeed;
     private float distanceGround = 1.1f;
+
+    private Vector3 mouseWorldPosition;
+    private Vector3 worldAimTarget;
+
     #endregion
 
     #region Propertys
     public bool IsSprinting { get; private set; }
 
-    public Action<bool> IsShooting;
+    public Action<bool, Vector3> IsShooting;
 
     #endregion
 
@@ -105,7 +114,7 @@ public class PlayerController : ActorController
 
     private void Rotate(float rotX)
     {
-        transform.Rotate(transform.up, rotX, Space.World); // La otra parte, "Mouse Y", se hace en el Script LookUpDown
+        transform.Rotate(transform.position, rotX, Space.World); // La otra parte, "Mouse Y", se hace en el Script LookUpDown
     }
 
     private void Jump()
@@ -149,11 +158,31 @@ public class PlayerController : ActorController
         aiming = value;
         weapon.IsAiming(value);
         animator.SetBool("IsAiming", value);
+
+        mouseWorldPosition = Vector3.zero;
+        aimVirtualCamera.gameObject.SetActive(value);
+
+        worldAimTarget = mouseWorldPosition;
+        worldAimTarget.y = transform.position.y;
+        Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
+        transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
+
     }
 
-    private void CanShoot(bool value) //Acá recibe el input de si esta disparando o no a traves de un GetKeyDown or GetKeyUp
+    private void CanShoot(bool value)
     {
-        IsShooting?.Invoke(value);
+        mouseWorldPosition = Vector3.zero;
+        if (value)
+        {
+            Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
+            Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+            if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, target))
+            {
+                mouseWorldPosition = raycastHit.point;
+            }
+        }
+
+        IsShooting?.Invoke(value, mouseWorldPosition);
         shooting = value;
         animator.speed = 1f;
     }
@@ -163,7 +192,7 @@ public class PlayerController : ActorController
         AudioManager.instance.PlaySound(SoundClips.Shoot);
         weapon.Shoot();
     }
-    void CanMove()
+    private void CanMove()
     {
         if(aiming || shooting)
         {
@@ -174,5 +203,6 @@ public class PlayerController : ActorController
             isUsingWeapon = false;
         }
     }
+
     #endregion
 }

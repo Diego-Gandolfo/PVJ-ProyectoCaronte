@@ -15,7 +15,8 @@ public class MachineGun : MonoBehaviour
     private bool isShooting;
     private bool isAiming;
     private float currentShootingTime;
-
+    private Vector3 mouseWorldPosition;
+    private Vector3 worldAimTarget;
     private Animator animator;
 
     void Start()
@@ -48,21 +49,15 @@ public class MachineGun : MonoBehaviour
             if (currentShootingTime < 0)
                 currentShootingTime = 0;
             HUDManager.instance.UpdateOverHeat(currentShootingTime, maxShootingTime);
-            Debug.DrawRay(crossHair.position, crossHair.forward,Color.red);
+            //Debug.DrawRay(crossHair.position, crossHair.forward,Color.red);
         }
     }
 
     public void Shoot()
     {
-        RaycastHit hit;
-
-        var hasHit = Physics.Raycast(crossHair.position, crossHair.forward, out hit, Mathf.Infinity, layerMask);
-        var bulletClone = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
-        if (Vector3.Distance(hit.point, crossHair.position) > minDistance && hit.point != Vector3.zero && isAiming)
-            bulletClone.transform.forward = hit.point - firePoint.position;
-        else
-            bulletClone.transform.forward = firePoint.transform.forward;
+        Vector3 aimDir = (mouseWorldPosition - firePoint.position).normalized;
+        var rotation = Quaternion.LookRotation(aimDir, Vector3.up);
+        Instantiate(bulletPrefab, firePoint.position, rotation);
     }
 
     private void StopShooting()
@@ -96,8 +91,9 @@ public class MachineGun : MonoBehaviour
         animator = player.GetComponent<Animator>();
     }
 
-    public void CanShoot(bool value)
+    public void CanShoot(bool value, Vector3 position)
     {
         isShooting = value;
+        mouseWorldPosition = position;
     }
 }
