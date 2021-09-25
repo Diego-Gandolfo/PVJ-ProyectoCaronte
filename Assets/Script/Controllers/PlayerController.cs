@@ -87,7 +87,7 @@ public class PlayerController : ActorController
             Vector3 movement = transform.right * horizontal + transform.forward * vertical;
             transform.position += movement * currentSpeed * Time.deltaTime;
             
-            if (canPlaySound)
+            if (canPlaySound && CheckIfGrounded())
             {
                 if (vertical > 0 || horizontal < 0)
                 {

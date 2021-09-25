@@ -82,6 +82,7 @@ public class MachineGun : MonoBehaviour
     {
         shootingParticles.Play();
         StopShooting();
+        AudioManager.instance.PlaySound(SoundClips.Overheat);
     }
 
     public void IsAiming(bool value)

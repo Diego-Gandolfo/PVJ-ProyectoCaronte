@@ -8,8 +8,9 @@ public enum SoundClips
     Jump,
     Heartbeat,
     Aim,
-    Steps
-
+    Steps,
+    MachineGunLoad,
+    Overheat
 }
 
 public class AudioManager : MonoBehaviour
@@ -34,6 +35,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip footstepsTwo;
     [SerializeField] private AudioClip footstepsThree;
     [SerializeField] private AudioClip footstepsFour;
+    [SerializeField] private AudioClip machineGunLoad;
+    [SerializeField] private AudioClip overheat;
 
 
     public void Awake()
@@ -59,7 +62,7 @@ public class AudioManager : MonoBehaviour
         switch (soundClip)
         {
             case SoundClips.Shoot:
-                soundsAudioSource.volume = 1f;
+                soundsAudioSource.volume = 0.6f;
                 soundsAudioSource.PlayOneShot(shoot);
                 break;
 
@@ -103,6 +106,16 @@ public class AudioManager : MonoBehaviour
 
                 else if (randomStep == 3) 
                     soundsAudioSource.PlayOneShot(footstepsFour);
+                break;
+
+            case SoundClips.MachineGunLoad:
+                soundsAudioSource.volume = 1.8f;
+                soundsAudioSource.PlayOneShot(machineGunLoad);
+                break;
+
+            case SoundClips.Overheat:
+                soundsAudioSource.volume = 2f;
+                soundsAudioSource.PlayOneShot(overheat);
                 break;
 
             default:
