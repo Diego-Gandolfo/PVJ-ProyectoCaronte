@@ -88,8 +88,8 @@ public class MachineGun : MonoBehaviour
     {
         crossHair.gameObject.SetActive(value);
         isAiming = value;
+     
     }
-
     public void SetPlayer(PlayerController player)
     {
         player.IsShooting += CanShoot;

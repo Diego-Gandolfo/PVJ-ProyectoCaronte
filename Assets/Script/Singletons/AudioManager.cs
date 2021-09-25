@@ -6,7 +6,10 @@ public enum SoundClips
 {
     Shoot,
     Jump,
-    Heartbeat
+    Heartbeat,
+    Aim,
+    Steps
+
 }
 
 public class AudioManager : MonoBehaviour
@@ -20,11 +23,14 @@ public class AudioManager : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] private AudioSource soundsAudioSource;
+
     [SerializeField] private AudioClip shoot;
     [SerializeField] private AudioClip heartbeat;
     [SerializeField] private AudioClip jumpOne;
     [SerializeField] private AudioClip jumpTwo;
     [SerializeField] private AudioClip jumpThree;
+    [SerializeField] private AudioClip aim;
+
 
     public void Awake()
     {
@@ -70,6 +76,11 @@ public class AudioManager : MonoBehaviour
                     soundsAudioSource.PlayOneShot(jumpThree);
                 else
                     soundsAudioSource.PlayOneShot(jumpOne);
+                break;
+
+            case SoundClips.Aim:
+                soundsAudioSource.volume = 0.5f;
+                soundsAudioSource.PlayOneShot(aim);
                 break;
 
             default:
