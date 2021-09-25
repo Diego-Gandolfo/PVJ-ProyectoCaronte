@@ -7,21 +7,25 @@ public class EnemyMeleeController : EnemyController
 {
     #region Serialize Fields
     [SerializeField] [Range(1, 50)] protected float _attackRadius;
-    [SerializeField] private EnemyMeleeWeapon weapon;
-
-    //[SerializeField] private float whenPlayerMoving = 10f;
-    //[SerializeField] private float whenPlayerSprinting = 25f;
-
+    [SerializeField] private bool canDrawWires;
+    [SerializeField] private float whenPlayerMoving = 10f;
+    [SerializeField] private float whenPlayerSprinting = 25f;
     #endregion
 
-    private bool canFollow;
 
+    #region Private
+    private EnemyMeleeWeapon weapon;
+    private bool canFollow;
+    private bool playerInRange;
+    private float distance;
+    #endregion
 
     #region Unity Methods
     protected override void Start()
     {
         base.Start();
         weapon = GetComponent<EnemyMeleeWeapon>();
+        print(weapon.name);
         weapon.SetStats(_attackStats);
     }
 
@@ -30,22 +34,11 @@ public class EnemyMeleeController : EnemyController
         DetectTarget();
         CheckVisibleData();
 
-        if(canFollow)
-        {
-            print("canFollow: " + canFollow + " IsAttacking" + weapon.IsAttacking);
-            if (weapon.IsAttacking)
-            {
-                animator.SetBool("Walk Forward", false);
-            }
-            else
-            {
-                animator.SetBool("Walk Forward", true);
-            }
-        } else
-        {
+        print(weapon.IsAttacking + " can follow: " + canFollow);
+        if(canFollow && !playerInRange)
+            animator.SetBool("Walk Forward", true);
+        else
             animator.SetBool("Walk Forward", false);
-        }
-
     }
 
     #endregion
@@ -62,32 +55,42 @@ public class EnemyMeleeController : EnemyController
             if (player != null)
             {
                 FollowPlayer(player);
-                CanAttack();
-                print("detected");
             }
+        } else
+        {
+            canFollow = false;
         }
     }
 
     private void CanAttack()
     {
-        Collider[] _collisions = Physics.OverlapSphere(weapon.transform.position, _attackRadius, _attackStats.TargetList);
-        print("canAttack: " + _collisions.Length);
+        Collider[] _collisions = Physics.OverlapSphere(weapon.AttackPoint.position, _attackRadius, _attackStats.TargetList);
         if (_collisions.Length > 0)
         {
             PlayerController player = _collisions[0].GetComponent<PlayerController>();
             if(player != null)
             {
-                print(player);
+                playerInRange = true;
                 weapon.Attack(player);
                 //TODO: trigger enemy animation attack?
             }        
         } 
+        else
+        {
+            playerInRange = false;
+        }
     }
 
     private void FollowPlayer(PlayerController player)
     {
-        transform.LookAt(player.transform.position, player.transform.up);
-        this.transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
+        if (!playerInRange)
+        {
+            canFollow = true;
+            transform.LookAt(player.transform.position, player.transform.up);
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
+        }
+        CanAttack();
+
     }
 
     private void CheckVisibleData()
@@ -106,21 +109,24 @@ public class EnemyMeleeController : EnemyController
         //distance = !player.IsSprinting ? whenPlayerMoving : whenPlayerSprinting;
         //if (Vector3.Distance(player.transform.position, this.transform.position) <= distance)
         //{
-        //    mustFollow = true;
+        //    canFollow = true;
         //}
 
         //if (Vector3.Distance(player.transform.position, this.transform.position) >= whenPlayerSprinting)
         //{
-        //    mustFollow = false;
+        //    canFollow = false;
         //}
     }
 
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(weapon.transform.position, _attackRadius);
-        Gizmos.DrawWireCube(transform.position, _detectionRadius);
+        if (canDrawWires)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(weapon.AttackPoint.position, _attackRadius);
+            Gizmos.DrawWireCube(transform.position, _detectionRadius);
+        }
     }
 
     #endregion
