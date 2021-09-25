@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Outline))]
 public abstract class EnemyController : ActorController
 {
+    [SerializeField] protected Vector3 _detectionRadius = new Vector3(30f, 5f, 30f);
+
     #region Protected Fields
     protected PlayerController player;
     protected Outline outline;
@@ -18,7 +20,6 @@ public abstract class EnemyController : ActorController
     {
         base.Awake();
         outline = GetComponent<Outline>();
-        outline.enabled = false;
         lifeBar = GetComponent<LifeBarController>();
         if (lifeBar != null)
             lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
