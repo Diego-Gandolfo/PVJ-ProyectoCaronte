@@ -30,6 +30,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip jumpTwo;
     [SerializeField] private AudioClip jumpThree;
     [SerializeField] private AudioClip aim;
+    [SerializeField] private AudioClip footstepsOne;
+    [SerializeField] private AudioClip footstepsTwo;
+    [SerializeField] private AudioClip footstepsThree;
+    [SerializeField] private AudioClip footstepsFour;
 
 
     public void Awake()
@@ -81,6 +85,24 @@ public class AudioManager : MonoBehaviour
             case SoundClips.Aim:
                 soundsAudioSource.volume = 0.5f;
                 soundsAudioSource.PlayOneShot(aim);
+                break;
+
+            case SoundClips.Steps:
+                soundsAudioSource.volume = 1f;
+
+                int randomStep = Random.Range(0, 4);
+
+                if (randomStep == 0)
+                    soundsAudioSource.PlayOneShot(footstepsOne);
+
+                else if (randomStep == 1)
+                    soundsAudioSource.PlayOneShot(footstepsTwo);
+
+                else if (randomStep == 2)
+                    soundsAudioSource.PlayOneShot(footstepsThree);
+
+                else if (randomStep == 3) 
+                    soundsAudioSource.PlayOneShot(footstepsFour);
                 break;
 
             default:

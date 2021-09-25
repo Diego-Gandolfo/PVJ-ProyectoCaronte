@@ -27,8 +27,12 @@ public class PlayerController : ActorController
     private bool isUsingWeapon;
     private bool aiming;
     private bool shooting;
+    private bool canPlaySound;
     private float currentSpeed;
     private float distanceGround = 1.1f;
+
+    private float timeToPlaySound = 0.5f;
+    private float currentTimeToPlaySound;
     #endregion
 
     #region Propertys
@@ -55,11 +59,13 @@ public class PlayerController : ActorController
     {
         SubscribeEvents();
         GameManager.instance.SetPlayer(this);
+        currentTimeToPlaySound = timeToPlaySound;
     }
 
     private void Update()
     {
         CanMove();
+        PlayStepSound();
     }
     #endregion
 
@@ -80,9 +86,29 @@ public class PlayerController : ActorController
         {
             Vector3 movement = transform.right * horizontal + transform.forward * vertical;
             transform.position += movement * currentSpeed * Time.deltaTime;
+            
+            if (canPlaySound)
+            {
+                if (vertical > 0 || horizontal < 0)
+                {
+                    canPlaySound = false;
+                    AudioManager.instance.PlaySound(SoundClips.Steps);
+                    currentTimeToPlaySound = 0.0f;
+                }
+            }
         }
+
         animator.SetFloat("Speed", vertical);
         animator.SetFloat("HorizontalSpeed", horizontal);
+        
+    }
+
+    private void PlayStepSound()
+    {
+        currentTimeToPlaySound += Time.deltaTime;
+        if (currentTimeToPlaySound >= timeToPlaySound)
+            canPlaySound = true;
+        else canPlaySound = false;
     }
 
     private void Sprint(bool value)
