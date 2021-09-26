@@ -112,9 +112,14 @@ public class PlayerController : ActorController
         }
     }
 
-    private void Rotate(float rotX)
+    private void Rotate(Vector2 rotation)
     {
-        transform.Rotate(transform.position, rotX, Space.World); // La otra parte, "Mouse Y", se hace en el Script LookUpDown
+        //transform.Rotate(transform.position, rotation.x, Space.World);
+        //var angles = transform.localEulerAngles;
+
+        //transform.localEulerAngles = new Vector3(-rotation.y, angles.y, 0f);
+
+        transform.localRotation = Quaternion.Euler(-rotation.y, rotation.x, 0);
     }
 
     private void Jump()
@@ -158,14 +163,14 @@ public class PlayerController : ActorController
         aiming = value;
         weapon.IsAiming(value);
         animator.SetBool("IsAiming", value);
-
-        mouseWorldPosition = Vector3.zero;
         aimVirtualCamera.gameObject.SetActive(value);
 
-        worldAimTarget = mouseWorldPosition;
-        worldAimTarget.y = transform.position.y;
-        Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
-        transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
+
+        //mouseWorldPosition = Vector3.zero;
+        //worldAimTarget = mouseWorldPosition;
+        //worldAimTarget.y = transform.position.y;
+        //Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
+        //transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
 
     }
 
@@ -176,7 +181,7 @@ public class PlayerController : ActorController
         {
             Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
             Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-            if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, target))
+            if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f))
             {
                 mouseWorldPosition = raycastHit.point;
             }
