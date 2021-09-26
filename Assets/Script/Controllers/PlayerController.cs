@@ -9,10 +9,12 @@ using Cinemachine;
 public class PlayerController : ActorController
 {
     #region Serialize Fields
+    [SerializeField] Camera cam;
     [SerializeField] CinemachineVirtualCamera aimVirtualCamera;
     [SerializeField] private Transform firepoint;
     [SerializeField] private LayerMask target;
-    
+    [SerializeField] private GameObject bulletPrefab;
+
     [Header("Jump")]
     [SerializeField] private Transform[] jumpPoints;
     [SerializeField] private LayerMask surfaceList;
@@ -176,18 +178,29 @@ public class PlayerController : ActorController
 
     private void CanShoot(bool value)
     {
-        mouseWorldPosition = Vector3.zero;
+        //var mouseWorldPosition = Vector3.zero;
+        //if (value)
+        //{
+        //    Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        //    Ray ray = cam.ScreenPointToRay(screenCenterPoint);
+        //    if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f))
+        //    {
+        //        mouseWorldPosition = raycastHit.point;
+        //    }
+        //}
         if (value)
         {
-            Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
-            Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-            if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f))
+            print("disparo");
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, 999f, target))
             {
-                mouseWorldPosition = raycastHit.point;
+                
+                //mouseWorldPosition = hit.point;
+                print(hit.transform.name);
+                Instantiate(bulletPrefab, hit.point, Quaternion.LookRotation(hit.normal));
             }
         }
 
-        IsShooting?.Invoke(value, mouseWorldPosition);
+        //IsShooting?.Invoke(value, mouseWorldPosition);
         shooting = value;
         animator.speed = 1f;
     }

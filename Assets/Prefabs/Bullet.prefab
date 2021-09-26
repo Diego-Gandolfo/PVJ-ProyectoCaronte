@@ -103,13 +103,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c43fa02e7f527940931d78444719fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 100
+  bulletSpeed: 0
   damage: 10
   lifeTime: 5
   hittableMask:
     serializedVersion: 2
     m_Bits: 8
-  shootParticles: {fileID: 0}
+  shootParticles: {fileID: 1140227245688804152}
 --- !u!96 &4279247450337289250
 TrailRenderer:
   serializedVersion: 2
