@@ -11,14 +11,10 @@ public class PlayerController : ActorController
     #region Serialize Fields
     [SerializeField] Camera cam;
     [SerializeField] CinemachineVirtualCamera aimVirtualCamera;
-    [SerializeField] private Transform firepoint;
-    [SerializeField] private LayerMask target;
-    [SerializeField] private GameObject bulletPrefab;
 
     [Header("Jump")]
     [SerializeField] private Transform[] jumpPoints;
     [SerializeField] private LayerMask surfaceList;
-
 
     [Header("Attack")]
     [SerializeField] private MachineGun weapon;
@@ -36,16 +32,12 @@ public class PlayerController : ActorController
     private bool shooting;
     private float currentSpeed;
     private float distanceGround = 1.1f;
-
-    private Vector3 mouseWorldPosition;
-    private Vector3 worldAimTarget;
-
     #endregion
 
     #region Propertys
     public bool IsSprinting { get; private set; }
 
-    public Action<bool, Vector3> IsShooting;
+    public Action<bool, RaycastHit> IsShooting;
 
     #endregion
 
@@ -54,7 +46,6 @@ public class PlayerController : ActorController
     protected override void Awake()
     {
         base.Awake();
-        
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
         oxygenSystem = GetComponent<OxygenSystemController>();
@@ -116,11 +107,6 @@ public class PlayerController : ActorController
 
     private void Rotate(Vector2 rotation)
     {
-        //transform.Rotate(transform.position, rotation.x, Space.World);
-        //var angles = transform.localEulerAngles;
-
-        //transform.localEulerAngles = new Vector3(-rotation.y, angles.y, 0f);
-
         transform.localRotation = Quaternion.Euler(-rotation.y, rotation.x, 0);
     }
 
@@ -166,41 +152,13 @@ public class PlayerController : ActorController
         weapon.IsAiming(value);
         animator.SetBool("IsAiming", value);
         aimVirtualCamera.gameObject.SetActive(value);
-
-
-        //mouseWorldPosition = Vector3.zero;
-        //worldAimTarget = mouseWorldPosition;
-        //worldAimTarget.y = transform.position.y;
-        //Vector3 aimDirection = (worldAimTarget - transform.position).normalized;
-        //transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 20f);
-
     }
 
     private void CanShoot(bool value)
     {
-        //var mouseWorldPosition = Vector3.zero;
-        //if (value)
-        //{
-        //    Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
-        //    Ray ray = cam.ScreenPointToRay(screenCenterPoint);
-        //    if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f))
-        //    {
-        //        mouseWorldPosition = raycastHit.point;
-        //    }
-        //}
-        if (value)
-        {
-            print("disparo");
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, 999f, target))
-            {
-                
-                //mouseWorldPosition = hit.point;
-                print(hit.transform.name);
-                Instantiate(bulletPrefab, hit.point, Quaternion.LookRotation(hit.normal));
-            }
-        }
-
-        //IsShooting?.Invoke(value, mouseWorldPosition);
+        RaycastHit hit;
+        Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 999f, _attackStats.TargetList);
+        IsShooting?.Invoke(value, hit);
         shooting = value;
         animator.speed = 1f;
     }

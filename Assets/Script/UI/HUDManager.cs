@@ -9,6 +9,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private LifeBarController lifeBar;
     [SerializeField] private Image overHeatImage;
     [SerializeField] private UICrystalCounter crystalController;
+    [SerializeField] private GameObject crosshair;
     private UIQuestManager questManager;
 
     public static HUDManager instance;
@@ -30,7 +31,9 @@ public class HUDManager : MonoBehaviour
 
     private void Start()
     {
+        SetCrosshair(false);
         GameManager.instance.OnPlayerAssing += OnPlayerAssing;
+        InputController.instance.OnAim += SetCrosshair;
         questManager = GetComponent<UIQuestManager>();
         IsQuestVisible = true;
     }
@@ -65,6 +68,11 @@ public class HUDManager : MonoBehaviour
     public void UpdateOverHeat(float currentHeat,float  maxHeat)
     {
         overHeatImage.fillAmount = (float)currentHeat / maxHeat;
+    }
+
+    public void SetCrosshair(bool value)
+    {
+        crosshair.SetActive(value);
     }
 
     protected void OnPlayerAssing(PlayerController player)

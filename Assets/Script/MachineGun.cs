@@ -5,6 +5,7 @@ using UnityEngine;
 public class MachineGun : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private ParticleSystem effectShoot;
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform crossHair;
     [SerializeField] private float minDistance; // distancia minima para que calcule el forward del disparo con el crosshair
@@ -15,9 +16,8 @@ public class MachineGun : MonoBehaviour
     private bool isShooting;
     private bool isAiming;
     private float currentShootingTime;
-    private Vector3 mouseWorldPosition;
-    private Vector3 worldAimTarget;
     private Animator animator;
+    private RaycastHit target;
 
     void Start()
     {
@@ -49,15 +49,13 @@ public class MachineGun : MonoBehaviour
             if (currentShootingTime < 0)
                 currentShootingTime = 0;
             HUDManager.instance.UpdateOverHeat(currentShootingTime, maxShootingTime);
-            //Debug.DrawRay(crossHair.position, crossHair.forward,Color.red);
         }
     }
 
     public void Shoot()
     {
-        Vector3 aimDir = (mouseWorldPosition - firePoint.position).normalized;
-        var rotation = Quaternion.LookRotation(aimDir, Vector3.up);
-        Instantiate(bulletPrefab, firePoint.position, rotation);
+        //TODO: Particle system play del firepoint (effecto como si estuviera disparando la bala que sale del arma)
+        Instantiate(bulletPrefab, target.point, Quaternion.LookRotation(target.normal)); //Instancia en el lugar donde pego la bala. No la vemos recorrer el camino. 
     }
 
     private void StopShooting()
@@ -91,9 +89,9 @@ public class MachineGun : MonoBehaviour
         animator = player.GetComponent<Animator>();
     }
 
-    public void CanShoot(bool value, Vector3 position)
+    public void CanShoot(bool value, RaycastHit hit)
     {
         isShooting = value;
-        mouseWorldPosition = position;
+        target = hit;
     }
 }
