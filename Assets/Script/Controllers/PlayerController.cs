@@ -9,8 +9,9 @@ using Cinemachine;
 public class PlayerController : ActorController
 {
     #region Serialize Fields
-    [SerializeField] Camera cam;
-    [SerializeField] CinemachineVirtualCamera aimVirtualCamera;
+    [SerializeField] private Camera cam;
+    [SerializeField] private CinemachineVirtualCamera aimVirtualCamera;
+    [SerializeField] private Vector3 offset;
 
     [Header("Jump")]
     [SerializeField] private Transform[] jumpPoints;
@@ -157,7 +158,7 @@ public class PlayerController : ActorController
     private void CanShoot(bool value)
     {
         RaycastHit hit;
-        Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 999f, _attackStats.TargetList);
+        Physics.Raycast(cam.transform.position + offset, cam.transform.forward, out hit, 999f, _attackStats.TargetList);;
         IsShooting?.Invoke(value, hit);
         shooting = value;
         animator.speed = 1f;
