@@ -14,13 +14,18 @@ public abstract class EnemyController : ActorController
 
     #region Protected Methods
 
-    public virtual void Start()
+    protected override void Awake()
     {
-        player = GameManager.instance.Player;
+        base.Awake();
         outline = GetComponent<Outline>();
+        outline.enabled = false;
         lifeBar = GetComponent<LifeBarController>();
-        if(lifeBar != null) 
+        if (lifeBar != null)
             lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
+    }
+    protected virtual void Start()
+    {
+        GameManager.instance.OnPlayerAssing += OnPlayerAssing;
     }
     #endregion
 
@@ -37,6 +42,12 @@ public abstract class EnemyController : ActorController
         base.OnDie();
         float delay = 0.1f;
         Destroy(gameObject, delay);
+    }
+
+    protected void OnPlayerAssing(PlayerController player)
+    {
+        this.player = player;
+        GameManager.instance.OnPlayerAssing -= OnPlayerAssing;
     }
     #endregion
 }

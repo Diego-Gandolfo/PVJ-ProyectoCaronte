@@ -25,8 +25,14 @@ public class PlayerController : ActorController
 
     // Movement
     private bool isUsingWeapon;
+    private bool aiming;
+    private bool shooting;
+    private bool canPlaySound;
     private float currentSpeed;
     private float distanceGround = 1.1f;
+
+    private float timeToPlaySound = 0.5f;
+    private float currentTimeToPlaySound;
     #endregion
 
     #region Propertys
@@ -41,7 +47,7 @@ public class PlayerController : ActorController
     protected override void Awake()
     {
         base.Awake();
-        GameManager.instance.SetPlayer(this);
+        
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
         oxygenSystem = GetComponent<OxygenSystemController>();
@@ -52,8 +58,15 @@ public class PlayerController : ActorController
     private void Start()
     {
         SubscribeEvents();
+        GameManager.instance.SetPlayer(this);
+        currentTimeToPlaySound = timeToPlaySound;
     }
 
+    private void Update()
+    {
+        CanMove();
+        PlayStepSound();
+    }
     #endregion
 
     #region Private Methods
@@ -73,9 +86,29 @@ public class PlayerController : ActorController
         {
             Vector3 movement = transform.right * horizontal + transform.forward * vertical;
             transform.position += movement * currentSpeed * Time.deltaTime;
+            
+            if (canPlaySound && CheckIfGrounded())
+            {
+                if (vertical > 0 || horizontal < 0)
+                {
+                    canPlaySound = false;
+                    AudioManager.instance.PlaySound(SoundClips.Steps);
+                    currentTimeToPlaySound = 0.0f;
+                }
+            }
         }
+
         animator.SetFloat("Speed", vertical);
         animator.SetFloat("HorizontalSpeed", horizontal);
+        
+    }
+
+    private void PlayStepSound()
+    {
+        currentTimeToPlaySound += Time.deltaTime;
+        if (currentTimeToPlaySound >= timeToPlaySound)
+            canPlaySound = true;
+        else canPlaySound = false;
     }
 
     private void Sprint(bool value)
@@ -139,7 +172,7 @@ public class PlayerController : ActorController
 
     private void IsAiming(bool value)
     {
-        isUsingWeapon = value;
+        aiming = value;
         weapon.IsAiming(value);
         animator.SetBool("IsAiming", value);
     }
@@ -147,7 +180,7 @@ public class PlayerController : ActorController
     private void CanShoot(bool value) //Acá recibe el input de si esta disparando o no a traves de un GetKeyDown or GetKeyUp
     {
         IsShooting?.Invoke(value);
-        isUsingWeapon = value;
+        shooting = value;
         animator.speed = 1f;
     }
 
@@ -155,6 +188,17 @@ public class PlayerController : ActorController
     {
         AudioManager.instance.PlaySound(SoundClips.Shoot);
         weapon.Shoot();
+    }
+    void CanMove()
+    {
+        if(aiming || shooting)
+        {
+            isUsingWeapon = true;
+        }
+        else
+        {
+            isUsingWeapon = false;
+        }
     }
     #endregion
 }

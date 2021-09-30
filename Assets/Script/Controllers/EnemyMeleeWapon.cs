@@ -15,7 +15,7 @@ public class EnemyMeleeWapon : MonoBehaviour
 
     private void Start() 
     {
-        player = GameManager.instance.Player;
+        GameManager.instance.OnPlayerAssing += OnPlayerAssing;
         canDoDamage = true;
         timeToDamage = timeToDamageAgain;
     }
@@ -38,6 +38,12 @@ public class EnemyMeleeWapon : MonoBehaviour
         {
             AttackPlayer();
         }
+    }
+
+    protected void OnPlayerAssing(PlayerController player)
+    {
+        this.player = player;
+        GameManager.instance.OnPlayerAssing -= OnPlayerAssing;
     }
 
     #region Public Methods

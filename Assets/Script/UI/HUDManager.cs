@@ -7,6 +7,7 @@ public class HUDManager : MonoBehaviour
 {
     [SerializeField] private PromptTrigger promptTrigger;
     [SerializeField] private LifeBarController lifeBar;
+    [SerializeField] private Image overHeatImage;
     [SerializeField] private UICrystalCounter crystalController;
     private UIQuestManager questManager;
 
@@ -29,9 +30,9 @@ public class HUDManager : MonoBehaviour
 
     private void Start()
     {
+        GameManager.instance.OnPlayerAssing += OnPlayerAssing;
         questManager = GetComponent<UIQuestManager>();
         IsQuestVisible = true;
-        lifeBar.SetHealthController(GameManager.instance.Player.GetComponent<HealthController>());
     }
 
     public void ShowPrompt(bool value)
@@ -60,5 +61,15 @@ public class HUDManager : MonoBehaviour
         questManager.UpdateMessage(message);
         if (title != null)
             questManager.UpdateTitle(title);
+    }
+    public void UpdateOverHeat(float currentHeat,float  maxHeat)
+    {
+        overHeatImage.fillAmount = (float)currentHeat / maxHeat;
+    }
+
+    protected void OnPlayerAssing(PlayerController player)
+    {
+        GameManager.instance.OnPlayerAssing -= OnPlayerAssing;
+        lifeBar.SetHealthController(player.GetComponent<HealthController>());
     }
 }

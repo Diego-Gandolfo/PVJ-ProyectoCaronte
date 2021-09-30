@@ -34,7 +34,7 @@ public class MachineGun : MonoBehaviour
                 animator.SetBool("IsShooting", true);
 
                 currentShootingTime += Time.deltaTime; // sacar el time delta time por un tema de como funciona con el calculo por frame.
-
+                
                 if (currentShootingTime >= maxShootingTime)
                 {
                     OnOverHeat();
@@ -47,7 +47,7 @@ public class MachineGun : MonoBehaviour
 
             if (currentShootingTime < 0)
                 currentShootingTime = 0;
-
+            HUDManager.instance.UpdateOverHeat(currentShootingTime, maxShootingTime);
             Debug.DrawRay(crossHair.position, crossHair.forward,Color.red);
         }
     }
@@ -82,14 +82,15 @@ public class MachineGun : MonoBehaviour
     {
         shootingParticles.Play();
         StopShooting();
+        AudioManager.instance.PlaySound(SoundClips.Overheat);
     }
 
     public void IsAiming(bool value)
     {
         crossHair.gameObject.SetActive(value);
         isAiming = value;
+     
     }
-
     public void SetPlayer(PlayerController player)
     {
         player.IsShooting += CanShoot;

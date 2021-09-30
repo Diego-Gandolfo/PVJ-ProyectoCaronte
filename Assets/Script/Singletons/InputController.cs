@@ -57,6 +57,7 @@ public class InputController : MonoBehaviour
             CheckSprint();
             CheckShoot();
             CheckAiming();
+            PlayAimSound();
         }
     }
     #endregion
@@ -86,12 +87,19 @@ public class InputController : MonoBehaviour
             OnShoot?.Invoke(false);
     }
 
-    private void CheckAiming()
+    private void CheckAiming() // No se usa el GetKeyDown porque hay que updatear todo el tiempo el dato de si esta aimeando.
     {
-        if (Input.GetKeyDown(aiming))
+        if (Input.GetKey(aiming))
             OnAim?.Invoke(true);
-        else if(Input.GetKeyUp(aiming))
+            
+        else
             OnAim?.Invoke(false);
+    }
+
+    private void PlayAimSound()
+    {
+        if (Input.GetMouseButtonDown(1))
+            AudioManager.instance.PlaySound(SoundClips.Aim);
     }
 
     private void CheckJump()

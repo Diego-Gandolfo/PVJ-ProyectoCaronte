@@ -6,7 +6,11 @@ public enum SoundClips
 {
     Shoot,
     Jump,
-    Heartbeat
+    Heartbeat,
+    Aim,
+    Steps,
+    MachineGunLoad,
+    Overheat
 }
 
 public class AudioManager : MonoBehaviour
@@ -20,11 +24,20 @@ public class AudioManager : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] private AudioSource soundsAudioSource;
+
     [SerializeField] private AudioClip shoot;
     [SerializeField] private AudioClip heartbeat;
     [SerializeField] private AudioClip jumpOne;
     [SerializeField] private AudioClip jumpTwo;
     [SerializeField] private AudioClip jumpThree;
+    [SerializeField] private AudioClip aim;
+    [SerializeField] private AudioClip footstepsOne;
+    [SerializeField] private AudioClip footstepsTwo;
+    [SerializeField] private AudioClip footstepsThree;
+    [SerializeField] private AudioClip footstepsFour;
+    [SerializeField] private AudioClip machineGunLoad;
+    [SerializeField] private AudioClip overheat;
+
 
     public void Awake()
     {
@@ -49,7 +62,7 @@ public class AudioManager : MonoBehaviour
         switch (soundClip)
         {
             case SoundClips.Shoot:
-                soundsAudioSource.volume = 1f;
+                soundsAudioSource.volume = 0.6f;
                 soundsAudioSource.PlayOneShot(shoot);
                 break;
 
@@ -70,6 +83,39 @@ public class AudioManager : MonoBehaviour
                     soundsAudioSource.PlayOneShot(jumpThree);
                 else
                     soundsAudioSource.PlayOneShot(jumpOne);
+                break;
+
+            case SoundClips.Aim:
+                soundsAudioSource.volume = 0.5f;
+                soundsAudioSource.PlayOneShot(aim);
+                break;
+
+            case SoundClips.Steps:
+                soundsAudioSource.volume = 1f;
+
+                int randomStep = Random.Range(0, 4);
+
+                if (randomStep == 0)
+                    soundsAudioSource.PlayOneShot(footstepsOne);
+
+                else if (randomStep == 1)
+                    soundsAudioSource.PlayOneShot(footstepsTwo);
+
+                else if (randomStep == 2)
+                    soundsAudioSource.PlayOneShot(footstepsThree);
+
+                else if (randomStep == 3) 
+                    soundsAudioSource.PlayOneShot(footstepsFour);
+                break;
+
+            case SoundClips.MachineGunLoad:
+                soundsAudioSource.volume = 1.8f;
+                soundsAudioSource.PlayOneShot(machineGunLoad);
+                break;
+
+            case SoundClips.Overheat:
+                soundsAudioSource.volume = 2f;
+                soundsAudioSource.PlayOneShot(overheat);
                 break;
 
             default:
