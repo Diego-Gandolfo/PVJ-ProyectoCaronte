@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class CrystalManager : MonoBehaviour
 {
-    [SerializeField] private AudioClip soundAlarm;
     [SerializeField] private float soundtimerCD = 1f;
     private List<CrystalGroups> crystalsGroups = new List<CrystalGroups>();
     private PlayerController player;
     private CrystalGroups currentPlaying;
 
     public static CrystalManager instance;
-
     public float SoundTimer => soundtimerCD;
     public Transform PlayerLocation => player.transform;
-    public AudioClip Sound => soundAlarm;
 
     private void Awake()
     {
@@ -30,13 +27,13 @@ public class CrystalManager : MonoBehaviour
 
     private void Start()
     {
-        player = GameManager.instance.Player;
-        
+        GameManager.instance.OnPlayerAssing += OnPlayerAssing;   
     }
 
     private void Update()
     {
-        CheckNearCrystal();
+        if(player != null)
+            CheckNearCrystal();
     }
 
     public void AddCrystalGroupList(CrystalGroups crystals)
@@ -69,11 +66,18 @@ public class CrystalManager : MonoBehaviour
 
             if(nearest != currentPlaying)
             {
-                currentPlaying.ShowLocation(false);
+                if(currentPlaying != null)
+                    currentPlaying.ShowLocation(false);
                 nearest.ShowLocation(true); // y a esa le dice mostrate.
                 currentPlaying = nearest;
             }
 
         }
+    }
+
+    protected void OnPlayerAssing(PlayerController player)
+    {
+        GameManager.instance.OnPlayerAssing -= OnPlayerAssing;
+        this.player = player;
     }
 }

@@ -6,12 +6,10 @@ public class CrystalGroups : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Transform crystalGroup;
-    [SerializeField] private float radious = 1f;
 
     private List<CrystalController> crystalList = new List<CrystalController>();
     private bool canSound;
     private float timer;
-
 
     private void Start()
     {
@@ -36,21 +34,14 @@ public class CrystalGroups : MonoBehaviour
 
     private void Update()
     {
-        //if (timer >= 0)
-
-        timer -= Time.deltaTime;
-        if (canSound)
-        {   
-            //var distance = Vector3.Distance(crystalGroup.position, CrystalManager.instance.PlayerLocation.position); //Check Player Distance from radius around crystals so if he there, the alarm doesn't sound. 
-            //distance > radious
-            if (timer <= 0)
+        if (!GameManager.instance.IsGameFreeze)
+        {
+            if (timer >= 0)
+                timer -= Time.deltaTime;
+            if (canSound)
             {
-                print("sone");
-                //TODO: Sound from crystals and UI animation
-                audioSource.Play();
-                timer = CrystalManager.instance.SoundTimer;
+                DoEffects();
             }
-
         }
     }
 
@@ -69,8 +60,21 @@ public class CrystalGroups : MonoBehaviour
         }
     }
 
+    private void DoEffects()
+    {
+        var distance = Vector3.Distance(crystalGroup.position, CrystalManager.instance.PlayerLocation.position);
+        if (timer <= 0)
+        {
+            audioSource.Play();
+            timer = CrystalManager.instance.SoundTimer;
+            HUDManager.instance.SonarManager.TriggerLevel(distance);
+        }
+    }
+
     public void ShowLocation(bool value)
     {
         canSound = value;
     }
+
+
 }

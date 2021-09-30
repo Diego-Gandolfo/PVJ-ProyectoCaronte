@@ -29,7 +29,6 @@ public class EnemyMeleeWeapon : MonoBehaviour
     {
         if (!IsAttacking)
         {
-            print("attack");
             IsAttacking = true;
             player.HealthController.TakeDamage(_attackStats.Damage);
             timerCD = _attackStats.Cooldown;
