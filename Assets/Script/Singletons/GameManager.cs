@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public bool IsGameFreeze { get; set; }
     public PlayerController Player { get; private set; }
 
+    public Action<PlayerController> OnPlayerAssing;
+
     public void Awake()
     {
         if (instance != null)
@@ -40,5 +42,6 @@ public class GameManager : MonoBehaviour
     public void SetPlayer(PlayerController player)
     {
         Player = player;
+        OnPlayerAssing?.Invoke(player);
     }
 }
