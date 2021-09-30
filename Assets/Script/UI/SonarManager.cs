@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class SonarManager : MonoBehaviour
 {
     [SerializeField] private GameObject container;
+    [SerializeField] private float MinDistanceLevel1 = 25f;
+    [SerializeField] private float MinDistanceLevel2 = 15f;
+    [SerializeField] private float MinDistanceLevel3 = 9f;
 
     private Animator animator;
 
@@ -21,12 +24,12 @@ public class SonarManager : MonoBehaviour
 
     public void TriggerLevel(float level)
     {
-        if (level > 0 && level <= 9) //entre 0 y 9
+        if (level > 0 && level <= MinDistanceLevel3)
             animator.SetTrigger("Level3");
-        else if(level > 9 && level <= 15) // entre 9 y 15
+        else if(level > MinDistanceLevel3 && level <= MinDistanceLevel2)
             animator.SetTrigger("Level2");
-        else if(level > 15 && level <= 25)
-            animator.SetTrigger("Level1"); //entre 15 y 25
+        else if(level > MinDistanceLevel2 && level <= MinDistanceLevel1)
+            animator.SetTrigger("Level1");
     }
 
 }
