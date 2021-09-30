@@ -57,6 +57,7 @@ public class InputController : MonoBehaviour
             CheckSprint();
             CheckShoot();
             CheckAiming();
+            PlayAimSound();
         }
     }
     #endregion
@@ -90,8 +91,15 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetKey(aiming))
             OnAim?.Invoke(true);
+            
         else
             OnAim?.Invoke(false);
+    }
+
+    private void PlayAimSound()
+    {
+        if (Input.GetMouseButtonDown(1))
+            AudioManager.instance.PlaySound(SoundClips.Aim);
     }
 
     private void CheckJump()

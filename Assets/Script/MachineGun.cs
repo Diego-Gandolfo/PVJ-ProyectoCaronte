@@ -82,14 +82,15 @@ public class MachineGun : MonoBehaviour
     {
         shootingParticles.Play();
         StopShooting();
+        AudioManager.instance.PlaySound(SoundClips.Overheat);
     }
 
     public void IsAiming(bool value)
     {
         crossHair.gameObject.SetActive(value);
         isAiming = value;
+     
     }
-
     public void SetPlayer(PlayerController player)
     {
         player.IsShooting += CanShoot;
