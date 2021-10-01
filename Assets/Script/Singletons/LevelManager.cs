@@ -26,14 +26,12 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         GameManager.instance.CurrentLevel = currentLevel;
-        print(Player);
     }
 
     public void SetPlayer(PlayerController player)
     {
         Player = player;
         OnPlayerAssing?.Invoke(player);
-        print(Player);
     }
 
     public void GameOver()

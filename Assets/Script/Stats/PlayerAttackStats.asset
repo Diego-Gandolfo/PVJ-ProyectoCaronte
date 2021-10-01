@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetList:
     serializedVersion: 2
-    m_Bits: 841
+    m_Bits: 2824
   _damage: 2
   _cooldown: 1
   _bulletSpeed: 7

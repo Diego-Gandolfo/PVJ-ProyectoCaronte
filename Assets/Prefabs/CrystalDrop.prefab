@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2158928093949884883}
   - component: {fileID: 2158928093949884882}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 9143282682923774654}
   - component: {fileID: 535699615032329542}
   - component: {fileID: 1020481247481633536}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CrystalDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 8579058438027339990}
   - component: {fileID: 4657051487411693427}
   - component: {fileID: 7441596877246567353}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Piedritas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

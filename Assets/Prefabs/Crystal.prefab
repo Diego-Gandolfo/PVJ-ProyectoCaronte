@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2158928093949884883}
   - component: {fileID: 2158928093949884882}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3698006364689989199}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 5726625833171096771}
   - component: {fileID: 115085884605970724}
   - component: {fileID: 1020481247481633536}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 6799775678733930370}
   - component: {fileID: 2855553070125529372}
   - component: {fileID: 5955724121819571651}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

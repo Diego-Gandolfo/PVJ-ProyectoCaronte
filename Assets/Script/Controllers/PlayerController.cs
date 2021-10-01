@@ -88,7 +88,6 @@ public class PlayerController : ActorController
     {
         if (!isUsingWeapon)
         {
-            print("player says:" + this);
             Vector3 movement = transform.right * horizontal + transform.forward * vertical;
             transform.position += movement * currentSpeed * Time.deltaTime;
             
@@ -186,7 +185,7 @@ public class PlayerController : ActorController
     private void CanShoot(bool value)
     {
         RaycastHit hit;
-        Physics.Raycast(cam.transform.position + offset, cam.transform.forward, out hit, 999f, _attackStats.TargetList);;
+        Physics.Raycast(cam.transform.position + offset, cam.transform.forward, out hit, 999f, _attackStats.TargetList);
         IsShooting?.Invoke(value, hit);
         shooting = value;
         animator.speed = 1f;

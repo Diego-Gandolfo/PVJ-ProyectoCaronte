@@ -5036,7 +5036,7 @@ MonoBehaviour:
   _attackStats: {fileID: 11400000, guid: 6d327f4df3696ca41a24ac64e34843f7, type: 2}
   cam: {fileID: 0}
   aimVirtualCamera: {fileID: 0}
-  offset: {x: 0, y: 0, z: 1}
+  offset: {x: 0, y: 0, z: 0}
   jumpPoints:
   - {fileID: 3798678069488343739}
   - {fileID: 1583126159781108109}
@@ -5051,7 +5051,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859750694658385290}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b9921d6892c10b45b336aefd459447b, type: 3}
   m_Name: 
@@ -5063,7 +5063,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859750694658385290}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 022d9e30a91cc0b4f857c04935685d9d, type: 3}
   m_Name: 
@@ -7487,6 +7487,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Camera (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902544411814234542, guid: 301a21b0c07a0cd48a95c061ec50a28f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 301a21b0c07a0cd48a95c061ec50a28f, type: 3}

@@ -3630,7 +3630,7 @@ GameObject:
   - component: {fileID: 1338339170}
   - component: {fileID: 1338339172}
   - component: {fileID: 1338339171}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3947,7 +3947,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1464657389}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4391,6 +4391,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamparita
       objectReference: {fileID: 0}
+    - target: {fileID: 2795862746374450200, guid: 4c1a637f385da1b468c990ded3ab3ec0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082366027080120256, guid: 4c1a637f385da1b468c990ded3ab3ec0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082366028036263228, guid: 4c1a637f385da1b468c990ded3ab3ec0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082366028200530465, guid: 4c1a637f385da1b468c990ded3ab3ec0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082366028823095527, guid: 4c1a637f385da1b468c990ded3ab3ec0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3280651285175858850, guid: 4c1a637f385da1b468c990ded3ab3ec0,
         type: 3}
       propertyPath: m_RootOrder
@@ -4445,6 +4470,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3578748404104845231, guid: 4c1a637f385da1b468c990ded3ab3ec0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5072815450662107349, guid: 4c1a637f385da1b468c990ded3ab3ec0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801076750756303380, guid: 4c1a637f385da1b468c990ded3ab3ec0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c1a637f385da1b468c990ded3ab3ec0, type: 3}
@@ -4550,11 +4590,6 @@ PrefabInstance:
       propertyPath: aimVirtualCamera
       value: 
       objectReference: {fileID: 24716429}
-    - target: {fileID: 2902544411585000327, guid: 6ebcc90c4e8f13143be5fdfe82cca29a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4368234925807164453, guid: 6ebcc90c4e8f13143be5fdfe82cca29a,
         type: 3}
       propertyPath: m_RootOrder
@@ -4610,16 +4645,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6355265869036301437, guid: 6ebcc90c4e8f13143be5fdfe82cca29a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7990734501827032521, guid: 6ebcc90c4e8f13143be5fdfe82cca29a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ebcc90c4e8f13143be5fdfe82cca29a, type: 3}
 --- !u!1001 &1670813133
@@ -4638,6 +4663,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740819717701218862, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7590055663916245644, guid: 91b595f2545c3854abad3e9515ef3610,
         type: 3}
