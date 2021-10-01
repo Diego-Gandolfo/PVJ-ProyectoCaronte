@@ -54,7 +54,7 @@ public class AudioManager : MonoBehaviour
 
         musicAudioSource.volume = musicInitialVolumen;
         musicAudioSource.clip = music;
-        musicAudioSource.Play();
+        //musicAudioSource.Play(); //TODO: Poner musica
     }
 
     public void PlaySound(SoundClips soundClip)
@@ -87,39 +87,40 @@ public class AudioManager : MonoBehaviour
 
             case SoundClips.Aim:
                 soundsAudioSource.volume = 0.5f;
-                soundsAudioSource.PlayOneShot(aim);
+                //soundsAudioSource.PlayOneShot(aim); //TODO: PONER SONIDO AIM
                 break;
 
             case SoundClips.Steps:
                 soundsAudioSource.volume = 1f;
-
-                int randomStep = Random.Range(0, 4);
-
-                if (randomStep == 0)
-                    soundsAudioSource.PlayOneShot(footstepsOne);
-
-                else if (randomStep == 1)
-                    soundsAudioSource.PlayOneShot(footstepsTwo);
-
-                else if (randomStep == 2)
-                    soundsAudioSource.PlayOneShot(footstepsThree);
-
-                else if (randomStep == 3) 
-                    soundsAudioSource.PlayOneShot(footstepsFour);
+                //PlaySoundSteps(); //TODO: PONER SONIDO PASOS
                 break;
 
             case SoundClips.MachineGunLoad:
                 soundsAudioSource.volume = 1.8f;
-                soundsAudioSource.PlayOneShot(machineGunLoad);
+                //soundsAudioSource.PlayOneShot(machineGunLoad); //TODO: PONER SONIDO LOAD MACHINEGUN
                 break;
 
             case SoundClips.Overheat:
                 soundsAudioSource.volume = 2f;
-                soundsAudioSource.PlayOneShot(overheat);
+                //soundsAudioSource.PlayOneShot(overheat); //TODO: PONER SONIDO OVERHEAT
                 break;
 
             default:
                 break;
         }
+    }
+
+    private void PlaySoundSteps()
+    {
+        int randomStep = Random.Range(0, 4);
+
+        if (randomStep == 0)
+            soundsAudioSource.PlayOneShot(footstepsOne);
+        else if (randomStep == 1)
+            soundsAudioSource.PlayOneShot(footstepsTwo);
+        else if (randomStep == 2)
+            soundsAudioSource.PlayOneShot(footstepsThree);
+        else if (randomStep == 3)
+            soundsAudioSource.PlayOneShot(footstepsFour);
     }
 }
