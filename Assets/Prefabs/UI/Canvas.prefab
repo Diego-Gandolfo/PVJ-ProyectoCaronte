@@ -134,7 +134,7 @@ MonoBehaviour:
   promptTrigger: {fileID: 1224196653}
   lifeBar: {fileID: 4761198740244342890}
   overHeatImage: {fileID: 5599285}
-  crystalController: {fileID: 0}
+  crystalController: {fileID: 856657792058153521}
   crosshair: {fileID: 1485697616}
 --- !u!114 &7973899834842125907
 MonoBehaviour:
@@ -1009,7 +1009,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &811422661195325811
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1706,7 +1706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3464519314974373016
 RectTransform:
   m_ObjectHideFlags: 0
