@@ -4834,6 +4834,36 @@ Transform:
   m_Father: {fileID: 4368234925807164453}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1534631837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1534631838}
+  m_Layer: 6
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1534631838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534631837}
+  m_LocalRotation: {x: 0.12293874, y: -0, z: -0.000000014901161, w: 0.99241436}
+  m_LocalPosition: {x: -0.076, y: 0.21, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4368234925807164453}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 14.123, y: 0, z: 0}
 --- !u!1 &123445315828002973
 GameObject:
   m_ObjectHideFlags: 0
@@ -4908,7 +4938,6 @@ GameObject:
   - component: {fileID: 2974037318335174037}
   - component: {fileID: 5561194953819672892}
   - component: {fileID: 1434150396799790331}
-  - component: {fileID: 1945481972}
   - component: {fileID: 6355265869036301437}
   - component: {fileID: 7990734501827032521}
   m_Layer: 6
@@ -4939,6 +4968,7 @@ Transform:
   - {fileID: 2902544411585000321}
   - {fileID: 3798678069488343739}
   - {fileID: 1583126159781108109}
+  - {fileID: 1534631838}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 96.21, z: 0}
@@ -5004,31 +5034,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actorStats: {fileID: 11400000, guid: eb19110176585bf4e83fc330dc1d4e8c, type: 2}
   _attackStats: {fileID: 11400000, guid: 6d327f4df3696ca41a24ac64e34843f7, type: 2}
+  cam: {fileID: 0}
   aimVirtualCamera: {fileID: 0}
-  firepoint: {fileID: 4368234924497453366}
-  target:
-    serializedVersion: 2
-    m_Bits: 4294967295
+  offset: {x: 0, y: 0, z: 1}
   jumpPoints:
   - {fileID: 3798678069488343739}
   - {fileID: 1583126159781108109}
   surfaceList:
     serializedVersion: 2
-    m_Bits: 257
+    m_Bits: 769
   weapon: {fileID: 3457291127151309888}
---- !u!114 &1945481972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859750694658385290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 229e6f39001792843ad7c466ddcf4abd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gravityAttractor: {fileID: 0}
 --- !u!114 &6355265869036301437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5036,7 +5051,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859750694658385290}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b9921d6892c10b45b336aefd459447b, type: 3}
   m_Name: 
@@ -5048,7 +5063,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859750694658385290}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 022d9e30a91cc0b4f857c04935685d9d, type: 3}
   m_Name: 
@@ -6065,7 +6080,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3235395019358154417}
-  - component: {fileID: 247176171}
   m_Layer: 0
   m_Name: Armature
   m_TagString: Untagged
@@ -6090,21 +6104,6 @@ Transform:
   m_Father: {fileID: 4368234925807164453}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &247176171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3925349911358235899}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68c884998a859804195e560c4d7655af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSensibility: 300
-  clampMin: -20
-  clampMax: 20
 --- !u!1 &4273876704462793089
 GameObject:
   m_ObjectHideFlags: 0
@@ -6213,6 +6212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6903580764886999615, guid: fa7e67293d9c0a04dadaf7a4e4e61c3a,
     type: 3}
+  effectShoot: {fileID: 0}
   firePoint: {fileID: 4368234924497453366}
   crossHair: {fileID: 9016468469215341998}
   minDistance: 1

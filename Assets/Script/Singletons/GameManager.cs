@@ -45,4 +45,12 @@ public class GameManager : MonoBehaviour
         Player = player;
         OnPlayerAssing?.Invoke(player);
     }
+
+    public void SetCursorActive(bool value)
+    {
+        if (value)
+            Cursor.lockState = CursorLockMode.None;
+        else
+            Cursor.lockState = CursorLockMode.Locked;
+    }
 }
