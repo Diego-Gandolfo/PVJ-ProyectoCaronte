@@ -8,7 +8,7 @@ public class ActorController : MonoBehaviour
 {
     [SerializeField] protected ActorStats _actorStats;
     [SerializeField] protected AttackStats _attackStats;
-    protected Animator animator = null;
+    [SerializeField] protected Animator animator = null;
 
     public AttackStats AttackStats => _attackStats;
     public HealthController HealthController { get; protected set; }

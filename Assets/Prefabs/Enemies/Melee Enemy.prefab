@@ -1206,7 +1206,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3243107741558250695}
-  - component: {fileID: 3243107741550572327}
   m_Layer: 3
   m_Name: Enemy Model
   m_TagString: Enemy
@@ -1246,25 +1245,6 @@ Transform:
   m_Father: {fileID: 7521643662446928172}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &3243107741550572327
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3243107741557948647}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 66ca9bf0145725543a1e8a693589f362, type: 3}
-  m_Controller: {fileID: 9100000, guid: e761ace889a78a946967af8d6890f71d, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3243107741557948649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1847,6 +1827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actorStats: {fileID: 11400000, guid: dcf6b3e6b1dcb6c41b878e8b90c02863, type: 2}
   _attackStats: {fileID: 11400000, guid: 84718f264bdb56549b33e724e4c8898a, type: 2}
+  animator: {fileID: 1463940773371982307}
   _detectionArea: {x: 30, y: 5, z: 30}
   _attackRadius: 1
   minimumDetectionDistance: 10

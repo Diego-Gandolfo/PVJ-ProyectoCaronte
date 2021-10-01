@@ -10,8 +10,8 @@ public class EnemyMeleeController : EnemyController
 
     #region Private
     private EnemyMeleeWeapon weapon;
-    private bool canFollow;
-    private bool playerInRange;
+    private bool canFollow = false;
+    private bool playerInRange = false;
     #endregion
 
     #region Unity Methods
@@ -27,9 +27,14 @@ public class EnemyMeleeController : EnemyController
         CheckVisibleData();
 
         if(canFollow && !playerInRange)
+        {
             animator.SetBool("Walk Forward", true);
+        }
         else
+        {
+            
             animator.SetBool("Walk Forward", false);
+        }
     }
 
     #endregion
