@@ -2,16 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 [RequireComponent(typeof(HealthController))]
 [RequireComponent(typeof(OxygenSystemController))]
 public class PlayerController : ActorController
 {
     #region Serialize Fields
+    [SerializeField] private Camera cam;
+    [SerializeField] private CinemachineVirtualCamera aimVirtualCamera;
+    [SerializeField] private Vector3 offset;
+
     [Header("Jump")]
     [SerializeField] private Transform[] jumpPoints;
     [SerializeField] private LayerMask surfaceList;
-
 
     [Header("Attack")]
     [SerializeField] private MachineGun weapon;
@@ -38,7 +42,7 @@ public class PlayerController : ActorController
     #region Propertys
     public bool IsSprinting { get; private set; }
 
-    public Action<bool> IsShooting;
+    public Action<bool, RaycastHit> IsShooting;
 
     #endregion
 
@@ -47,7 +51,6 @@ public class PlayerController : ActorController
     protected override void Awake()
     {
         base.Awake();
-        
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
         oxygenSystem = GetComponent<OxygenSystemController>();
@@ -129,9 +132,9 @@ public class PlayerController : ActorController
         }
     }
 
-    private void Rotate(float rotX)
+    private void Rotate(Vector2 rotation)
     {
-        transform.Rotate(transform.up, rotX, Space.World); // La otra parte, "Mouse Y", se hace en el Script LookUpDown
+        transform.localRotation = Quaternion.Euler(-rotation.y, rotation.x, 0);
     }
 
     private void Jump()
@@ -175,11 +178,14 @@ public class PlayerController : ActorController
         aiming = value;
         weapon.IsAiming(value);
         animator.SetBool("IsAiming", value);
+        aimVirtualCamera.gameObject.SetActive(value);
     }
 
-    private void CanShoot(bool value) //Acá recibe el input de si esta disparando o no a traves de un GetKeyDown or GetKeyUp
+    private void CanShoot(bool value)
     {
-        IsShooting?.Invoke(value);
+        RaycastHit hit;
+        Physics.Raycast(cam.transform.position + offset, cam.transform.forward, out hit, 999f, _attackStats.TargetList);;
+        IsShooting?.Invoke(value, hit);
         shooting = value;
         animator.speed = 1f;
     }
@@ -189,7 +195,7 @@ public class PlayerController : ActorController
         AudioManager.instance.PlaySound(SoundClips.Shoot);
         weapon.Shoot();
     }
-    void CanMove()
+    private void CanMove()
     {
         if(aiming || shooting)
         {
@@ -200,5 +206,6 @@ public class PlayerController : ActorController
             isUsingWeapon = false;
         }
     }
+
     #endregion
 }

@@ -16,8 +16,8 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         lifeTime -= Time.deltaTime;
-        bulletSpeed += Time.deltaTime; 
-        transform.position += transform.forward * bulletSpeed * Time.deltaTime;
+        //bulletSpeed += Time.deltaTime; 
+        //transform.position += transform.forward * bulletSpeed * Time.deltaTime;
         if(lifeTime < 0)
         {
             Destroy(gameObject);

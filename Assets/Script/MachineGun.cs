@@ -5,6 +5,7 @@ using UnityEngine;
 public class MachineGun : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private ParticleSystem effectShoot;
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform crossHair;
     [SerializeField] private float minDistance; // distancia minima para que calcule el forward del disparo con el crosshair
@@ -15,8 +16,8 @@ public class MachineGun : MonoBehaviour
     private bool isShooting;
     private bool isAiming;
     private float currentShootingTime;
-
     private Animator animator;
+    private RaycastHit target;
 
     void Start()
     {
@@ -48,21 +49,13 @@ public class MachineGun : MonoBehaviour
             if (currentShootingTime < 0)
                 currentShootingTime = 0;
             HUDManager.instance.UpdateOverHeat(currentShootingTime, maxShootingTime);
-            Debug.DrawRay(crossHair.position, crossHair.forward,Color.red);
         }
     }
 
     public void Shoot()
     {
-        RaycastHit hit;
-
-        var hasHit = Physics.Raycast(crossHair.position, crossHair.forward, out hit, Mathf.Infinity, layerMask);
-        var bulletClone = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
-        if (Vector3.Distance(hit.point, crossHair.position) > minDistance && hit.point != Vector3.zero && isAiming)
-            bulletClone.transform.forward = hit.point - firePoint.position;
-        else
-            bulletClone.transform.forward = firePoint.transform.forward;
+        //TODO: Particle system play del firepoint (effecto como si estuviera disparando la bala que sale del arma)
+        Instantiate(bulletPrefab, target.point, Quaternion.LookRotation(target.normal)); //Instancia en el lugar donde pego la bala. No la vemos recorrer el camino. 
     }
 
     private void StopShooting()
@@ -97,8 +90,9 @@ public class MachineGun : MonoBehaviour
         animator = player.GetComponent<Animator>();
     }
 
-    public void CanShoot(bool value)
+    public void CanShoot(bool value, RaycastHit hit)
     {
         isShooting = value;
+        target = hit;
     }
 }

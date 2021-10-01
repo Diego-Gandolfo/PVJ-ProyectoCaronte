@@ -6,9 +6,13 @@ using UnityEngine;
 public class InputController : MonoBehaviour
 {
     [Header("Rotation")]
-    [SerializeField] private Vector3 rotationSensibility = new Vector3(300f, 100f, 0);
+    [SerializeField] private Vector3 rotationSensibility = new Vector3(300f, 300f, 0);
+    [SerializeField] private float clampMin = -20;
+    [SerializeField] private float clampMax = 20;
 
     public static InputController instance;
+
+    private Vector2 rotation;
 
     #region KeyCodes
     private string horizontalAxis = "Horizontal";
@@ -28,7 +32,7 @@ public class InputController : MonoBehaviour
     public Action<bool> OnAim;
     public Action<bool> OnSprint;
     public Action<float, float> OnMove;
-    public Action<float> OnRotate;
+    public Action<Vector2> OnRotate;
     #endregion
 
     #region Unity
@@ -43,6 +47,8 @@ public class InputController : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -65,11 +71,15 @@ public class InputController : MonoBehaviour
     #region Private
     private void CheckRotate()
     {
-        var rotX = Input.GetAxis("Mouse X") * Time.deltaTime * rotationSensibility.x;
-        if (rotX >= 360) 
-            rotX = 0;
-        
-        OnRotate?.Invoke(rotX);
+        rotation.x += Input.GetAxis("Mouse X") * Time.deltaTime * rotationSensibility.x;
+        if (rotation.x >= 360)
+            rotation.x = 0;
+
+
+        rotation.y += Input.GetAxis("Mouse Y") * Time.deltaTime * rotationSensibility.y;
+        rotation.y = Mathf.Clamp(rotation.y, clampMin, clampMax);
+
+        OnRotate?.Invoke(rotation);
     }   
 
     private void CheckMovement()
