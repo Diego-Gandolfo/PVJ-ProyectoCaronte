@@ -48,7 +48,7 @@ public class InputController : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()

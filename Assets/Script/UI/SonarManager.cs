@@ -25,11 +25,11 @@ public class SonarManager : MonoBehaviour
     public void TriggerLevel(float level)
     {
         if (level > 0 && level <= MinDistanceLevel3)
-            animator.SetTrigger("Level3");
+            animator?.SetTrigger("Level3");
         else if(level > MinDistanceLevel3 && level <= MinDistanceLevel2)
-            animator.SetTrigger("Level2");
+            animator?.SetTrigger("Level2");
         else if(level > MinDistanceLevel2 && level <= MinDistanceLevel1)
-            animator.SetTrigger("Level1");
+            animator?.SetTrigger("Level1");
     }
 
 }

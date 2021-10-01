@@ -10,11 +10,13 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Image overHeatImage;
     [SerializeField] private UICrystalCounter crystalController;
     [SerializeField] private GameObject crosshair;
+    [SerializeField] private SonarManager sonarManager;
     private UIQuestManager questManager;
 
     public static HUDManager instance;
 
     public bool IsQuestVisible { get; private set; }
+    public SonarManager SonarManager => sonarManager;
 
     void Awake()
     {

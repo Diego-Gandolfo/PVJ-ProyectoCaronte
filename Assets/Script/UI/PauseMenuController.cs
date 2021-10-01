@@ -49,6 +49,7 @@ public class PauseMenuController : MonoBehaviour
 
     private void Pause()
     {
+        GameManager.instance.SetCursorActive(true);
         Time.timeScale = 0;
         GameManager.instance.IsGameFreeze = true;
         isActive = true;
@@ -60,6 +61,7 @@ public class PauseMenuController : MonoBehaviour
 
     private void ExitMenu()
     {
+        GameManager.instance.SetCursorActive(false);
         Time.timeScale = 1;
         GameManager.instance.IsGameFreeze = false;
         isActive = false;

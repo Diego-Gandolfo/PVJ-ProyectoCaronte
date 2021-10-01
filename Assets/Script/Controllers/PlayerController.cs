@@ -60,6 +60,7 @@ public class PlayerController : ActorController
 
     private void Start()
     {
+        GameManager.instance.SetCursorActive(false);
         SubscribeEvents();
         GameManager.instance.SetPlayer(this);
         currentTimeToPlaySound = timeToPlaySound;

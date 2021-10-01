@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DemoQuest : MonoBehaviour
+public class QuestsManager : MonoBehaviour
 {
     #region Static
 
-    public static DemoQuest Instance { get; private set; }
+    public static QuestsManager Instance { get; private set; }
 
     #endregion
 

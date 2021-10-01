@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1778051407939655002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1778051407939655004}
+  - component: {fileID: 1778051407939655003}
+  m_Layer: 0
+  m_Name: QuestsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1778051407939655004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778051407939655002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1778051407939655003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778051407939655002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db14b02b298233841846d88c83afc7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _questBox: {fileID: 0}
+  _titleMessage: {fileID: 0}
+  _questMessage: {fileID: 0}
+  _animator: {fileID: 0}
+  _oxigenTimeToStart: 1
+  _oxigenTitle: Take a breath
+  _oxigenQuest: 'Activate the
+
+    <b>Oxigen Generator</b>
+
+    <size=20><i>(is movin''
+    near you)</i></size>'
+  _crystalTimeToStart: 5
+  _crystalTitle: Search & Collect
+  _crystalQuest: 'Find
+
+    <b>30 CRYSTALS</b>
+
+    <size=20><i>(shoot''em to break)</i></size>'

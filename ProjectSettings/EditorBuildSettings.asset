@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Demo_Final.unity
     guid: 5ddd2ae466f6df948aae9650daa9bbcd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level.unity
     guid: 29ccb5b0fc97a584b881eb5837c3621b
+  - enabled: 1
+    path: Assets/Scenes/TerraplainLevel.unity
+    guid: ec9957a6f8349c84d9aa2cacd505e355
   - enabled: 1
     path: Assets/Scenes/Victory.unity
     guid: 2a7bc61f0ba08e14ab8166d5cc2842d8

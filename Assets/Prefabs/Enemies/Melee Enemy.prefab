@@ -1710,7 +1710,6 @@ GameObject:
   - component: {fileID: 1463940773371982307}
   - component: {fileID: 1606273537691291278}
   - component: {fileID: 6762182698497422356}
-  - component: {fileID: 2139971339715179623}
   - component: {fileID: 4369800937692343193}
   - component: {fileID: 2180820321459515961}
   - component: {fileID: 7521643662446928173}
@@ -1789,19 +1788,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &2139971339715179623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7521643662446928162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 229e6f39001792843ad7c466ddcf4abd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gravityAttractor: {fileID: 0}
 --- !u!114 &4369800937692343193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1861,12 +1847,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actorStats: {fileID: 11400000, guid: dcf6b3e6b1dcb6c41b878e8b90c02863, type: 2}
   _attackStats: {fileID: 11400000, guid: 84718f264bdb56549b33e724e4c8898a, type: 2}
-  _detectionRadius: {x: 30, y: 5, z: 30}
-  _detectionSprintingArea: {x: 30, y: 5, z: 30}
-  _detectionWalkingArea: {x: 20, y: 5, z: 20}
+  _detectionArea: {x: 30, y: 5, z: 30}
   _attackRadius: 1
-  whenPlayerMoving: 10
-  whenPlayerSprinting: 25
+  minimumDetectionDistance: 10
 --- !u!114 &4369962038243472794
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,16 +26,18 @@ public class GameManager : MonoBehaviour
         }
 
         IsGameFreeze = false;
-        CurrentLevel = "Level";
+        CurrentLevel = "TerraplainLevel";
     }
 
     public void GameOver()
     {
+        SetCursorActive(true);
         SceneManager.LoadScene("GameOver");
     }
 
     public void Victory()
     {
+        SetCursorActive(true);
         SceneManager.LoadScene("Victory");
     }
 

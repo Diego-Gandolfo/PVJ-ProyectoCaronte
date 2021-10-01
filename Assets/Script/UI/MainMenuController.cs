@@ -16,13 +16,14 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Button exitButton = null;
 
     private bool mainMenuCheck;
-    [SerializeField] private string level01 = "Level";
+    [SerializeField] private string level01 = "TerraplainLevel";
 
     [Header("Credits Settings")]
     [SerializeField] private Button goBackCreditsButton;
 
     void Start()
     {
+        GameManager.instance.SetCursorActive(true);
         playButton.onClick.AddListener(OnPlayHandler);
         creditsButton.onClick.AddListener(OnCreditsHandler);
         goBackCreditsButton.onClick.AddListener(OnGoBackHandler);
@@ -38,6 +39,7 @@ public class MainMenuController : MonoBehaviour
 
     private void OnPlayHandler()
     {
+        GameManager.instance.SetCursorActive(false);
         //AudioManager.instance.PlaySound(SoundClips.MouseClick);
         SceneManager.LoadScene(level01);
     }
