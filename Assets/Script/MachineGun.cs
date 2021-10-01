@@ -18,7 +18,7 @@ public class MachineGun : MonoBehaviour
     private float currentShootingTime;
     private Animator animator;
     private RaycastHit target;
-
+    [SerializeField] private ParticleSystem flashParticles;
     void Start()
     {
         var particles = shootingParticles.main;
@@ -55,6 +55,7 @@ public class MachineGun : MonoBehaviour
     public void Shoot()
     {
         //TODO: Particle system play del firepoint (effecto como si estuviera disparando la bala que sale del arma)
+        flashParticles.Play();
         Instantiate(bulletPrefab, target.point, Quaternion.LookRotation(target.normal)); //Instancia en el lugar donde pego la bala. No la vemos recorrer el camino. 
     }
 
