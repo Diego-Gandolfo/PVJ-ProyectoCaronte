@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd7ec6cb5ae42e4b8234ff455f486ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oxygenRegenerationPerSecond: 0.5
+  oxygenRegenerationPerSecond: 5
   timerOfRegeneration: 1
 --- !u!1 &6937584232620815053
 GameObject:
@@ -4870,7 +4870,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 418bdcf8f4ca28640b276bf8d28d866d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
