@@ -9,9 +9,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public string CurrentLevel { get; set; }
     public bool IsGameFreeze { get; set; }
-    public PlayerController Player { get; private set; }
-
-    public Action<PlayerController> OnPlayerAssing;
 
     public void Awake()
     {
@@ -25,26 +22,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        IsGameFreeze = false;
-        CurrentLevel = "TerraplainLevel";
-    }
-
-    public void GameOver()
-    {
-        SetCursorActive(true);
-        SceneManager.LoadScene("GameOver");
-    }
-
-    public void Victory()
-    {
-        SetCursorActive(true);
-        SceneManager.LoadScene("Victory");
-    }
-
-    public void SetPlayer(PlayerController player)
-    {
-        Player = player;
-        OnPlayerAssing?.Invoke(player);
+        Pause(false);
     }
 
     public void SetCursorActive(bool value)
@@ -53,5 +31,20 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         else
             Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void Pause(bool value)
+    {
+        IsGameFreeze = value;
+        if (value)
+        {
+            Time.timeScale = 0;
+            //TODO: lower music
+        }
+        else
+        {
+            Time.timeScale = 1;
+            //TODO: subir musica
+        }
     }
 }

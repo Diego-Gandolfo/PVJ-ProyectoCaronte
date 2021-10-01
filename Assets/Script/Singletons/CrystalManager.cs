@@ -27,7 +27,7 @@ public class CrystalManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.OnPlayerAssing += OnPlayerAssing;   
+        LevelManager.instance.OnPlayerAssing += OnPlayerAssing;   
     }
 
     private void Update()
@@ -77,7 +77,7 @@ public class CrystalManager : MonoBehaviour
 
     protected void OnPlayerAssing(PlayerController player)
     {
-        GameManager.instance.OnPlayerAssing -= OnPlayerAssing;
+        LevelManager.instance.OnPlayerAssing -= OnPlayerAssing;
         this.player = player;
     }
 }

@@ -93,16 +93,19 @@ public class QuestsManager : MonoBehaviour
 
     public void StartCrystalQuest()
     {
-        _animator.SetTrigger("Hide");
+        if(_animator != null)
+        {
+            _animator.SetTrigger("Hide");
 
-        _questTimerCounter = _crystalTimeToStart;
+            _questTimerCounter = _crystalTimeToStart;
 
-        _titleMessage.text = _crystalTitle;
-        _questMessage.text = _crystalQuest;
+            _titleMessage.text = _crystalTitle;
+            _questMessage.text = _crystalQuest;
 
-        _questBox.SetActive(false);
+            _questBox.SetActive(false);
 
-        _canCount = true;
+            _canCount = true;
+        }
     }
 
     #endregion

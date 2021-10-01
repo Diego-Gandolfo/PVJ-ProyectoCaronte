@@ -34,7 +34,7 @@ public class HUDManager : MonoBehaviour
     private void Start()
     {
         SetCrosshair(false);
-        GameManager.instance.OnPlayerAssing += OnPlayerAssing;
+        LevelManager.instance.OnPlayerAssing += OnPlayerAssing;
         InputController.instance.OnAim += SetCrosshair;
         questManager = GetComponent<UIQuestManager>();
         IsQuestVisible = true;
@@ -79,7 +79,12 @@ public class HUDManager : MonoBehaviour
 
     protected void OnPlayerAssing(PlayerController player)
     {
-        GameManager.instance.OnPlayerAssing -= OnPlayerAssing;
+        LevelManager.instance.OnPlayerAssing -= OnPlayerAssing;
         lifeBar.SetHealthController(player.GetComponent<HealthController>());
+    }
+
+    private void OnDestroy()
+    {
+        InputController.instance.OnAim -= SetCrosshair;
     }
 }

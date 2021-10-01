@@ -51,6 +51,6 @@ public class UICrystalCounter : MonoBehaviour
     }
 
     private void Victory() {
-        GameManager.instance?.Victory();
+        LevelManager.instance?.Victory();
     }
 }

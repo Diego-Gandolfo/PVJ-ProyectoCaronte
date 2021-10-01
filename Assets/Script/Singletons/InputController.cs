@@ -47,15 +47,13 @@ public class InputController : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
-        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
         CheckPause();
 
-        if (!GameManager.instance.IsGameFreeze)
+        if (!GameManager.instance.IsGameFreeze && LevelManager.instance.Player != null)
         {
             CheckMovement();
             CheckRotate();

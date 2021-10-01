@@ -61,8 +61,8 @@ public class PlayerController : ActorController
     private void Start()
     {
         GameManager.instance.SetCursorActive(false);
+        LevelManager.instance.SetPlayer(this);
         SubscribeEvents();
-        GameManager.instance.SetPlayer(this);
         currentTimeToPlaySound = timeToPlaySound;
     }
 
@@ -88,6 +88,7 @@ public class PlayerController : ActorController
     {
         if (!isUsingWeapon)
         {
+            print("player says:" + this);
             Vector3 movement = transform.right * horizontal + transform.forward * vertical;
             transform.position += movement * currentSpeed * Time.deltaTime;
             
@@ -206,6 +207,16 @@ public class PlayerController : ActorController
         {
             isUsingWeapon = false;
         }
+    }
+
+    private void OnDestroy()
+    {
+        InputController.instance.OnMove -= Move;
+        InputController.instance.OnRotate -= Rotate;
+        InputController.instance.OnShoot -= CanShoot;
+        InputController.instance.OnJump -= Jump;
+        InputController.instance.OnSprint -= Sprint;
+        InputController.instance.OnAim -= IsAiming;
     }
 
     #endregion
