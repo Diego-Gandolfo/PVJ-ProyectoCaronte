@@ -47,11 +47,6 @@ public class HUDManager : MonoBehaviour
         promptTrigger.ShowPrompt(value);
     }
 
-    public void ChangeCrystalAmount(int value)
-    {
-        //Do something
-    }
-
     public LifeBarController GetLifeBar()
     {
         return lifeBar;
@@ -68,10 +63,6 @@ public class HUDManager : MonoBehaviour
         questManager.UpdateMessage(message);
         if (title != null)
             questManager.UpdateTitle(title);
-    }
-    public void UpdateOverHeat(float currentHeat,float  maxHeat)
-    {
-        overHeatImage.fillAmount = (float)currentHeat / maxHeat;
     }
 
     public void SetCrosshair(bool value)

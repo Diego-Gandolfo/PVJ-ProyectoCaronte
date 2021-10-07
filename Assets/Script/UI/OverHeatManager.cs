@@ -25,9 +25,4 @@ public class OverHeatManager : MonoBehaviour
         IsVisible = boolean;
         container.SetActive(IsVisible);
     }
-
-    //public void SetHealthController(HealthController health)
-    //{
-    //    health.OnUpdateLife += UpdateLifeBar;
-    //}
 }
