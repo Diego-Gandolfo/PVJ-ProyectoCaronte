@@ -12,43 +12,47 @@ public class MachineGun : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float maxShootingTime;
     [SerializeField] private ParticleSystem shootingParticles;
-    private bool canShoot;
+    [SerializeField] private ParticleSystem flashParticles;
+
+    private bool isOverheat;
     private bool isShooting;
-    private bool isAiming;
+    //private bool isAiming;
     private float currentShootingTime;
     private Animator animator;
     private RaycastHit target;
-    [SerializeField] private ParticleSystem flashParticles;
+
     void Start()
     {
         var particles = shootingParticles.main;
         particles.duration = maxShootingTime;
-        crossHair.gameObject.SetActive(false);
+        //crossHair.gameObject.SetActive(false);
     }
 
     void Update()
     {
         if (!GameManager.instance.IsGameFreeze)
         {
-            if (isShooting && canShoot)
+            if (isShooting && !isOverheat)
             {
-                animator.SetBool("IsShooting", true);
-
                 currentShootingTime += Time.deltaTime; // sacar el time delta time por un tema de como funciona con el calculo por frame.
-                
+
                 if (currentShootingTime >= maxShootingTime)
-                {
-                    OnOverHeat();
-                }
+                    isOverheat = true;
             }
-            else
+            else //si no esta disparando, resta. 
             {
-                StopShooting();
+                if (currentShootingTime >= 0)
+                    currentShootingTime -= Time.deltaTime / 3f;
             }
 
-            if (currentShootingTime < 0)
-                currentShootingTime = 0;
-            HUDManager.instance.UpdateOverHeat(currentShootingTime, maxShootingTime);
+            OnOverHeat();
+
+            if(isShooting && !isOverheat)
+                animator.SetBool("IsShooting", true);
+            else
+                animator.SetBool("IsShooting", false);
+
+            HUDManager.instance.OverHeat.UpdateStatBar(currentShootingTime, maxShootingTime);
         }
     }
 
@@ -59,32 +63,26 @@ public class MachineGun : MonoBehaviour
         Instantiate(bulletPrefab, target.point, Quaternion.LookRotation(target.normal)); //Instancia en el lugar donde pego la bala. No la vemos recorrer el camino. 
     }
 
-    private void StopShooting()
-    {
-        if(currentShootingTime > 0)
-        {
-            currentShootingTime -= Time.deltaTime;
-            canShoot = false;
-        }
-        else
-            canShoot = true;
-
-        animator.SetBool("IsShooting", false);
-    }
-
     private void OnOverHeat()
     {
-        shootingParticles.Play();
-        StopShooting();
-        AudioManager.instance.PlaySound(SoundClips.Overheat);
+        if (isOverheat)
+        {
+            shootingParticles.Play();
+            AudioManager.instance.PlaySound(SoundClips.Overheat);
+
+            if (currentShootingTime <= 0)
+                isOverheat = false;
+        }
+
     }
 
-    public void IsAiming(bool value)
-    {
-        crossHair.gameObject.SetActive(value);
-        isAiming = value;
+    //public void IsAiming(bool value)
+    //{
+    //    crossHair.gameObject.SetActive(value);
+    //    //isAiming = value;
      
-    }
+    //}
+
     public void SetPlayer(PlayerController player)
     {
         player.IsShooting += CanShoot;

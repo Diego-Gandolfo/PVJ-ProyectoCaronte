@@ -177,7 +177,7 @@ public class PlayerController : ActorController
     private void IsAiming(bool value)
     {
         aiming = value;
-        weapon.IsAiming(value);
+        //weapon.IsAiming(value);
         animator.SetBool("IsAiming", value);
         aimVirtualCamera.gameObject.SetActive(value);
         if(value)

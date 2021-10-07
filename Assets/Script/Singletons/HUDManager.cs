@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour
 {
     [SerializeField] private GameObject hud;
+    [SerializeField] private OverHeatManager overheat;
     [SerializeField] private PromptTrigger promptTrigger;
     [SerializeField] private LifeBarController lifeBar;
     [SerializeField] private Image overHeatImage;
@@ -19,6 +20,7 @@ public class HUDManager : MonoBehaviour
     public bool IsQuestVisible { get; private set; }
     public ShopManagerUI ShopManagerUI { get; private set; }
     public SonarManager SonarManager => sonarManager;
+    public OverHeatManager OverHeat => overheat;
 
 
     void Awake()
@@ -59,11 +61,6 @@ public class HUDManager : MonoBehaviour
         hud.SetActive(value);
     }
 
-    public void ChangeCrystalAmount(int value)
-    {
-        //Do something
-    }
-
     public LifeBarController GetLifeBar()
     {
         return lifeBar;
@@ -80,10 +77,6 @@ public class HUDManager : MonoBehaviour
         questManager.UpdateMessage(message);
         if (title != null)
             questManager.UpdateTitle(title);
-    }
-    public void UpdateOverHeat(float currentHeat,float  maxHeat)
-    {
-        overHeatImage.fillAmount = (float)currentHeat / maxHeat;
     }
 
     protected void OnPlayerAssing(PlayerController player)
