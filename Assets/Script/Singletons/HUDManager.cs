@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
+    [SerializeField] private OverHeatManager overheat;
     [SerializeField] private PromptTrigger promptTrigger;
     [SerializeField] private LifeBarController lifeBar;
     [SerializeField] private Image overHeatImage;
@@ -17,6 +18,7 @@ public class HUDManager : MonoBehaviour
 
     public bool IsQuestVisible { get; private set; }
     public SonarManager SonarManager => sonarManager;
+    public OverHeatManager OverHeat => overheat;
 
     void Awake()
     {

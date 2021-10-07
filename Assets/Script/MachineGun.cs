@@ -48,7 +48,8 @@ public class MachineGun : MonoBehaviour
 
             if (currentShootingTime < 0)
                 currentShootingTime = 0;
-            HUDManager.instance.UpdateOverHeat(currentShootingTime, maxShootingTime);
+            HUDManager.instance.OverHeat.UpdateStatBar(currentShootingTime, maxShootingTime);
+            //HUDManager.instance.UpdateOverHeat(currentShootingTime, maxShootingTime);
         }
     }
 
