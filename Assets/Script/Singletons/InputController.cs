@@ -22,6 +22,7 @@ public class InputController : MonoBehaviour
     private KeyCode aiming = KeyCode.Mouse1;
     private KeyCode pause = KeyCode.Escape;
     private KeyCode sprint = KeyCode.LeftShift;
+    private KeyCode action = KeyCode.E;
     #endregion
 
     #region Events
@@ -33,6 +34,7 @@ public class InputController : MonoBehaviour
     public Action<bool> OnSprint;
     public Action<float, float> OnMove;
     public Action<Vector2> OnRotate;
+    public Action OnAction;
     #endregion
 
     #region Unity
@@ -61,7 +63,7 @@ public class InputController : MonoBehaviour
             CheckSprint();
             CheckShoot();
             CheckAiming();
-            PlayAimSound();
+            CheckAction();
         }
     }
     #endregion
@@ -104,12 +106,6 @@ public class InputController : MonoBehaviour
             OnAim?.Invoke(false);
     }
 
-    private void PlayAimSound()
-    {
-        if (Input.GetMouseButtonDown(1))
-            AudioManager.instance.PlaySound(SoundClips.Aim);
-    }
-
     private void CheckJump()
     {
         if (Input.GetKeyDown(jump))
@@ -128,6 +124,12 @@ public class InputController : MonoBehaviour
             OnSprint?.Invoke(true);
         else if (Input.GetKeyUp(sprint))
             OnSprint?.Invoke(false);
+    }
+
+    private void CheckAction()
+    {
+        if (Input.GetKeyDown(action))
+            OnAction?.Invoke();
     }
     #endregion
 }

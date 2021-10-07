@@ -180,6 +180,8 @@ public class PlayerController : ActorController
         weapon.IsAiming(value);
         animator.SetBool("IsAiming", value);
         aimVirtualCamera.gameObject.SetActive(value);
+        if(value)
+            AudioManager.instance.PlaySound(SoundClips.Aim);
     }
 
     private void CanShoot(bool value)

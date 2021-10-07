@@ -5,18 +5,21 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
+    [SerializeField] private GameObject hud;
     [SerializeField] private PromptTrigger promptTrigger;
     [SerializeField] private LifeBarController lifeBar;
     [SerializeField] private Image overHeatImage;
     [SerializeField] private UICrystalCounter crystalController;
     [SerializeField] private GameObject crosshair;
     [SerializeField] private SonarManager sonarManager;
-    private UIQuestManager questManager;
 
+    private UIQuestManager questManager;
     public static HUDManager instance;
 
     public bool IsQuestVisible { get; private set; }
+    public ShopManagerUI ShopManagerUI { get; private set; }
     public SonarManager SonarManager => sonarManager;
+
 
     void Awake()
     {
@@ -33,16 +36,27 @@ public class HUDManager : MonoBehaviour
 
     private void Start()
     {
-        SetCrosshair(false);
+        ShowCrosshair(false);
         LevelManager.instance.OnPlayerAssing += OnPlayerAssing;
-        InputController.instance.OnAim += SetCrosshair;
+        InputController.instance.OnAim += ShowCrosshair;
         questManager = GetComponent<UIQuestManager>();
+        ShopManagerUI = GetComponent<ShopManagerUI>();
         IsQuestVisible = true;
     }
 
     public void ShowPrompt(bool value)
     {
         promptTrigger.ShowPrompt(value);
+    }
+
+    public void ShowCrosshair(bool value)
+    {
+        crosshair.SetActive(value);
+    }
+
+    public void ShowHUD(bool value)
+    {
+        hud.SetActive(value);
     }
 
     public void ChangeCrystalAmount(int value)
@@ -72,11 +86,6 @@ public class HUDManager : MonoBehaviour
         overHeatImage.fillAmount = (float)currentHeat / maxHeat;
     }
 
-    public void SetCrosshair(bool value)
-    {
-        crosshair.SetActive(value);
-    }
-
     protected void OnPlayerAssing(PlayerController player)
     {
         LevelManager.instance.OnPlayerAssing -= OnPlayerAssing;
@@ -85,6 +94,6 @@ public class HUDManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        InputController.instance.OnAim -= SetCrosshair;
+        InputController.instance.OnAim -= ShowCrosshair;
     }
 }

@@ -8,7 +8,6 @@ public class PauseMenuController : MonoBehaviour
 {
     [Header("AllMenus Settings")]
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject hud;
 
     //[SerializeField] private float lowerVolume = 1f;
 
@@ -27,12 +26,13 @@ public class PauseMenuController : MonoBehaviour
         restartButton?.onClick.AddListener(OnRestartHandler);
         mainMenuButton?.onClick.AddListener(OnMenuHandler);
         quitButton?.onClick.AddListener(OnQuitHandler);
+        InputController.instance.OnPause += CheckPause;
         ExitMenu();
     }
 
-    void Update()
+    private void CheckPause()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!HUDManager.instance.ShopManagerUI.IsActive)
         {
             if (!isActive)
             {
@@ -47,26 +47,24 @@ public class PauseMenuController : MonoBehaviour
 
     private void Pause()
     {
-        GameManager.instance.Pause(true);
-        GameManager.instance.SetCursorActive(true);
-        Time.timeScale = 0;
-        GameManager.instance.IsGameFreeze = true;
         isActive = true;
-        hud.SetActive(false);
-        pauseMenu.SetActive(true);
+        ChangeStatus();
         //musicLevel.volume -= lowerVolume;
     }
 
     private void ExitMenu()
     {
-        GameManager.instance.Pause(false);
-        GameManager.instance.SetCursorActive(false);
-        Time.timeScale = 1;
-        GameManager.instance.IsGameFreeze = false;
         isActive = false;
-        pauseMenu.SetActive(false);
-        hud.SetActive(true);
         //musicLevel.volume += lowerVolume;
+        ChangeStatus();
+    }
+
+    private void ChangeStatus()
+    {
+        GameManager.instance.Pause(isActive);
+        GameManager.instance.SetCursorActive(isActive);
+        pauseMenu.SetActive(isActive);
+        HUDManager.instance.ShowHUD(!isActive); //Es el contrario a lo que pasa en pause, si el resto esta activo, entonces el HUD no.
     }
 
     private void OnResumeHandler()
@@ -96,5 +94,10 @@ public class PauseMenuController : MonoBehaviour
         //AudioManager.instance.PlaySound(SoundClips.MouseClick);
         Application.Quit();
         Debug.Log("Se cierra el juego");
+    }
+
+    private void OnDestroy()
+    {
+        InputController.instance.OnPause -= CheckPause;
     }
 }

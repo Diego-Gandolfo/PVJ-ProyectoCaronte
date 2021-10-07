@@ -9,6 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3571623092702977882}
+  - component: {fileID: 6082526488804398757}
+  - component: {fileID: 8094075395598343408}
+  - component: {fileID: 616224627100263382}
+  - component: {fileID: 4824100195241676257}
   m_Layer: 0
   m_Name: Maquina Expendedora separada
   m_TagString: Untagged
@@ -23,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4241024066012890592}
-  m_LocalRotation: {x: -0, y: -0.9939401, z: -0, w: 0.10992359}
+  m_LocalRotation: {x: 0, y: -0.9939399, z: 0, w: 0.10992516}
   m_LocalPosition: {x: 495.0776, y: 49.99426, z: 501.91324}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -32,6 +36,61 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -167.378, z: 0}
+--- !u!65 &6082526488804398757
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4241024066012890592}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2868946, y: 3.24823, z: 2.6983771}
+  m_Center: {x: -0.028453454, y: 1.124115, z: 0.83573306}
+--- !u!114 &8094075395598343408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4241024066012890592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &616224627100263382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4241024066012890592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cafad3b0c1b137147a133ec5d8901ecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4824100195241676257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4241024066012890592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16fb8b393d989b142bbe7ff05be857d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4437785845983595221
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,12 +7,16 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private string currentLevel = "TerraplainLevel";
+    [SerializeField] private int currentCrystalsNeeded = 30;
 
     public static LevelManager instance;
 
     public PlayerController Player { get; private set; }
+    public int CrystalCounter { get; private set; }
+    public int CrystalsNeeded => currentCrystalsNeeded;
 
     public Action<PlayerController> OnPlayerAssing;
+    public Action<int> OnCrystalUpdate;
 
 
     public void Awake()
@@ -44,6 +48,18 @@ public class LevelManager : MonoBehaviour
     {
         GameManager.instance.SetCursorActive(true);
         SceneManager.LoadScene("Victory");
+    }
+
+    public void AddCrystal(int number)
+    {
+        CrystalCounter += number;
+        OnCrystalUpdate?.Invoke(CrystalCounter);
+    }
+
+    public void RemoveCrystal(int number)
+    {
+        CrystalCounter -= number;
+        OnCrystalUpdate?.Invoke(CrystalCounter);
     }
 
 }

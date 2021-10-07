@@ -5,24 +5,23 @@ using UnityEngine;
 
 public class OxigenCapsuleController : MonoBehaviour, IInteractable
 {
-    [SerializeField] private Animator animator;
     [SerializeField] private GameObject forceField;
-    [SerializeField] private InteractableController interactableController;
+    private InteractableController interactableController;
+    private Animator animator;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
-        OnDisable();
         interactableController = GetComponent<InteractableController>();
         interactableController.interactable = this;
+        OnDisable();
     }
     public void Interact()
     {
         OnEnable();
         
     }
-    private void Update()
-    {
-    }
+
     private void OnEnable()
     {
         animator.SetBool("IsActive", true);
@@ -35,6 +34,4 @@ public class OxigenCapsuleController : MonoBehaviour, IInteractable
         animator.SetBool("IsActive", false);
         forceField.SetActive(false);
     }
-
-
 }

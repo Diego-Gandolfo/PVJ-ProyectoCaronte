@@ -5,52 +5,30 @@ using UnityEngine.UI;
 
 public class UICrystalCounter : MonoBehaviour
 {
-    public static UICrystalCounter instance;
     [SerializeField] private Text text;
 
-    private int crystalCounter;
-
-    public int CrystalNumber => crystalCounter;
-    
+    public static UICrystalCounter instance;
 
     void Awake()
     {
         if (instance != null)
-        {
             Destroy(gameObject);
-        }
         else
-        {
             instance = this;
-            //DontDestroyOnLoad(gameObject); // Esto lo comente porque como esta puesto en un hijo, no funciona
-        }
-
     }
 
-    public void AddCrystal(int number)
+    private void Start()
     {
-        crystalCounter += number;
-        UpdateCrystalCounter();
-        CheckCrystalsAmountForDemoQuest();
+        LevelManager.instance.OnCrystalUpdate += UpdateCrystalCounter;
     }
 
-    public void RemoveCrystal(int number)
+    public void UpdateCrystalCounter(int number)
     {
-        crystalCounter -= number;
-        UpdateCrystalCounter();
+        text.text = number.ToString();
     }
 
-    public void UpdateCrystalCounter()
+    public void OnDestroy()
     {
-        text.text = crystalCounter.ToString();
-    }
-
-    // Temporal para la DemoQuest
-    private void CheckCrystalsAmountForDemoQuest() {
-        if (crystalCounter >= 30) Invoke("Victory", 0.5f);
-    }
-
-    private void Victory() {
-        LevelManager.instance?.Victory();
+        LevelManager.instance.OnCrystalUpdate -= UpdateCrystalCounter;
     }
 }
