@@ -29,6 +29,7 @@ public class PlayerController : ActorController
 
     // Movement
     private bool isUsingWeapon;
+    private bool isPlayAimSound;
     private bool aiming;
     private bool shooting;
     private bool canPlaySound;
@@ -177,11 +178,17 @@ public class PlayerController : ActorController
     private void IsAiming(bool value)
     {
         aiming = value;
-        //weapon.IsAiming(value);
-        animator.SetBool("IsAiming", value);
+        animator.SetBool("IsAiming", value);         
         aimVirtualCamera.gameObject.SetActive(value);
-        if(value)
-            AudioManager.instance.PlaySound(SoundClips.Aim);
+
+        if (value)
+            if (!isPlayAimSound)
+            {
+                isPlayAimSound = true;
+                AudioManager.instance.PlaySound(SoundClips.Aim);
+            }
+        else
+            isPlayAimSound = false;
     }
 
     private void CanShoot(bool value)

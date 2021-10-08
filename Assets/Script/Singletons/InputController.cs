@@ -101,7 +101,6 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetKey(aiming))
             OnAim?.Invoke(true);
-            
         else
             OnAim?.Invoke(false);
     }

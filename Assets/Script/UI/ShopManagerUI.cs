@@ -50,12 +50,8 @@ public class ShopManagerUI : MonoBehaviour
             LevelManager.instance.Victory();
         else
         {
-            print($"te faltan {LevelManager.instance.CrystalsNeeded - LevelManager.instance.CrystalCounter} cristales");
-            _animator.SetTrigger("Error");
+            AudioManager.instance.PlaySound(SoundClips.Negative);
+            _animator.SetTrigger("MessageError"); 
         }
-
-        //TODO: else give a negativew sound and feedback. 
     }
-
-
 }

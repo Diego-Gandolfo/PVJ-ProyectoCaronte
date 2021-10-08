@@ -10,7 +10,8 @@ public enum SoundClips
     Aim,
     Steps,
     MachineGunLoad,
-    Overheat
+    Overheat,
+    Negative
 }
 
 public class AudioManager : MonoBehaviour
@@ -37,6 +38,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip footstepsFour;
     [SerializeField] private AudioClip machineGunLoad;
     [SerializeField] private AudioClip overheat;
+    [SerializeField] private AudioClip negative;
 
 
     public void Awake()
@@ -72,27 +74,17 @@ public class AudioManager : MonoBehaviour
                 break;
 
             case SoundClips.Jump:
-                soundsAudioSource.volume = 1f;
-
-                int random = Random.Range(0, 3);
-                if (random == 0)
-                    soundsAudioSource.PlayOneShot(jumpOne);
-                else if (random == 1)
-                    soundsAudioSource.PlayOneShot(jumpTwo);
-                else if (random == 2)
-                    soundsAudioSource.PlayOneShot(jumpThree);
-                else
-                    soundsAudioSource.PlayOneShot(jumpOne);
+                PlayJump();
                 break;
 
             case SoundClips.Aim:
                 soundsAudioSource.volume = 0.5f;
-                //soundsAudioSource.PlayOneShot(aim); //TODO: PONER SONIDO AIM
+                soundsAudioSource.PlayOneShot(aim);
                 break;
 
             case SoundClips.Steps:
                 soundsAudioSource.volume = 1f;
-                //PlaySoundSteps(); //TODO: PONER SONIDO PASOS
+                PlaySoundSteps();
                 break;
 
             case SoundClips.MachineGunLoad:
@@ -102,9 +94,13 @@ public class AudioManager : MonoBehaviour
 
             case SoundClips.Overheat:
                 soundsAudioSource.volume = 2f;
-                //soundsAudioSource.PlayOneShot(overheat); //TODO: PONER SONIDO OVERHEAT
+                soundsAudioSource.PlayOneShot(overheat); 
                 break;
 
+            case SoundClips.Negative:
+                soundsAudioSource.volume = 2f;
+                soundsAudioSource.PlayOneShot(negative);
+                break;
             default:
                 break;
         }
@@ -122,5 +118,20 @@ public class AudioManager : MonoBehaviour
             soundsAudioSource.PlayOneShot(footstepsThree);
         else if (randomStep == 3)
             soundsAudioSource.PlayOneShot(footstepsFour);
+    }
+
+    private void PlayJump()
+    {
+        soundsAudioSource.volume = 0.5f;
+
+        int random = Random.Range(0, 3);
+        if (random == 0)
+            soundsAudioSource.PlayOneShot(jumpOne);
+        else if (random == 1)
+            soundsAudioSource.PlayOneShot(jumpTwo);
+        else if (random == 2)
+            soundsAudioSource.PlayOneShot(jumpThree);
+        else
+            soundsAudioSource.PlayOneShot(jumpOne);
     }
 }

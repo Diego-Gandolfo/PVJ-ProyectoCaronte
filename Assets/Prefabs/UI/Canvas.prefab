@@ -1333,7 +1333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3559223769405766756}
-  - component: {fileID: 7551435241899045198}
+  - component: {fileID: 4478880340667551002}
   m_Layer: 5
   m_Name: ShopUI
   m_TagString: Untagged
@@ -1365,7 +1365,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -12}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &7551435241899045198
+--- !u!95 &4478880340667551002
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -1377,7 +1377,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 61ae78cb190a6e643abdbf679904e693, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
