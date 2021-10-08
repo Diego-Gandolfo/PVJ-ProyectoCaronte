@@ -9,7 +9,6 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private OverHeatManager overheat;
     [SerializeField] private PromptTrigger promptTrigger;
     [SerializeField] private LifeBarController lifeBar;
-    [SerializeField] private Image overHeatImage;
     [SerializeField] private UICrystalCounter crystalController;
     [SerializeField] private GameObject crosshair;
     [SerializeField] private SonarManager sonarManager;
