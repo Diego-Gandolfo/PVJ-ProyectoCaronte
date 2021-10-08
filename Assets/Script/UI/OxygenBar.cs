@@ -6,20 +6,19 @@ using UnityEngine.UI;
 public class OxygenBar : MonoBehaviour
 {
     [SerializeField] private GameObject oxygenBar;
+    [SerializeField] private GameObject vignette;
     [SerializeField] private Image oxygenBarImage;
-    [SerializeField] private RawImage vignetteImage;
 
-    private Animator vignetteImageAnimator;
-    private Animator oxygenBarAnimator;
+    private Animator vignetteAnimator;
+    private Animator animator;
 
     private bool isVisible;
 
     private void Start()
     {
         LevelManager.instance.OnPlayerAssing += OnPlayerAssing;
-        vignetteImageAnimator = vignetteImage.GetComponent<Animator>();
-        oxygenBarAnimator = oxygenBar.GetComponentInChildren<Animator>();
-        SetBarVisible(true);
+        animator = GetComponent<Animator>();
+        vignetteAnimator = vignette.GetComponent<Animator>();
     }
 
     public void UpdateOxygenBar(float currentOxygen, float maxOxygen)
@@ -28,8 +27,10 @@ public class OxygenBar : MonoBehaviour
         if (oxygenBarImage != null)
         {
             oxygenBarImage.fillAmount = percentage;
-            oxygenBarAnimator.SetBool("IsRunningOut", currentOxygen <= 20);
-            vignetteImageAnimator.SetBool("IsRunningOut", currentOxygen <= 20);
+            animator.SetBool("Dying", currentOxygen <= 40);
+            vignetteAnimator.SetBool("Dying", currentOxygen <= 20);
+            //animator.SetBool("Dying", currentOxygen <= 99);
+            //vignetteAnimator.SetBool("Dying", currentOxygen <= 99);
         }
     }
 

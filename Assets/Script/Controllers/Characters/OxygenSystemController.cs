@@ -65,6 +65,7 @@ public class OxygenSystemController : MonoBehaviour
     private void Asphyxiation()
     {
         healtController.TakeDamage(asphyxiationDamage);
+        PlayHeartbeatSound();
         //OnAsphyxiation?.Invoke(); //(No borrar) TODO: UI/Sound effect for lack of oxygen, 
     }
     #endregion
