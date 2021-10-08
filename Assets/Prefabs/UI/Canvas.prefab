@@ -53,10 +53,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hud: {fileID: 639006403967514767}
-  overheat: {fileID: 3712795036551150690}
+  overheatManager: {fileID: 3712795036551150690}
   promptTrigger: {fileID: 1224196653}
   lifeBar: {fileID: 4761198740244342890}
-  crystalController: {fileID: 856657792058153521}
   crosshair: {fileID: 1485697616}
   sonarManager: {fileID: 7717259024934095252}
 --- !u!114 &7973899834842125907

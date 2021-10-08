@@ -6,10 +6,9 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour
 {
     [SerializeField] private GameObject hud;
-    [SerializeField] private OverHeatManager overheat;
+    [SerializeField] private OverHeatManager overheatManager;
     [SerializeField] private PromptTrigger promptTrigger;
     [SerializeField] private LifeBarController lifeBar;
-    [SerializeField] private UICrystalCounter crystalController;
     [SerializeField] private GameObject crosshair;
     [SerializeField] private SonarManager sonarManager;
 
@@ -19,8 +18,7 @@ public class HUDManager : MonoBehaviour
     public bool IsQuestVisible { get; private set; }
     public ShopManagerUI ShopManagerUI { get; private set; }
     public SonarManager SonarManager => sonarManager;
-    public OverHeatManager OverHeat => overheat;
-
+    public OverHeatManager OverHeatManager => overheatManager;
 
     void Awake()
     {

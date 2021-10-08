@@ -7,16 +7,6 @@ public class UICrystalCounter : MonoBehaviour
 {
     [SerializeField] private Text text;
 
-    public static UICrystalCounter instance;
-
-    void Awake()
-    {
-        if (instance != null)
-            Destroy(gameObject);
-        else
-            instance = this;
-    }
-
     private void Start()
     {
         LevelManager.instance.OnCrystalUpdate += UpdateCrystalCounter;

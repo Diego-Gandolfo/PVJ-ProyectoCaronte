@@ -7,16 +7,12 @@ public class MachineGun : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private ParticleSystem effectShoot;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private Transform crossHair;
-    [SerializeField] private float minDistance; // distancia minima para que calcule el forward del disparo con el crosshair
-    [SerializeField] private LayerMask layerMask;
     [SerializeField] private float maxShootingTime;
     [SerializeField] private ParticleSystem shootingParticles;
     [SerializeField] private ParticleSystem flashParticles;
 
     private bool isOverheat;
     private bool isShooting;
-    //private bool isAiming;
     private float currentShootingTime;
     private Animator animator;
     private RaycastHit target;
@@ -25,7 +21,6 @@ public class MachineGun : MonoBehaviour
     {
         var particles = shootingParticles.main;
         particles.duration = maxShootingTime;
-        //crossHair.gameObject.SetActive(false);
     }
 
     void Update()
@@ -52,7 +47,7 @@ public class MachineGun : MonoBehaviour
             else
                 animator.SetBool("IsShooting", false);
 
-            HUDManager.instance.OverHeat.UpdateStatBar(currentShootingTime, maxShootingTime);
+            HUDManager.instance.OverHeatManager.UpdateStatBar(currentShootingTime, maxShootingTime);
         }
     }
 
@@ -75,13 +70,6 @@ public class MachineGun : MonoBehaviour
         }
 
     }
-
-    //public void IsAiming(bool value)
-    //{
-    //    crossHair.gameObject.SetActive(value);
-    //    //isAiming = value;
-     
-    //}
 
     public void SetPlayer(PlayerController player)
     {
