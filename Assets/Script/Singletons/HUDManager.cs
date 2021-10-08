@@ -6,19 +6,19 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour
 {
     [SerializeField] private GameObject hud;
-    [SerializeField] private OverHeatManager overheatManager;
-    [SerializeField] private PromptTrigger promptTrigger;
-    [SerializeField] private LifeBarController lifeBar;
     [SerializeField] private GameObject crosshair;
     [SerializeField] private SonarManager sonarManager;
 
     private UIQuestManager questManager;
+    private LifeBarController lifeBar;
+    private PromptTrigger promptTrigger;
+
     public static HUDManager instance;
 
     public bool IsQuestVisible { get; private set; }
-    public ShopManagerUI ShopManagerUI { get; private set; }
     public SonarManager SonarManager => sonarManager;
-    public OverHeatManager OverHeatManager => overheatManager;
+    public ShopManagerUI ShopManagerUI { get; private set; }
+    public OverHeatManager OverHeatManager { get; private set; }
     public PauseMenuController PauseMenu { get; private set; }
 
     void Awake()
@@ -30,20 +30,32 @@ public class HUDManager : MonoBehaviour
         else
         {
             instance = this;
-            //DontDestroyOnLoad(gameObject); // Esto lo comente porque como esta puesto en un hijo, no funciona
         }
     }
 
     private void Start()
     {
+        SubscribeEvents();
+        GetAllComponents();
         ShowCrosshair(false);
+        IsQuestVisible = true;
+    }
+
+    private void GetAllComponents()
+    {
+        questManager = GetComponent<UIQuestManager>();
+        lifeBar = GetComponent<LifeBarController>();
+        promptTrigger = GetComponent<PromptTrigger>();
+        OverHeatManager = GetComponent<OverHeatManager>();
+        ShopManagerUI = GetComponent<ShopManagerUI>();
+        PauseMenu = GetComponent<PauseMenuController>();
+    }
+
+    private void SubscribeEvents()
+    {
         LevelManager.instance.OnPlayerAssing += OnPlayerAssing;
         InputController.instance.OnAim += ShowCrosshair;
         InputController.instance.OnPause += OnPause;
-        questManager = GetComponent<UIQuestManager>();
-        ShopManagerUI = GetComponent<ShopManagerUI>();
-        PauseMenu = GetComponent<PauseMenuController>();
-        IsQuestVisible = true;
     }
 
     private void OnPause()

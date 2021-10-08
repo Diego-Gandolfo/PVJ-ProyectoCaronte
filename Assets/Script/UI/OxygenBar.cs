@@ -19,32 +19,18 @@ public class OxygenBar : MonoBehaviour
         LevelManager.instance.OnPlayerAssing += OnPlayerAssing;
         vignetteImageAnimator = vignetteImage.GetComponent<Animator>();
         oxygenBarAnimator = oxygenBar.GetComponentInChildren<Animator>();
+        SetBarVisible(true);
     }
 
     public void UpdateOxygenBar(float currentOxygen, float maxOxygen)
     {
         var percentage = currentOxygen / maxOxygen;
         if (oxygenBarImage != null)
-            if(percentage != 100)
-            {
-                SetBarVisible(true);
-                oxygenBarImage.fillAmount = percentage;
-
-                if (currentOxygen <= 20)
-                {
-                    oxygenBarAnimator.SetBool("IsRunningOut", true);
-                    vignetteImageAnimator.SetBool("IsRunningOut", true);
-                }
-                else
-                {
-                    oxygenBarAnimator.SetBool("IsRunningOut", false);
-                    vignetteImageAnimator.SetBool("IsRunningOut", false);
-                }
-
-            } else
-            {
-                SetBarVisible(false);
-            }
+        {
+            oxygenBarImage.fillAmount = percentage;
+            oxygenBarAnimator.SetBool("IsRunningOut", currentOxygen <= 20);
+            vignetteImageAnimator.SetBool("IsRunningOut", currentOxygen <= 20);
+        }
     }
 
     public void SetBarVisible(bool value)

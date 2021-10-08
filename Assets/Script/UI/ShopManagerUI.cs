@@ -6,28 +6,33 @@ using UnityEngine.UI;
 public class ShopManagerUI : MonoBehaviour
 {
     [SerializeField] private GameObject shopManager;
-    [SerializeField] private Text text;
+    [SerializeField] private Text currentCrystals;
+    [SerializeField] private Text textQuest;
     [SerializeField] private Button finishButton;
     [SerializeField] private Button closeButton;
+
+    private Animator _animator;
+
     public bool IsActive { get; private set; }
 
     private void Start()
     {
+        _animator = shopManager.GetComponent<Animator>();
         SetUIVisible(false);
-        SetText();
+        textQuest.text = $"Get the {LevelManager.instance.CrystalsNeeded} crystals";
         finishButton?.onClick.AddListener(OnFinishButton);
         closeButton?.onClick.AddListener(OnCloseScreen);
     }
 
-    private void SetText()
+    private void UpdateCounter()
     {
-        text.text = $"Get the {LevelManager.instance.CrystalsNeeded} crystals";
+        currentCrystals.text = $"You have {LevelManager.instance.CrystalCounter} crystals";
     }
-
 
     public void SetUIVisible(bool value)
     {
         IsActive = value;
+        UpdateCounter();
         HUDManager.instance.ShowHUD(!IsActive);
         shopManager.SetActive(IsActive);
         GameManager.instance.Pause(IsActive);
@@ -44,7 +49,13 @@ public class ShopManagerUI : MonoBehaviour
         if (LevelManager.instance.CrystalCounter >= LevelManager.instance.CrystalsNeeded)
             LevelManager.instance.Victory();
         else
+        {
             print($"te faltan {LevelManager.instance.CrystalsNeeded - LevelManager.instance.CrystalCounter} cristales");
+            _animator.SetTrigger("Error");
+        }
+
         //TODO: else give a negativew sound and feedback. 
     }
+
+
 }

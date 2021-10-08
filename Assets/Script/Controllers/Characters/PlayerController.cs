@@ -169,7 +169,7 @@ public class PlayerController : ActorController
     protected override void OnDie()
     {
         base.OnDie();
-        RespawnManager.instance.Respawn();
+        LevelManager.instance.Respawn();
         HealthController.ResetValues();
         oxygenSystem.ResetValues();
     }

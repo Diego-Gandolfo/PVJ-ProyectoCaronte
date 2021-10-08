@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private string currentLevel = "TerraplainLevel";
     [SerializeField] private int currentCrystalsNeeded = 30;
+    [SerializeField] private Transform respawnPoint;
 
     public static LevelManager instance;
 
@@ -60,6 +61,11 @@ public class LevelManager : MonoBehaviour
     {
         CrystalCounter -= number;
         OnCrystalUpdate?.Invoke(CrystalCounter);
+    }
+
+    public void Respawn()
+    {
+        Player.transform.position = respawnPoint.position;
     }
 
 }
