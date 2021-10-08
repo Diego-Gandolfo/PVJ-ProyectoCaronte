@@ -59,4 +59,10 @@ public class InteractableController : MonoBehaviour
         canInteract = false;
         InputController.instance.OnAction -= Interact;
     }
+
+    public void OnDestroy()
+    {
+        if(!hasInteractedOnce)
+            InputController.instance.OnAction -= Interact;
+    }
 }

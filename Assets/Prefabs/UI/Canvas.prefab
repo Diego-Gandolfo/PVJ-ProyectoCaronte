@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 451446167}
   - component: {fileID: 7973899834842125907}
   - component: {fileID: 1470918461584636281}
+  - component: {fileID: 1986989086680540617}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -89,6 +90,23 @@ MonoBehaviour:
   text: {fileID: 6486392914470984990}
   finishButton: {fileID: 868408500030480280}
   closeButton: {fileID: 8304396409440841842}
+--- !u!114 &1986989086680540617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451446165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2647717257ff9a248adc23e0d8faf465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 7590055663916245644}
+  resumeButton: {fileID: 6126216243472143763}
+  restartButton: {fileID: 3582724072264193857}
+  mainMenuButton: {fileID: 3484138570364958630}
+  quitButton: {fileID: 6646025596458831736}
 --- !u!1 &618521560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,7 +1675,6 @@ GameObject:
   - component: {fileID: 8971073004495684333}
   - component: {fileID: 3583175139351977032}
   - component: {fileID: 311266212553188405}
-  - component: {fileID: 3413973474817226563}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1748,23 +1765,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3413973474817226563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5451814276302004526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2647717257ff9a248adc23e0d8faf465, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 7590055663916245644}
-  resumeButton: {fileID: 6126216243472143763}
-  restartButton: {fileID: 3582724072264193857}
-  mainMenuButton: {fileID: 3484138570364958630}
-  quitButton: {fileID: 6646025596458831736}
 --- !u!1 &5605846988508023829
 GameObject:
   m_ObjectHideFlags: 0
@@ -2911,6 +2911,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 600f5f57f813fcd499b1175c2788b8ed, type: 3}
+--- !u!224 &2227367331201332730 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6740819717891299333, guid: 600f5f57f813fcd499b1175c2788b8ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 4856288979190590975}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8304396409440841842 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3484138570209074573, guid: 600f5f57f813fcd499b1175c2788b8ed,
@@ -2923,12 +2929,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &2227367331201332730 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6740819717891299333, guid: 600f5f57f813fcd499b1175c2788b8ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 4856288979190590975}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6778847346736279504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3110,12 +3110,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6778847346736279504}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6789109363773287045 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 10290612660897109, guid: 0f2128b05622a074ba71623d3c06bde9,
-    type: 3}
-  m_PrefabInstance: {fileID: 6778847346736279504}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7717259024934095252 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3822003079231792708, guid: 0f2128b05622a074ba71623d3c06bde9,
@@ -3128,6 +3122,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f294be4b22cad794a8ca9580c7f4a4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6789109363773287045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 10290612660897109, guid: 0f2128b05622a074ba71623d3c06bde9,
+    type: 3}
+  m_PrefabInstance: {fileID: 6778847346736279504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7304439089563830302
 PrefabInstance:
   m_ObjectHideFlags: 0

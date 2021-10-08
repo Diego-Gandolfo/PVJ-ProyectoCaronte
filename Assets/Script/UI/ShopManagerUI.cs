@@ -17,7 +17,6 @@ public class ShopManagerUI : MonoBehaviour
         SetText();
         finishButton?.onClick.AddListener(OnFinishButton);
         closeButton?.onClick.AddListener(OnCloseScreen);
-        //InputController.instance.OnPause += OnEscape;
     }
 
     private void SetText()
@@ -25,10 +24,6 @@ public class ShopManagerUI : MonoBehaviour
         text.text = $"Get the {LevelManager.instance.CrystalsNeeded} crystals";
     }
 
-    private void OnDestroy()
-    {
-        //InputController.instance.OnPause -= OnEscape;
-    }
 
     public void SetUIVisible(bool value)
     {
@@ -37,14 +32,7 @@ public class ShopManagerUI : MonoBehaviour
         shopManager.SetActive(IsActive);
         GameManager.instance.Pause(IsActive);
         GameManager.instance.SetCursorActive(IsActive);
-
     }
-
-    //public void OnEscape()
-    //{
-    //    if (IsActive)
-    //        SetUIVisible(false);
-    //}
 
     public void OnCloseScreen()
     {

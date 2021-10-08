@@ -19,6 +19,7 @@ public class HUDManager : MonoBehaviour
     public ShopManagerUI ShopManagerUI { get; private set; }
     public SonarManager SonarManager => sonarManager;
     public OverHeatManager OverHeatManager => overheatManager;
+    public PauseMenuController PauseMenu { get; private set; }
 
     void Awake()
     {
@@ -38,10 +39,21 @@ public class HUDManager : MonoBehaviour
         ShowCrosshair(false);
         LevelManager.instance.OnPlayerAssing += OnPlayerAssing;
         InputController.instance.OnAim += ShowCrosshair;
+        InputController.instance.OnPause += OnPause;
         questManager = GetComponent<UIQuestManager>();
         ShopManagerUI = GetComponent<ShopManagerUI>();
+        PauseMenu = GetComponent<PauseMenuController>();
         IsQuestVisible = true;
     }
+
+    private void OnPause()
+    {
+        if (ShopManagerUI.IsActive)
+            ShopManagerUI.SetUIVisible(false);
+        else
+            PauseMenu.CheckPause();
+    }
+
 
     public void ShowPrompt(bool value)
     {
@@ -85,5 +97,6 @@ public class HUDManager : MonoBehaviour
     private void OnDestroy()
     {
         InputController.instance.OnAim -= ShowCrosshair;
+        InputController.instance.OnPause -= OnPause;
     }
 }

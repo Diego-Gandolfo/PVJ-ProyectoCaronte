@@ -14,22 +14,21 @@ public class OxigenCapsuleController : MonoBehaviour, IInteractable
         animator = GetComponent<Animator>();
         interactableController = GetComponent<InteractableController>();
         interactableController.interactable = this;
-        OnDisable();
+        Desactivate();
     }
     public void Interact()
     {
-        OnEnable();
-        
+        Activated();
     }
 
-    private void OnEnable()
+    private void Activated()
     {
         animator.SetBool("IsActive", true);
         forceField.SetActive(true);
         interactableController.ActivateOnce();
         QuestsManager.Instance?.StartCrystalQuest();
     }
-    private void OnDisable()
+    private void Desactivate()
     {
         animator.SetBool("IsActive", false);
         forceField.SetActive(false);

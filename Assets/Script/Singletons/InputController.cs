@@ -53,7 +53,7 @@ public class InputController : MonoBehaviour
 
     private void Update()
     {
-        CheckPause();
+        CheckEscape();
 
         if (!GameManager.instance.IsGameFreeze && LevelManager.instance.Player != null)
         {
@@ -112,7 +112,7 @@ public class InputController : MonoBehaviour
             OnJump?.Invoke();
     }
 
-    private void CheckPause()
+    private void CheckEscape()
     {
         if (Input.GetKeyDown(pause))
             OnPause?.Invoke();

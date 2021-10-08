@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(InteractableController))]
 public class ShopMachineController : MonoBehaviour, IInteractable
 {
-    private bool isVisible;
 
     void Start()
     {
@@ -14,11 +13,6 @@ public class ShopMachineController : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (!isVisible)
-            isVisible = true;
-        else
-            isVisible = false;
-
-        HUDManager.instance.ShopManagerUI.SetUIVisible(isVisible);
+        HUDManager.instance.ShopManagerUI.SetUIVisible(true);
     }
 }
