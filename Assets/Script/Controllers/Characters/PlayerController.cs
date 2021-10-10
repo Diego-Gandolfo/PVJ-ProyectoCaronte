@@ -182,11 +182,13 @@ public class PlayerController : ActorController
         aimVirtualCamera.gameObject.SetActive(value);
 
         if (value)
+        {
             if (!isPlayAimSound)
             {
                 isPlayAimSound = true;
                 AudioManager.instance.PlaySound(SoundClips.Aim);
             }
+        }
         else
             isPlayAimSound = false;
     }
