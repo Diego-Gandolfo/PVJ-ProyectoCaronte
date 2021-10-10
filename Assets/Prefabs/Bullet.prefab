@@ -108,7 +108,7 @@ MonoBehaviour:
   lifeTime: 5
   hittableMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 4031
   shootParticles: {fileID: 1140227245688804152}
 --- !u!96 &4279247450337289250
 TrailRenderer:
@@ -118,7 +118,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6903580764886999615}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -469,7 +469,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4169,7 +4169,7 @@ ParticleSystem:
     maxLights: 20
   TrailModule:
     enabled: 0
-    mode: 0
+    mode: 1
     ratio: 1
     lifetime:
       serializedVersion: 2

@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5845507814675743052}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1004675564
 ParticleSystem:
@@ -4890,10 +4890,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952603630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.074, y: 0.166, z: -0.242}
+  m_LocalPosition: {x: 0.317, y: -0.02, z: 0.048}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8114866267344791952}
+  m_Father: {fileID: 5845507814675743052}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1952603633
@@ -10998,8 +10998,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0.7443698, z: -0, w: 0.6677677}
   m_LocalPosition: {x: -0.07583943, y: 0.17967436, z: 0.0647986}
   m_LocalScale: {x: 0.24999994, y: 0.25, z: 0.24999994}
-  m_Children:
-  - {fileID: 1952603631}
+  m_Children: []
   m_Father: {fileID: 4368234925807164453}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11019,11 +11018,6 @@ MonoBehaviour:
     type: 3}
   effectShoot: {fileID: 0}
   firePoint: {fileID: 4368234924497453366}
-  crossHair: {fileID: 9016468469215341998}
-  minDistance: 1
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
   maxShootingTime: 3
   shootingParticles: {fileID: 1004675564}
   flashParticles: {fileID: 1952603633}
@@ -11379,6 +11373,7 @@ Transform:
   m_LocalPosition: {x: -0.007862929, y: -0.008414533, z: -0.011433539}
   m_LocalScale: {x: 0.9999975, y: 1.0000001, z: 1.0000025}
   m_Children:
+  - {fileID: 1952603631}
   - {fileID: 1004675562}
   m_Father: {fileID: 779438899847194463}
   m_RootOrder: 0
