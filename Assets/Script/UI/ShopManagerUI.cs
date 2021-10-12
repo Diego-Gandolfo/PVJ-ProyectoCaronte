@@ -18,7 +18,7 @@ public class ShopManagerUI : MonoBehaviour
     private void Start()
     {
         _animator = shopManager.GetComponent<Animator>();
-        SetUIVisible(false);
+        shopManager.SetActive(IsActive);
         textQuest.text = $"Get the {LevelManager.instance.CrystalsNeeded} crystals";
         finishButton?.onClick.AddListener(OnFinishButton);
         closeButton?.onClick.AddListener(OnCloseScreen);

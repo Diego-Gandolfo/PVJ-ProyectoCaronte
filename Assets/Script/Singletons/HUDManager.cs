@@ -8,18 +8,17 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private GameObject hud;
     [SerializeField] private GameObject crosshair;
     [SerializeField] private SonarManager sonarManager;
+    [SerializeField] private UIQuestManager questUIManager;
 
-    private UIQuestManager questManager;
     private LifeBarController lifeBar;
     private PromptTrigger promptTrigger;
 
     public static HUDManager instance;
-
-    public bool IsQuestVisible { get; private set; }
     public SonarManager SonarManager => sonarManager;
     public ShopManagerUI ShopManagerUI { get; private set; }
     public OverHeatManager OverHeatManager { get; private set; }
     public PauseMenuController PauseMenu { get; private set; }
+    public UIQuestManager QuestManager => questUIManager;
 
     void Awake()
     {
@@ -38,12 +37,10 @@ public class HUDManager : MonoBehaviour
         SubscribeEvents();
         GetAllComponents();
         ShowCrosshair(false);
-        IsQuestVisible = true;
     }
 
     private void GetAllComponents()
     {
-        questManager = GetComponent<UIQuestManager>();
         lifeBar = GetComponent<LifeBarController>();
         promptTrigger = GetComponent<PromptTrigger>();
         OverHeatManager = GetComponent<OverHeatManager>();
@@ -66,7 +63,6 @@ public class HUDManager : MonoBehaviour
             PauseMenu.CheckPause();
     }
 
-
     public void ShowPrompt(bool value)
     {
         promptTrigger.ShowPrompt(value);
@@ -80,24 +76,12 @@ public class HUDManager : MonoBehaviour
     public void ShowHUD(bool value)
     {
         hud.SetActive(value);
+        QuestManager.ShowBox(QuestManager.IsMissionActive);
     }
 
     public LifeBarController GetLifeBar()
     {
         return lifeBar;
-    }
-
-    public void VisibleQuest(bool value)
-    {
-        questManager.QuestVisible(value);
-        IsQuestVisible = value;
-    }
-
-    public void UpdateQuest(string message, string title = null)
-    {
-        questManager.UpdateMessage(message);
-        if (title != null)
-            questManager.UpdateTitle(title);
     }
 
     protected void OnPlayerAssing(PlayerController player)
