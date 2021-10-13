@@ -29,6 +29,8 @@ public class AnimatorSpeedChanger : MonoBehaviour
         {
             Debug.LogError($"{this}: {gameObject.name} no tiene un Animator");
         }
+
+        this.enabled = false;
     }
 
     #endregion
