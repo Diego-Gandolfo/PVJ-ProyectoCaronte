@@ -1816,11 +1816,11 @@ RectTransform:
   m_Father: {fileID: 3464519314974373016}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1.5605, y: -60.389404}
-  m_SizeDelta: {x: 1976.8337, y: 1121.3398}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -1.5605469, y: 500.28052}
+  m_SizeDelta: {x: 1856.8337, y: 1009.33984}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3980465743305261079
 CanvasRenderer:
   m_ObjectHideFlags: 0
