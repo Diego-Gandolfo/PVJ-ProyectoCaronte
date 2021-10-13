@@ -28,6 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4758468331154846484}
+  - {fileID: 6772579601888679277}
   m_Father: {fileID: 7537814665110947493}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -161,7 +162,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 3660574480805275366}
   crystalGroup: {fileID: 7537814666138940136}
-  radious: 1
 --- !u!1001 &1667570340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1826,6 +1826,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4758468330628262320, guid: 6b33801eb869ada4db2f9d22a977529f,
     type: 3}
   m_PrefabInstance: {fileID: 1667570340}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2302589553731091677
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1394189078204562980}
+    m_Modifications:
+    - target: {fileID: 4758468330628262320, guid: 806322fa5f452514ba081a7d27556b42,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758468330628262320, guid: 806322fa5f452514ba081a7d27556b42,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758468330628262320, guid: 806322fa5f452514ba081a7d27556b42,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758468330628262320, guid: 806322fa5f452514ba081a7d27556b42,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758468330628262320, guid: 806322fa5f452514ba081a7d27556b42,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758468330628262320, guid: 806322fa5f452514ba081a7d27556b42,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758468330628262320, guid: 806322fa5f452514ba081a7d27556b42,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758468330628262320, guid: 806322fa5f452514ba081a7d27556b42,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758468330628262320, guid: 806322fa5f452514ba081a7d27556b42,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758468330628262320, guid: 806322fa5f452514ba081a7d27556b42,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758468330628262320, guid: 806322fa5f452514ba081a7d27556b42,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249418959779145978, guid: 806322fa5f452514ba081a7d27556b42,
+        type: 3}
+      propertyPath: m_Name
+      value: Tiny Melee Enemy (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 806322fa5f452514ba081a7d27556b42, type: 3}
+--- !u!4 &6772579601888679277 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4758468330628262320, guid: 806322fa5f452514ba081a7d27556b42,
+    type: 3}
+  m_PrefabInstance: {fileID: 2302589553731091677}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7537814664160461729
 PrefabInstance:
