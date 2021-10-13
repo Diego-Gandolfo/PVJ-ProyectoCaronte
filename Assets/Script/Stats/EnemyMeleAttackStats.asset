@@ -15,7 +15,7 @@ MonoBehaviour:
   _targetList:
     serializedVersion: 2
     m_Bits: 64
-  _damage: 10
-  _cooldown: 2
+  _damage: 20
+  _cooldown: 1
   _bulletSpeed: 0
   _bulletLifeTimer: 0
