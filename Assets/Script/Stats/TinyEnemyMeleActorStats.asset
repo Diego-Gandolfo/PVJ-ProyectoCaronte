@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9e252161a66ef41a5680eedd44bc60, type: 3}
   m_Name: TinyEnemyMeleActorStats
   m_EditorClassIdentifier: 
-  _maxLife: 10
-  _speed: 4
-  _buffedSpeed: 12
+  _maxLife: 20
+  _speed: 2.5
+  _buffedSpeed: 2.5
   canJump: 0
   jumpForce: 0
