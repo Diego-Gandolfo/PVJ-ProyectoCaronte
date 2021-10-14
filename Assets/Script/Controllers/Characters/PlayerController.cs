@@ -57,6 +57,8 @@ public class PlayerController : ActorController
         oxygenSystem = GetComponent<OxygenSystemController>();
         currentSpeed = _actorStats.OriginalSpeed;
         weapon.SetPlayer(this);
+
+        
     }
 
     private void Start()
@@ -124,12 +126,12 @@ public class PlayerController : ActorController
             if (IsSprinting)
             {
                 currentSpeed = _actorStats.BuffedSpeed;
-                animator.speed = 2f;
+                animator.speed = _actorStats.BuffedAnimatorSpeed;
             }
             else
             {
                 currentSpeed = _actorStats.OriginalSpeed;
-                animator.speed = 1f;
+                animator.speed = _actorStats.OriginalAnimatorSpeed;
             }
         }
     }

@@ -9,9 +9,11 @@ public class EnemyMeleeController : EnemyController
     [SerializeField] private float minimumDetectionDistance = 10f; //Esta seria la distancia para detectarlo cuando camina. 
 
     #region Private
+
     private EnemyMeleeWeapon weapon;
     private bool canFollow = false;
     private bool playerInRange = false;
+
     #endregion
 
     #region Unity Methods
@@ -19,6 +21,7 @@ public class EnemyMeleeController : EnemyController
     {
         weapon = GetComponent<EnemyMeleeWeapon>();
         weapon.SetStats(_attackStats);
+        animator.speed = _actorStats.OriginalAnimatorSpeed;
     }
 
     protected void Update()
@@ -65,7 +68,7 @@ public class EnemyMeleeController : EnemyController
             {
                 playerInRange = true;
                 weapon.Attack(player);
-                //TODO: trigger enemy animation attack?
+                animator.SetTrigger("Stab Attack");
             }        
         } 
         else
@@ -96,18 +99,20 @@ public class EnemyMeleeController : EnemyController
 
     private void CheckPlayerDistance(PlayerController player)
     {
-        if (!player.IsSprinting)
-        {
-            if (Vector3.Distance(player.transform.position, this.transform.position) <= minimumDetectionDistance)
-                FollowPlayer(player);
-
-        } else //Si el player esta en la zona de deteccion y esta sprinteando 
-            FollowPlayer(player);
-
         if (canFollow) //Si ya estaba persiguiendo, seguilo. 
             FollowPlayer(player);
-    }
+        else
+        {
+            if (!player.IsSprinting)
+            {
+                if (Vector3.Distance(player.transform.position, this.transform.position) <= minimumDetectionDistance)
+                    FollowPlayer(player);
 
+            }
+            else //Si el player esta en la zona de deteccion y esta sprinteando 
+                FollowPlayer(player);
+        }
+    }
 
     private void OnDrawGizmos()
     {

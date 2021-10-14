@@ -14,6 +14,12 @@ public class ActorStats : ScriptableObject //FLYWEIGTH
     public float BuffedSpeed => _buffedSpeed;
     [SerializeField] private float _buffedSpeed = 10f;
 
+    public float OriginalAnimatorSpeed => _animatorSpeed;
+    [SerializeField] private float _animatorSpeed = 1f;
+
+    public float BuffedAnimatorSpeed => _buffedAnimatorSpeed;
+    [SerializeField] private float _buffedAnimatorSpeed = 2f;
+
     public bool CanJump => canJump;
     [SerializeField] private bool canJump;
 

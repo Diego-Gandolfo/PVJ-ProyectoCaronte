@@ -15,5 +15,7 @@ MonoBehaviour:
   _maxLife: 20
   _speed: 2.5
   _buffedSpeed: 2.5
+  _animatorSpeed: 2
+  _buffedAnimatorSpeed: 4
   canJump: 0
   jumpForce: 0
