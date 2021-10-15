@@ -19,7 +19,7 @@ public class OxygenSystemController : MonoBehaviour
     public Action OnAsphyxiation;
     public Action<float, float> OnChangeInOxygen; //currentOxygen, maxOxygen
 
-    private float exygenRecoverSoundDuration = 1.0f;
+    private float exygenRecoverSoundDuration = 2f;
     private bool canRecoverOxygen;
 
     void Start()
