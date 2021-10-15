@@ -19,12 +19,16 @@ public class OxygenSystemController : MonoBehaviour
     public Action OnAsphyxiation;
     public Action<float, float> OnChangeInOxygen; //currentOxygen, maxOxygen
 
+    //SOUND PARAMETERS
     private float oxygenRecoverSoundDuration = 2f;
+    private float currentTimeToPlaySoundAgain;
     
     void Start()
     {
         healtController = GetComponent<HealthController>();
         ResetValues();
+
+        currentTimeToPlaySoundAgain = oxygenRecoverSoundDuration;
     }
 
     void Update() 
