@@ -73,6 +73,13 @@ public class UIQuestManager : MonoBehaviour
         SetQuest();
     }
 
+    public void DeliverQuest()
+    {
+        title = "Delivery";
+        message = "Deliver  \n <b>" + LevelManager.instance.CrystalsNeeded + " CRYSTALS</b> \n <size=20><i>(use the yellow machine)</i></size>";
+        SetQuest();
+    }
+
     public void ShowBox(bool value)
     {
         if (value)

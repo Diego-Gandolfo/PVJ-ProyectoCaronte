@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -55,6 +53,9 @@ public class LevelManager : MonoBehaviour
     {
         CrystalCounter += number;
         OnCrystalUpdate?.Invoke(CrystalCounter);
+
+        if (CrystalCounter >= CrystalsNeeded)
+            HUDManager.instance.QuestManager.DeliverQuest();
     }
 
     public void RemoveCrystal(int number)
@@ -67,5 +68,4 @@ public class LevelManager : MonoBehaviour
     {
         Player.transform.position = respawnPoint.position;
     }
-
 }
