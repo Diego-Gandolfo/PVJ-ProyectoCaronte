@@ -21,14 +21,11 @@ public class OxygenSystemController : MonoBehaviour
 
     //SOUND PARAMETERS
     private float oxygenRecoverSoundDuration = 2f;
-    private float currentTimeToPlaySoundAgain;
     
     void Start()
     {
         healtController = GetComponent<HealthController>();
         ResetValues();
-
-        currentTimeToPlaySoundAgain = oxygenRecoverSoundDuration;
     }
 
     void Update() 
