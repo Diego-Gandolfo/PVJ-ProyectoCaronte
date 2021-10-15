@@ -8,10 +8,9 @@ public class OxygenSystemController : MonoBehaviour
 {
     [SerializeField] private float maxOxygen;
     [SerializeField] private float currentOxygen;
-    [SerializeField] private float oxygenConsumptionPerSecond;
-    [SerializeField] private float timerOfConsumption = 1f;
+    [SerializeField] private float oxigenConsumeMultiplier;
     [SerializeField] private int asphyxiationDamage;
-
+    [SerializeField] private float heartBeatTick;
     private bool isInSafeZone;
     private HealthController healtController;
     private float currentTime;
@@ -31,16 +30,12 @@ public class OxygenSystemController : MonoBehaviour
         if (!isInSafeZone)
         {
             currentTime -= Time.deltaTime;
-            if (currentTime <= 0)
-            {
-                if (CheckOxygenLevel())
+            if (CheckOxygenLevel())
                     ConsumeOxygen();
-                else
-                    Asphyxiation();
+            else
+                Asphyxiation();
 
-                currentTime = timerOfConsumption;
-                OnChangeInOxygen?.Invoke(currentOxygen, maxOxygen);
-            }
+            OnChangeInOxygen?.Invoke(currentOxygen, maxOxygen);
         }
     }
 
@@ -52,20 +47,29 @@ public class OxygenSystemController : MonoBehaviour
 
     private void ConsumeOxygen()
     {
-        currentOxygen -= oxygenConsumptionPerSecond;
+        currentOxygen -= oxigenConsumeMultiplier;
         if (currentOxygen <= 20)
             PlayHeartbeatSound();
     }
 
     private void PlayHeartbeatSound()
     {
-        AudioManager.instance.PlaySound(SoundClips.Heartbeat);
+        if (currentTime <= 0)
+        {
+            AudioManager.instance.PlaySound(SoundClips.Heartbeat);
+            currentTime = heartBeatTick;
+        }
     }
 
     private void Asphyxiation()
     {
-        healtController.TakeDamage(asphyxiationDamage);
-        PlayHeartbeatSound();
+        if (currentTime <= 0)
+        {
+            healtController.TakeDamage(asphyxiationDamage);
+            PlayHeartbeatSound();
+
+            
+        }
         //OnAsphyxiation?.Invoke(); //(No borrar) TODO: UI/Sound effect for lack of oxygen, 
     }
     #endregion
@@ -87,14 +91,11 @@ public class OxygenSystemController : MonoBehaviour
     public void IsInSafeZone(bool value)
     {
         isInSafeZone = value;
-        if(isInSafeZone)
-            currentTime = timerOfConsumption;
     }
 
     public void ResetValues()
     {
         currentOxygen = maxOxygen;
-        currentTime = timerOfConsumption;
     }
     #endregion
 }

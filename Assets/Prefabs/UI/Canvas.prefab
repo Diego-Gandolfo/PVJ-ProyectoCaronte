@@ -1612,6 +1612,7 @@ MonoBehaviour:
   oxygenBar: {fileID: 5270544857574740169}
   vignette: {fileID: 3434246443956637092}
   oxygenBarImage: {fileID: 7666055345476575392}
+  lerpTime: 3
 --- !u!95 &845634192619768506
 Animator:
   serializedVersion: 3
@@ -2449,7 +2450,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9017885117204092140}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 98601dab30023d04db70b362b8575b94, type: 2}
   m_CullingMode: 0

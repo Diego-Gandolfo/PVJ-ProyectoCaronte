@@ -8,6 +8,7 @@ public class OxygenBar : MonoBehaviour
     [SerializeField] private GameObject oxygenBar;
     [SerializeField] private GameObject vignette;
     [SerializeField] private Image oxygenBarImage;
+    [SerializeField]private float lerpTime;
 
     private Animator vignetteAnimator;
     private Animator animator;
@@ -20,13 +21,16 @@ public class OxygenBar : MonoBehaviour
         animator = GetComponent<Animator>();
         vignetteAnimator = vignette.GetComponent<Animator>();
     }
-
+    private void Update()
+    {
+        lerpTime +=Time.deltaTime * Time.deltaTime;
+    }
     public void UpdateOxygenBar(float currentOxygen, float maxOxygen)
     {
-        var percentage = currentOxygen / maxOxygen;
+       // var percentage = currentOxygen / maxOxygen;
         if (oxygenBarImage != null)
         {
-            oxygenBarImage.fillAmount = percentage;
+            oxygenBarImage.fillAmount = Mathf.Lerp(oxygenBarImage.fillAmount,(currentOxygen/maxOxygen),lerpTime);
             animator.SetBool("Dying", currentOxygen <= 40);
             vignetteAnimator.SetBool("Dying", currentOxygen <= 20);
             //animator.SetBool("Dying", currentOxygen <= 99);

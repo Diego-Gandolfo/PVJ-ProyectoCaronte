@@ -4,30 +4,29 @@ using UnityEngine;
 
 public class OxygenRechargeAreaController : MonoBehaviour
 {
-    [SerializeField] private float oxygenRegenerationPerSecond = 0.5f;
-    [SerializeField] private float timerOfRegeneration = 1f;
+    private float currentOxigenRegeneration;
     private OxygenSystemController currentOxygenUser;
-    private float currentTime;
+    [SerializeField] private float currentMultiplier;
     //private bool isDeployed;
 
     void Start()
     {
-        currentTime = timerOfRegeneration;
+        currentOxigenRegeneration = 1f;
         //isDeployed = true; //TODO: si la maquina tiene que deployarse, esto se borra y se arma la interaccion. 
     }
 
     void Update()
     {
-        currentTime -= Time.deltaTime;
-        if (currentTime <= 0 && currentOxygenUser != null)
+        if(currentOxygenUser != null)
         {
-            currentOxygenUser.RegenerateOxygen(oxygenRegenerationPerSecond);
-            currentTime = timerOfRegeneration;
+         currentOxigenRegeneration += Time.deltaTime;
+        currentOxygenUser.RegenerateOxygen(currentOxigenRegeneration * currentMultiplier);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        currentOxigenRegeneration = 1f;
         OxygenSystemController oxygen = other.gameObject.GetComponent<OxygenSystemController>();
         if(oxygen != null)
         {
