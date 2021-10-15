@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c988b4d6947610142acf732619defc62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  currentLevel: TerraplainLevel
+  currentCrystalsNeeded: 30
+  respawnPoint: {fileID: 0}
 --- !u!114 &1987328650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,5 +59,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa7aba406c00eb4392b594a46054ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundAlarm: {fileID: 0}
   soundtimerCD: 1
