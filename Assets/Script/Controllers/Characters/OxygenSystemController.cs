@@ -20,8 +20,7 @@ public class OxygenSystemController : MonoBehaviour
     public Action<float, float> OnChangeInOxygen; //currentOxygen, maxOxygen
 
     private float oxygenRecoverSoundDuration = 2f;
-    private bool canRecoverOxygen;
-
+    
     void Start()
     {
         healtController = GetComponent<HealthController>();
