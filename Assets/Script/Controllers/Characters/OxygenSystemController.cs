@@ -19,7 +19,7 @@ public class OxygenSystemController : MonoBehaviour
     public Action OnAsphyxiation;
     public Action<float, float> OnChangeInOxygen; //currentOxygen, maxOxygen
 
-    private float exygenRecoverSoundDuration = 2f;
+    private float oxygenRecoverSoundDuration = 2f;
     private bool canRecoverOxygen;
 
     void Start()
@@ -42,7 +42,7 @@ public class OxygenSystemController : MonoBehaviour
         }
         else if (isInSafeZone)
         {
-            exygenRecoverSoundDuration -= Time.deltaTime;
+            oxygenRecoverSoundDuration -= Time.deltaTime;
         }
     }
 
@@ -70,10 +70,10 @@ public class OxygenSystemController : MonoBehaviour
 
     private void PlayOxygenRecoverSound()
     {
-        if (exygenRecoverSoundDuration <= 0)
+        if (oxygenRecoverSoundDuration <= 0)
         {
             AudioManager.instance.PlaySound(SoundClips.OxygenRecover);
-            exygenRecoverSoundDuration = 1.0f;
+            oxygenRecoverSoundDuration = 1.0f;
         }
     }
 
