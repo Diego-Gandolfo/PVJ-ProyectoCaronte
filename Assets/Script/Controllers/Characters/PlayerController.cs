@@ -34,7 +34,7 @@ public class PlayerController : ActorController
     private bool shooting;
     private bool canPlaySound;
     private float currentSpeed;
-    private float distanceGround = 1.1f;
+    private float distanceGround = 0.4f;
 
     private float timeToPlaySound = 0.5f;
     private float currentTimeToPlaySound;
@@ -73,6 +73,11 @@ public class PlayerController : ActorController
     {
         CanMove();
         PlayStepSound();
+        foreach (var jump in jumpPoints)
+        {
+            Debug.DrawRay(jump.position, -transform.up * distanceGround, Color.red);
+        }
+
     }
     #endregion
 
