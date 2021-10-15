@@ -11,7 +11,8 @@ public enum SoundClips
     Steps,
     MachineGunLoad,
     Overheat,
-    Negative
+    Negative,
+    OxygenRecover
 }
 
 public class AudioManager : MonoBehaviour
@@ -39,6 +40,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip machineGunLoad;
     [SerializeField] private AudioClip overheat;
     [SerializeField] private AudioClip negative;
+    [SerializeField] private AudioClip oxygenRecover;
 
 
     public void Awake()
@@ -101,6 +103,12 @@ public class AudioManager : MonoBehaviour
                 soundsAudioSource.volume = 2f;
                 soundsAudioSource.PlayOneShot(negative);
                 break;
+
+            case SoundClips.OxygenRecover:
+                soundsAudioSource.volume = 2f;
+                soundsAudioSource.PlayOneShot(oxygenRecover);
+                break;
+
             default:
                 break;
         }
