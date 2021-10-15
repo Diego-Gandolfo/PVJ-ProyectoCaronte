@@ -8043,6 +8043,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3082366027080120318, guid: 4c1a637f385da1b468c990ded3ab3ec0,
+        type: 3}
+      propertyPath: currentMultiplier
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082366027080120318, guid: 4c1a637f385da1b468c990ded3ab3ec0,
+        type: 3}
+      propertyPath: oxygenRegenerationPerSecond
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3082366028036263228, guid: 4c1a637f385da1b468c990ded3ab3ec0,
         type: 3}
       propertyPath: m_Layer
@@ -8296,33 +8306,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 459435495, guid: 91b595f2545c3854abad3e9515ef3610, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 459435495, guid: 91b595f2545c3854abad3e9515ef3610, type: 3}
-      propertyPath: m_UpdateMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 759937744146680146, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1779886978294339282, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5451814276302004526, guid: 91b595f2545c3854abad3e9515ef3610,
         type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 7826448911835425371, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8422945726429451277, guid: 91b595f2545c3854abad3e9515ef3610,
         type: 3}
@@ -8428,11 +8415,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883511139949814160, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91b595f2545c3854abad3e9515ef3610, type: 3}

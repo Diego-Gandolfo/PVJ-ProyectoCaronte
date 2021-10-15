@@ -9874,9 +9874,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxOxygen: 100
   currentOxygen: 0
-  oxygenConsumptionPerSecond: 0.5
-  timerOfConsumption: 1
+  oxigenConsumeMultiplier: 0.01
   asphyxiationDamage: 5
+  heartBeatTick: 1
 --- !u!1 &951006845917179496
 GameObject:
   m_ObjectHideFlags: 0
