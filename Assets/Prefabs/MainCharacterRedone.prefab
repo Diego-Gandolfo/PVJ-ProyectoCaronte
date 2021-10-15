@@ -9874,7 +9874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxOxygen: 100
   currentOxygen: 0
-  oxigenConsumeMultiplier: 0.05
+  oxigenConsumeMultiplier: 0.01
   asphyxiationDamage: 5
   heartBeatTick: 1
 --- !u!1 &951006845917179496

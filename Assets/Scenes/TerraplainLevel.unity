@@ -8051,7 +8051,7 @@ PrefabInstance:
     - target: {fileID: 3082366027080120318, guid: 4c1a637f385da1b468c990ded3ab3ec0,
         type: 3}
       propertyPath: currentMultiplier
-      value: 0.1
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 3082366027080120318, guid: 4c1a637f385da1b468c990ded3ab3ec0,
         type: 3}
@@ -8301,16 +8301,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7990734501827032521, guid: 6ebcc90c4e8f13143be5fdfe82cca29a,
-        type: 3}
-      propertyPath: asphyxiationDamage
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7990734501827032521, guid: 6ebcc90c4e8f13143be5fdfe82cca29a,
-        type: 3}
-      propertyPath: oxigenConsumeMultiplier
-      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ebcc90c4e8f13143be5fdfe82cca29a, type: 3}
