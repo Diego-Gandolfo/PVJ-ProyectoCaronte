@@ -5,18 +5,27 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyMeleeWeapon))]
 public class EnemyMeleeController : EnemyController
 {
-    [SerializeField] [Range(1, 50)] protected float _attackRadius;
+    #region Serialized Field
+
+    [SerializeField] [Range(0, 50)] protected float _attackRadius;
     [SerializeField] private float minimumDetectionDistance = 10f; //Esta seria la distancia para detectarlo cuando camina. 
+
+    #endregion
 
     #region Private
 
+    // Componentes
     private EnemyMeleeWeapon weapon;
+
+    // Parameters
     private bool canFollow = false;
     private bool playerInRange = false;
+    private bool _isAttackAnimationRunning;
 
     #endregion
 
     #region Unity Methods
+
     private void Start()
     {
         weapon = GetComponent<EnemyMeleeWeapon>();
@@ -35,7 +44,6 @@ public class EnemyMeleeController : EnemyController
         }
         else
         {
-            
             animator.SetBool("Walk Forward", false);
         }
     }
@@ -52,10 +60,14 @@ public class EnemyMeleeController : EnemyController
         {
             PlayerController player = _collisions[0].GetComponent<PlayerController>();
             if (player != null)
+            {
                 CheckPlayerDistance(player);
-        } else
+            }
+        }
+        else
+        {
             canFollow = false;
-
+        }
     }
 
     private void CanAttack()
@@ -67,12 +79,19 @@ public class EnemyMeleeController : EnemyController
             if(player != null)
             {
                 playerInRange = true;
-                weapon.Attack(player);
-                animator.SetTrigger("Stab Attack");
+
+                if(!_isAttackAnimationRunning && !weapon.IsAttacking)
+                {
+                    _isAttackAnimationRunning = true;
+                    weapon.Attack(player);
+                    animator.SetTrigger("Stab Attack");
+                }
             }        
         } 
         else
+        {
             playerInRange = false;
+        }
     }
 
     private void FollowPlayer(PlayerController player)
@@ -89,36 +108,56 @@ public class EnemyMeleeController : EnemyController
     private void CheckVisibleData()
     {
         if(weapon.IsAttacking || canFollow)
+        {
             outline.enabled = true;
-        else 
+        }
+        else
+        {
             outline.enabled = false;
+        }
 
-        if(HealthController.CurrentHealth != HealthController.MaxHealth)
+        if (HealthController.CurrentHealth != HealthController.MaxHealth)
+        {
             lifeBar.SetBarVisible(canFollow || weapon.IsAttacking);
+        }
     }
 
     private void CheckPlayerDistance(PlayerController player)
     {
         if (canFollow) //Si ya estaba persiguiendo, seguilo. 
+        {
             FollowPlayer(player);
+        }
         else
         {
             if (!player.IsSprinting)
             {
                 if (Vector3.Distance(player.transform.position, this.transform.position) <= minimumDetectionDistance)
+                {
                     FollowPlayer(player);
-
+                }
             }
             else //Si el player esta en la zona de deteccion y esta sprinteando 
+            {
                 FollowPlayer(player);
+            }
         }
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, _detectionArea);
+        //Gizmos.DrawWireCube(transform.position, _detectionArea);
         //Gizmos.DrawWireSphere(weapon.AttackPoint.position, _attackRadius);
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    public void OnFinishAttackAnimationTrigger()
+    {
+        _isAttackAnimationRunning = false;
     }
 
     #endregion

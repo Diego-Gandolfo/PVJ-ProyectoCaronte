@@ -16,6 +16,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _damage: 1
-  _cooldown: 0.5
+  _cooldown: 0.75
   _bulletSpeed: 0
   _bulletLifeTimer: 0

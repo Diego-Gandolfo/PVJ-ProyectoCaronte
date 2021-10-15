@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TinyEnemyMeleActorStats
   m_EditorClassIdentifier: 
   _maxLife: 20
-  _speed: 2.5
-  _buffedSpeed: 2.5
+  _speed: 3
+  _buffedSpeed: 6
   _animatorSpeed: 2
-  _buffedAnimatorSpeed: 4
+  _buffedAnimatorSpeed: 3
   canJump: 0
   jumpForce: 0
