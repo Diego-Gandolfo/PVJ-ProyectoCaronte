@@ -55,15 +55,18 @@ public class InputController : MonoBehaviour
     {
         CheckEscape();
 
-        if (!GameManager.instance.IsGameFreeze && LevelManager.instance.Player != null)
+        if (GameManager.instance != null && LevelManager.instance != null)
         {
-            CheckMovement();
-            CheckRotate();
-            CheckJump();
-            CheckSprint();
-            CheckShoot();
-            CheckAiming();
-            CheckAction();
+            if (!GameManager.instance.IsGameFreeze && LevelManager.instance.Player != null)
+            {
+                CheckMovement();
+                CheckRotate();
+                CheckJump();
+                CheckSprint();
+                CheckShoot();
+                CheckAiming();
+                CheckAction();
+            }
         }
     }
     #endregion
