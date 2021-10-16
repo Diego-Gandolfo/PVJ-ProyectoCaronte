@@ -11,12 +11,14 @@ public class MachineGun : MonoBehaviour
     [SerializeField] private ParticleSystem shootingParticles;
     [SerializeField] private ParticleSystem flashParticles;
 
+    private bool canPlaySound;
     private bool isOverheat;
     private bool isShooting;
     private float currentShootingTime;
     private Animator animator;
     private RaycastHit target;
 
+    private float overheatSoundDuration = 2.0f;
     void Start()
     {
         var particles = shootingParticles.main;
@@ -34,6 +36,7 @@ public class MachineGun : MonoBehaviour
                 if (currentShootingTime >= maxShootingTime)
                 {
                     isOverheat = true;
+                    PlayOverheatSound();
                 }
             }
             else //si no esta disparando, resta. 
@@ -66,8 +69,6 @@ public class MachineGun : MonoBehaviour
         {
             shootingParticles.Play();
 
-            PlayOverheatSound();
-
             if (currentShootingTime <= 0)
                 isOverheat = false;
         }
@@ -75,7 +76,11 @@ public class MachineGun : MonoBehaviour
 
     private void PlayOverheatSound()
     {
-        AudioManager.instance.PlaySound(SoundClips.Overheat);
+        overheatSoundDuration -= Time.deltaTime;
+        if (overheatSoundDuration <= 0) canPlaySound = false;
+        else canPlaySound = true;
+
+        if (canPlaySound) AudioManager.instance.PlaySound(SoundClips.Overheat);
     }
 
     public void SetPlayer(PlayerController player)
