@@ -55,10 +55,10 @@ MonoBehaviour:
   jumpTwo: {fileID: 8300000, guid: 6ee3335c1c97c9b418d29b9b18c7193f, type: 3}
   jumpThree: {fileID: 8300000, guid: 1bfedc965aa1b9e499feb9dd3f7761a4, type: 3}
   aim: {fileID: 8300000, guid: 7721340f78c72714cb23432bbf360a05, type: 3}
-  footstepsOne: {fileID: 8300000, guid: f205f8c2b0ef9b84e92c804275948732, type: 3}
-  footstepsTwo: {fileID: 8300000, guid: c7b306336f50d8645a5027d1f2ca4e39, type: 3}
-  footstepsThree: {fileID: 8300000, guid: fc21b1f4da842144f9f069344c2c9a67, type: 3}
-  footstepsFour: {fileID: 8300000, guid: d68a8acfbc946db46a420f4c82b6f8f5, type: 3}
+  footstepsOne: {fileID: 8300000, guid: 89183ef2cca713c49a9e98da2f41dfee, type: 3}
+  footstepsTwo: {fileID: 8300000, guid: 574d383423074d5479fb2aa86668eeee, type: 3}
+  footstepsThree: {fileID: 8300000, guid: 8cac2257cf6cdb34d935e7e614917231, type: 3}
+  footstepsFour: {fileID: 8300000, guid: 93de0d276717aa54185ed9ab4ae8234f, type: 3}
   machineGunLoad: {fileID: 0}
   overheat: {fileID: 8300000, guid: adc81be98fbd1eb4db80cd6ab1aee6c6, type: 3}
   negative: {fileID: 8300000, guid: 2cb53f70395c843468ccf1487f42078e, type: 3}

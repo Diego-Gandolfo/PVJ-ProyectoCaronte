@@ -65,26 +65,27 @@ public class AudioManager : MonoBehaviour
         switch (soundClip)
         {
             case SoundClips.Shoot:
-                soundsAudioSource.volume = 0.4f;
+                soundsAudioSource.volume = 0.5f;
                 soundsAudioSource.PlayOneShot(shoot);
                 break;
 
             case SoundClips.Heartbeat:
-                soundsAudioSource.volume = 1.8f;
+                soundsAudioSource.volume = 1.5f;
                 soundsAudioSource.PlayOneShot(heartbeat);
                 break;
 
             case SoundClips.Jump:
+                soundsAudioSource.volume = 0.5f;
                 PlayJump();
                 break;
 
             case SoundClips.Aim:
-                soundsAudioSource.volume = 0.2f;
+                soundsAudioSource.volume = 0.1f;
                 soundsAudioSource.PlayOneShot(aim);
                 break;
 
             case SoundClips.Steps:
-                soundsAudioSource.volume = 0.1f;
+                soundsAudioSource.volume = 0.3f;
                 PlaySoundSteps();
                 break;
 
@@ -94,7 +95,7 @@ public class AudioManager : MonoBehaviour
                 break;
 
             case SoundClips.Overheat:
-                soundsAudioSource.volume = 2f;
+                soundsAudioSource.volume = 1f;
                 soundsAudioSource.PlayOneShot(overheat); 
                 break;
 
@@ -129,7 +130,6 @@ public class AudioManager : MonoBehaviour
 
     private void PlayJump()
     {
-        soundsAudioSource.volume = 0.5f;
 
         int random = Random.Range(0, 3);
         if (random == 0)

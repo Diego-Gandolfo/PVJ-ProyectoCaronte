@@ -71,7 +71,7 @@ public class OxygenSystemController : MonoBehaviour
 
     private void PlayOxygenRecoverSound()
     {
-        if (timeToPlayOxygenRecoverSoundAgain <= 0 && currentOxygen <= 20)
+        if (timeToPlayOxygenRecoverSoundAgain <= 0 && currentOxygen <= 50)
         {
             AudioManager.instance.PlaySound(SoundClips.OxygenRecover);
             timeToPlayOxygenRecoverSoundAgain = oxygenRecoverSoundDuration;
