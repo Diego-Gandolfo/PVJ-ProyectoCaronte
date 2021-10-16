@@ -79,12 +79,12 @@ public class AudioManager : MonoBehaviour
                 break;
 
             case SoundClips.Aim:
-                soundsAudioSource.volume = 0.5f;
+                soundsAudioSource.volume = 0.2f;
                 soundsAudioSource.PlayOneShot(aim);
                 break;
 
             case SoundClips.Steps:
-                soundsAudioSource.volume = 0.2f;
+                soundsAudioSource.volume = 0.1f;
                 PlaySoundSteps();
                 break;
 
@@ -104,7 +104,7 @@ public class AudioManager : MonoBehaviour
                 break;
 
             case SoundClips.OxygenRecover:
-                soundsAudioSource.volume = 2f;
+                soundsAudioSource.volume = 1f;
                 soundsAudioSource.PlayOneShot(oxygenRecover);
                 break;
 
