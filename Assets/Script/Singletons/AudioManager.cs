@@ -42,7 +42,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip negative;
     [SerializeField] private AudioClip oxygenRecover;
 
-
     public void Awake()
     {
         if (instance != null)
@@ -85,7 +84,7 @@ public class AudioManager : MonoBehaviour
                 break;
 
             case SoundClips.Steps:
-                soundsAudioSource.volume = 1f;
+                soundsAudioSource.volume = 0.2f;
                 PlaySoundSteps();
                 break;
 
