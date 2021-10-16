@@ -20,7 +20,7 @@ public class OxygenSystemController : MonoBehaviour
     public Action<float, float> OnChangeInOxygen; //currentOxygen, maxOxygen
 
     //SOUND PARAMETERS
-    private float oxygenRecoverSoundDuration = 2f;
+    private float oxygenRecoverSoundDuration = 1.0f;
     
     void Start()
     {
@@ -73,7 +73,7 @@ public class OxygenSystemController : MonoBehaviour
         if (oxygenRecoverSoundDuration <= 0)
         {
             AudioManager.instance.PlaySound(SoundClips.OxygenRecover);
-            oxygenRecoverSoundDuration = 1.0f;
+            oxygenRecoverSoundDuration = 5.0f;
         }
     }
 

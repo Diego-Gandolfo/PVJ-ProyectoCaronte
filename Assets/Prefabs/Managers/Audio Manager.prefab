@@ -62,7 +62,7 @@ MonoBehaviour:
   machineGunLoad: {fileID: 0}
   overheat: {fileID: 8300000, guid: adc81be98fbd1eb4db80cd6ab1aee6c6, type: 3}
   negative: {fileID: 8300000, guid: 2cb53f70395c843468ccf1487f42078e, type: 3}
-  oxygenRecover: {fileID: 8300000, guid: b6e69ee2534749d4fb538c25bddfc594, type: 3}
+  oxygenRecover: {fileID: 8300000, guid: 3c91d9923854e54469d700ad04b00306, type: 3}
 --- !u!1 &4814295448939889778
 GameObject:
   m_ObjectHideFlags: 0
