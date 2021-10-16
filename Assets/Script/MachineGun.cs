@@ -17,9 +17,6 @@ public class MachineGun : MonoBehaviour
     private Animator animator;
     private RaycastHit target;
 
-    private float timeToPlayOverheatSound = 1.0f;
-    private bool hasPlayedSound;
-
     void Start()
     {
         var particles = shootingParticles.main;
@@ -78,11 +75,7 @@ public class MachineGun : MonoBehaviour
 
     private void PlayOverheatSound()
     {
-        timeToPlayOverheatSound -= Time.deltaTime;
-        if (timeToPlayOverheatSound <= 0)
-        {
-            AudioManager.instance.PlaySound(SoundClips.Overheat);
-        }
+        AudioManager.instance.PlaySound(SoundClips.Overheat);
     }
 
     public void SetPlayer(PlayerController player)
