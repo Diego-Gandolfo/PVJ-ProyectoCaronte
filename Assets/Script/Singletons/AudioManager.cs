@@ -9,7 +9,7 @@ public enum SoundClips
     Heartbeat,
     Aim,
     Steps,
-    MachineGunLoad,
+    //MachineGunLoad,
     Overheat,
     Negative,
     OxygenRecover
@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip footstepsTwo;
     [SerializeField] private AudioClip footstepsThree;
     [SerializeField] private AudioClip footstepsFour;
-    [SerializeField] private AudioClip machineGunLoad;
+    //[SerializeField] private AudioClip machineGunLoad;
     [SerializeField] private AudioClip overheat;
     [SerializeField] private AudioClip negative;
     [SerializeField] private AudioClip oxygenRecover;
@@ -89,10 +89,10 @@ public class AudioManager : MonoBehaviour
                 PlaySoundSteps();
                 break;
 
-            case SoundClips.MachineGunLoad:
-                soundsAudioSource.volume = 1.8f;
-                //soundsAudioSource.PlayOneShot(machineGunLoad); //TODO: PONER SONIDO LOAD MACHINEGUN
-                break;
+            //case SoundClips.MachineGunLoad:
+            //    soundsAudioSource.volume = 1.8f;
+            //    //soundsAudioSource.PlayOneShot(machineGunLoad); //TODO: PONER SONIDO LOAD MACHINEGUN
+            //    break;
 
             case SoundClips.Overheat:
                 soundsAudioSource.volume = 1f;
