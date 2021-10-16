@@ -65,7 +65,7 @@ public class AudioManager : MonoBehaviour
         switch (soundClip)
         {
             case SoundClips.Shoot:
-                soundsAudioSource.volume = 0.6f;
+                soundsAudioSource.volume = 0.4f;
                 soundsAudioSource.PlayOneShot(shoot);
                 break;
 

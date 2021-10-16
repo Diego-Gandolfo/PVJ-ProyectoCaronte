@@ -17,6 +17,9 @@ public class MachineGun : MonoBehaviour
     private Animator animator;
     private RaycastHit target;
 
+    private float timeToPlayOverheatSound = 1.0f;
+    private bool hasPlayedSound;
+
     void Start()
     {
         var particles = shootingParticles.main;
@@ -32,7 +35,9 @@ public class MachineGun : MonoBehaviour
                 currentShootingTime += Time.deltaTime; // sacar el time delta time por un tema de como funciona con el calculo por frame.
 
                 if (currentShootingTime >= maxShootingTime)
+                {
                     isOverheat = true;
+                }
             }
             else //si no esta disparando, resta. 
             {
@@ -63,12 +68,21 @@ public class MachineGun : MonoBehaviour
         if (isOverheat)
         {
             shootingParticles.Play();
-            AudioManager.instance.PlaySound(SoundClips.Overheat);
+
+            PlayOverheatSound();
 
             if (currentShootingTime <= 0)
                 isOverheat = false;
         }
+    }
 
+    private void PlayOverheatSound()
+    {
+        timeToPlayOverheatSound -= Time.deltaTime;
+        if (timeToPlayOverheatSound <= 0)
+        {
+            AudioManager.instance.PlaySound(SoundClips.Overheat);
+        }
     }
 
     public void SetPlayer(PlayerController player)
