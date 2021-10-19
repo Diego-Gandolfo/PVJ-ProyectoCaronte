@@ -24,6 +24,9 @@ public class OxygenSystemController : MonoBehaviour
     //SOUND PARAMETERS
     private float timeToPlayOxygenRecoverSoundAgain = 1.0f;
     private float oxygenRecoverSoundDuration = 3.0f;
+
+    public float MaxOxygen => maxOxygen;
+    public float CurrentOxygen => currentOxygen;
     
     void Start()
     {

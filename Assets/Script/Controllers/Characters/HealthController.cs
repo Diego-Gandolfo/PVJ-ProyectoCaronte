@@ -24,6 +24,18 @@ public class HealthController : MonoBehaviour, IDamageable
 
     #region Public Methods
 
+    public void Heal(int heal)
+    {
+        if(CurrentHealth < MaxHealth)
+        {
+            CurrentHealth += heal;
+            if (CurrentHealth > MaxHealth)
+                CurrentHealth = MaxHealth;
+
+            OnUpdateLife?.Invoke(CurrentHealth, MaxHealth);
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         if (CurrentHealth > 0)
@@ -38,14 +50,10 @@ public class HealthController : MonoBehaviour, IDamageable
             Die();
         }
 
-        if (lifeBar != null)
-        {
-            if (!lifeBar.IsVisible)
-                lifeBar.SetBarVisible(true);
-
-            lifeBar.UpdateLifeBar(CurrentHealth, MaxHealth);
-        }
+        
     }
+
+
 
     private void Update()
     {
@@ -66,7 +74,8 @@ public class HealthController : MonoBehaviour, IDamageable
     public void ResetValues()
     {
         CurrentHealth = MaxHealth;
-        OnUpdateLife?.Invoke(CurrentHealth, MaxHealth);
+        UpdateLifeBar();
+        //OnUpdateLife?.Invoke(CurrentHealth, MaxHealth);
     }
 
     public void SetStats(ActorStats actor)
@@ -78,4 +87,17 @@ public class HealthController : MonoBehaviour, IDamageable
             lifeBar.UpdateLifeBar(CurrentHealth, MaxHealth);
     }
     #endregion
+
+    private void UpdateLifeBar()
+    {
+        OnUpdateLife?.Invoke(CurrentHealth, MaxHealth);
+
+        if (lifeBar != null)
+        {
+            if (!lifeBar.IsVisible)
+                lifeBar.SetBarVisible(true);
+
+            lifeBar.UpdateLifeBar(CurrentHealth, MaxHealth);
+        }
+    }
 }

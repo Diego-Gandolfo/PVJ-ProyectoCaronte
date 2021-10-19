@@ -7884,55 +7884,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2795862746374450197, guid: 4c1a637f385da1b468c990ded3ab3ec0,
-        type: 3}
-      propertyPath: m_Lightmapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2795862746374450197, guid: 4c1a637f385da1b468c990ded3ab3ec0,
-        type: 3}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2795862746374450200, guid: 4c1a637f385da1b468c990ded3ab3ec0,
         type: 3}
       propertyPath: m_Name
       value: Lamparita
       objectReference: {fileID: 0}
-    - target: {fileID: 2795862746374450200, guid: 4c1a637f385da1b468c990ded3ab3ec0,
+    - target: {fileID: 3082366027080120318, guid: 4c1a637f385da1b468c990ded3ab3ec0,
         type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3082366027080120256, guid: 4c1a637f385da1b468c990ded3ab3ec0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
+      propertyPath: heal
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3082366027080120318, guid: 4c1a637f385da1b468c990ded3ab3ec0,
         type: 3}
-      propertyPath: currentMultiplier
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3082366027080120318, guid: 4c1a637f385da1b468c990ded3ab3ec0,
-        type: 3}
-      propertyPath: oxygenRegenerationPerSecond
+      propertyPath: secondsToHeal
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3082366028036263228, guid: 4c1a637f385da1b468c990ded3ab3ec0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3082366028200530465, guid: 4c1a637f385da1b468c990ded3ab3ec0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3082366028823095527, guid: 4c1a637f385da1b468c990ded3ab3ec0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3280651285175858850, guid: 4c1a637f385da1b468c990ded3ab3ec0,
         type: 3}
@@ -7988,21 +7953,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3578748404104845231, guid: 4c1a637f385da1b468c990ded3ab3ec0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5072815450662107349, guid: 4c1a637f385da1b468c990ded3ab3ec0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8801076750756303380, guid: 4c1a637f385da1b468c990ded3ab3ec0,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c1a637f385da1b468c990ded3ab3ec0, type: 3}

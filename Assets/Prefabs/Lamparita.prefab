@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2795862746374450199}
   - component: {fileID: 2795862746374450198}
   - component: {fileID: 2795862746374450201}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lamparita
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2795862746374450200}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.6899999, y: 0.46, z: 20.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -57,7 +57,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -90,7 +90,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 2.29
@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafad3b0c1b137147a133ec5d8901ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showPromptAlways: 0
 --- !u!114 &2795862746374450201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +188,7 @@ GameObject:
   - component: {fileID: 1346714391541190895}
   - component: {fileID: 8755016177549042780}
   - component: {fileID: 948068026733219554}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Adentro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +269,7 @@ GameObject:
   - component: {fileID: 2364269268342949152}
   - component: {fileID: 942813879286102723}
   - component: {fileID: 9002313875727386387}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Afuera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,6 +346,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3280651285175858850}
     m_Modifications:
+    - target: {fileID: 6937584232220470740, guid: 8c8453f47c610e34cb0ef997cbb79270,
+        type: 3}
+      propertyPath: currentMultiplier
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937584232220470762, guid: 8c8453f47c610e34cb0ef997cbb79270,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6937584232620815048, guid: 8c8453f47c610e34cb0ef997cbb79270,
         type: 3}
       propertyPath: m_RenderMode
@@ -440,10 +451,25 @@ PrefabInstance:
       propertyPath: TrailModule.colorOverLifetime.maxColor.a
       value: 0.31764707
       objectReference: {fileID: 0}
+    - target: {fileID: 6937584232620815053, guid: 8c8453f47c610e34cb0ef997cbb79270,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937584233239169035, guid: 8c8453f47c610e34cb0ef997cbb79270,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6937584233411565334, guid: 8c8453f47c610e34cb0ef997cbb79270,
         type: 3}
       propertyPath: m_Name
       value: Secure Zone
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937584233411565334, guid: 8c8453f47c610e34cb0ef997cbb79270,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6937584233411565334, guid: 8c8453f47c610e34cb0ef997cbb79270,
         type: 3}
@@ -504,6 +530,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8875406561244597637, guid: 8c8453f47c610e34cb0ef997cbb79270,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c8453f47c610e34cb0ef997cbb79270, type: 3}
