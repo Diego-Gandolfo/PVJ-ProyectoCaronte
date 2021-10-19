@@ -32,7 +32,7 @@ public class HealthController : MonoBehaviour, IDamageable
             if (CurrentHealth > MaxHealth)
                 CurrentHealth = MaxHealth;
 
-            OnUpdateLife?.Invoke(CurrentHealth, MaxHealth);
+            UpdateLifeBar();
         }
     }
 
@@ -41,7 +41,7 @@ public class HealthController : MonoBehaviour, IDamageable
         if (CurrentHealth > 0)
         {
             CurrentHealth -= damage;
-            OnUpdateLife?.Invoke(CurrentHealth, MaxHealth);
+            UpdateLifeBar();
             OnTakeDamage?.Invoke();
         }
 
@@ -52,8 +52,6 @@ public class HealthController : MonoBehaviour, IDamageable
 
         
     }
-
-
 
     private void Update()
     {
