@@ -6,7 +6,6 @@ public class MachineGun : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private ParticleSystem effectShoot;
-    [SerializeField] private Transform firePoint;
     [SerializeField] private float maxShootingTime;
     [SerializeField] private ParticleSystem shootingParticles;
     [SerializeField] private ParticleSystem flashParticles;
@@ -17,8 +16,8 @@ public class MachineGun : MonoBehaviour
     private float currentShootingTime;
     private Animator animator;
     private RaycastHit target;
-
     private float overheatSoundDuration = 2.0f;
+
     void Start()
     {
         var particles = shootingParticles.main;
@@ -42,7 +41,12 @@ public class MachineGun : MonoBehaviour
             else //si no esta disparando, resta. 
             {
                 if (currentShootingTime >= 0)
-                    currentShootingTime -= Time.deltaTime / 3f;
+                {
+                    if (!isOverheat)
+                        currentShootingTime -= (Time.deltaTime / 10f);
+                    else
+                        currentShootingTime -= (Time.deltaTime / 4f);
+                }
             }
 
             OnOverHeat();

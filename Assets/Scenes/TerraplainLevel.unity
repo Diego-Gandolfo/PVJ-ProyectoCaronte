@@ -8108,6 +8108,11 @@ PrefabInstance:
       propertyPath: aimVirtualCamera
       value: 
       objectReference: {fileID: 24716429}
+    - target: {fileID: 3457291127151309888, guid: 6ebcc90c4e8f13143be5fdfe82cca29a,
+        type: 3}
+      propertyPath: maxShootingTime
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4368234925807164453, guid: 6ebcc90c4e8f13143be5fdfe82cca29a,
         type: 3}
       propertyPath: m_RootOrder
