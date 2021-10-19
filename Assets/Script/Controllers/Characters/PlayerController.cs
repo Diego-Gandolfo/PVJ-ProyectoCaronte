@@ -96,7 +96,7 @@ public class PlayerController : ActorController
     {
         if (!isUsingWeapon)
         {
-            Vector3 movement = transform.right * horizontal + transform.forward * vertical;
+            Vector3 movement = (transform.right * horizontal + transform.forward * vertical).normalized;
             transform.position += movement * currentSpeed * Time.deltaTime;
             
             if (canPlaySound && CheckIfGrounded())
