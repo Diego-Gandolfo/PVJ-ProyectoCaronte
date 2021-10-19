@@ -9,11 +9,13 @@ public class OxygenSystemController : MonoBehaviour
     [SerializeField] private float maxOxygen;
     [SerializeField] private float currentOxygen;
     [SerializeField] private float oxigenConsumeMultiplier;
+    [SerializeField] private float sprintMultiplier = 0.25f;
     [SerializeField] private int asphyxiationDamage;
     [SerializeField] private float heartBeatTick;
     private bool isInSafeZone;
     private HealthController healtController;
     private float currentTime;
+    private PlayerController player;
 
     //EVENTS
     public Action OnAsphyxiation;
@@ -26,6 +28,7 @@ public class OxygenSystemController : MonoBehaviour
     void Start()
     {
         healtController = GetComponent<HealthController>();
+        player = GetComponent<PlayerController>();
         ResetValues();
     }
 
@@ -55,7 +58,10 @@ public class OxygenSystemController : MonoBehaviour
 
     private void ConsumeOxygen()
     {
-        currentOxygen -= oxigenConsumeMultiplier;
+        if(player.IsSprinting)
+            currentOxygen -= oxigenConsumeMultiplier * sprintMultiplier;
+        else
+            currentOxygen -= oxigenConsumeMultiplier;
         if (currentOxygen <= 20)
             PlayHeartbeatSound();
     }

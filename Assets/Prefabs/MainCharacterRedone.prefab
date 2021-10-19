@@ -9744,6 +9744,7 @@ GameObject:
   - component: {fileID: 6355265869036301437}
   - component: {fileID: 7990734501827032521}
   - component: {fileID: 1432126584}
+  - component: {fileID: 8686746705472508094}
   m_Layer: 6
   m_Name: MainCharacterRedone
   m_TagString: Player
@@ -9862,9 +9863,24 @@ MonoBehaviour:
   maxOxygen: 100
   currentOxygen: 0
   oxigenConsumeMultiplier: 0.01
+  sprintMultiplier: 2
   asphyxiationDamage: 5
   heartBeatTick: 1
 --- !u!136 &1432126584
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859750694658385290}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.101447985
+  m_Height: 0.383502
+  m_Direction: 1
+  m_Center: {x: -0.120712355, y: 0.19826746, z: 0}
+--- !u!136 &8686746705472508094
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
