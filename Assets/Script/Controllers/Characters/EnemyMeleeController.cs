@@ -16,6 +16,7 @@ public class EnemyMeleeController : EnemyController
 
     // Componentes
     private EnemyMeleeWeapon weapon;
+    private Rigidbody _rigidbody;
 
     // Parameters
     private bool canFollow = false;
@@ -29,6 +30,7 @@ public class EnemyMeleeController : EnemyController
     private void Start()
     {
         weapon = GetComponent<EnemyMeleeWeapon>();
+        _rigidbody = GetComponent<Rigidbody>();
         weapon.SetStats(_attackStats);
         animator.speed = _actorStats.OriginalAnimatorSpeed;
     }
@@ -99,8 +101,16 @@ public class EnemyMeleeController : EnemyController
         if (!playerInRange)
         {
             canFollow = true;
-            transform.LookAt(player.transform.position, player.transform.up);
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
+
+            var xzPlayerPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+            transform.LookAt(xzPlayerPosition);
+
+            var direction = (xzPlayerPosition - transform.position).normalized;
+            _rigidbody.velocity = direction * _actorStats.OriginalSpeed;
+
+            // Esto es lo que estaba antes, lo dejo para que se vea el cambio
+            //transform.LookAt(player.transform.position, player.transform.up);
+            //transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
         }
         CanAttack();
     }
