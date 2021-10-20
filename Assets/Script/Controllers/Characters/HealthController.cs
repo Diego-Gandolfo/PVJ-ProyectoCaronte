@@ -14,7 +14,7 @@ public class HealthController : MonoBehaviour, IDamageable
     #region Events
     public Action OnDie;
     public Action OnTakeDamage;
-    public Action<int, int> OnUpdateLife; //currentLife, MaxLife
+    public Action<int> OnUpdateLife; //currentLife, MaxLife
     #endregion
 
     #region Propertys
@@ -53,11 +53,6 @@ public class HealthController : MonoBehaviour, IDamageable
         
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P)) TakeDamage(10); //TODO: BORRAR 
-    }
-
     public virtual void Die()
     {
         OnDie?.Invoke();
@@ -66,7 +61,7 @@ public class HealthController : MonoBehaviour, IDamageable
     public void SetLifeBar(LifeBarController controller)
     {
         lifeBar = controller;
-        lifeBar.UpdateLifeBar(CurrentHealth, MaxHealth);
+        lifeBar.UpdateLifeBar(CurrentHealth);
     }
 
     public void ResetValues()
@@ -80,22 +75,22 @@ public class HealthController : MonoBehaviour, IDamageable
     {
         _actorStats = actor;
         CurrentHealth = MaxHealth;
+
         lifeBar = GetComponent<LifeBarController>();
-        if (lifeBar != null)
-            lifeBar.UpdateLifeBar(CurrentHealth, MaxHealth);
+        UpdateLifeBar();
     }
     #endregion
 
     private void UpdateLifeBar()
     {
-        OnUpdateLife?.Invoke(CurrentHealth, MaxHealth);
+        OnUpdateLife?.Invoke(CurrentHealth);
 
         if (lifeBar != null)
         {
             if (!lifeBar.IsVisible)
                 lifeBar.SetBarVisible(true);
 
-            lifeBar.UpdateLifeBar(CurrentHealth, MaxHealth);
+            lifeBar.UpdateLifeBar(CurrentHealth);
         }
     }
 }

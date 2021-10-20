@@ -9,17 +9,47 @@ public class LifeBarController : MonoBehaviour
     [SerializeField] private Image lifeBarImage;
     [SerializeField] private Text percentage;
 
-    private HealthController healthController;
+    private float currentHealth;
+    private float uiHealth;
+    private float currentLerpTime;
 
+
+    public float MaxHealth { get; set; }
     public bool IsVisible { get; private set; }
 
-    public void UpdateLifeBar(int currentHealth, int maxHealth)
+    private void Start()
     {
-        if(lifeBarImage != null)
-            lifeBarImage.fillAmount = (float) currentHealth / maxHealth;
+        var healthController = GetComponent<HealthController>();
+        if (healthController != null)
+        {
+            MaxHealth = healthController.MaxHealth;
+            uiHealth = MaxHealth;
+            currentHealth = uiHealth;
+        }
+    }
+
+    private void Update()
+    {
+        LifeBarAnimation();
+    }
+
+    private void LifeBarAnimation()
+    {
+        if(currentHealth != uiHealth)
+        {
+            currentLerpTime += Time.deltaTime;
+            uiHealth = Mathf.Lerp(uiHealth, currentHealth, currentLerpTime);
+            lifeBarImage.fillAmount = uiHealth / MaxHealth;
+        }
+    }
+
+    public void UpdateLifeBar(int currentHealthvalue)
+    {
+        currentHealth = currentHealthvalue;
+        currentLerpTime = 0f;
 
         if (percentage != null)
-            percentage.text = (currentHealth * 100 / maxHealth).ToString();
+            percentage.text = (currentHealthvalue * 100 / MaxHealth).ToString();
     }
 
     public void SetBarVisible(bool boolean)
@@ -31,5 +61,9 @@ public class LifeBarController : MonoBehaviour
     public void SetHealthController(HealthController health)
     {
         health.OnUpdateLife += UpdateLifeBar;
+        MaxHealth = health.MaxHealth;
+        uiHealth = MaxHealth;
+        currentHealth = MaxHealth;
     }
+
 }
