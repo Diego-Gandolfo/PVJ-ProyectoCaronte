@@ -37,19 +37,22 @@ public class OxygenSystemController : MonoBehaviour
 
     void Update() 
     {
-        if (!isInSafeZone)
+        if (!GameManager.instance.IsGameFreeze)
         {
-            currentTime -= Time.deltaTime;
-            if (CheckOxygenLevel())
+            if (!isInSafeZone)
+            {
+                currentTime -= Time.deltaTime;
+                if (CheckOxygenLevel())
                     ConsumeOxygen();
-            else
-                Asphyxiation();
+                else
+                    Asphyxiation();
 
-            OnChangeInOxygen?.Invoke(currentOxygen, maxOxygen);
-        }
-        else if (isInSafeZone)
-        {
-            timeToPlayOxygenRecoverSoundAgain -= Time.deltaTime;
+                OnChangeInOxygen?.Invoke(currentOxygen, maxOxygen);
+            }
+            else if (isInSafeZone)
+            {
+                timeToPlayOxygenRecoverSoundAgain -= Time.deltaTime;
+            }
         }
     }
 
