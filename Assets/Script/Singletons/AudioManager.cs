@@ -12,7 +12,9 @@ public enum SoundClips
     //MachineGunLoad,
     Overheat,
     Negative,
-    OxygenRecover
+    OxygenRecover,
+    CapsuleActivated,
+    UIPopUp
 }
 
 public class AudioManager : MonoBehaviour
@@ -41,6 +43,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip overheat;
     [SerializeField] private AudioClip negative;
     [SerializeField] private AudioClip oxygenRecover;
+    [SerializeField] private AudioClip capsuleActivated;
+    [SerializeField] private AudioClip uiPopUp;
 
     public void Awake()
     {
@@ -107,6 +111,16 @@ public class AudioManager : MonoBehaviour
             case SoundClips.OxygenRecover:
                 soundsAudioSource.volume = 1f;
                 soundsAudioSource.PlayOneShot(oxygenRecover);
+                break;
+
+            case SoundClips.CapsuleActivated:
+                soundsAudioSource.volume = 0.5f;
+                soundsAudioSource.PlayOneShot(capsuleActivated);
+                break;
+
+            case SoundClips.UIPopUp:
+                soundsAudioSource.volume = 0.5f;
+                soundsAudioSource.PlayOneShot(uiPopUp);
                 break;
 
             default:
