@@ -14,7 +14,8 @@ public enum SoundClips
     Negative,
     OxygenRecover,
     CapsuleActivated,
-    UIPopUp
+    UIPopUp,
+    InteractableClick
 }
 
 public class AudioManager : MonoBehaviour
@@ -45,6 +46,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip oxygenRecover;
     [SerializeField] private AudioClip capsuleActivated;
     [SerializeField] private AudioClip uiPopUp;
+    [SerializeField] private AudioClip interactableClick;
 
     public void Awake()
     {
@@ -121,6 +123,11 @@ public class AudioManager : MonoBehaviour
             case SoundClips.UIPopUp:
                 soundsAudioSource.volume = 0.5f;
                 soundsAudioSource.PlayOneShot(uiPopUp);
+                break;
+
+            case SoundClips.InteractableClick:
+                soundsAudioSource.volume = 0.5f;
+                soundsAudioSource.PlayOneShot(interactableClick);
                 break;
 
             default:

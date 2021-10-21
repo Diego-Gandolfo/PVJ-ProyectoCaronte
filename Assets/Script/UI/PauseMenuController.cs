@@ -39,6 +39,7 @@ public class PauseMenuController : MonoBehaviour
     private void Pause()
     {
         IsActive = true;
+        AudioManager.instance.PlaySound(SoundClips.InteractableClick);
         ChangeStatus();
         //musicLevel.volume -= lowerVolume;
     }
@@ -46,6 +47,7 @@ public class PauseMenuController : MonoBehaviour
     private void ExitMenu()
     {
         IsActive = false;
+        //AudioManager.instance.PlaySound(SoundClips.InteractableClick);
         //musicLevel.volume += lowerVolume;
         ChangeStatus();
     }
@@ -60,12 +62,16 @@ public class PauseMenuController : MonoBehaviour
 
     private void OnResumeHandler()
     {
+        AudioManager.instance.PlaySound(SoundClips.InteractableClick);
+        
         //AudioManager.instance.PlaySound(SoundClips.MouseClick);
         ExitMenu();
     }
 
     private void OnRestartHandler()
     {
+        AudioManager.instance.PlaySound(SoundClips.InteractableClick);
+
         GameManager.instance.Pause(false);
         GameManager.instance.SetCursorActive(false);
         //AudioManager.instance.PlaySound(SoundClips.MouseClick);
@@ -74,6 +80,8 @@ public class PauseMenuController : MonoBehaviour
 
     private void OnMenuHandler()
     {
+        AudioManager.instance.PlaySound(SoundClips.InteractableClick);
+
         GameManager.instance.Pause(false);
         GameManager.instance.SetCursorActive(true);
         //AudioManager.instance.PlaySound(SoundClips.MouseClick);
@@ -82,6 +90,8 @@ public class PauseMenuController : MonoBehaviour
 
     private void OnQuitHandler()
     {
+        AudioManager.instance.PlaySound(SoundClips.InteractableClick);
+
         //AudioManager.instance.PlaySound(SoundClips.MouseClick);
         Application.Quit();
         Debug.Log("Se cierra el juego");

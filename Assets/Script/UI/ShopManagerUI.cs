@@ -37,6 +37,7 @@ public class ShopManagerUI : MonoBehaviour
         shopManager.SetActive(IsActive);
         GameManager.instance.Pause(IsActive);
         GameManager.instance.SetCursorActive(IsActive);
+        
     }
 
     public void OnCloseScreen()
