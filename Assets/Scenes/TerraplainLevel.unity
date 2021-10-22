@@ -4947,6 +4947,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1283144186622023976, guid: 00ffc5e7eec0fc3478803268a924d7eb,
+        type: 3}
+      propertyPath: footStepsSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283144186622023976, guid: 00ffc5e7eec0fc3478803268a924d7eb,
+        type: 3}
+      propertyPath: footStepsSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 93de0d276717aa54185ed9ab4ae8234f, type: 3}
+    - target: {fileID: 1283144186622023976, guid: 00ffc5e7eec0fc3478803268a924d7eb,
+        type: 3}
+      propertyPath: footStepsSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 89183ef2cca713c49a9e98da2f41dfee, type: 3}
+    - target: {fileID: 1283144186622023976, guid: 00ffc5e7eec0fc3478803268a924d7eb,
+        type: 3}
+      propertyPath: footStepsSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 574d383423074d5479fb2aa86668eeee, type: 3}
+    - target: {fileID: 1283144186622023976, guid: 00ffc5e7eec0fc3478803268a924d7eb,
+        type: 3}
+      propertyPath: footStepsSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8cac2257cf6cdb34d935e7e614917231, type: 3}
     - target: {fileID: 3760109889062201694, guid: 00ffc5e7eec0fc3478803268a924d7eb,
         type: 3}
       propertyPath: m_Name

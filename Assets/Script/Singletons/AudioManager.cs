@@ -9,6 +9,7 @@ public enum SoundClips
     Heartbeat,
     Aim,
     Steps,
+    RunningSteps,
     //MachineGunLoad,
     Overheat,
     Negative,
@@ -32,14 +33,12 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioClip shoot;
     [SerializeField] private AudioClip heartbeat;
-    [SerializeField] private AudioClip jumpOne;
-    [SerializeField] private AudioClip jumpTwo;
-    [SerializeField] private AudioClip jumpThree;
+    [SerializeField] private List<AudioClip> jumpsSounds;
+    //[SerializeField] private AudioClip jumpOne;
+    //[SerializeField] private AudioClip jumpTwo;
+    //[SerializeField] private AudioClip jumpThree;
     [SerializeField] private AudioClip aim;
-    [SerializeField] private AudioClip footstepsOne;
-    [SerializeField] private AudioClip footstepsTwo;
-    [SerializeField] private AudioClip footstepsThree;
-    [SerializeField] private AudioClip footstepsFour;
+    [SerializeField] private List<AudioClip> footStepsSounds;
     //[SerializeField] private AudioClip machineGunLoad;
     [SerializeField] private AudioClip overheat;
     [SerializeField] private AudioClip negative;
@@ -93,6 +92,10 @@ public class AudioManager : MonoBehaviour
             case SoundClips.Steps:
                 soundsAudioSource.volume = 0.3f;
                 PlaySoundSteps();
+                break;            
+            case SoundClips.RunningSteps:
+                soundsAudioSource.volume = 0.3f;
+                PlaySoundSteps();
                 break;
 
             //case SoundClips.MachineGunLoad:
@@ -137,29 +140,14 @@ public class AudioManager : MonoBehaviour
 
     private void PlaySoundSteps()
     {
-        int randomStep = Random.Range(0, 4);
-
-        if (randomStep == 0)
-            soundsAudioSource.PlayOneShot(footstepsOne);
-        else if (randomStep == 1)
-            soundsAudioSource.PlayOneShot(footstepsTwo);
-        else if (randomStep == 2)
-            soundsAudioSource.PlayOneShot(footstepsThree);
-        else if (randomStep == 3)
-            soundsAudioSource.PlayOneShot(footstepsFour);
+        int randomStep = Random.Range(0, footStepsSounds.Count);
+        soundsAudioSource.PlayOneShot(footStepsSounds[randomStep]);
     }
 
     private void PlayJump()
     {
 
-        int random = Random.Range(0, 3);
-        if (random == 0)
-            soundsAudioSource.PlayOneShot(jumpOne);
-        else if (random == 1)
-            soundsAudioSource.PlayOneShot(jumpTwo);
-        else if (random == 2)
-            soundsAudioSource.PlayOneShot(jumpThree);
-        else
-            soundsAudioSource.PlayOneShot(jumpOne);
+        int randomJumps = Random.Range(0, jumpsSounds.Count);
+        soundsAudioSource.PlayOneShot(jumpsSounds[randomJumps]);
     }
 }

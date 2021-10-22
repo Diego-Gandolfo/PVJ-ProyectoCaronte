@@ -51,14 +51,17 @@ MonoBehaviour:
   soundsAudioSource: {fileID: 5932468904319362853}
   shoot: {fileID: 8300000, guid: d942fc96f8672d040b3aa97ec0bc31ca, type: 3}
   heartbeat: {fileID: 8300000, guid: 7964db4cd08536b4aa8d700616296625, type: 3}
-  jumpOne: {fileID: 8300000, guid: 0c26937a9ec913d408899397b76ad5e7, type: 3}
-  jumpTwo: {fileID: 8300000, guid: 6ee3335c1c97c9b418d29b9b18c7193f, type: 3}
-  jumpThree: {fileID: 8300000, guid: 1bfedc965aa1b9e499feb9dd3f7761a4, type: 3}
+  jumpsSounds:
+  - {fileID: 8300000, guid: 98fd85e6f004e1d4eb73460383e95a6c, type: 3}
+  - {fileID: 8300000, guid: 1bfedc965aa1b9e499feb9dd3f7761a4, type: 3}
+  - {fileID: 8300000, guid: 6ee3335c1c97c9b418d29b9b18c7193f, type: 3}
+  - {fileID: 8300000, guid: 0c26937a9ec913d408899397b76ad5e7, type: 3}
   aim: {fileID: 8300000, guid: 7721340f78c72714cb23432bbf360a05, type: 3}
-  footstepsOne: {fileID: 8300000, guid: 89183ef2cca713c49a9e98da2f41dfee, type: 3}
-  footstepsTwo: {fileID: 8300000, guid: 574d383423074d5479fb2aa86668eeee, type: 3}
-  footstepsThree: {fileID: 8300000, guid: 8cac2257cf6cdb34d935e7e614917231, type: 3}
-  footstepsFour: {fileID: 8300000, guid: 93de0d276717aa54185ed9ab4ae8234f, type: 3}
+  footStepsSounds:
+  - {fileID: 8300000, guid: 179b10d9f34cca2488ef52992b0a191e, type: 3}
+  - {fileID: 8300000, guid: ba0d19e2e99c3f646ac68fb5f5346f7c, type: 3}
+  - {fileID: 8300000, guid: 920a87d139513174696c2c234f7b9ab4, type: 3}
+  - {fileID: 8300000, guid: 63ea48a792c0b2047955eb7084b5baf8, type: 3}
   overheat: {fileID: 8300000, guid: adc81be98fbd1eb4db80cd6ab1aee6c6, type: 3}
   negative: {fileID: 8300000, guid: 2cb53f70395c843468ccf1487f42078e, type: 3}
   oxygenRecover: {fileID: 8300000, guid: 3c91d9923854e54469d700ad04b00306, type: 3}

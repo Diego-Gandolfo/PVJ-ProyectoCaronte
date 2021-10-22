@@ -101,13 +101,14 @@ public class PlayerController : ActorController
             Vector3 movement = (transform.right * horizontal + transform.forward * vertical).normalized;
             transform.position += movement * currentSpeed * Time.deltaTime;
             
-            if (canPlaySound && CheckIfGrounded())
+            if (canPlaySound && CheckIfGrounded() /*&& !IsSprinting*/)
             {
-                if (vertical > 0 || horizontal < 0)
+                if(horizontal != 0 || vertical != 0)
                 {
                     canPlaySound = false;
                     AudioManager.instance.PlaySound(SoundClips.Steps);
                     currentTimeToPlaySound = 0.0f;
+
                 }
             }
         }
@@ -132,8 +133,13 @@ public class PlayerController : ActorController
             IsSprinting = value;
             if (IsSprinting)
             {
+
                 currentSpeed = _actorStats.BuffedSpeed;
                 animator.speed = _actorStats.BuffedAnimatorSpeed;
+                //canPlaySound = false;
+                //AudioManager.instance.PlaySound(SoundClips.Steps);
+                //currentTimeToPlaySound = 0.0f;
+                
             }
             else
             {
