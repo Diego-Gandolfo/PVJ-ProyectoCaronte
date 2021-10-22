@@ -33,12 +33,14 @@ public class MainMenuController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !mainMenuCheck) //Esto es porque si no estan en uno de los sub menus, pueden volver para atras con Escape
+        if (Input.GetKeyDown(KeyCode.Escape) && !mainMenuCheck)//Esto es porque si no estan en uno de los sub menus, pueden volver para atras con Escape
             OnGoBackHandler();
     }
 
     private void OnPlayHandler()
     {
+        AudioManager.instance.PlaySound(SoundClips.InteractableClick);
+
         GameManager.instance.SetCursorActive(false);
         //AudioManager.instance.PlaySound(SoundClips.MouseClick);
         SceneManager.LoadScene(level01);
@@ -46,6 +48,8 @@ public class MainMenuController : MonoBehaviour
 
     private void OnCreditsHandler()
     {
+        AudioManager.instance.PlaySound(SoundClips.InteractableClick);
+
         //AudioManager.instance.PlaySound(SoundClips.MouseClick);
         mainMenu.SetActive(false);
         //helpMenu.SetActive(false);
@@ -64,6 +68,8 @@ public class MainMenuController : MonoBehaviour
 
     private void OnQuitHandler()
     {
+        AudioManager.instance.PlaySound(SoundClips.InteractableClick);
+
         //AudioManager.instance.PlaySound(SoundClips.MouseClick);
         Application.Quit();
         Debug.Log("Se cierra el juego");

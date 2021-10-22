@@ -187,10 +187,12 @@ MonoBehaviour:
   footstepsTwo: {fileID: 8300000, guid: 920a87d139513174696c2c234f7b9ab4, type: 3}
   footstepsThree: {fileID: 8300000, guid: 63ea48a792c0b2047955eb7084b5baf8, type: 3}
   footstepsFour: {fileID: 8300000, guid: 179b10d9f34cca2488ef52992b0a191e, type: 3}
-  machineGunLoad: {fileID: 0}
   overheat: {fileID: 0}
   negative: {fileID: 0}
   oxygenRecover: {fileID: 0}
+  capsuleActivated: {fileID: 0}
+  uiPopUp: {fileID: 0}
+  interactableClick: {fileID: 8300000, guid: 94e4a2e4e8e50df4cae6700b22763f9a, type: 3}
 --- !u!1 &1323320076742165184
 GameObject:
   m_ObjectHideFlags: 0

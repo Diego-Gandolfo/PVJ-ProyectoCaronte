@@ -78,6 +78,8 @@ public class PlayerController : ActorController
             Debug.DrawRay(jump.position, -transform.up * distanceGround, Color.red);
         }
 
+        if (Input.GetKeyDown(KeyCode.P)) 
+            HealthController.TakeDamage(10); //TODO: BORRAR 
     }
     #endregion
 

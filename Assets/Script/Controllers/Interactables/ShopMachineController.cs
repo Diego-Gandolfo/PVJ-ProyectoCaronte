@@ -14,5 +14,6 @@ public class ShopMachineController : MonoBehaviour, IInteractable
     public void Interact()
     {
         HUDManager.instance.ShopManagerUI.SetUIVisible(true);
+        AudioManager.instance.PlaySound(SoundClips.UIPopUp);
     }
 }
