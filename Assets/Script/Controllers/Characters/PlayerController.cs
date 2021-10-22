@@ -78,6 +78,8 @@ public class PlayerController : ActorController
             Debug.DrawRay(jump.position, -transform.up * distanceGround, Color.red);
         }
 
+        if (Input.GetKeyDown(KeyCode.P)) 
+            HealthController.TakeDamage(10); //TODO: BORRAR 
     }
     #endregion
 
@@ -96,7 +98,7 @@ public class PlayerController : ActorController
     {
         if (!isUsingWeapon)
         {
-            Vector3 movement = transform.right * horizontal + transform.forward * vertical;
+            Vector3 movement = (transform.right * horizontal + transform.forward * vertical).normalized;
             transform.position += movement * currentSpeed * Time.deltaTime;
             
             if (canPlaySound && CheckIfGrounded())

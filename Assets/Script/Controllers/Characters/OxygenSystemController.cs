@@ -9,11 +9,13 @@ public class OxygenSystemController : MonoBehaviour
     [SerializeField] private float maxOxygen;
     [SerializeField] private float currentOxygen;
     [SerializeField] private float oxigenConsumeMultiplier;
+    [SerializeField] private float sprintMultiplier = 0.25f;
     [SerializeField] private int asphyxiationDamage;
     [SerializeField] private float heartBeatTick;
     private bool isInSafeZone;
     private HealthController healtController;
     private float currentTime;
+    private PlayerController player;
 
     //EVENTS
     public Action OnAsphyxiation;
@@ -22,28 +24,35 @@ public class OxygenSystemController : MonoBehaviour
     //SOUND PARAMETERS
     private float timeToPlayOxygenRecoverSoundAgain = 1.0f;
     private float oxygenRecoverSoundDuration = 3.0f;
+
+    public float MaxOxygen => maxOxygen;
+    public float CurrentOxygen => currentOxygen;
     
     void Start()
     {
         healtController = GetComponent<HealthController>();
+        player = GetComponent<PlayerController>();
         ResetValues();
     }
 
     void Update() 
     {
-        if (!isInSafeZone)
+        if (!GameManager.instance.IsGameFreeze)
         {
-            currentTime -= Time.deltaTime;
-            if (CheckOxygenLevel())
+            if (!isInSafeZone)
+            {
+                currentTime -= Time.deltaTime;
+                if (CheckOxygenLevel())
                     ConsumeOxygen();
-            else
-                Asphyxiation();
+                else
+                    Asphyxiation();
 
-            OnChangeInOxygen?.Invoke(currentOxygen, maxOxygen);
-        }
-        else if (isInSafeZone)
-        {
-            timeToPlayOxygenRecoverSoundAgain -= Time.deltaTime;
+                OnChangeInOxygen?.Invoke(currentOxygen, maxOxygen);
+            }
+            else if (isInSafeZone)
+            {
+                timeToPlayOxygenRecoverSoundAgain -= Time.deltaTime;
+            }
         }
     }
 
@@ -55,7 +64,10 @@ public class OxygenSystemController : MonoBehaviour
 
     private void ConsumeOxygen()
     {
-        currentOxygen -= oxigenConsumeMultiplier;
+        if(player.IsSprinting)
+            currentOxygen -= oxigenConsumeMultiplier * sprintMultiplier;
+        else
+            currentOxygen -= oxigenConsumeMultiplier;
         if (currentOxygen <= 20)
             PlayHeartbeatSound();
     }

@@ -117,7 +117,9 @@ public class InputController : MonoBehaviour
     private void CheckEscape()
     {
         if (Input.GetKeyDown(pause))
+        {
             OnPause?.Invoke();
+        }
     }
 
     private void CheckSprint()

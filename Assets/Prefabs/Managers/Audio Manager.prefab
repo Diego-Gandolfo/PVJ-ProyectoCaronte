@@ -59,10 +59,12 @@ MonoBehaviour:
   footstepsTwo: {fileID: 8300000, guid: 574d383423074d5479fb2aa86668eeee, type: 3}
   footstepsThree: {fileID: 8300000, guid: 8cac2257cf6cdb34d935e7e614917231, type: 3}
   footstepsFour: {fileID: 8300000, guid: 93de0d276717aa54185ed9ab4ae8234f, type: 3}
-  machineGunLoad: {fileID: 0}
   overheat: {fileID: 8300000, guid: adc81be98fbd1eb4db80cd6ab1aee6c6, type: 3}
   negative: {fileID: 8300000, guid: 2cb53f70395c843468ccf1487f42078e, type: 3}
   oxygenRecover: {fileID: 8300000, guid: 3c91d9923854e54469d700ad04b00306, type: 3}
+  capsuleActivated: {fileID: 8300000, guid: bbb92d259c9019e429824de69c40372d, type: 3}
+  uiPopUp: {fileID: 8300000, guid: 34a6d88010b057d408387dd2fed88556, type: 3}
+  interactableClick: {fileID: 8300000, guid: 94e4a2e4e8e50df4cae6700b22763f9a, type: 3}
 --- !u!1 &4814295448939889778
 GameObject:
   m_ObjectHideFlags: 0
