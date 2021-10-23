@@ -35,7 +35,8 @@ public class UIQuestManager : MonoBehaviour
             {
                 canCount = false;
                 QuestVisible(true);
-                questBoxAnimation.TriggerShow();
+                questBoxAnimation.StartTransition();
+                questBoxAnimation.QuestBoxVisible();
             }
         }
     }
@@ -43,7 +44,12 @@ public class UIQuestManager : MonoBehaviour
     private void SetQuest()
     {
         QuestVisible(false); //Lo ocultamos
-        questBoxAnimation.QuestBoxShow(false); //sacamos la animacion, recien ahi cambiamos los textos e iniciamos el timer
+
+        // sacamos la animacion
+        questBoxAnimation.QuestBoxInvisible();
+        questBoxAnimation.HasFinishedTransition();
+
+        // cambiamos los textos e iniciamos el timer
         titleQuest.text = title; 
         messageQuest.text = message;
         timer = timerQuest;

@@ -21,18 +21,13 @@ public class UIQuestBoxAnimation : MonoBehaviour
         _animator.SetBool("ShowOn", false);
     }
 
-    public void TriggerShow()
+    public void StartTransition()
     {
-        _animator.SetTrigger("Show");
+        _animator.SetBool("HasFinishedTransition", false);
     }
 
-    public void QuestBoxShow(bool value)
+    public void HasFinishedTransition()
     {
-        if(value)
-        {
-            _animator.SetTrigger("Show");
-        }
-        else
-            _animator.SetTrigger("Hide");
+        _animator.SetBool("HasFinishedTransition", true);
     }
 }
