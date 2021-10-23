@@ -5,20 +5,37 @@ using UnityEngine.UI;
 
 public class UIQuestManager : MonoBehaviour
 {
+    #region Serialized Fields
+
     [SerializeField] private GameObject questBox;
     [SerializeField] private Text titleQuest;
     [SerializeField] private Text messageQuest;
     [SerializeField] private float timerQuest;
 
+    #endregion
+
+    #region Private Fields
+
+    // Components
     private UIQuestBoxAnimation questBoxAnimation;
+
+    // Parameters
     private bool canCount;
     private float timer;
     private string title;
     private string message;
 
-    public bool IsMissionActive { get; private set; }
+    #endregion
 
-    #region Private
+    #region Propertys
+
+    public bool IsMissionActive { get; private set; }
+    public string Title => title;
+
+    #endregion
+
+    #region Unity Methods
+
     private void Start()
     {
         questBoxAnimation = GetComponentInChildren<UIQuestBoxAnimation>();
@@ -41,6 +58,10 @@ public class UIQuestManager : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Private Methods
+
     private void SetQuest()
     {
         QuestVisible(false); //Lo ocultamos
@@ -59,10 +80,11 @@ public class UIQuestManager : MonoBehaviour
     #endregion
 
     #region Public
+
     public void QuestVisible(bool value)
     {
         questBox.SetActive(value);
-        IsMissionActive = true;
+        IsMissionActive = value;
     }
 
     public void OxygenQuest()

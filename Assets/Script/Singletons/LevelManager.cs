@@ -4,19 +4,42 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    #region Static
+
+    public static LevelManager instance;
+
+    #endregion
+
+    #region Serialized Fields
+
     [SerializeField] private string currentLevel = "TerraplainLevel";
     [SerializeField] private int currentCrystalsNeeded = 30;
     [SerializeField] private Transform respawnPoint;
 
-    public static LevelManager instance;
+    #endregion
+
+    #region Private Fields
+
+    private UIQuestManager _questManager;
+
+    #endregion
+
+    #region Events
+
+    public Action<PlayerController> OnPlayerAssing;
+    public Action<int> OnCrystalUpdate;
+
+    #endregion
+
+    #region Propertys
 
     public PlayerController Player { get; private set; }
     public int CrystalCounter { get; private set; }
     public int CrystalsNeeded => currentCrystalsNeeded;
 
-    public Action<PlayerController> OnPlayerAssing;
-    public Action<int> OnCrystalUpdate;
+    #endregion
 
+    #region Unity Methods
 
     public void Awake()
     {
@@ -29,7 +52,12 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         GameManager.instance.CurrentLevel = currentLevel;
+        _questManager = HUDManager.instance.QuestManager;
     }
+
+    #endregion
+
+    #region Public Methods
 
     public void SetPlayer(PlayerController player)
     {
@@ -54,8 +82,10 @@ public class LevelManager : MonoBehaviour
         CrystalCounter += number;
         OnCrystalUpdate?.Invoke(CrystalCounter);
 
-        if (CrystalCounter >= CrystalsNeeded)
-            HUDManager.instance.QuestManager.DeliverQuest();
+        if (CrystalCounter >= CrystalsNeeded && _questManager.Title == "Search & Collect")
+        {
+            _questManager.DeliverQuest();
+        }
     }
 
     public void RemoveCrystal(int number)
@@ -68,4 +98,6 @@ public class LevelManager : MonoBehaviour
     {
         Player.transform.position = respawnPoint.position;
     }
+
+    #endregion
 }
