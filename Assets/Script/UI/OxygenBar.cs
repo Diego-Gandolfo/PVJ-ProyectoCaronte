@@ -31,8 +31,8 @@ public class OxygenBar : MonoBehaviour
         if (oxygenBarImage != null)
         {
             oxygenBarImage.fillAmount = Mathf.Lerp(oxygenBarImage.fillAmount,(currentOxygen/maxOxygen),lerpTime);
-            animator.SetBool("Dying", currentOxygen <= 40);
-            vignetteAnimator.SetBool("Dying", currentOxygen <= 20);
+            animator.SetBool("Dying", currentOxygen <= (maxOxygen / 3));
+            vignetteAnimator.SetBool("Dying", currentOxygen <= (maxOxygen / 4));
             //animator.SetBool("Dying", currentOxygen <= 99);
             //vignetteAnimator.SetBool("Dying", currentOxygen <= 99);
         }

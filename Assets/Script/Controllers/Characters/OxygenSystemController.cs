@@ -6,28 +6,47 @@ using UnityEngine;
 [RequireComponent(typeof(HealthController))]
 public class OxygenSystemController : MonoBehaviour
 {
+    #region Serialized Fields
+
     [SerializeField] private float maxOxygen;
     [SerializeField] private float currentOxygen;
     [SerializeField] private float oxigenConsumeMultiplier;
     [SerializeField] private float sprintMultiplier = 0.25f;
     [SerializeField] private int asphyxiationDamage;
     [SerializeField] private float heartBeatTick;
-    private bool isInSafeZone;
+
+    #endregion
+
+    #region Private Fields
+
+    // Components
     private HealthController healtController;
-    private float currentTime;
     private PlayerController player;
 
-    //EVENTS
-    public Action OnAsphyxiation;
-    public Action<float, float> OnChangeInOxygen; //currentOxygen, maxOxygen
-
-    //SOUND PARAMETERS
+    // Parameters
+    private bool isInSafeZone;
+    private float currentTime;
     private float timeToPlayOxygenRecoverSoundAgain = 1.0f;
     private float oxygenRecoverSoundDuration = 3.0f;
 
+    #endregion
+
+    #region Events
+
+    public Action OnAsphyxiation;
+    public Action<float, float> OnChangeInOxygen; //currentOxygen, maxOxygen
+
+    #endregion
+
+    #region Propertys
+
     public float MaxOxygen => maxOxygen;
     public float CurrentOxygen => currentOxygen;
-    
+
+    #endregion
+
+    #region Unity Methods
+
     void Start()
     {
         healtController = GetComponent<HealthController>();
@@ -56,7 +75,10 @@ public class OxygenSystemController : MonoBehaviour
         }
     }
 
+    #endregion
+
     #region Private Methods
+
     private bool CheckOxygenLevel()
     {
         return currentOxygen > 0;
@@ -64,12 +86,31 @@ public class OxygenSystemController : MonoBehaviour
 
     private void ConsumeOxygen()
     {
-        if(player.IsSprinting)
-            currentOxygen -= oxigenConsumeMultiplier * sprintMultiplier;
-        else
-            currentOxygen -= oxigenConsumeMultiplier;
-        if (currentOxygen <= 20)
+        var oxygenToConsume = oxigenConsumeMultiplier * Time.deltaTime;
+
+        if (currentOxygen <= (maxOxygen / 3))
+        {
+            oxygenToConsume /= 2; // para que consuma la mitad
+        }
+
+        if (currentOxygen <= (maxOxygen / 5))
+        {
             PlayHeartbeatSound();
+        }
+
+        if (currentOxygen <= (maxOxygen / 10))
+        {
+            oxygenToConsume /= 2; // es deliverado que se vuelva a dividir, para que en esta etapa este consumiendo 1/4
+        }
+
+        if (player.IsSprinting)
+        {
+            currentOxygen -= oxygenToConsume * sprintMultiplier;
+        }
+        else
+        {
+            currentOxygen -= oxygenToConsume;
+        }
     }
 
     private void PlayHeartbeatSound()
@@ -99,16 +140,20 @@ public class OxygenSystemController : MonoBehaviour
         }
         //OnAsphyxiation?.Invoke(); //(No borrar) TODO: UI/Sound effect for lack of oxygen, 
     }
+
     #endregion
 
     #region Public Methods
+
     public void RegenerateOxygen(float oxygenRegen)
     {
-        if(currentOxygen < maxOxygen)
+        var oxygenToRegen = oxygenRegen * Time.deltaTime;
+
+        if (currentOxygen < maxOxygen)
         {
-            if (currentOxygen <= (maxOxygen - oxygenRegen))
+            if (currentOxygen <= (maxOxygen - oxygenToRegen))
             {
-                currentOxygen += oxygenRegen;
+                currentOxygen += oxygenToRegen;
                 PlayOxygenRecoverSound();
             }
             else
@@ -127,5 +172,6 @@ public class OxygenSystemController : MonoBehaviour
     {
         currentOxygen = maxOxygen;
     }
+
     #endregion
 }
