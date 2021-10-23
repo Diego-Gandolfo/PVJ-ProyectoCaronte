@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PlayerActorStats
   m_EditorClassIdentifier: 
   _maxLife: 100
-  _speed: 2
-  _buffedSpeed: 4
+  _speed: 2.5
+  _buffedSpeed: 5
   _animatorSpeed: 1
   _buffedAnimatorSpeed: 2
   canJump: 1
-  jumpForce: 7
+  jumpForce: 300

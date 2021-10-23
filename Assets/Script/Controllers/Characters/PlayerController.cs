@@ -160,7 +160,7 @@ public class PlayerController : ActorController
         {
             AudioManager.instance.PlaySound(SoundClips.Jump);
 
-            var jumpForce = transform.up * _actorStats.JumpForce;
+            var jumpForce = Vector3.up * _actorStats.JumpForce;
             rigidBody.AddForce(jumpForce, ForceMode.Impulse);
         }
     }
