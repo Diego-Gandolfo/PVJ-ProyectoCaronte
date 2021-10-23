@@ -15,9 +15,7 @@ GameObject:
   - component: {fileID: 2421286524287571369}
   - component: {fileID: 2421286524287571371}
   - component: {fileID: 537533163811467730}
-  - component: {fileID: 2095119106}
   - component: {fileID: 2095119105}
-  - component: {fileID: 2095119104}
   m_Layer: 0
   m_Name: Luciernagas
   m_TagString: Untagged
@@ -4970,19 +4968,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2095119106
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2421286522751527353}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5047067, y: 1.751339, z: 2.0776522}
-  m_Center: {x: -0.03698498, y: -0.2033863, z: 0.33562458}
 --- !u!95 &2095119105
 Animator:
   serializedVersion: 3
@@ -5002,18 +4987,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2095119104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2421286522751527353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a98fdcef2a23434a802cc73d11c16d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2421286523850997086
 GameObject:
   m_ObjectHideFlags: 0
