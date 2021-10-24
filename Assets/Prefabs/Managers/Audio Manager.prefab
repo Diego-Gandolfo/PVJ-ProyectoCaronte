@@ -57,16 +57,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0c26937a9ec913d408899397b76ad5e7, type: 3}
   aim: {fileID: 8300000, guid: 7721340f78c72714cb23432bbf360a05, type: 3}
   footStepsSounds:
-  - {fileID: 8300000, guid: 179b10d9f34cca2488ef52992b0a191e, type: 3}
-  - {fileID: 8300000, guid: ba0d19e2e99c3f646ac68fb5f5346f7c, type: 3}
-  - {fileID: 8300000, guid: 920a87d139513174696c2c234f7b9ab4, type: 3}
-  - {fileID: 8300000, guid: 63ea48a792c0b2047955eb7084b5baf8, type: 3}
+  - {fileID: 8300000, guid: 93de0d276717aa54185ed9ab4ae8234f, type: 3}
+  - {fileID: 8300000, guid: 89183ef2cca713c49a9e98da2f41dfee, type: 3}
+  - {fileID: 8300000, guid: 574d383423074d5479fb2aa86668eeee, type: 3}
+  - {fileID: 8300000, guid: 8cac2257cf6cdb34d935e7e614917231, type: 3}
   overheat: {fileID: 8300000, guid: adc81be98fbd1eb4db80cd6ab1aee6c6, type: 3}
   negative: {fileID: 8300000, guid: 2cb53f70395c843468ccf1487f42078e, type: 3}
   oxygenRecover: {fileID: 8300000, guid: 3c91d9923854e54469d700ad04b00306, type: 3}
   capsuleActivated: {fileID: 8300000, guid: bbb92d259c9019e429824de69c40372d, type: 3}
   uiPopUp: {fileID: 8300000, guid: 34a6d88010b057d408387dd2fed88556, type: 3}
   interactableClick: {fileID: 8300000, guid: 94e4a2e4e8e50df4cae6700b22763f9a, type: 3}
+  alienWound: {fileID: 8300000, guid: 481fc7274ede78340aea974849cf3fcf, type: 3}
 --- !u!1 &4814295448939889778
 GameObject:
   m_ObjectHideFlags: 0

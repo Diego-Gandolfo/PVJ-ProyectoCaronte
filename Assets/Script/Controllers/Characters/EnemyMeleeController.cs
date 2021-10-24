@@ -17,12 +17,17 @@ public class EnemyMeleeController : EnemyController
     // Componentes
     private EnemyMeleeWeapon weapon;
     private Rigidbody _rigidbody;
+    private EnemyAudioSrc enemyAudioSrc;
 
     // Parameters
     private bool canFollow = false;
+    private bool canPlaySound = false;
     private bool playerInRange = false;
     private bool _isAttackAnimationRunning;
 
+    //Sound parameters
+    private float timeToPlaySound = 0.5f;
+    private float currentTimeToPlaySound;
     #endregion
 
     #region Unity Methods
@@ -31,6 +36,7 @@ public class EnemyMeleeController : EnemyController
     {
         weapon = GetComponent<EnemyMeleeWeapon>();
         _rigidbody = GetComponent<Rigidbody>();
+        enemyAudioSrc = GetComponent<EnemyAudioSrc>();
         weapon.SetStats(_attackStats);
         animator.speed = _actorStats.OriginalAnimatorSpeed;
     }
@@ -48,9 +54,20 @@ public class EnemyMeleeController : EnemyController
         {
             animator.SetBool("Walk Forward", false);
         }
+
+        #region FootStepsSound Count
+        currentTimeToPlaySound += Time.deltaTime;
+        if (currentTimeToPlaySound >= timeToPlaySound)
+        {
+            canPlaySound = true;
+        }
+        else canPlaySound = false;
+        #endregion FootStepsSound Count
     }
 
     #endregion
+
+
 
     #region Private Methods
 
@@ -108,11 +125,22 @@ public class EnemyMeleeController : EnemyController
             var direction = (xzPlayerPosition - transform.position).normalized;
             _rigidbody.velocity = direction * _actorStats.OriginalSpeed;
 
+            PlayFootstepsSound();
+
             // Esto es lo que estaba antes, lo dejo para que se vea el cambio
             //transform.LookAt(player.transform.position, player.transform.up);
             //transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
         }
         CanAttack();
+    }
+
+    private void PlayFootstepsSound()
+    {
+        if (canPlaySound)
+        {
+            enemyAudioSrc.PlayFootstepsSound();
+            currentTimeToPlaySound = 0.0f;
+        }
     }
 
     private void CheckVisibleData()
@@ -143,9 +171,7 @@ public class EnemyMeleeController : EnemyController
             if (!player.IsSprinting)
             {
                 if (Vector3.Distance(player.transform.position, this.transform.position) <= minimumDetectionDistance)
-                {
                     FollowPlayer(player);
-                }
             }
             else //Si el player esta en la zona de deteccion y esta sprinteando 
             {
