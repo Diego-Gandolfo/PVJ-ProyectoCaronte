@@ -18,7 +18,8 @@ public enum SoundClips
     UIPopUp,
     InteractableClick,
     AlienWound,
-    AttackSound
+    AttackSound,
+    PlayerTakesDamage
 }
 
 public class AudioManager : MonoBehaviour
@@ -50,6 +51,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip interactableClick;
     [SerializeField] private AudioClip alienWound;
     [SerializeField] private AudioClip attackSound;
+    [SerializeField] private AudioClip takeDamage;
 
     public void Awake()
     {
@@ -146,6 +148,11 @@ public class AudioManager : MonoBehaviour
             case SoundClips.AttackSound:
                 soundsAudioSource.volume = 0.5f;
                 soundsAudioSource.PlayOneShot(attackSound);
+                break;
+
+            case SoundClips.PlayerTakesDamage:
+                soundsAudioSource.volume = 0.8f;
+                soundsAudioSource.PlayOneShot(takeDamage);
                 break;
 
             default:

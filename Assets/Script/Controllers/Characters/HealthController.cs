@@ -43,6 +43,7 @@ public class HealthController : MonoBehaviour, IDamageable
             CurrentHealth -= damage;
             UpdateLifeBar();
             OnTakeDamage?.Invoke();
+            AudioManager.instance.PlaySound(SoundClips.PlayerTakesDamage);
         }
 
         if (CurrentHealth <= 0)
