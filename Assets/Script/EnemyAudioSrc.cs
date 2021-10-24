@@ -10,10 +10,13 @@ public class EnemyAudioSrc : MonoBehaviour
 
     public void PlayFootstepsSound()
     {
-         int randomStep = Random.Range(0, footsteps.Count);
-         footstepsAudioSource.PlayOneShot(footsteps[randomStep]);
+        if (!GameManager.instance.IsGameFreeze)
+        {
+            int randomStep = Random.Range(0, footsteps.Count);
+            footstepsAudioSource.PlayOneShot(footsteps[randomStep]);
 
-         footstepsAudioSource.volume = 0.4f;
-         footstepsAudioSource.pitch = 1.5f;
+            footstepsAudioSource.volume = 0.4f;
+            footstepsAudioSource.pitch = 1.5f;
+        }
     }
 }

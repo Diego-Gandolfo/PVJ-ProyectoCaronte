@@ -9,7 +9,7 @@ public class EnemyMeleeController : EnemyController
 
     [SerializeField] [Range(0, 50)] protected float _attackRadius;
     [SerializeField] private float minimumDetectionDistance = 10f; //Esta seria la distancia para detectarlo cuando camina. 
-
+    [SerializeField] private AudioSource audioSource;
     #endregion
 
     #region Private
@@ -43,6 +43,11 @@ public class EnemyMeleeController : EnemyController
 
     protected void Update()
     {
+        if (GameManager.instance.IsGameFreeze)
+        {
+            audioSource.Play();
+        }
+
         DetectTarget();
         CheckVisibleData();
 
@@ -136,6 +141,7 @@ public class EnemyMeleeController : EnemyController
 
     private void PlayFootstepsSound()
     {
+
         if (canPlaySound)
         {
             enemyAudioSrc.PlayFootstepsSound();
