@@ -9,7 +9,7 @@ public class EnemyMeleeController : EnemyController
 
     [SerializeField] [Range(0, 50)] protected float _attackRadius;
     [SerializeField] private float minimumDetectionDistance = 10f; //Esta seria la distancia para detectarlo cuando camina. 
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource grumpsAudioSrc;
     #endregion
 
     #region Private
@@ -17,7 +17,7 @@ public class EnemyMeleeController : EnemyController
     // Componentes
     private EnemyMeleeWeapon weapon;
     private Rigidbody _rigidbody;
-    private EnemyAudioSrc enemyAudioSrc;
+    private EnemyAudioSrc footstepsAudioSrc;
 
     // Parameters
     private bool canFollow = false;
@@ -36,17 +36,14 @@ public class EnemyMeleeController : EnemyController
     {
         weapon = GetComponent<EnemyMeleeWeapon>();
         _rigidbody = GetComponent<Rigidbody>();
-        enemyAudioSrc = GetComponent<EnemyAudioSrc>();
+        footstepsAudioSrc = GetComponent<EnemyAudioSrc>();
         weapon.SetStats(_attackStats);
         animator.speed = _actorStats.OriginalAnimatorSpeed;
     }
 
     protected void Update()
     {
-        if (GameManager.instance.IsGameFreeze)
-        {
-            audioSource.Play();
-        }
+        
 
         DetectTarget();
         CheckVisibleData();
@@ -144,14 +141,14 @@ public class EnemyMeleeController : EnemyController
 
         if (canPlaySound)
         {
-            enemyAudioSrc.PlayFootstepsSound();
+            footstepsAudioSrc.PlayFootstepsSound();
             currentTimeToPlaySound = 0.0f;
         }
     }
 
     private void CheckVisibleData()
     {
-        if(weapon.IsAttacking || canFollow)
+        if (weapon.IsAttacking || canFollow)
         {
             outline.enabled = true;
         }
