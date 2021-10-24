@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyAudioSrc : MonoBehaviour
 {
     [SerializeField] private List<AudioClip> footsteps;
+
     [SerializeField] private AudioSource footstepsAudioSource;
 
     public void PlayFootstepsSound()

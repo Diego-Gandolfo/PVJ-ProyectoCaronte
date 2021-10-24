@@ -17,7 +17,8 @@ public enum SoundClips
     CapsuleActivated,
     UIPopUp,
     InteractableClick,
-    AlienWound
+    AlienWound,
+    AttackSound
 }
 
 public class AudioManager : MonoBehaviour
@@ -40,7 +41,6 @@ public class AudioManager : MonoBehaviour
     //[SerializeField] private AudioClip jumpThree;
     [SerializeField] private AudioClip aim;
     [SerializeField] private List<AudioClip> footStepsSounds;
-    [SerializeField] private List<AudioClip> enemyFootStepsSounds;
     //[SerializeField] private AudioClip machineGunLoad;
     [SerializeField] private AudioClip overheat;
     [SerializeField] private AudioClip negative;
@@ -49,6 +49,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip uiPopUp;
     [SerializeField] private AudioClip interactableClick;
     [SerializeField] private AudioClip alienWound;
+    [SerializeField] private AudioClip attackSound;
 
     public void Awake()
     {
@@ -140,6 +141,11 @@ public class AudioManager : MonoBehaviour
             case SoundClips.AlienWound:
                 soundsAudioSource.volume = 0.7f;
                 soundsAudioSource.PlayOneShot(alienWound);
+                break;
+
+            case SoundClips.AttackSound:
+                soundsAudioSource.volume = 0.5f;
+                soundsAudioSource.PlayOneShot(attackSound);
                 break;
 
             default:

@@ -67,6 +67,7 @@ public class EnemyMeleeWeapon : MonoBehaviour
         if (_player != null)
         {
             _player.HealthController.TakeDamage(_attackStats.Damage);
+            AudioManager.instance.PlaySound(SoundClips.AttackSound);
         }
     }
 
