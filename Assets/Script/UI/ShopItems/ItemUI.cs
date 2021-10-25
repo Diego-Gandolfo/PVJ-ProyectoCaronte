@@ -24,7 +24,7 @@ public class ItemUI : MonoBehaviour
         {
             buyButton.interactable = false;
             LevelManager.instance.RemoveCrystal(itemSO.price);
-            //TODO: Hacer que el powerUp se active en donde tenga que estar
+            //itemSO.interaction.Interact();
         }
         else
         {

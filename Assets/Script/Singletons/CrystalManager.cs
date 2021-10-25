@@ -13,6 +13,8 @@ public class CrystalManager : MonoBehaviour
     public float SoundTimer => soundtimerCD;
     public Transform PlayerLocation => player.transform;
 
+    public bool IsActive { get; private set; }
+
     private void Awake()
     {
         if (instance != null)
@@ -27,12 +29,13 @@ public class CrystalManager : MonoBehaviour
 
     private void Start()
     {
-        LevelManager.instance.OnPlayerAssing += OnPlayerAssing;   
+        LevelManager.instance.OnPlayerAssing += OnPlayerAssing;
+        HUDManager.instance.SonarManager.SetVisibleSonar(IsActive);
     }
 
     private void Update()
     {
-        if(player != null)
+        if(player != null && IsActive)
             CheckNearCrystal();
     }
 
@@ -79,5 +82,11 @@ public class CrystalManager : MonoBehaviour
     {
         LevelManager.instance.OnPlayerAssing -= OnPlayerAssing;
         this.player = player;
+    }
+
+    public void ActivateSonar()
+    {
+        IsActive = true;
+        HUDManager.instance.SonarManager.SetVisibleSonar(IsActive);
     }
 }
