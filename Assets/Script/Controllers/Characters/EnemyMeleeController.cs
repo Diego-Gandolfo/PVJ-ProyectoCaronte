@@ -9,7 +9,7 @@ public class EnemyMeleeController : EnemyController
 
     [SerializeField] [Range(0, 50)] protected float _attackRadius;
     [SerializeField] private float minimumDetectionDistance = 10f; //Esta seria la distancia para detectarlo cuando camina. 
-    [SerializeField] private AudioSource grumpsAudioSrc;
+    [SerializeField] private AudioSource audioSrc;
     #endregion
 
     #region Private
@@ -37,35 +37,37 @@ public class EnemyMeleeController : EnemyController
         weapon = GetComponent<EnemyMeleeWeapon>();
         _rigidbody = GetComponent<Rigidbody>();
         footstepsAudioSrc = GetComponent<EnemyAudioSrc>();
+
         weapon.SetStats(_attackStats);
         animator.speed = _actorStats.OriginalAnimatorSpeed;
     }
 
     protected void Update()
     {
-        if (!isDead)
+        if (!HealthController.IsDead) 
         {
             DetectTarget();
-        }
-        CheckVisibleData();
+            CheckVisibleData();
 
-        if(canFollow && !playerInRange)
-        {
-            animator.SetBool("Walk Forward", true);
-        }
-        else
-        {
-            animator.SetBool("Walk Forward", false);
-        }
+            if(canFollow && !playerInRange)
+            {
+                animator.SetBool("Walk Forward", true);
+            }
+            else
+            {
+                animator.SetBool("Walk Forward", false);
+            }
 
-        #region FootStepsSound Count
-        currentTimeToPlaySound += Time.deltaTime;
-        if (currentTimeToPlaySound >= timeToPlaySound)
-        {
-            canPlaySound = true;
+            #region FootStepsSound Count
+            currentTimeToPlaySound += Time.deltaTime;
+            if (currentTimeToPlaySound >= timeToPlaySound)
+            {
+                canPlaySound = true;
+            }
+            else canPlaySound = false;
+            #endregion FootStepsSound Count
         }
-        else canPlaySound = false;
-        #endregion FootStepsSound Count
+            
     }
 
     #endregion
@@ -118,28 +120,33 @@ public class EnemyMeleeController : EnemyController
 
     private void FollowPlayer(PlayerController player)
     {
-        if (!playerInRange && !isDead)
+        if (!HealthController.IsDead)
         {
-            canFollow = true;
+            if (!playerInRange)
+            {
+                canFollow = true;
 
-            var xzPlayerPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-            transform.LookAt(xzPlayerPosition);
+                var xzPlayerPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+                transform.LookAt(xzPlayerPosition);
 
-            var direction = (xzPlayerPosition - transform.position).normalized;
-            _rigidbody.velocity = direction * _actorStats.OriginalSpeed;
+                var direction = (xzPlayerPosition - transform.position).normalized;
+                _rigidbody.velocity = direction * _actorStats.OriginalSpeed;
 
-            PlayFootstepsSound();
+                PlayFootstepsSound();
 
-            // Esto es lo que estaba antes, lo dejo para que se vea el cambio
-            //transform.LookAt(player.transform.position, player.transform.up);
-            //transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
+                // Esto es lo que estaba antes, lo dejo para que se vea el cambio
+                //transform.LookAt(player.transform.position, player.transform.up);
+                //transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
+            }
+
+            CanAttack();
         }
-        CanAttack();
+
     }
 
     private void PlayFootstepsSound()
     {
-        if (canPlaySound && !isDead)
+        if (canPlaySound && !HealthController.IsDead)
         {
             footstepsAudioSrc.PlayFootstepsSound();
             currentTimeToPlaySound = 0.0f;
@@ -148,7 +155,7 @@ public class EnemyMeleeController : EnemyController
 
     private void CheckVisibleData()
     {
-        if (!isDead)
+        if (!HealthController.IsDead)
         {
             if (weapon.IsAttacking || canFollow)
             {
@@ -168,7 +175,7 @@ public class EnemyMeleeController : EnemyController
 
     private void CheckPlayerDistance(PlayerController player)
     {
-        if (canFollow && !isDead) //Si ya estaba persiguiendo, seguilo. 
+        if (canFollow) //Si ya estaba persiguiendo, seguilo. 
         {
             FollowPlayer(player);
         }
@@ -203,5 +210,10 @@ public class EnemyMeleeController : EnemyController
         _isAttackAnimationRunning = false;
     }
 
+    protected override void OnDie()
+    {
+        base.OnDie();
+        audioSrc.Stop();
+    }
     #endregion
 }

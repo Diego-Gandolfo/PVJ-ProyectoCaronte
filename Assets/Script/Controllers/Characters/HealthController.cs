@@ -11,6 +11,8 @@ public class HealthController : MonoBehaviour, IDamageable
     private LifeBarController lifeBar;
     #endregion
 
+    private bool isDead;
+
     #region Events
     public Action OnDie;
     public Action OnTakeDamage;
@@ -20,13 +22,14 @@ public class HealthController : MonoBehaviour, IDamageable
     #region Propertys
     public int MaxHealth => _actorStats.MaxLife;
     public int CurrentHealth { get; private set; }
+    public bool IsDead => isDead;
     #endregion
 
     #region Public Methods
 
     public void Heal(int heal)
     {
-        if(CurrentHealth < MaxHealth)
+        if(!isDead && CurrentHealth < MaxHealth)
         {
             CurrentHealth += heal;
             if (CurrentHealth > MaxHealth)
@@ -38,7 +41,7 @@ public class HealthController : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        if (CurrentHealth > 0)
+        if (!isDead && CurrentHealth > 0)
         {
             CurrentHealth -= damage;
             UpdateLifeBar();
@@ -49,7 +52,9 @@ public class HealthController : MonoBehaviour, IDamageable
         if (CurrentHealth <= 0)
         {
             Die();
+            isDead = true;
         }
+        else isDead = false;
     }
 
     public virtual void Die()
@@ -59,8 +64,11 @@ public class HealthController : MonoBehaviour, IDamageable
 
     public void SetLifeBar(LifeBarController controller)
     {
-        lifeBar = controller;
-        lifeBar.UpdateLifeBar(CurrentHealth);
+        if (!isDead)
+        {
+            lifeBar = controller;
+            lifeBar.UpdateLifeBar(CurrentHealth);
+        }
     }
 
     public void ResetValues()
@@ -78,18 +86,22 @@ public class HealthController : MonoBehaviour, IDamageable
         lifeBar = GetComponent<LifeBarController>();
         UpdateLifeBar();
     }
+
     #endregion
 
     private void UpdateLifeBar()
     {
-        OnUpdateLife?.Invoke(CurrentHealth);
-
-        if (lifeBar != null)
+        if (!isDead)
         {
-            if (!lifeBar.IsVisible)
-                lifeBar.SetBarVisible(true);
+            OnUpdateLife?.Invoke(CurrentHealth);
 
-            lifeBar.UpdateLifeBar(CurrentHealth);
+            if (lifeBar != null)
+            {
+                if (!lifeBar.IsVisible)
+                    lifeBar.SetBarVisible(true);
+
+                lifeBar.UpdateLifeBar(CurrentHealth);
+            }
         }
     }
 }

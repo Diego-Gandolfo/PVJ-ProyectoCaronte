@@ -11,7 +11,6 @@ public class ActorController : MonoBehaviour
     
     protected Animator animator;
 
-    protected bool isDead;
     public AttackStats AttackStats => _attackStats;
     public HealthController HealthController { get; protected set; }
 
@@ -22,9 +21,14 @@ public class ActorController : MonoBehaviour
         InitStats();
     }
 
+    private void Start()
+    {
+    }
+
     protected void InitStats()
     {
         HealthController.SetStats(_actorStats);
+
         HealthController.OnDie += OnDie;
         HealthController.OnTakeDamage += OnTakeDamage;
     }
@@ -36,7 +40,7 @@ public class ActorController : MonoBehaviour
 
     protected virtual void OnDie()
     {
-        isDead = true;
-        //animator.SetTrigger("Die");
+        //if (animator != null)
+        //    animator.SetTrigger("Die");
     }
 }

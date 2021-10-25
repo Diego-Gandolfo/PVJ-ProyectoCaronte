@@ -12,6 +12,7 @@ public abstract class EnemyController : ActorController
     
     protected Outline outline;
     protected LifeBarController lifeBar;
+
     #endregion
 
     #region Protected Methods
@@ -30,17 +31,22 @@ public abstract class EnemyController : ActorController
 
     protected override void OnTakeDamage()
     {
-        AudioManager.instance.PlaySound(SoundClips.AlienWound);
-        if (animator != null && !isDead)
+        if (!HealthController.IsDead)
         {
-            //TODO: Verificar si todos los enemigos van a tener un animator
-            animator.SetTrigger("TakeDamage");
+            AudioManager.instance.PlaySound(SoundClips.AlienWound);
+            if (animator != null)
+            {
+                //TODO: Verificar si todos los enemigos van a tener un animator
+                animator.SetTrigger("TakeDamage");
+            }
         }
     }
 
     protected override void OnDie()
     {
-        animator.SetBool("Die", true);
+        if (HealthController.IsDead && animator != null)
+            animator.SetTrigger("Die");
     }
+
     #endregion
 }
