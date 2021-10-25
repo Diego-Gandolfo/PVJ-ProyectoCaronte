@@ -7,8 +7,6 @@ public class ShopManagerUI : MonoBehaviour
 {
     [SerializeField] private GameObject shopManager;
     [SerializeField] private Text currentCrystals;
-    [SerializeField] private Text textQuest;
-    [SerializeField] private Button finishButton;
     [SerializeField] private Button closeButton;
 
     private Animator _animator;
@@ -18,31 +16,17 @@ public class ShopManagerUI : MonoBehaviour
     private void Start()
     {
         _animator = shopManager.GetComponent<Animator>();
-        shopManager.SetActive(IsActive);
-        textQuest.text = $"Get the {LevelManager.instance.CrystalsNeeded} crystals";
-        finishButton?.onClick.AddListener(OnFinishButton);
         closeButton?.onClick.AddListener(OnCloseScreen);
     }
 
-    private void UpdateCounter()
+    public void UpdateCounter()
     {
-        currentCrystals.text = $"You have {LevelManager.instance.CrystalCounter} crystals";
-    }
-
-    public void SetUIVisible(bool value)
-    {
-        IsActive = value;
-        UpdateCounter();
-        HUDManager.instance.ShowHUD(!IsActive);
-        shopManager.SetActive(IsActive);
-        GameManager.instance.Pause(IsActive);
-        GameManager.instance.SetCursorActive(IsActive);
-        
+        currentCrystals.text = LevelManager.instance.CrystalCounter.ToString(); ;
     }
 
     public void OnCloseScreen()
     {
-        SetUIVisible(false);
+        HUDManager.instance.SetShopVisible(false);
     }
 
     public void OnFinishButton()
