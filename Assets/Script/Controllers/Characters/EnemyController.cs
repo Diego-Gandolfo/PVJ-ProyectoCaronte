@@ -29,8 +29,12 @@ public abstract class EnemyController : ActorController
 
     protected override void OnTakeDamage()
     {
-        if (animator != null) //TODO: Verificar si todos los enemigos van a tener un animator
+        AudioManager.instance.PlaySound(SoundClips.AlienWound);
+        if (animator != null)
+        {
+            //TODO: Verificar si todos los enemigos van a tener un animator
             animator.SetTrigger("TakeDamage");
+        }
     }
 
     protected override void OnDie()

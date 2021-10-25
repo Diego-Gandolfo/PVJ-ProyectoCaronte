@@ -32,6 +32,7 @@ public class ActorController : MonoBehaviour
     protected virtual void OnTakeDamage()
     {
         //animator.SetTrigger("TakeDamage");
+        
     }
 
     protected virtual void OnDie()

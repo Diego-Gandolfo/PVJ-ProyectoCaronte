@@ -28,7 +28,7 @@ public class OxygenRechargeAreaController : MonoBehaviour
 
             if(currentOxygenUser.MaxOxygen > currentOxygenUser.CurrentOxygen)
             {
-                currentOxigenRegeneration += Time.deltaTime;
+                currentOxigenRegeneration += (currentOxigenRegeneration * Time.deltaTime * 1.1f);
                 currentOxygenUser.RegenerateOxygen(currentOxigenRegeneration * currentMultiplier);
             }
             else if(healtController.CurrentHealth < healtController.MaxHealth)

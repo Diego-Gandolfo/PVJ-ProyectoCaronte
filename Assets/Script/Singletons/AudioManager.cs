@@ -16,7 +16,10 @@ public enum SoundClips
     OxygenRecover,
     CapsuleActivated,
     UIPopUp,
-    InteractableClick
+    InteractableClick,
+    AlienWound,
+    AttackSound,
+    PlayerTakesDamage
 }
 
 public class AudioManager : MonoBehaviour
@@ -46,6 +49,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip capsuleActivated;
     [SerializeField] private AudioClip uiPopUp;
     [SerializeField] private AudioClip interactableClick;
+    [SerializeField] private AudioClip alienWound;
+    [SerializeField] private AudioClip attackSound;
+    [SerializeField] private AudioClip takeDamage;
 
     public void Awake()
     {
@@ -92,7 +98,8 @@ public class AudioManager : MonoBehaviour
             case SoundClips.Steps:
                 soundsAudioSource.volume = 0.3f;
                 PlaySoundSteps();
-                break;            
+                break;      
+                
             case SoundClips.RunningSteps:
                 soundsAudioSource.volume = 0.3f;
                 PlaySoundSteps();
@@ -133,6 +140,21 @@ public class AudioManager : MonoBehaviour
                 soundsAudioSource.PlayOneShot(interactableClick);
                 break;
 
+            case SoundClips.AlienWound:
+                soundsAudioSource.volume = 0.7f;
+                soundsAudioSource.PlayOneShot(alienWound);
+                break;
+
+            case SoundClips.AttackSound:
+                soundsAudioSource.volume = 0.5f;
+                soundsAudioSource.PlayOneShot(attackSound);
+                break;
+
+            case SoundClips.PlayerTakesDamage:
+                soundsAudioSource.volume = 0.8f;
+                soundsAudioSource.PlayOneShot(takeDamage);
+                break;
+
             default:
                 break;
         }
@@ -146,7 +168,6 @@ public class AudioManager : MonoBehaviour
 
     private void PlayJump()
     {
-
         int randomJumps = Random.Range(0, jumpsSounds.Count);
         soundsAudioSource.PlayOneShot(jumpsSounds[randomJumps]);
     }
