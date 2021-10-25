@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ItemUI : MonoBehaviour
 {
     [SerializeField] private Text itemName;
+    [SerializeField] private Image itemImage;
     [SerializeField] private Text itemPrice;
     [SerializeField] private Button buyButton;
 

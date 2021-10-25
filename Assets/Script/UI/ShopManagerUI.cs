@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class ShopManagerUI : MonoBehaviour
 {
     [SerializeField] private GameObject shopManager;
+    [SerializeField] private GameObject itemTemplatePrefab;
+    [SerializeField] private GameObject itemsContainer;
     [SerializeField] private Text currentCrystals;
     [SerializeField] private Button closeButton;
 
+    private List<GameObject> itemsList = new List<GameObject>();
     private Animator _animator;
 
     public bool IsActive { get; private set; }
@@ -17,6 +20,13 @@ public class ShopManagerUI : MonoBehaviour
     {
         _animator = shopManager.GetComponent<Animator>();
         closeButton?.onClick.AddListener(OnCloseScreen);
+
+        for (int i = 0; i < 20; i++)
+        {
+            GameObject item = Instantiate(itemTemplatePrefab);
+            item.transform.parent = itemsContainer.transform;
+            itemsList.Add(item);
+        }
     }
 
     public void UpdateCounter()
