@@ -4522,6 +4522,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c75ce4b297cbcf74387bec4435891acb, type: 2}
+    - target: {fileID: 7521643661861501831, guid: 27c22c0d2dd74ea428de36a8d8a438ff,
+        type: 3}
+      propertyPath: audioSrc
+      value: 
+      objectReference: {fileID: 1520851717}
     - target: {fileID: 7537814665110947492, guid: 27c22c0d2dd74ea428de36a8d8a438ff,
         type: 3}
       propertyPath: m_Name
@@ -5707,6 +5712,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4245634947774118819, guid: 7dae7888f47d41b48870229ba91de481,
     type: 3}
   m_PrefabInstance: {fileID: 1510226293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1520851717 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8652598702245600993, guid: 27c22c0d2dd74ea428de36a8d8a438ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 1092904206}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1553007668
 PrefabInstance:
