@@ -8,6 +8,7 @@ public class ShopManagerUI : MonoBehaviour
     [SerializeField] private GameObject shopManager;
     [SerializeField] private GameObject itemTemplatePrefab;
     [SerializeField] private GameObject itemsContainer;
+    [SerializeField] private ItemUIObject[] itemScriptableObject; 
     [SerializeField] private Text currentCrystals;
     [SerializeField] private Button closeButton;
 
@@ -21,10 +22,10 @@ public class ShopManagerUI : MonoBehaviour
         _animator = shopManager.GetComponent<Animator>();
         closeButton?.onClick.AddListener(OnCloseScreen);
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < itemScriptableObject.Length; i++)
         {
-            GameObject item = Instantiate(itemTemplatePrefab);
-            item.transform.parent = itemsContainer.transform;
+            GameObject item = Instantiate(itemTemplatePrefab, itemsContainer.transform);
+            item.GetComponent<ItemUI>().SetItemInfo(itemScriptableObject[i]);
             itemsList.Add(item);
         }
     }
@@ -43,10 +44,11 @@ public class ShopManagerUI : MonoBehaviour
     {
         if (LevelManager.instance.CrystalCounter >= LevelManager.instance.CrystalsNeeded)
             LevelManager.instance.Victory();
-        else
-        {
-            AudioManager.instance.PlaySound(SoundClips.Negative);
-            _animator.SetTrigger("MessageError"); 
-        }
+    }
+
+    public void DoWarningQuantityCrystals()
+    {
+        AudioManager.instance.PlaySound(SoundClips.Negative);
+        _animator.SetTrigger("MessageError");
     }
 }

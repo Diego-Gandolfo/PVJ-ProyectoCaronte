@@ -8,7 +8,10 @@ public class ItemUI : MonoBehaviour
     [SerializeField] private Text itemName;
     [SerializeField] private Image itemImage;
     [SerializeField] private Text itemPrice;
+    [SerializeField] private Text itemDescription;
     [SerializeField] private Button buyButton;
+
+    private ItemUIObject itemSO;
 
     private void Start()
     {
@@ -17,11 +20,24 @@ public class ItemUI : MonoBehaviour
 
     private void BuyEvent()
     {
-
+        if(LevelManager.instance.CrystalCounter >= itemSO.price)
+        {
+            buyButton.interactable = false;
+            LevelManager.instance.RemoveCrystal(itemSO.price);
+            //TODO: Hacer que el powerUp se active en donde tenga que estar
+        }
+        else
+        {
+            HUDManager.instance.ShopManagerUI.DoWarningQuantityCrystals();
+        }
     }
 
-    public void SetItemInfo()
+    public void SetItemInfo(ItemUIObject item)
     {
-
+        itemSO = item;
+        itemName.text = item.title;
+        itemImage.sprite = item.image;
+        itemPrice.text = item.price.ToString();
+        itemDescription.text = item.description;
     }
 }
