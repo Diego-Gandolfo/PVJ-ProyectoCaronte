@@ -50,8 +50,6 @@ public class HealthController : MonoBehaviour, IDamageable
         {
             Die();
         }
-
-        
     }
 
     public virtual void Die()

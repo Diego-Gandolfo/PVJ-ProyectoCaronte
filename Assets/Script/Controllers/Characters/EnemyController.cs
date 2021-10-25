@@ -9,6 +9,7 @@ public abstract class EnemyController : ActorController
     [SerializeField] protected Vector3 _detectionArea = new Vector3(30f, 5f, 30f); //Area de deteccion completa del enemigo. 
 
     #region Protected Fields
+    
     protected Outline outline;
     protected LifeBarController lifeBar;
     #endregion
@@ -30,7 +31,7 @@ public abstract class EnemyController : ActorController
     protected override void OnTakeDamage()
     {
         AudioManager.instance.PlaySound(SoundClips.AlienWound);
-        if (animator != null)
+        if (animator != null && !isDead)
         {
             //TODO: Verificar si todos los enemigos van a tener un animator
             animator.SetTrigger("TakeDamage");
@@ -39,9 +40,7 @@ public abstract class EnemyController : ActorController
 
     protected override void OnDie()
     {
-        base.OnDie();
-        float delay = 0.1f;
-        Destroy(gameObject, delay);
+        animator.SetBool("Die", true);
     }
     #endregion
 }

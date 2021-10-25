@@ -11,9 +11,9 @@ public class ActorController : MonoBehaviour
     
     protected Animator animator;
 
+    protected bool isDead;
     public AttackStats AttackStats => _attackStats;
     public HealthController HealthController { get; protected set; }
-
 
     protected virtual void Awake()
     {
@@ -32,11 +32,11 @@ public class ActorController : MonoBehaviour
     protected virtual void OnTakeDamage()
     {
         //animator.SetTrigger("TakeDamage");
-        
     }
 
     protected virtual void OnDie()
     {
-        //animator.SetTrigger("IsDead");
+        isDead = true;
+        //animator.SetTrigger("Die");
     }
 }

@@ -43,9 +43,10 @@ public class EnemyMeleeController : EnemyController
 
     protected void Update()
     {
-        
-
-        DetectTarget();
+        if (!isDead)
+        {
+            DetectTarget();
+        }
         CheckVisibleData();
 
         if(canFollow && !playerInRange)
@@ -117,7 +118,7 @@ public class EnemyMeleeController : EnemyController
 
     private void FollowPlayer(PlayerController player)
     {
-        if (!playerInRange)
+        if (!playerInRange && !isDead)
         {
             canFollow = true;
 
@@ -138,8 +139,7 @@ public class EnemyMeleeController : EnemyController
 
     private void PlayFootstepsSound()
     {
-
-        if (canPlaySound)
+        if (canPlaySound && !isDead)
         {
             footstepsAudioSrc.PlayFootstepsSound();
             currentTimeToPlaySound = 0.0f;
@@ -148,27 +148,31 @@ public class EnemyMeleeController : EnemyController
 
     private void CheckVisibleData()
     {
-        if (weapon.IsAttacking || canFollow)
+        if (!isDead)
         {
-            outline.enabled = true;
-        }
-        else
-        {
-            outline.enabled = false;
-        }
+            if (weapon.IsAttacking || canFollow)
+            {
+                outline.enabled = true;
+            }
+            else
+            {
+                outline.enabled = false;
+            }
 
-        if (HealthController.CurrentHealth != HealthController.MaxHealth)
-        {
-            lifeBar.SetBarVisible(canFollow || weapon.IsAttacking);
+            if (HealthController.CurrentHealth != HealthController.MaxHealth)
+            {
+                lifeBar.SetBarVisible(canFollow || weapon.IsAttacking);
+            }
         }
     }
 
     private void CheckPlayerDistance(PlayerController player)
     {
-        if (canFollow) //Si ya estaba persiguiendo, seguilo. 
+        if (canFollow && !isDead) //Si ya estaba persiguiendo, seguilo. 
         {
             FollowPlayer(player);
         }
+
         else
         {
             if (!player.IsSprinting)
