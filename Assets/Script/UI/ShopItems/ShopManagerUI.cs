@@ -54,10 +54,6 @@ public class ShopManagerUI : MonoBehaviour
         _animator.SetTrigger("MessageError");
     }
 
-    public void ActivateComponent(string item)
-    {
-
-    }
     public void Interact(ItemUISO item) //TODO: Estaria bueno encontrar otra forma de solucionarlo
     {
         switch (item.itemType)

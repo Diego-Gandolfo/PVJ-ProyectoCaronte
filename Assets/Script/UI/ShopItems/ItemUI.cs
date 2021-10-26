@@ -23,8 +23,8 @@ public class ItemUI : MonoBehaviour
         {
             buyButton.interactable = false;
             LevelManager.instance.RemoveCrystal(itemSO.price);
-            //HUDManager.instance.ShopManagerUI.Interact(itemSO);
-            HUDManager.instance.ShopManagerUI.ActivateComponent(itemSO.interactionName);
+            HUDManager.instance.ShopManagerUI.Interact(itemSO);
+            HUDManager.instance.ShopManagerUI.UpdateCounter();
         }
         else
         {
