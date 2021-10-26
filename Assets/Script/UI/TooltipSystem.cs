@@ -24,7 +24,6 @@ public class TooltipSystem : MonoBehaviour
 
     public void Show(bool value)
     {
-        print("mostramos");
         tooltip.gameObject.SetActive(value);
     }
 
