@@ -15,5 +15,5 @@ MonoBehaviour:
   title: Oxygen Buff
   image: {fileID: 21300000, guid: 85d71ca139b86eb49bcaf1cdc43c8850, type: 3}
   price: 20
-  description: Your oxygen tank now has a larger storage for longer explorations
-    off camp!
+  description: Better oxygen system with less compsution rate!
+  interaction: {fileID: 0}

@@ -11,7 +11,7 @@ public class ItemUI : MonoBehaviour
     [SerializeField] private Text itemDescription;
     [SerializeField] private Button buyButton;
 
-    private ItemUIObject itemSO;
+    private ItemUISO itemSO;
 
     private void Start()
     {
@@ -32,7 +32,7 @@ public class ItemUI : MonoBehaviour
         }
     }
 
-    public void SetItemInfo(ItemUIObject item)
+    public void SetItemInfo(ItemUISO item)
     {
         itemSO = item;
         itemName.text = item.title;

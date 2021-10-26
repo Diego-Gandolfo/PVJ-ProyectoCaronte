@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: {fileID: 4156253963416888524}
-  itemImage: {fileID: 6435391520340714012}
+  itemImage: {fileID: 7547905059046249811}
   itemPrice: {fileID: 4452663826335858586}
   itemDescription: {fileID: 4610122240609650396}
   buyButton: {fileID: 175390119497369778}

@@ -8,7 +8,7 @@ public class ShopManagerUI : MonoBehaviour
     [SerializeField] private GameObject shopManager;
     [SerializeField] private GameObject itemTemplatePrefab;
     [SerializeField] private GameObject itemsContainer;
-    [SerializeField] private ItemUIObject[] itemScriptableObject; 
+    [SerializeField] private ItemUISO[] itemScriptableObject; 
     [SerializeField] private Text currentCrystals;
     [SerializeField] private Button closeButton;
 

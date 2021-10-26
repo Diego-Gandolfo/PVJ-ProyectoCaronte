@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "ShopMenu", menuName = "ScriptableObject/ItemShop", order = 1)]
-public class ItemUIObject : ScriptableObject
+public class ItemUISO : ScriptableObject
 {
     public string title;
     public Sprite image;
