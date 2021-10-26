@@ -21,10 +21,6 @@ public class ActorController : MonoBehaviour
         InitStats();
     }
 
-    private void Start()
-    {
-    }
-
     protected void InitStats()
     {
         HealthController.SetStats(_actorStats);
@@ -35,12 +31,9 @@ public class ActorController : MonoBehaviour
 
     protected virtual void OnTakeDamage()
     {
-        //animator.SetTrigger("TakeDamage");
     }
 
     protected virtual void OnDie()
     {
-        //if (animator != null)
-        //    animator.SetTrigger("Die");
     }
 }

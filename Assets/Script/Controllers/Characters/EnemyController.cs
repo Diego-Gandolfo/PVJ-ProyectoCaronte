@@ -20,8 +20,10 @@ public abstract class EnemyController : ActorController
     protected override void Awake()
     {
         base.Awake();
+        
         outline = GetComponent<Outline>();
         lifeBar = GetComponent<LifeBarController>();
+
         if (lifeBar != null)
             lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
     }
@@ -29,10 +31,17 @@ public abstract class EnemyController : ActorController
 
     #region Public Methods
 
+    private void Update()
+    {
+        
+    }
+
     protected override void OnTakeDamage()
     {
         if (!HealthController.IsDead)
         {
+            AudioManager.instance.PlaySound(SoundClips.AlienWound);
+
             if (animator != null)
             {
                 //TODO: Verificar si todos los enemigos van a tener un animator

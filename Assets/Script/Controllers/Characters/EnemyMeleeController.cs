@@ -66,8 +66,7 @@ public class EnemyMeleeController : EnemyController
             }
             else canPlaySound = false;
             #endregion FootStepsSound Count
-        }
-            
+        }   
     }
 
     #endregion
