@@ -47,8 +47,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2868946, y: 3.24823, z: 2.6983771}
-  m_Center: {x: -0.028453454, y: 1.124115, z: 0.83573306}
+  m_Size: {x: 2, y: 3, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &8094075395598343408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafad3b0c1b137147a133ec5d8901ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showPromptAlways: 1
 --- !u!114 &4824100195241676257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,7 +103,7 @@ GameObject:
   - component: {fileID: 423710917412881471}
   - component: {fileID: 8943026555651945121}
   - component: {fileID: 655852839743565438}
-  - component: {fileID: 4437785845983595218}
+  - component: {fileID: 1545790288}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -151,7 +152,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 37121ffd7c5977148830fe6e15ee6670, type: 3}
+  - {fileID: 2100000, guid: 38087252ceb0cbe48885bc00ffe08707, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -173,7 +174,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4437785845983595218
+--- !u!65 &1545790288
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,8 +185,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0305727, y: 2.738988, z: 1.1253786}
-  m_Center: {x: -0.020418568, y: 1.2398019, z: -0.017143667}
+  m_Size: {x: 1.0150207, y: 2.738988, z: 1.150593}
+  m_Center: {x: -0.028194187, y: 1.2398019, z: -0.004536152}
 --- !u!1 &5677982207802521761
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +199,8 @@ GameObject:
   - component: {fileID: 1970962933947319089}
   - component: {fileID: 6747003447466777248}
   - component: {fileID: 5677982207802521774}
-  m_Layer: 0
+  - component: {fileID: 859477963}
+  m_Layer: 12
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,3 +332,20 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &859477963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5677982207802521761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: d3ed4cb36a5a05b4ba563d996579d98d, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
