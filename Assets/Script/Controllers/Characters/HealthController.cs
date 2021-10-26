@@ -91,17 +91,14 @@ public class HealthController : MonoBehaviour, IDamageable
 
     private void UpdateLifeBar()
     {
-        if (!isDead)
+        OnUpdateLife?.Invoke(CurrentHealth);
+
+        if (lifeBar != null)
         {
-            OnUpdateLife?.Invoke(CurrentHealth);
+            if (!lifeBar.IsVisible)
+                lifeBar.SetBarVisible(true);
 
-            if (lifeBar != null)
-            {
-                if (!lifeBar.IsVisible)
-                    lifeBar.SetBarVisible(true);
-
-                lifeBar.UpdateLifeBar(CurrentHealth);
-            }
+            lifeBar.UpdateLifeBar(CurrentHealth);
         }
     }
 }
