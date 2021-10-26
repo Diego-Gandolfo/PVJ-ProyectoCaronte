@@ -10,5 +10,6 @@ public class ItemUISO : ScriptableObject
     public Sprite image;
     public int price;
     public string description;
-    public BaseShopItem interaction;
+    public ItemType itemType;
+    public string interactionName;
 }

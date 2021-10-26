@@ -16,4 +16,4 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 85d71ca139b86eb49bcaf1cdc43c8850, type: 3}
   price: 20
   description: Better oxygen system with less compsution rate!
-  interaction: {fileID: 0}
+  itemType: 3

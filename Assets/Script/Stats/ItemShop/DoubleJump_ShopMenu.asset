@@ -16,3 +16,4 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: a9ea06625f0fc664a93765e970da0bd0, type: 3}
   price: 20
   description: New boots that allow you go father in your jumps!
+  itemType: 2

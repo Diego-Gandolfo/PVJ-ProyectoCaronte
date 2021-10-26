@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum ItemType
+{
+    None,
+    Sonar,
+    DoubleJump,
+    OxygenBuff
+}
+
 public class ShopManagerUI : MonoBehaviour
 {
     [SerializeField] private GameObject shopManager;
@@ -40,15 +48,31 @@ public class ShopManagerUI : MonoBehaviour
         HUDManager.instance.SetShopVisible(false);
     }
 
-    public void OnFinishButton()
-    {
-        if (LevelManager.instance.CrystalCounter >= LevelManager.instance.CrystalsNeeded)
-            LevelManager.instance.Victory();
-    }
-
     public void DoWarningQuantityCrystals()
     {
         AudioManager.instance.PlaySound(SoundClips.Negative);
         _animator.SetTrigger("MessageError");
+    }
+
+    public void ActivateComponent(string item)
+    {
+
+    }
+    public void Interact(ItemUISO item) //TODO: Estaria bueno encontrar otra forma de solucionarlo
+    {
+        switch (item.itemType)
+        {
+            case ItemType.None:
+                break;
+            case ItemType.Sonar:
+                CrystalManager.instance.ActivateSonar();
+                break;
+            case ItemType.DoubleJump:
+                break;
+            case ItemType.OxygenBuff:
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -8,7 +8,6 @@ public class ItemUI : MonoBehaviour
     [SerializeField] private Text itemName;
     [SerializeField] private Image itemImage;
     [SerializeField] private Text itemPrice;
-    [SerializeField] private Text itemDescription;
     [SerializeField] private Button buyButton;
 
     private ItemUISO itemSO;
@@ -24,7 +23,8 @@ public class ItemUI : MonoBehaviour
         {
             buyButton.interactable = false;
             LevelManager.instance.RemoveCrystal(itemSO.price);
-            //itemSO.interaction.Interact();
+            //HUDManager.instance.ShopManagerUI.Interact(itemSO);
+            HUDManager.instance.ShopManagerUI.ActivateComponent(itemSO.interactionName);
         }
         else
         {
@@ -38,6 +38,7 @@ public class ItemUI : MonoBehaviour
         itemName.text = item.title;
         itemImage.sprite = item.image;
         itemPrice.text = item.price.ToString();
-        itemDescription.text = item.description;
+
+        GetComponent<TooltipTrigger>().SetContent(item.description);
     }
 }
