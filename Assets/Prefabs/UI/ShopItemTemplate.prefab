@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8790876367353990906}
   - component: {fileID: 3743104820132621458}
-  - component: {fileID: 2703405318687251633}
+  - component: {fileID: 5767222543040120470}
   m_Layer: 5
   m_Name: ShopItemTemplate
   m_TagString: Untagged
@@ -58,7 +58,7 @@ MonoBehaviour:
   itemImage: {fileID: 7547905059046249811}
   itemPrice: {fileID: 4452663826335858586}
   buyButton: {fileID: 175390119497369778}
---- !u!114 &2703405318687251633
+--- !u!114 &5767222543040120470
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -362,6 +362,7 @@ GameObject:
   - component: {fileID: 1211827078690778879}
   - component: {fileID: 5198391325119611091}
   - component: {fileID: 6435391520340714012}
+  - component: {fileID: 6130394843548051053}
   m_Layer: 5
   m_Name: itemBG
   m_TagString: Untagged
@@ -385,8 +386,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00012207, y: -29.061}
-  m_SizeDelta: {x: 314.24, y: 287.18}
+  m_AnchoredPosition: {x: 0.000060402, y: 41.009}
+  m_SizeDelta: {x: 314.24, y: 427.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5198391325119611091
 CanvasRenderer:
@@ -427,6 +428,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6130394843548051053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3356824049131440160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548d09919b2ed554584503c726bbdcbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5603395894565355233
 GameObject:
   m_ObjectHideFlags: 0

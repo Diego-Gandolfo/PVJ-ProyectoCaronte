@@ -5628,7 +5628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: {fileID: 247120696}
   description: {fileID: 1526763069}
-  characterWrapLimit: 50
+  characterWrapLimit: 10
 --- !u!114 &1429634724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5636,7 +5636,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1429634721}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
   m_Name: 

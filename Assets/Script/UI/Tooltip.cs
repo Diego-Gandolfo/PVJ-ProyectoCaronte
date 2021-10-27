@@ -13,7 +13,6 @@ public class Tooltip : MonoBehaviour
     private LayoutElement layoutElement;
     private RectTransform rectTransform;
 
-
     void Start()
     {
         layoutElement = GetComponent<LayoutElement>();
@@ -24,7 +23,6 @@ public class Tooltip : MonoBehaviour
     {
         int headerLength = header.text.Length;
         int contentLength = description.text.Length;
-
         layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit) ? true : false;
     }
 
@@ -33,7 +31,6 @@ public class Tooltip : MonoBehaviour
         Vector2 position = Input.mousePosition;
         float pivotX = position.x / Screen.width;
         float pivotY = position.y / Screen.height;
-
         rectTransform.pivot = new Vector2(pivotX, pivotY);
         transform.position = position;
     }

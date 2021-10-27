@@ -39,6 +39,6 @@ public class ItemUI : MonoBehaviour
         itemImage.sprite = item.image;
         itemPrice.text = item.price.ToString();
 
-        GetComponent<TooltipTrigger>().SetContent(item.description);
+        GetComponentInChildren<TooltipTrigger>().SetContent(item.description);
     }
 }
