@@ -26,7 +26,7 @@ public class Tooltip : MonoBehaviour
         layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit) ? true : false;
     }
 
-    private void CheckPosition()
+    public void CheckPosition()
     {
         Vector2 position = Input.mousePosition;
         float pivotX = position.x / Screen.width;

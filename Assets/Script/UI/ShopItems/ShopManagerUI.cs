@@ -16,7 +16,7 @@ public class ShopManagerUI : MonoBehaviour
     [SerializeField] private GameObject shopManager;
     [SerializeField] private GameObject itemTemplatePrefab;
     [SerializeField] private GameObject itemsContainer;
-    [SerializeField] private ItemUISO[] itemScriptableObject; 
+    [SerializeField] private BaseItemShop[] itemScriptableObject; 
     [SerializeField] private Text currentCrystals;
     [SerializeField] private Button closeButton;
 
@@ -52,23 +52,5 @@ public class ShopManagerUI : MonoBehaviour
     {
         AudioManager.instance.PlaySound(SoundClips.Negative);
         _animator.SetTrigger("MessageError");
-    }
-
-    public void Interact(ItemUISO item) //TODO: Estaria bueno encontrar otra forma de solucionarlo
-    {
-        switch (item.itemType)
-        {
-            case ItemType.None:
-                break;
-            case ItemType.Sonar:
-                CrystalManager.instance.ActivateSonar();
-                break;
-            case ItemType.DoubleJump:
-                break;
-            case ItemType.OxygenBuff:
-                break;
-            default:
-                break;
-        }
     }
 }

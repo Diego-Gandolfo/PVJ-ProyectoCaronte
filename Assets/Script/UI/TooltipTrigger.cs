@@ -6,18 +6,38 @@ using UnityEngine.EventSystems;
 
 public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] private float delay = 2f;
     private string content;
     private string title;
+    private float timer;
+    private bool canShow;
+
+    private void Update()
+    {
+        timer -= Time.deltaTime;
+        if (canShow)
+            print(timer);
+        if(canShow & timer <= 0)
+        {
+            TooltipSystem.instance.Tooltip.CheckPosition();
+            TooltipSystem.instance.Show(true);
+        }
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Thread.Sleep(500);
-        TooltipSystem.instance.Show(true);
-        TooltipSystem.instance.Tooltip.SetText(content, title);
+        if (!canShow)
+        {
+            TooltipSystem.instance.Tooltip.SetText(content, title);
+            canShow = true;
+            timer = delay;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        print("no show");
+        canShow = false;
         TooltipSystem.instance.Show(false);
     }
 

@@ -9,8 +9,9 @@ public class ItemUI : MonoBehaviour
     [SerializeField] private Image itemImage;
     [SerializeField] private Text itemPrice;
     [SerializeField] private Button buyButton;
+    [SerializeField] private TooltipTrigger trigger;
 
-    private ItemUISO itemSO;
+    private BaseItemShop item;
 
     private void Start()
     {
@@ -19,11 +20,11 @@ public class ItemUI : MonoBehaviour
 
     private void BuyEvent()
     {
-        if(LevelManager.instance.CrystalCounter >= itemSO.price)
+        if(LevelManager.instance.CrystalCounter >= item.SO.price)
         {
             buyButton.interactable = false;
-            LevelManager.instance.RemoveCrystal(itemSO.price);
-            HUDManager.instance.ShopManagerUI.Interact(itemSO);
+            LevelManager.instance.RemoveCrystal(item.SO.price);
+            item.Interact();
             HUDManager.instance.ShopManagerUI.UpdateCounter();
         }
         else
@@ -32,13 +33,13 @@ public class ItemUI : MonoBehaviour
         }
     }
 
-    public void SetItemInfo(ItemUISO item)
+    public void SetItemInfo(BaseItemShop itemObject)
     {
-        itemSO = item;
-        itemName.text = item.title;
-        itemImage.sprite = item.image;
-        itemPrice.text = item.price.ToString();
+        item = itemObject;
+        itemName.text = item.SO.title;
+        itemImage.sprite = item.SO.image;
+        itemPrice.text = item.SO.price.ToString();
 
-        GetComponentInChildren<TooltipTrigger>().SetContent(item.description);
+        trigger.SetContent(item.SO.description);
     }
 }
