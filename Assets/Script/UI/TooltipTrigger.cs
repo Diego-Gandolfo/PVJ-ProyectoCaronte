@@ -12,6 +12,11 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private float timer;
     private bool canShow;
 
+    private void Start()
+    {
+        TooltipSystem.instance.OnReset += OnReset;
+    }
+
     private void Update()
     {
         timer -= Time.unscaledTime;
@@ -20,6 +25,11 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             TooltipSystem.instance.Tooltip.CheckPosition();
             TooltipSystem.instance.Show(true);
         }
+    }
+
+    private void OnReset()
+    {
+        canShow = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)

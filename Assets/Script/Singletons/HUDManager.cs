@@ -85,6 +85,7 @@ public class HUDManager : MonoBehaviour
     public void SetShopVisible(bool value)
     {
         isShopActive = value;
+        TooltipSystem.instance.Reset();
         ShowHUD(!isShopActive);
         ShopManagerUI.UpdateCounter();
         shopManager.SetActive(isShopActive);

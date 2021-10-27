@@ -6472,6 +6472,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8971073004495684333, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91b595f2545c3854abad3e9515ef3610, type: 3}
 --- !u!1001 &1699418846
@@ -7874,10 +7879,25 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9186820991276511175, guid: 1d49f1d66312d1347bd773e9e70e2c49,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9186820991276511175, guid: 1d49f1d66312d1347bd773e9e70e2c49,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 9186820992195407680, guid: 1d49f1d66312d1347bd773e9e70e2c49,
         type: 3}
       propertyPath: m_Name
       value: Tooltip Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9186820992195407683, guid: 1d49f1d66312d1347bd773e9e70e2c49,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9186820992195407684, guid: 1d49f1d66312d1347bd773e9e70e2c49,
         type: 3}
