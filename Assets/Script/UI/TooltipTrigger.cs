@@ -14,9 +14,7 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     private void Update()
     {
-        timer -= Time.deltaTime;
-        if (canShow)
-            print(timer);
+        timer -= Time.unscaledTime;
         if(canShow & timer <= 0)
         {
             TooltipSystem.instance.Tooltip.CheckPosition();
@@ -36,7 +34,6 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        print("no show");
         canShow = false;
         TooltipSystem.instance.Show(false);
     }
