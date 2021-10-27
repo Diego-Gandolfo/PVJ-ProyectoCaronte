@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAudioSrc : MonoBehaviour
+public class EnemyFootstepsSound : MonoBehaviour
 {
     [SerializeField] private List<AudioClip> footsteps;
 

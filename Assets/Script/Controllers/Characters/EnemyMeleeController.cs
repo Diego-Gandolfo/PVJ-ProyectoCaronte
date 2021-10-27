@@ -16,7 +16,7 @@ public class EnemyMeleeController : EnemyController
     #region Private
 
     // Componentes
-    private EnemyAudioSrc footstepsAudioSrc;
+    private EnemyFootstepsSound footstepsAudioSrc;
     private EnemyMeleeWeapon weapon;
     private Rigidbody _rigidbody;
 
@@ -37,7 +37,7 @@ public class EnemyMeleeController : EnemyController
     {
         weapon = GetComponent<EnemyMeleeWeapon>();
         _rigidbody = GetComponent<Rigidbody>();
-        footstepsAudioSrc = GetComponent<EnemyAudioSrc>();
+        footstepsAudioSrc = GetComponent<EnemyFootstepsSound>();
 
         weapon.SetStats(_attackStats);
         animator.speed = _actorStats.OriginalAnimatorSpeed;
