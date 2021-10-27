@@ -1830,6 +1830,7 @@ MonoBehaviour:
   _detectionArea: {x: 30, y: 5, z: 30}
   _attackRadius: 0.25
   minimumDetectionDistance: 10
+  audioSrc: {fileID: 0}
 --- !u!114 &4369962038243472794
 MonoBehaviour:
   m_ObjectHideFlags: 0
