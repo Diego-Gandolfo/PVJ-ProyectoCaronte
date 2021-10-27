@@ -33,6 +33,8 @@ public class PlayerController : ActorController
     private bool aiming;
     private bool shooting;
     private bool canPlaySound;
+    private bool canDoDoubleJump;
+    private bool isDoubleJumping;
     private float currentSpeed;
     private float distanceGround = 0.4f;
 
@@ -155,16 +157,28 @@ public class PlayerController : ActorController
     {
         if (CheckIfGrounded())
         {
-            AudioManager.instance.PlaySound(SoundClips.Jump);
-
-            var jumpForce = Vector3.up * _actorStats.JumpForce;
-            rigidBody.AddForce(jumpForce, ForceMode.Impulse);
+            DoJump();
         }
+        else
+        {
+            if (!isDoubleJumping && canDoDoubleJump)
+            {
+                isDoubleJumping = true;
+                DoJump();
+            }
+        }
+    }
+
+    private void DoJump()
+    {
+        AudioManager.instance.PlaySound(SoundClips.Jump);
+
+        var jumpForce = Vector3.up * _actorStats.JumpForce;
+        rigidBody.AddForce(jumpForce, ForceMode.Impulse);
     }
 
     private bool CheckIfGrounded()
     {
-        bool answer = false;
         foreach (var jump in jumpPoints)
         {
             RaycastHit hit;
@@ -173,10 +187,14 @@ public class PlayerController : ActorController
             if (Physics.Raycast(ray, out hit, distanceGround, surfaceList))
             {
                 if (hit.collider != null)
-                    answer = true;
+                {
+                    isDoubleJumping = false;
+                    return true;
+                }
+
             }
         }
-        return answer;
+        return false;
     }
 
     protected override void OnTakeDamage()
@@ -248,4 +266,9 @@ public class PlayerController : ActorController
     }
 
     #endregion
+
+    public void SetCanDoDoubleJump()
+    {
+        canDoDoubleJump = true;
+    }
 }

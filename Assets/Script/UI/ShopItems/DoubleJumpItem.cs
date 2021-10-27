@@ -6,7 +6,6 @@ public class DoubleJumpItem : BaseItemShop
 {
     public override void Interact()
     {
-        print("DoubleJump");
-        //TODO: implement double jump
+        LevelManager.instance.Player.SetCanDoDoubleJump();
     }
 }
