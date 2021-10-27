@@ -50,8 +50,8 @@ public class HealthController : MonoBehaviour, IDamageable
 
         if (CurrentHealth <= 0)
         {
-            Die();
             isDead = true;
+            Die();
         }
         else isDead = false;
     }

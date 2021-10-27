@@ -60,16 +60,14 @@ public class EnemyMeleeController : EnemyController
             }
 
             #region FootStepsSound Count
+
             currentTimeToPlaySound += Time.deltaTime;
             if (currentTimeToPlaySound >= timeToPlaySound)
-            {
                 canPlaySound = true;
-            }
+            
             else canPlaySound = false;
-            #endregion FootStepsSound Count
 
-            if (GameManager.instance.IsGameFreeze)
-                defaultSounds.Play();
+            #endregion FootStepsSound Count
         }   
     }
 

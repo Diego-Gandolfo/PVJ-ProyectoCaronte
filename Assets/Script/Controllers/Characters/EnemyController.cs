@@ -33,6 +33,8 @@ public abstract class EnemyController : ActorController
 
     protected override void OnTakeDamage()
     {
+        print(HealthController.CurrentHealth);
+
         if (!HealthController.IsDead)
         {
             AudioManager.instance.PlaySound(SoundClips.AlienWound);
