@@ -68,8 +68,8 @@ MonoBehaviour:
   uiPopUp: {fileID: 8300000, guid: 34a6d88010b057d408387dd2fed88556, type: 3}
   interactableClick: {fileID: 8300000, guid: 94e4a2e4e8e50df4cae6700b22763f9a, type: 3}
   alienWound: {fileID: 8300000, guid: 481fc7274ede78340aea974849cf3fcf, type: 3}
-  attackSound: {fileID: 8300000, guid: 9e0bc78c4f9cb9a4091bd07e7bae88d1, type: 3}
-  takeDamage: {fileID: 8300000, guid: a12de88d8eacb324fa02a26fc134c4dc, type: 3}
+  attackSound: {fileID: 8300000, guid: 6de1f0f73d9dfaa4d923fabc6b9a36cd, type: 3}
+  playerTakesDamage: {fileID: 8300000, guid: b264014c9bd00f3429d8591f2219bb51, type: 3}
 --- !u!1 &4814295448939889778
 GameObject:
   m_ObjectHideFlags: 0

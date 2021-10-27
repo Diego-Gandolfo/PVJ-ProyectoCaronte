@@ -57,8 +57,6 @@ public class PlayerController : ActorController
         oxygenSystem = GetComponent<OxygenSystemController>();
         currentSpeed = _actorStats.OriginalSpeed;
         weapon.SetPlayer(this);
-
-        
     }
 
     private void Start()
@@ -108,7 +106,6 @@ public class PlayerController : ActorController
                     canPlaySound = false;
                     AudioManager.instance.PlaySound(SoundClips.Steps);
                     currentTimeToPlaySound = 0.0f;
-
                 }
             }
         }
@@ -180,6 +177,12 @@ public class PlayerController : ActorController
             }
         }
         return answer;
+    }
+
+    protected override void OnTakeDamage()
+    {
+        base.OnTakeDamage();
+        AudioManager.instance.PlaySound(SoundClips.PlayerTakesDamage);
     }
 
     protected override void OnDie()

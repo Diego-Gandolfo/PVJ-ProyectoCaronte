@@ -65,5 +65,4 @@ public class LifeBarController : MonoBehaviour
         uiHealth = MaxHealth;
         currentHealth = MaxHealth;
     }
-
 }

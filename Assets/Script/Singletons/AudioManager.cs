@@ -51,7 +51,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip interactableClick;
     [SerializeField] private AudioClip alienWound;
     [SerializeField] private AudioClip attackSound;
-    [SerializeField] private AudioClip takeDamage;
+    [SerializeField] private AudioClip playerTakesDamage;
 
     public void Awake()
     {
@@ -141,7 +141,7 @@ public class AudioManager : MonoBehaviour
                 break;
 
             case SoundClips.AlienWound:
-                soundsAudioSource.volume = 0.7f;
+                soundsAudioSource.volume = 0.5f;
                 soundsAudioSource.PlayOneShot(alienWound);
                 break;
 
@@ -151,8 +151,8 @@ public class AudioManager : MonoBehaviour
                 break;
 
             case SoundClips.PlayerTakesDamage:
-                soundsAudioSource.volume = 0.8f;
-                soundsAudioSource.PlayOneShot(takeDamage);
+                soundsAudioSource.volume = 1f;
+                soundsAudioSource.PlayOneShot(playerTakesDamage);
                 break;
 
             default:

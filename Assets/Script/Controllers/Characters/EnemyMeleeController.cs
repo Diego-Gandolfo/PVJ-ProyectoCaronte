@@ -9,15 +9,16 @@ public class EnemyMeleeController : EnemyController
 
     [SerializeField] [Range(0, 50)] protected float _attackRadius;
     [SerializeField] private float minimumDetectionDistance = 10f; //Esta seria la distancia para detectarlo cuando camina. 
-    [SerializeField] private AudioSource grumpsAudioSrc;
+    
+    [SerializeField] private AudioSource defaultSounds;
     #endregion
 
     #region Private
 
     // Componentes
+    private EnemyFootstepsSound footstepsAudioSrc;
     private EnemyMeleeWeapon weapon;
     private Rigidbody _rigidbody;
-    private EnemyAudioSrc footstepsAudioSrc;
 
     // Parameters
     private bool canFollow = false;
@@ -36,40 +37,41 @@ public class EnemyMeleeController : EnemyController
     {
         weapon = GetComponent<EnemyMeleeWeapon>();
         _rigidbody = GetComponent<Rigidbody>();
-        footstepsAudioSrc = GetComponent<EnemyAudioSrc>();
+        footstepsAudioSrc = GetComponent<EnemyFootstepsSound>();
+
         weapon.SetStats(_attackStats);
         animator.speed = _actorStats.OriginalAnimatorSpeed;
     }
 
     protected void Update()
     {
-        
-
-        DetectTarget();
-        CheckVisibleData();
-
-        if(canFollow && !playerInRange)
+        if (!HealthController.IsDead) 
         {
-            animator.SetBool("Walk Forward", true);
-        }
-        else
-        {
-            animator.SetBool("Walk Forward", false);
-        }
+            DetectTarget();
+            CheckVisibleData();
 
-        #region FootStepsSound Count
-        currentTimeToPlaySound += Time.deltaTime;
-        if (currentTimeToPlaySound >= timeToPlaySound)
-        {
-            canPlaySound = true;
-        }
-        else canPlaySound = false;
-        #endregion FootStepsSound Count
+            if(canFollow && !playerInRange)
+            {
+                animator.SetBool("Walk Forward", true);
+            }
+            else
+            {
+                animator.SetBool("Walk Forward", false);
+            }
+
+            #region FootStepsSound Count
+
+            currentTimeToPlaySound += Time.deltaTime;
+            if (currentTimeToPlaySound >= timeToPlaySound)
+                canPlaySound = true;
+            
+            else canPlaySound = false;
+
+            #endregion FootStepsSound Count
+        }   
     }
 
     #endregion
-
-
 
     #region Private Methods
 
@@ -117,29 +119,32 @@ public class EnemyMeleeController : EnemyController
 
     private void FollowPlayer(PlayerController player)
     {
-        if (!playerInRange)
+        if (!HealthController.IsDead)
         {
-            canFollow = true;
+            if (!playerInRange)
+            {
+                canFollow = true;
 
-            var xzPlayerPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-            transform.LookAt(xzPlayerPosition);
+                var xzPlayerPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+                transform.LookAt(xzPlayerPosition);
 
-            var direction = (xzPlayerPosition - transform.position).normalized;
-            _rigidbody.velocity = direction * _actorStats.OriginalSpeed;
+                var direction = (xzPlayerPosition - transform.position).normalized;
+                _rigidbody.velocity = direction * _actorStats.OriginalSpeed;
 
-            PlayFootstepsSound();
+                PlayFootstepsSound();
 
-            // Esto es lo que estaba antes, lo dejo para que se vea el cambio
-            //transform.LookAt(player.transform.position, player.transform.up);
-            //transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
+                // Esto es lo que estaba antes, lo dejo para que se vea el cambio
+                //transform.LookAt(player.transform.position, player.transform.up);
+                //transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
+            }
+
+            CanAttack();
         }
-        CanAttack();
     }
 
     private void PlayFootstepsSound()
     {
-
-        if (canPlaySound)
+        if (canPlaySound && !HealthController.IsDead)
         {
             footstepsAudioSrc.PlayFootstepsSound();
             currentTimeToPlaySound = 0.0f;
@@ -148,18 +153,21 @@ public class EnemyMeleeController : EnemyController
 
     private void CheckVisibleData()
     {
-        if (weapon.IsAttacking || canFollow)
+        if (!HealthController.IsDead)
         {
-            outline.enabled = true;
-        }
-        else
-        {
-            outline.enabled = false;
-        }
+            if (weapon.IsAttacking || canFollow)
+            {
+                outline.enabled = true;
+            }
+            else
+            {
+                outline.enabled = false;
+            }
 
-        if (HealthController.CurrentHealth != HealthController.MaxHealth)
-        {
-            lifeBar.SetBarVisible(canFollow || weapon.IsAttacking);
+            if (HealthController.CurrentHealth != HealthController.MaxHealth)
+            {
+                lifeBar.SetBarVisible(canFollow || weapon.IsAttacking);
+            }
         }
     }
 
@@ -169,6 +177,7 @@ public class EnemyMeleeController : EnemyController
         {
             FollowPlayer(player);
         }
+
         else
         {
             if (!player.IsSprinting)
@@ -199,5 +208,11 @@ public class EnemyMeleeController : EnemyController
         _isAttackAnimationRunning = false;
     }
 
+    protected override void OnDie()
+    {
+        base.OnDie();
+        defaultSounds.Stop();
+        Destroy(gameObject, 5f);
+    }
     #endregion
 }
