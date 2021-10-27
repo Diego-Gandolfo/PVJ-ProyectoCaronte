@@ -142,7 +142,6 @@ public class EnemyMeleeController : EnemyController
 
             CanAttack();
         }
-
     }
 
     private void PlayFootstepsSound()
