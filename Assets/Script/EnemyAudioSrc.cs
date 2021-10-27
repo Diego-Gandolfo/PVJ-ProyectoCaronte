@@ -7,7 +7,6 @@ public class EnemyAudioSrc : MonoBehaviour
     [SerializeField] private List<AudioClip> footsteps;
 
     [SerializeField] private AudioSource footstepsAudioSource;
-    [SerializeField] private AudioSource audioSource;
 
     public void PlayFootstepsSound()
     {
@@ -18,14 +17,6 @@ public class EnemyAudioSrc : MonoBehaviour
 
             footstepsAudioSource.volume = 0.4f;
             footstepsAudioSource.pitch = 1.5f;
-        }
-    }
-
-    private void Update()
-    {
-        if (GameManager.instance.IsGameFreeze)
-        {
-            audioSource.Play();
         }
     }
 }

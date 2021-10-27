@@ -1833,7 +1833,7 @@ MonoBehaviour:
   _detectionArea: {x: 30, y: 5, z: 30}
   _attackRadius: 1
   minimumDetectionDistance: 10
-  audioSrc: {fileID: 8652598703804105797}
+  defaultSounds: {fileID: 8652598703804105797}
 --- !u!114 &4369962038243472794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1962,7 +1962,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fc21b1f4da842144f9f069344c2c9a67, type: 3}
   - {fileID: 8300000, guid: d68a8acfbc946db46a420f4c82b6f8f5, type: 3}
   footstepsAudioSource: {fileID: 8305091208220104077}
-  audioSource: {fileID: 8652598703804105797}
 --- !u!82 &8305091208220104077
 AudioSource:
   m_ObjectHideFlags: 0
