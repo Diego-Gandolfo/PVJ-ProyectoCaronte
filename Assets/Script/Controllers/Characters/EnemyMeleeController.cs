@@ -9,7 +9,7 @@ public class EnemyMeleeController : EnemyController
 
     [SerializeField] [Range(0, 50)] protected float _attackRadius;
     [SerializeField] private float minimumDetectionDistance = 10f; //Esta seria la distancia para detectarlo cuando camina. 
-    [SerializeField] private AudioSource audioSrc;
+
     #endregion
 
     #region Private
@@ -36,7 +36,7 @@ public class EnemyMeleeController : EnemyController
     {
         weapon = GetComponent<EnemyMeleeWeapon>();
         _rigidbody = GetComponent<Rigidbody>();
-        footstepsAudioSrc = GetComponent<EnemyAudioSrc>();
+
 
         weapon.SetStats(_attackStats);
         animator.speed = _actorStats.OriginalAnimatorSpeed;
@@ -131,7 +131,7 @@ public class EnemyMeleeController : EnemyController
                 var direction = (xzPlayerPosition - transform.position).normalized;
                 _rigidbody.velocity = direction * _actorStats.OriginalSpeed;
 
-                PlayFootstepsSound();
+                //PlayFootstepsSound();
 
                 // Esto es lo que estaba antes, lo dejo para que se vea el cambio
                 //transform.LookAt(player.transform.position, player.transform.up);
@@ -143,14 +143,14 @@ public class EnemyMeleeController : EnemyController
 
     }
 
-    private void PlayFootstepsSound()
-    {
-        if (canPlaySound && !HealthController.IsDead)
-        {
-            footstepsAudioSrc.PlayFootstepsSound();
-            currentTimeToPlaySound = 0.0f;
-        }
-    }
+    //private void PlayFootstepsSound()
+    //{
+    //    if (canPlaySound && !HealthController.IsDead)
+    //    {
+    //        footstepsAudioSrc.PlayFootstepsSound();
+    //        currentTimeToPlaySound = 0.0f;
+    //    }
+    //}
 
     private void CheckVisibleData()
     {
@@ -212,7 +212,7 @@ public class EnemyMeleeController : EnemyController
     protected override void OnDie()
     {
         base.OnDie();
-        audioSrc.Stop();
+        //audioSrc.Stop();
     }
     #endregion
 }

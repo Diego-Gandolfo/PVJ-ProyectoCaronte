@@ -31,11 +31,6 @@ public abstract class EnemyController : ActorController
 
     #region Public Methods
 
-    private void Update()
-    {
-        
-    }
-
     protected override void OnTakeDamage()
     {
         if (!HealthController.IsDead)
