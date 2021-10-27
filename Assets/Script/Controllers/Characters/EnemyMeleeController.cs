@@ -73,8 +73,6 @@ public class EnemyMeleeController : EnemyController
 
     #endregion
 
-
-
     #region Private Methods
 
     private void DetectTarget()
@@ -214,6 +212,7 @@ public class EnemyMeleeController : EnemyController
     {
         base.OnDie();
         defaultSounds.Stop();
+        Destroy(gameObject, 5f);
     }
     #endregion
 }
