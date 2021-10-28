@@ -696,12 +696,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 197692605}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &198296154 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 238811322216812703, guid: 3c6e698bd19e1e24da9f6c193a84ff6e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1462237423}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &215661499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2329,6 +2323,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a89cd47d0957e1c4aa666649a1418cf8, type: 3}
+--- !u!4 &842816459 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 238811322216812703, guid: a89cd47d0957e1c4aa666649a1418cf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 842816458}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &859030279 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1434150396799790331, guid: 6ebcc90c4e8f13143be5fdfe82cca29a,
@@ -5950,12 +5950,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1621830706}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1295941270 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6329417901545990711, guid: a89cd47d0957e1c4aa666649a1418cf8,
-    type: 3}
-  m_PrefabInstance: {fileID: 842816458}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1338339169
 GameObject:
   m_ObjectHideFlags: 0
@@ -6275,6 +6269,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 28f193423492bc9438a6c649e8984f03, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c6e698bd19e1e24da9f6c193a84ff6e, type: 3}
+--- !u!4 &1462237424 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1462237423}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1464657388
 GameObject:
   m_ObjectHideFlags: 0
@@ -7731,14 +7730,14 @@ Transform:
   m_Children:
   - {fileID: 939376803}
   - {fileID: 968925570}
-  - {fileID: 198296154}
+  - {fileID: 842816459}
   - {fileID: 1478279876}
   - {fileID: 1992274724}
   - {fileID: 94040038}
   - {fileID: 1092904207}
   - {fileID: 184555225}
   - {fileID: 450177177}
-  - {fileID: 1295941270}
+  - {fileID: 1462237424}
   - {fileID: 595948347}
   m_Father: {fileID: 0}
   m_RootOrder: 18
