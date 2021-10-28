@@ -11017,7 +11017,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6903580764886999615, guid: fa7e67293d9c0a04dadaf7a4e4e61c3a,
     type: 3}
   effectShoot: {fileID: 0}
-  maxShootingTime: 10
+  maxShootingTime: 5
   shootingParticles: {fileID: 1004675564}
   flashParticles: {fileID: 1952603633}
 --- !u!1 &4870838804330255143
