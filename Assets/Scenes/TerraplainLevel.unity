@@ -6648,11 +6648,6 @@ PrefabInstance:
       propertyPath: aimVirtualCamera
       value: 
       objectReference: {fileID: 24716429}
-    - target: {fileID: 3457291127151309888, guid: 6ebcc90c4e8f13143be5fdfe82cca29a,
-        type: 3}
-      propertyPath: maxShootingTime
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4368234925807164453, guid: 6ebcc90c4e8f13143be5fdfe82cca29a,
         type: 3}
       propertyPath: m_RootOrder
@@ -7408,7 +7403,7 @@ PrefabInstance:
     - target: {fileID: 1193184523668244134, guid: 8e082dd723e07f045b49d9fe254ca46a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 500.39603
+      value: 501.04602
       objectReference: {fileID: 0}
     - target: {fileID: 1193184523668244134, guid: 8e082dd723e07f045b49d9fe254ca46a,
         type: 3}
@@ -7797,6 +7792,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3922716793551148284, guid: bdb52869bbeb1e74e870dc40613021af,
+        type: 3}
+      propertyPath: m_ShowToolkit
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4377336063896479096, guid: bdb52869bbeb1e74e870dc40613021af,
         type: 3}
       propertyPath: m_RootOrder
@@ -7805,7 +7805,7 @@ PrefabInstance:
     - target: {fileID: 4377336063896479096, guid: bdb52869bbeb1e74e870dc40613021af,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 500.39603
+      value: 501.04602
       objectReference: {fileID: 0}
     - target: {fileID: 4377336063896479096, guid: bdb52869bbeb1e74e870dc40613021af,
         type: 3}
@@ -7866,6 +7866,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RenderingPath
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4422765684433246560, guid: bdb52869bbeb1e74e870dc40613021af,
+        type: 3}
+      propertyPath: m_ShowCameraFrustum
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdb52869bbeb1e74e870dc40613021af, type: 3}
