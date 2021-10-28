@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AttackStats", menuName = "Stats/Attack", order = 1)]
+[CreateAssetMenu(fileName = "AttackStats", menuName = "ScriptableObject/AttackStats", order = 1)]
 public class AttackStats : ScriptableObject
 {
     public LayerMask TargetList => _targetList;
