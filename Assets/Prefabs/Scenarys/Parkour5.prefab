@@ -665,7 +665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6329417901545990711}
   m_Layer: 0
-  m_Name: Parkour1 (Tier2)
+  m_Name: Parkour5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
