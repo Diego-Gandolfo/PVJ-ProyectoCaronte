@@ -26,7 +26,7 @@ public class OxigenCapsuleController : MonoBehaviour, IInteractable
         animator.SetBool("IsActive", true);
         forceField.SetActive(true);
         interactableController.ActivateOnce();
-        HUDManager.instance.QuestManager.CrystalQuest();
+        //HUDManager.instance.QuestManager.CrystalQuest();
         //QuestsManager.Instance?.StartCrystalQuest();
         AudioManager.instance.PlaySound(SoundClips.CapsuleActivated);
     }

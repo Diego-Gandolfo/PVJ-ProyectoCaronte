@@ -66,8 +66,12 @@ public class InputController : MonoBehaviour
                 CheckShoot();
                 CheckAiming();
                 CheckAction();
+
+                if (Input.GetKeyDown(KeyCode.F1))
+                    LevelManager.instance.AddCrystal(1);
             }
         }
+
     }
     #endregion
 

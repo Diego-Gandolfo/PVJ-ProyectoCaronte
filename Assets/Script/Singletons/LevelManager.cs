@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
 
     #region Private Fields
 
-    private UIQuestManager _questManager;
+    //private UIQuestManager _questManager;
 
     #endregion
 
@@ -52,7 +52,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         GameManager.instance.CurrentLevel = currentLevel;
-        _questManager = HUDManager.instance.QuestManager;
+        //_questManager = HUDManager.instance.QuestManager;
     }
 
     #endregion
@@ -82,10 +82,10 @@ public class LevelManager : MonoBehaviour
         CrystalCounter += number;
         OnCrystalUpdate?.Invoke(CrystalCounter);
 
-        if (CrystalCounter >= CrystalsNeeded && _questManager.IsMissionActive)
-        {
-            _questManager.QuestVisible(false);
-        }
+        //if (CrystalCounter >= CrystalsNeeded && _questManager.IsMissionActive)
+        //{
+        //    _questManager.QuestVisible(false);
+        //}
     }
 
     public void RemoveCrystal(int number)

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class UIQuestBoxAnimation : MonoBehaviour
 {
-    private Animator _animator;
+    [SerializeField] private Animator _animator;
 
     private void Start()
     {
-        _animator = GetComponent<Animator>();
+        //_animator = GetComponent<Animator>();
     }
 
     public void QuestBoxVisible()

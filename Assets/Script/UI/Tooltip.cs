@@ -9,8 +9,8 @@ public class Tooltip : MonoBehaviour
     [SerializeField] private Text description;
     [SerializeField] private int characterWrapLimit;
     
-    private LayoutElement layoutElement;
-    private RectTransform rectTransform;
+    [SerializeField] private LayoutElement layoutElement;
+    [SerializeField] private RectTransform rectTransform;
 
     void Start()
     {

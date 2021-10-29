@@ -20,7 +20,7 @@ public class HUDManager : MonoBehaviour
     public ShopManagerUI ShopManagerUI { get; private set; }
     public OverHeatManager OverHeatManager { get; private set; }
     public PauseMenuController PauseMenu { get; private set; }
-    public UIQuestManager QuestManager => questUIManager;
+    //public UIQuestManager QuestManager => questUIManager;
 
     void Awake()
     {
@@ -79,7 +79,7 @@ public class HUDManager : MonoBehaviour
     public void ShowHUD(bool value)
     {
         hud.SetActive(value);
-        QuestManager.ShowBox(QuestManager.IsMissionActive);
+        //QuestManager.ShowBox(QuestManager.IsMissionActive);
     }
 
     public void SetShopVisible(bool value)
