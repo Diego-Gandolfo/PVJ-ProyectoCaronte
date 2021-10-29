@@ -82,9 +82,9 @@ public class LevelManager : MonoBehaviour
         CrystalCounter += number;
         OnCrystalUpdate?.Invoke(CrystalCounter);
 
-        if (CrystalCounter >= CrystalsNeeded && _questManager.Title == "Search & Collect")
+        if (CrystalCounter >= CrystalsNeeded && _questManager.IsMissionActive)
         {
-            _questManager.DeliverQuest();
+            _questManager.QuestVisible(false);
         }
     }
 
