@@ -9,9 +9,11 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private GameObject crosshair;
     [SerializeField] private SonarManager sonarManager;
     [SerializeField] private UIQuestManager questUIManager;
+    [SerializeField] private GameObject shopManager;
 
     private LifeBarController lifeBar;
     private PromptTrigger promptTrigger;
+    private bool isShopActive;
 
     public static HUDManager instance;
     public SonarManager SonarManager => sonarManager;
@@ -44,8 +46,9 @@ public class HUDManager : MonoBehaviour
         lifeBar = GetComponent<LifeBarController>();
         promptTrigger = GetComponent<PromptTrigger>();
         OverHeatManager = GetComponent<OverHeatManager>();
-        ShopManagerUI = GetComponent<ShopManagerUI>();
         PauseMenu = GetComponent<PauseMenuController>();
+        ShopManagerUI = shopManager.GetComponent<ShopManagerUI>();
+        SetShopVisible(false);
     }
 
     private void SubscribeEvents()
@@ -57,8 +60,8 @@ public class HUDManager : MonoBehaviour
 
     private void OnPause()
     {
-        if (ShopManagerUI.IsActive)
-            ShopManagerUI.SetUIVisible(false);
+        if (isShopActive)
+            SetShopVisible(false);
         else
             PauseMenu.CheckPause();
     }
@@ -77,6 +80,17 @@ public class HUDManager : MonoBehaviour
     {
         hud.SetActive(value);
         QuestManager.ShowBox(QuestManager.IsMissionActive);
+    }
+
+    public void SetShopVisible(bool value)
+    {
+        isShopActive = value;
+        TooltipSystem.instance.Reset();
+        ShowHUD(!isShopActive);
+        ShopManagerUI.UpdateCounter();
+        shopManager.SetActive(isShopActive);
+        GameManager.instance.Pause(isShopActive);
+        GameManager.instance.SetCursorActive(isShopActive);
     }
 
     public LifeBarController GetLifeBar()

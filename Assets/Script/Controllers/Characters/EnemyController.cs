@@ -31,11 +31,6 @@ public abstract class EnemyController : ActorController
 
     #region Public Methods
 
-    private void Update()
-    {
-        
-    }
-
     protected override void OnTakeDamage()
     {
         if (!HealthController.IsDead)
@@ -57,6 +52,8 @@ public abstract class EnemyController : ActorController
 
         if (lifeBar != null) lifeBar.SetBarVisible(false);
         if (outline != null) outline.enabled = false;
+
+        
     }
 
     #endregion
