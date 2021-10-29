@@ -9,8 +9,10 @@ public abstract class EnemyController : ActorController
     [SerializeField] protected Vector3 _detectionArea = new Vector3(30f, 5f, 30f); //Area de deteccion completa del enemigo. 
 
     #region Protected Fields
+    
     protected Outline outline;
     protected LifeBarController lifeBar;
+
     #endregion
 
     #region Protected Methods
@@ -18,8 +20,10 @@ public abstract class EnemyController : ActorController
     protected override void Awake()
     {
         base.Awake();
+        
         outline = GetComponent<Outline>();
         lifeBar = GetComponent<LifeBarController>();
+
         if (lifeBar != null)
             lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
     }
@@ -27,21 +31,33 @@ public abstract class EnemyController : ActorController
 
     #region Public Methods
 
+    private void Update()
+    {
+        
+    }
+
     protected override void OnTakeDamage()
     {
-        AudioManager.instance.PlaySound(SoundClips.AlienWound);
-        if (animator != null)
+        if (!HealthController.IsDead)
         {
-            //TODO: Verificar si todos los enemigos van a tener un animator
-            animator.SetTrigger("TakeDamage");
+            AudioManager.instance.PlaySound(SoundClips.AlienWound);
+
+            if (animator != null)
+            {
+                //TODO: Verificar si todos los enemigos van a tener un animator
+                animator.SetTrigger("TakeDamage");
+            }
         }
     }
 
     protected override void OnDie()
     {
-        base.OnDie();
-        float delay = 0.1f;
-        Destroy(gameObject, delay);
+        if (HealthController.IsDead && animator != null)
+            animator.SetTrigger("Die");
+
+        if (lifeBar != null) lifeBar.SetBarVisible(false);
+        if (outline != null) outline.enabled = false;
     }
+
     #endregion
 }

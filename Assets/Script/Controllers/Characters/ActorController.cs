@@ -14,7 +14,6 @@ public class ActorController : MonoBehaviour
     public AttackStats AttackStats => _attackStats;
     public HealthController HealthController { get; protected set; }
 
-
     protected virtual void Awake()
     {
         HealthController = GetComponent<HealthController>();
@@ -25,18 +24,16 @@ public class ActorController : MonoBehaviour
     protected void InitStats()
     {
         HealthController.SetStats(_actorStats);
+
         HealthController.OnDie += OnDie;
         HealthController.OnTakeDamage += OnTakeDamage;
     }
 
     protected virtual void OnTakeDamage()
     {
-        //animator.SetTrigger("TakeDamage");
-        
     }
 
     protected virtual void OnDie()
     {
-        //animator.SetTrigger("IsDead");
     }
 }
