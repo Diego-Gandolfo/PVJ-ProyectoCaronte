@@ -12,7 +12,7 @@ public abstract class EnemyController : ActorController
     
     protected Outline outline;
     protected LifeBarController lifeBar;
-
+    protected bool isHostile;
     #endregion
 
     #region Protected Methods
