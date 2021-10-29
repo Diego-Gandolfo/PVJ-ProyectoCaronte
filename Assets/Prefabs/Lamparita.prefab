@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 2795862746374450199}
   - component: {fileID: 2795862746374450198}
   - component: {fileID: 2795862746374450201}
+  - component: {fileID: 3983046278005769372}
   m_Layer: 10
   m_Name: Lamparita
   m_TagString: Untagged
@@ -208,6 +209,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceField: {fileID: 3082366028036263228}
+--- !u!65 &3983046278005769372
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2795862746374450200}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6410217, y: 1.5284157, z: 0.5643616}
+  m_Center: {x: -0.021774292, y: 0.86283684, z: -0.019302368}
 --- !u!1 &5072815450662107349
 GameObject:
   m_ObjectHideFlags: 0
