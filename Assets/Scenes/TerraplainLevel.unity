@@ -14813,10 +14813,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Maquina Expendedora
       objectReference: {fileID: 0}
+    - target: {fileID: 4241024066012890592, guid: 8a9a3fa132d76284ab2f4c84b3ac28fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437785845983595221, guid: 8a9a3fa132d76284ab2f4c84b3ac28fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5677982207802521761, guid: 8a9a3fa132d76284ab2f4c84b3ac28fa,
         type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a9a3fa132d76284ab2f4c84b3ac28fa, type: 3}
