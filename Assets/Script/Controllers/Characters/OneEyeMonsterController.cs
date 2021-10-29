@@ -13,6 +13,6 @@ public class OneEyeMonsterController : EnemyController
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(Mathf.Sin(0) * 2, 0) * _actorStats.OriginalSpeed * Time.deltaTime;
+        
     }
 }
