@@ -40,6 +40,7 @@ public class ItemUI : MonoBehaviour
         itemImage.sprite = item.SO.image;
         itemPrice.text = item.SO.price.ToString();
 
-        trigger.SetContent(item.SO.description);
+        if(item.SO.description != "")
+            trigger.SetContent(item.SO.description);
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[ExecuteInEditMode()]
 public class Tooltip : MonoBehaviour
 {
     [SerializeField] private Text header;
@@ -19,11 +18,12 @@ public class Tooltip : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
     }
 
-    private void CheckSize()
+    public void CheckSize()
     {
         int headerLength = header.text.Length;
         int contentLength = description.text.Length;
-        layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit) ? true : false;
+        layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit);
+        //Math.Max(headerfield.preferredWidth, contentField.preferredWidth) >= layoutElement.preferredWidth
     }
 
     public void CheckPosition()
@@ -47,6 +47,5 @@ public class Tooltip : MonoBehaviour
 
         description.text = content;
         CheckSize();
-        CheckPosition();
     }
 }

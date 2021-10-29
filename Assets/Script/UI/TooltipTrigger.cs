@@ -34,9 +34,10 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!canShow)
+        if (!canShow && (content != "" || title != ""))
         {
             TooltipSystem.instance.Tooltip.SetText(content, title);
+            TooltipSystem.instance.Tooltip.CheckSize();
             canShow = true;
             timer = delay;
         }
