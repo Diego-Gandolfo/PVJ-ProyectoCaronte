@@ -125,17 +125,10 @@ public class EnemyMeleeController : EnemyController
             {
                 canFollow = true;
 
-                var xzPlayerPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-                transform.LookAt(xzPlayerPosition);
-
-                var direction = (xzPlayerPosition - transform.position).normalized;
-                _rigidbody.velocity = direction * _actorStats.OriginalSpeed;
+                transform.LookAt(player.transform.position);
+                _rigidbody.velocity = transform.forward * _actorStats.OriginalSpeed;
 
                 PlayFootstepsSound();
-
-                // Esto es lo que estaba antes, lo dejo para que se vea el cambio
-                //transform.LookAt(player.transform.position, player.transform.up);
-                //transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
             }
 
             CanAttack();
