@@ -33,6 +33,8 @@ public abstract class EnemyController : ActorController
 
     protected override void OnTakeDamage()
     {
+        isHostile = true;
+
         if (!HealthController.IsDead)
         {
             AudioManager.instance.PlaySound(SoundClips.AlienWound);
@@ -52,8 +54,6 @@ public abstract class EnemyController : ActorController
 
         if (lifeBar != null) lifeBar.SetBarVisible(false);
         if (outline != null) outline.enabled = false;
-
-        
     }
 
     #endregion

@@ -10,10 +10,15 @@ public class OneEyeMonsterController : EnemyController
     private float minDistance = 0.2f;
     private float idleTime = 2.0f;
     private float currentIdleTime = 0.0f;
+    private float maxDistanceToPlayer = 1.0f;
+
+    private bool canAttack;
+    private bool canMove;
 
     // Start is called before the first frame update
     void Start()
     {
+        canAttack = false;
         currentIdleTime = idleTime;
         currentRandomSpot = Random.Range(0, randomSpots.Length);    
     }
@@ -38,13 +43,18 @@ public class OneEyeMonsterController : EnemyController
         }
         else
         {
-            print("enemy has become hostile ! ! !");
+            PlayerController player = LevelManager.instance.Player;
+            FollowPlayer(player);
         } 
-
     }
 
     private void FollowPlayer(PlayerController player)
     {
-        transform.LookAt(player.transform.position);
+        if (isHostile)
+        {
+            //canAttack = true;
+            transform.LookAt(player.transform.position);
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
+        }
     }
 }
