@@ -1496,6 +1496,11 @@ MonoBehaviour:
   _actorStats: {fileID: 11400000, guid: 9fc7b31fa92a7724eb4035291a91ea6b, type: 2}
   _attackStats: {fileID: 11400000, guid: 8bf50d94138920c4c8f1c2673a0614a0, type: 2}
   _detectionArea: {x: 30, y: 5, z: 30}
+  randomSpots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &783524658554664698
 GameObject:
   m_ObjectHideFlags: 0
