@@ -7,7 +7,7 @@ public class MachineGun : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private ParticleSystem effectShoot;
     [SerializeField] private float maxShootingTime;
-    [SerializeField] private ParticleSystem shootingParticles;
+    [SerializeField] private ParticleSystem overheatParticles;
     [SerializeField] private ParticleSystem flashParticles;
 
     private bool canPlaySound;
@@ -21,7 +21,7 @@ public class MachineGun : MonoBehaviour
 
     void Start()
     {
-        var particles = shootingParticles.main;
+        var particles = overheatParticles.main;
         particles.duration = maxShootingTime;
     }
 
@@ -76,10 +76,13 @@ public class MachineGun : MonoBehaviour
         if (IsOverheat)
         {
             isShooting = false;
-            shootingParticles.Play();
+            overheatParticles.Play();
 
             if (currentShootingTime <= 0)
                 IsOverheat = false;
+        } else
+        {
+            overheatParticles.Stop();
         }
     }
 

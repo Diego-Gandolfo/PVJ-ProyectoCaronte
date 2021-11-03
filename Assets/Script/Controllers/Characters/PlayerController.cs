@@ -73,8 +73,14 @@ public class PlayerController : ActorController
     {
         CanMove();
         PlayStepSound();
-        if (weapon.IsOverheat)
+
+        if (!weapon.IsOverheat)
+        {
+            DoShoot();
+        }
+        else
             IsInOverheat();
+
 
         if (Input.GetKeyDown(KeyCode.P)) 
             HealthController.TakeDamage(10); //TODO: BORRAR 
@@ -86,7 +92,7 @@ public class PlayerController : ActorController
     {
         InputController.instance.OnMove += Move;
         InputController.instance.OnRotate += Rotate;
-        InputController.instance.OnShoot += CanShoot;
+        InputController.instance.OnShoot += OnShoot;
         InputController.instance.OnJump += Jump;
         InputController.instance.OnSprint += Sprint;
         InputController.instance.OnAim += IsAiming;
@@ -242,16 +248,19 @@ public class PlayerController : ActorController
             isPlayAimSound = false;
     }
 
-    private void CanShoot(bool value)
+    private void OnShoot(bool value)
     {
-        if (!weapon.IsOverheat)
-        {
-            shooting = value;
-            RaycastHit hit;
-            Physics.Raycast(cam.transform.position + offset, cam.transform.forward, out hit, 999f, _attackStats.TargetList);
-            IsShooting?.Invoke(shooting, hit);
-            animator.speed = 1f;
-        }
+        shooting = value;
+    }
+
+    private void DoShoot()
+    {
+
+        bool canShoot = ((shooting && aiming) || shooting);
+        RaycastHit hit;
+        Physics.Raycast(cam.transform.position + offset, cam.transform.forward, out hit, 999f, _attackStats.TargetList);
+        IsShooting?.Invoke(canShoot, hit);
+        animator.speed = 1f;
     }
 
     private void Shoot() //Mega necesario por un tema de como funciona la animacion del player, no se puede transferir al weapon, sigue chillando. 
@@ -275,7 +284,7 @@ public class PlayerController : ActorController
     {
         InputController.instance.OnMove -= Move;
         InputController.instance.OnRotate -= Rotate;
-        InputController.instance.OnShoot -= CanShoot;
+        InputController.instance.OnShoot -= OnShoot;
         InputController.instance.OnJump -= Jump;
         InputController.instance.OnSprint -= Sprint;
         InputController.instance.OnAim -= IsAiming;
