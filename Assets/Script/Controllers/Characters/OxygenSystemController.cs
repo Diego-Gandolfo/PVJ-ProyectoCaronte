@@ -171,6 +171,7 @@ public class OxygenSystemController : MonoBehaviour
     public void ResetValues()
     {
         currentOxygen = maxOxygen;
+        OnChangeInOxygen?.Invoke(currentOxygen, maxOxygen);
     }
 
     #endregion
