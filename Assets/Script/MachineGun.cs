@@ -11,12 +11,13 @@ public class MachineGun : MonoBehaviour
     [SerializeField] private ParticleSystem flashParticles;
 
     private bool canPlaySound;
-    private bool isOverheat;
     private bool isShooting;
     private float currentShootingTime;
     private Animator animator;
     private RaycastHit target;
     private float overheatSoundDuration = 2.0f;
+
+    public bool IsOverheat { get; private set; }
 
     void Start()
     {
@@ -28,13 +29,13 @@ public class MachineGun : MonoBehaviour
     {
         if (!GameManager.instance.IsGameFreeze)
         {
-            if (isShooting && !isOverheat)
+            if (isShooting && !IsOverheat)
             {
                 currentShootingTime += Time.deltaTime; // sacar el time delta time por un tema de como funciona con el calculo por frame.
 
                 if (currentShootingTime >= maxShootingTime)
                 {
-                    isOverheat = true;
+                    IsOverheat = true;
                     PlayOverheatSound();
                 }
             }
@@ -42,7 +43,7 @@ public class MachineGun : MonoBehaviour
             {
                 if (currentShootingTime >= 0)
                 {
-                    if (!isOverheat)
+                    if (!IsOverheat)
                         currentShootingTime -= (Time.deltaTime / 10f);
                     else
                         currentShootingTime -= (Time.deltaTime / 4f);
@@ -51,7 +52,7 @@ public class MachineGun : MonoBehaviour
 
             OnOverHeat();
 
-            if(isShooting && !isOverheat)
+            if(isShooting && !IsOverheat)
                 animator.SetBool("IsShooting", true);
             else
                 animator.SetBool("IsShooting", false);
@@ -69,12 +70,13 @@ public class MachineGun : MonoBehaviour
 
     private void OnOverHeat()
     {
-        if (isOverheat)
+        if (IsOverheat)
         {
+            isShooting = false;
             shootingParticles.Play();
 
             if (currentShootingTime <= 0)
-                isOverheat = false;
+                IsOverheat = false;
         }
     }
 

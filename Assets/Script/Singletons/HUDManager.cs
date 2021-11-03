@@ -54,7 +54,6 @@ public class HUDManager : MonoBehaviour
     private void SubscribeEvents()
     {
         LevelManager.instance.OnPlayerAssing += OnPlayerAssing;
-        InputController.instance.OnAim += ShowCrosshair;
         InputController.instance.OnPause += OnPause;
     }
 
@@ -106,7 +105,6 @@ public class HUDManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        InputController.instance.OnAim -= ShowCrosshair;
         InputController.instance.OnPause -= OnPause;
     }
 }

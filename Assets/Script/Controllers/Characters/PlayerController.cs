@@ -73,10 +73,8 @@ public class PlayerController : ActorController
     {
         CanMove();
         PlayStepSound();
-        foreach (var jump in jumpPoints)
-        {
-            Debug.DrawRay(jump.position, -transform.up * distanceGround, Color.red);
-        }
+        if (weapon.IsOverheat)
+            IsInOverheat();
 
         if (Input.GetKeyDown(KeyCode.P)) 
             HealthController.TakeDamage(10); //TODO: BORRAR 
@@ -155,16 +153,19 @@ public class PlayerController : ActorController
 
     private void Jump()
     {
-        if (CheckIfGrounded())
+        if (!isUsingWeapon)
         {
-            DoJump();
-        }
-        else
-        {
-            if (!isDoubleJumping && canDoDoubleJump)
+            if (CheckIfGrounded())
             {
-                isDoubleJumping = true;
                 DoJump();
+            }
+            else
+            {
+                if (!isDoubleJumping && canDoDoubleJump)
+                {
+                    isDoubleJumping = true;
+                    DoJump();
+                }
             }
         }
     }
@@ -197,6 +198,12 @@ public class PlayerController : ActorController
         return false;
     }
 
+    private void IsInOverheat()
+    {
+        IsAiming(false);
+        shooting = false;
+    }
+
     protected override void OnTakeDamage()
     {
         base.OnTakeDamage();
@@ -214,10 +221,11 @@ public class PlayerController : ActorController
     private void IsAiming(bool value)
     {
         aiming = value;
-        animator.SetBool("IsAiming", value);         
-        aimVirtualCamera.gameObject.SetActive(value);
+        HUDManager.instance.ShowCrosshair(aiming);
+        animator.SetBool("IsAiming", aiming);
+        aimVirtualCamera.gameObject.SetActive(aiming);
 
-        if (value)
+        if (aiming && !weapon.IsOverheat)
         {
             if (!isPlayAimSound)
             {
@@ -231,11 +239,14 @@ public class PlayerController : ActorController
 
     private void CanShoot(bool value)
     {
-        RaycastHit hit;
-        Physics.Raycast(cam.transform.position + offset, cam.transform.forward, out hit, 999f, _attackStats.TargetList);
-        IsShooting?.Invoke(value, hit);
-        shooting = value;
-        animator.speed = 1f;
+        if (!weapon.IsOverheat)
+        {
+            shooting = value;
+            RaycastHit hit;
+            Physics.Raycast(cam.transform.position + offset, cam.transform.forward, out hit, 999f, _attackStats.TargetList);
+            IsShooting?.Invoke(shooting, hit);
+            animator.speed = 1f;
+        }
     }
 
     private void Shoot() //Mega necesario por un tema de como funciona la animacion del player, no se puede transferir al weapon, sigue chillando. 
@@ -245,7 +256,7 @@ public class PlayerController : ActorController
     }
     private void CanMove()
     {
-        if(aiming || shooting)
+        if((aiming || shooting) && !weapon.IsOverheat)
         {
             isUsingWeapon = true;
         }
