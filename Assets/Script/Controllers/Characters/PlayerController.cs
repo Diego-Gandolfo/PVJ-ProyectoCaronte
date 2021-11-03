@@ -143,6 +143,11 @@ public class PlayerController : ActorController
                 currentSpeed = _actorStats.OriginalSpeed;
                 animator.speed = _actorStats.OriginalAnimatorSpeed;
             }
+        } else
+        {
+            IsSprinting = false;
+            currentSpeed = _actorStats.OriginalSpeed;
+            animator.speed = _actorStats.OriginalAnimatorSpeed;
         }
     }
 
