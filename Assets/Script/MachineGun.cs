@@ -58,6 +58,9 @@ public class MachineGun : MonoBehaviour
                 animator.SetBool("IsShooting", false);
 
             HUDManager.instance.OverHeatManager.UpdateStatBar(currentShootingTime, maxShootingTime);
+        } else
+        {
+            isShooting = false;
         }
     }
 
