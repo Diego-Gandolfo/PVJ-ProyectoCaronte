@@ -1686,11 +1686,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Piedra4
       objectReference: {fileID: 0}
+    - target: {fileID: 1458650495685196948, guid: 0a86f525e90657e479299a2407c69793,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4884330092649588319, guid: 0a86f525e90657e479299a2407c69793,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 28f193423492bc9438a6c649e8984f03, type: 2}
+    - target: {fileID: 6397464595342985098, guid: 0a86f525e90657e479299a2407c69793,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6627125191311391737, guid: 0a86f525e90657e479299a2407c69793,
         type: 3}
       propertyPath: m_RootOrder
