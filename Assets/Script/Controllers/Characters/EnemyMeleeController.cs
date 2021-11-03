@@ -43,31 +43,15 @@ public class EnemyMeleeController : EnemyController
         animator.speed = _actorStats.OriginalAnimatorSpeed;
     }
 
-    protected void Update()
+    protected override void Update()
     {
+        base.Update();
         if (!HealthController.IsDead) 
         {
             DetectTarget();
+            DoSound();
+            DoAnimation();
             CheckVisibleData();
-
-            if(canFollow && !playerInRange)
-            {
-                animator.SetBool("Walk Forward", true);
-            }
-            else
-            {
-                animator.SetBool("Walk Forward", false);
-            }
-
-            #region FootStepsSound Count
-
-            currentTimeToPlaySound += Time.deltaTime;
-            if (currentTimeToPlaySound >= timeToPlaySound)
-                canPlaySound = true;
-            
-            else canPlaySound = false;
-
-            #endregion FootStepsSound Count
         }   
     }
 
@@ -75,10 +59,31 @@ public class EnemyMeleeController : EnemyController
 
     #region Private Methods
 
+    private void DoSound()
+    {
+        currentTimeToPlaySound += Time.deltaTime;
+        if (currentTimeToPlaySound >= timeToPlaySound)
+            canPlaySound = true;
+
+        else canPlaySound = false;
+    }
+
+    private void DoAnimation()
+    {
+        if (canFollow && !playerInRange)
+        {
+            animator.SetBool("Walk Forward", true);
+        }
+        else
+        {
+            animator.SetBool("Walk Forward", false);
+        }
+    }
+
     private void DetectTarget()
     {
         Collider[] _collisions = Physics.OverlapBox(transform.position, _detectionArea, Quaternion.identity, _attackStats.TargetList);
-
+        
         if (_collisions.Length > 0)
         {
             PlayerController player = _collisions[0].GetComponent<PlayerController>();
@@ -146,7 +151,7 @@ public class EnemyMeleeController : EnemyController
 
     private void CheckVisibleData()
     {
-        if (!HealthController.IsDead)
+        if (!HealthController.IsDead && !hasTakenDamage)
         {
             if (weapon.IsAttacking || canFollow)
             {
@@ -173,7 +178,7 @@ public class EnemyMeleeController : EnemyController
 
         else
         {
-            if (!player.IsSprinting)
+            if (!player.IsSprinting || hasTakenDamage)
             {
                 if (Vector3.Distance(player.transform.position, this.transform.position) <= minimumDetectionDistance)
                     FollowPlayer(player);
