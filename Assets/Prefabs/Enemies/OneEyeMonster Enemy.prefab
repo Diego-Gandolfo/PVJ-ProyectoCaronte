@@ -1496,11 +1496,15 @@ MonoBehaviour:
   _actorStats: {fileID: 11400000, guid: 9fc7b31fa92a7724eb4035291a91ea6b, type: 2}
   _attackStats: {fileID: 11400000, guid: 8bf50d94138920c4c8f1c2673a0614a0, type: 2}
   _detectionArea: {x: 30, y: 5, z: 30}
+  enemyBullet: {fileID: 6257779124220646150, guid: 6f25a5e408baf4e46ab0a8542e190c33,
+    type: 3}
+  firePoint: {fileID: 8371002166505881561}
   randomSpots:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  timeToShoot: 0
 --- !u!1 &783524658554664698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,7 +1532,8 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 1.4546525, z: -1.4546525}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 8371002166505881561}
   m_Father: {fileID: 783524658555087576}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1850,6 +1855,36 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3973329646537713372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8371002166505881561}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8371002166505881561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3973329646537713372}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.007, y: -1.883, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 783524658555087578}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &4644044561388219730
 GameObject:
   m_ObjectHideFlags: 0

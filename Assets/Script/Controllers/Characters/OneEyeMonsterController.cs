@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class OneEyeMonsterController : EnemyController
 {
+    [SerializeField] private GameObject enemyBullet;
+    [SerializeField] private Transform firePoint;
     [SerializeField] private Transform[] randomSpots;
+    [SerializeField] private float timeToShoot;
     private int currentRandomSpot;
+
+
 
     private float minDistance = 0.2f;
     private float idleTime = 2.0f;
     private float currentIdleTime = 0.0f;
-    private float maxDistanceToPlayer = 1.0f;
+    
+    private float currentTimeToShoot;
 
-    private bool canAttack;
-    private bool canMove;
+    private bool canDiscountTimeToShoot;
 
     // Start is called before the first frame update
     void Start()
     {
-        canAttack = false;
+        canDiscountTimeToShoot = false;
+        currentTimeToShoot = timeToShoot;
         currentIdleTime = idleTime;
         currentRandomSpot = Random.Range(0, randomSpots.Length);    
     }
@@ -32,6 +38,8 @@ public class OneEyeMonsterController : EnemyController
 
         if (!isHostile)
         {
+            canDiscountTimeToShoot = false;
+
             if (Vector2.Distance(transform.position, randomSpots[currentRandomSpot].position) < minDistance)
             {
                 if (idleTime <= 0)
@@ -47,14 +55,24 @@ public class OneEyeMonsterController : EnemyController
         {
             PlayerController player = LevelManager.instance.Player;
             FollowPlayer(player);
+
+            canDiscountTimeToShoot = true;
+            if (canDiscountTimeToShoot)
+            {
+                currentTimeToShoot += Time.deltaTime;
+                if (currentTimeToShoot >= timeToShoot)
+                {
+                    AttackPlayer();
+                }
+            }
         } 
+
     }
 
     private void FollowPlayer(PlayerController player)
     {
         if (isHostile)
         {
-            //canAttack = true;
             transform.LookAt(player.transform.position);
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
         }
@@ -78,5 +96,14 @@ public class OneEyeMonsterController : EnemyController
                 lifeBar.SetBarVisible(isHostile);
             }
         }
+    }
+
+    private void AttackPlayer()
+    {
+        if (isHostile)
+        {
+            Instantiate(enemyBullet, firePoint.position, Quaternion.LookRotation(firePoint.position));
+        }
+        currentTimeToShoot = 0.0f;
     }
 }

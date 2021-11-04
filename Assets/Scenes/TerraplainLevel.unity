@@ -1949,36 +1949,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 246396660}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &292826999
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 292827000}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &292827000
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292826999}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 501.81, y: 49.06971, z: 508.91}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 31
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &317283571
 GameObject:
   m_ObjectHideFlags: 0
@@ -15130,7 +15100,18 @@ PrefabInstance:
         type: 3}
       propertyPath: testPoint
       value: 
-      objectReference: {fileID: 292827000}
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774441945229623972, guid: 99d88826e623d62439748e6d7b2cfcb3,
+        type: 3}
+      propertyPath: enemyBullet
+      value: 
+      objectReference: {fileID: 6257779124220646150, guid: 6f25a5e408baf4e46ab0a8542e190c33,
+        type: 3}
+    - target: {fileID: 2774441945229623972, guid: 99d88826e623d62439748e6d7b2cfcb3,
+        type: 3}
+      propertyPath: timeToShoot
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2774441945229623972, guid: 99d88826e623d62439748e6d7b2cfcb3,
         type: 3}
       propertyPath: randomSpots.Array.data[0]
