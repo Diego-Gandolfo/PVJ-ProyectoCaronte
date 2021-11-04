@@ -10,8 +10,6 @@ public class OneEyeMonsterController : EnemyController
     [SerializeField] private float timeToShoot;
     private int currentRandomSpot;
 
-
-
     private float minDistance = 0.2f;
     private float idleTime = 2.0f;
     private float currentIdleTime = 0.0f;
@@ -66,7 +64,6 @@ public class OneEyeMonsterController : EnemyController
                 }
             }
         } 
-
     }
 
     private void FollowPlayer(PlayerController player)

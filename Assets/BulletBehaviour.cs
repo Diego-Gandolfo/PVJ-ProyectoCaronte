@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BulletBehaviour : MonoBehaviour
 {
@@ -11,10 +12,13 @@ public class BulletBehaviour : MonoBehaviour
 
     private PlayerController player;
 
+    private Vector3 lastPlayerPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         player = LevelManager.instance.Player;
+        CalculatePlayerPosition();
     }
 
     // Update is called once per frame
@@ -22,9 +26,8 @@ public class BulletBehaviour : MonoBehaviour
     {
         lifetime -= Time.deltaTime;
         if (lifetime <= 0f) Destroy(gameObject);
-
-        Vector3 playerPosition = player.transform.position - transform.position;
-        transform.position += playerPosition * speed * Time.deltaTime;
+        
+        transform.position += lastPlayerPosition * speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,5 +39,10 @@ public class BulletBehaviour : MonoBehaviour
 
             Destroy(gameObject);
         }
+    }
+
+    private void CalculatePlayerPosition()
+    {
+        lastPlayerPosition = player.transform.position - transform.position;
     }
 }
