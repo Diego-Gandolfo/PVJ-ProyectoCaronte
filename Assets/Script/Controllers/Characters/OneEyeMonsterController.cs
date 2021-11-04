@@ -8,12 +8,12 @@ public class OneEyeMonsterController : EnemyController
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform[] randomSpots;
     [SerializeField] private float timeToShoot;
+
     private int currentRandomSpot;
 
     private float minDistance = 0.2f;
     private float idleTime = 2.0f;
     private float currentIdleTime = 0.0f;
-    
     private float currentTimeToShoot;
 
     private bool canDiscountTimeToShoot;
@@ -21,6 +21,7 @@ public class OneEyeMonsterController : EnemyController
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         canDiscountTimeToShoot = false;
         currentTimeToShoot = timeToShoot;
         currentIdleTime = idleTime;
@@ -36,6 +37,9 @@ public class OneEyeMonsterController : EnemyController
 
         if (!isHostile)
         {
+            if (animator != null)
+                animator.SetBool("HasDetectedPlayer", false);
+
             canDiscountTimeToShoot = false;
 
             if (Vector2.Distance(transform.position, randomSpots[currentRandomSpot].position) < minDistance)
@@ -51,6 +55,9 @@ public class OneEyeMonsterController : EnemyController
         }
         else
         {
+            if (animator != null)
+                animator.SetBool("HasDetectedPlayer", true);
+
             PlayerController player = LevelManager.instance.Player;
             FollowPlayer(player);
 
@@ -97,10 +104,8 @@ public class OneEyeMonsterController : EnemyController
 
     private void AttackPlayer()
     {
-        if (isHostile)
-        {
-            Instantiate(enemyBullet, firePoint.position, Quaternion.LookRotation(firePoint.position));
-        }
+        animator.SetTrigger("IsAttacking");
+        Instantiate(enemyBullet, firePoint.position, Quaternion.LookRotation(firePoint.position));
         currentTimeToShoot = 0.0f;
     }
 }
