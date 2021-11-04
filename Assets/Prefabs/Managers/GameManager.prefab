@@ -58,4 +58,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSensibility: {x: 300, y: 300, z: 0}
   clampMin: -20
-  clampMax: 20
+  clampMax: 30
