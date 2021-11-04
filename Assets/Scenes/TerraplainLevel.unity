@@ -10754,12 +10754,6 @@ AudioSource:
     type: 3}
   m_PrefabInstance: {fileID: 1092904206}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1531440034 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 459435495, guid: 91b595f2545c3854abad3e9515ef3610,
-    type: 3}
-  m_PrefabInstance: {fileID: 1670813133}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1553007668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11605,6 +11599,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7990734501827032521, guid: 6ebcc90c4e8f13143be5fdfe82cca29a,
+        type: 3}
+      propertyPath: oxigenConsumeMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ebcc90c4e8f13143be5fdfe82cca29a, type: 3}
 --- !u!1001 &1654092141
@@ -11774,19 +11773,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 459435495, guid: 91b595f2545c3854abad3e9515ef3610, type: 3}
-      propertyPath: m_UpdateMode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 548942218535361992, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -281
-      objectReference: {fileID: 0}
-    - target: {fileID: 639006403967514767, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 720120731, guid: 91b595f2545c3854abad3e9515ef3610, type: 3}
+      propertyPath: mission1.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 720120731, guid: 91b595f2545c3854abad3e9515ef3610, type: 3}
+      propertyPath: outOfOxigen.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 720120731, guid: 91b595f2545c3854abad3e9515ef3610, type: 3}
+      propertyPath: outOfOxigen.Array.data[0]
+      value: Becareful  kronk, you're getting out of oxigen.
       objectReference: {fileID: 0}
     - target: {fileID: 2493632370251548855, guid: 91b595f2545c3854abad3e9515ef3610,
         type: 3}
@@ -11798,16 +11795,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2493632370251548855, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4491113070863520087, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 1531440034}
     - target: {fileID: 5451814276302004526, guid: 91b595f2545c3854abad3e9515ef3610,
         type: 3}
       propertyPath: m_Name
@@ -11816,41 +11803,6 @@ PrefabInstance:
     - target: {fileID: 5838805628734692236, guid: 91b595f2545c3854abad3e9515ef3610,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5838805628734692236, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5838805628734692236, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.000039577484
-      objectReference: {fileID: 0}
-    - target: {fileID: 7751939200282523016, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7751939200282523016, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7751939200282523016, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7751939200282523016, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8041078767848239059, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8422945726429451277, guid: 91b595f2545c3854abad3e9515ef3610,
@@ -11956,11 +11908,6 @@ PrefabInstance:
     - target: {fileID: 8422945726429451277, guid: 91b595f2545c3854abad3e9515ef3610,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8971073004495684333, guid: 91b595f2545c3854abad3e9515ef3610,
-        type: 3}
-      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
