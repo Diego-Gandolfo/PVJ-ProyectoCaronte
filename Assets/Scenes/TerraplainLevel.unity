@@ -11774,16 +11774,30 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 720120731, guid: 91b595f2545c3854abad3e9515ef3610, type: 3}
+      propertyPath: outOfOxigen
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 720120731, guid: 91b595f2545c3854abad3e9515ef3610, type: 3}
       propertyPath: mission1.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 720120731, guid: 91b595f2545c3854abad3e9515ef3610, type: 3}
       propertyPath: outOfOxigen.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 720120731, guid: 91b595f2545c3854abad3e9515ef3610, type: 3}
       propertyPath: outOfOxigen.Array.data[0]
       value: Becareful  kronk, you're getting out of oxigen.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030935573933519381, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343961529431661891, guid: 91b595f2545c3854abad3e9515ef3610,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2493632370251548855, guid: 91b595f2545c3854abad3e9515ef3610,
         type: 3}
