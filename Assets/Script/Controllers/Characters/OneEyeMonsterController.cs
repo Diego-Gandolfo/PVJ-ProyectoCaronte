@@ -29,13 +29,14 @@ public class OneEyeMonsterController : EnemyController
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         CheckVisibleData();
 
         transform.position = Vector3.MoveTowards(transform.position, randomSpots[currentRandomSpot].position, _actorStats.OriginalSpeed * Time.deltaTime);
 
-        if (!isHostile)
+        if (!hasTakenDamage)
         {
             if (animator != null)
                 animator.SetBool("HasDetectedPlayer", false);
@@ -75,7 +76,7 @@ public class OneEyeMonsterController : EnemyController
 
     private void FollowPlayer(PlayerController player)
     {
-        if (isHostile)
+        if (hasTakenDamage)
         {
             transform.LookAt(player.transform.position);
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
@@ -86,7 +87,7 @@ public class OneEyeMonsterController : EnemyController
     {
         if (!HealthController.IsDead)
         {
-            if (isHostile)
+            if (hasTakenDamage)
             {
                 outline.enabled = true;
             }
@@ -97,7 +98,7 @@ public class OneEyeMonsterController : EnemyController
 
             if (HealthController.CurrentHealth != HealthController.MaxHealth)
             {
-                lifeBar.SetBarVisible(isHostile);
+                lifeBar.SetBarVisible(hasTakenDamage);
             }
         }
     }

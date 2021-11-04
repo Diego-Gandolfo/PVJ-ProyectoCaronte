@@ -7,12 +7,17 @@ using UnityEngine;
 public abstract class EnemyController : ActorController
 {
     [SerializeField] protected Vector3 _detectionArea = new Vector3(30f, 5f, 30f); //Area de deteccion completa del enemigo. 
+    [SerializeField] protected float activeDamageTimer = 15f;
 
     #region Protected Fields
-    
+
     protected Outline outline;
     protected LifeBarController lifeBar;
-    protected bool isHostile;
+    
+    protected bool hasTakenDamage;
+
+    protected float damageTimer;
+
     #endregion
 
     #region Protected Methods
@@ -20,30 +25,44 @@ public abstract class EnemyController : ActorController
     protected override void Awake()
     {
         base.Awake();
-        
+
         outline = GetComponent<Outline>();
         lifeBar = GetComponent<LifeBarController>();
 
         if (lifeBar != null)
             lifeBar.SetBarVisible(false); //Empiezan con la barra oculta y solo se activa si reciben daño
     }
+
+    protected virtual void Update()
+    {
+        if (hasTakenDamage && !HealthController.IsDead)
+        {
+            damageTimer -= Time.deltaTime;
+            if (damageTimer <= 0)
+            {
+                hasTakenDamage = false;
+                outline.enabled = false;
+                lifeBar.SetBarVisible(false);
+            }
+        }
+    }
+
     #endregion
 
     #region Public Methods
 
     protected override void OnTakeDamage()
     {
-        isHostile = true;
-
         if (!HealthController.IsDead)
         {
             AudioManager.instance.PlaySound(SoundClips.AlienWound);
 
+            hasTakenDamage = true;
+            outline.enabled = true;
+            damageTimer = activeDamageTimer;
+
             if (animator != null)
-            {
-                //TODO: Verificar si todos los enemigos van a tener un animator
                 animator.SetTrigger("TakeDamage");
-            }
         }
     }
 
@@ -54,6 +73,8 @@ public abstract class EnemyController : ActorController
 
         if (lifeBar != null) lifeBar.SetBarVisible(false);
         if (outline != null) outline.enabled = false;
+
+
     }
 
     #endregion
