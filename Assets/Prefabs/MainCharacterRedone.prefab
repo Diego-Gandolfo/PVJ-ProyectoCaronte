@@ -9847,6 +9847,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 769
   weapon: {fileID: 3457291127151309888}
+  deathBag: {fileID: 8446697737743301578, guid: 2109f94a4c2037c49844af49e469cefe,
+    type: 3}
 --- !u!114 &6355265869036301437
 MonoBehaviour:
   m_ObjectHideFlags: 0

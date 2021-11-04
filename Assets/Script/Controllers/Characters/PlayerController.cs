@@ -9,6 +9,7 @@ using Cinemachine;
 public class PlayerController : ActorController
 {
     #region Serialize Fields
+    [Header("Camera")]
     [SerializeField] private Camera cam;
     [SerializeField] private CinemachineVirtualCamera aimVirtualCamera;
     [SerializeField] private Vector3 offset;
@@ -20,6 +21,8 @@ public class PlayerController : ActorController
     [Header("Attack")]
     [SerializeField] private MachineGun weapon;
 
+    [Header("Prefabs")]
+    [SerializeField] private GameObject deathBag;
     #endregion
 
     #region Private Fields
@@ -224,9 +227,23 @@ public class PlayerController : ActorController
     protected override void OnDie()
     {
         base.OnDie();
+        DropableCrystales();
         LevelManager.instance.Respawn();
+        HUDManager.instance.UICrystal.ErrorAnimation();
         HealthController.ResetValues();
         oxygenSystem.ResetValues();
+    }
+
+    private void DropableCrystales()
+    {
+        if(LevelManager.instance.CrystalCounter > 0)
+        {
+            var position = transform.position;
+            var current = LevelManager.instance.CrystalCounter / 2;
+            var bag = Instantiate(deathBag, position, transform.rotation);
+            bag.GetComponent<CrystalBag>().SetCrystalQuantity(current);
+            LevelManager.instance.RemoveCrystal(current); 
+        }
     }
 
     private void IsAiming(bool value)

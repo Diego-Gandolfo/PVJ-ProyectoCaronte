@@ -10,6 +10,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private SonarManager sonarManager;
     [SerializeField] private UIQuestManager questUIManager;
     [SerializeField] private GameObject shopManager;
+    [SerializeField] private UICrystalCounter crystalCounter;
 
     private LifeBarController lifeBar;
     private PromptTrigger promptTrigger;
@@ -20,6 +21,8 @@ public class HUDManager : MonoBehaviour
     public ShopManagerUI ShopManagerUI { get; private set; }
     public OverHeatManager OverHeatManager { get; private set; }
     public PauseMenuController PauseMenu { get; private set; }
+    public UICrystalCounter UICrystal => crystalCounter;
+
     //public UIQuestManager QuestManager => questUIManager;
 
     void Awake()

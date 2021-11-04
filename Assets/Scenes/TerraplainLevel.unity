@@ -1480,12 +1480,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 197692605}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &198296154 stripped
+--- !u!4 &198296154
 Transform:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 238811322216812703, guid: 3c6e698bd19e1e24da9f6c193a84ff6e,
     type: 3}
   m_PrefabInstance: {fileID: 1462237423}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623764529}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 706049596}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &215661499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2061,7 +2070,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 706049596}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &363924928
 GameObject:
@@ -3897,6 +3906,7 @@ Transform:
   - {fileID: 1992274724}
   - {fileID: 1092904207}
   - {fileID: 184555225}
+  - {fileID: 1544471842}
   - {fileID: 361598425}
   m_Father: {fileID: 1988713016}
   m_RootOrder: 0
@@ -6250,7 +6260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1047888370
 Transform:
   m_ObjectHideFlags: 0
@@ -10740,6 +10750,36 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1670813133}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1544471841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1544471842}
+  m_Layer: 0
+  m_Name: Parkour1 (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1544471842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544471841}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 706049596}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1553007668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11587,6 +11627,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ebcc90c4e8f13143be5fdfe82cca29a, type: 3}
+--- !u!1 &1623764529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 198296154}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1001 &1654092141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15102,6 +15158,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mochila
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446697737743301578, guid: 2109f94a4c2037c49844af49e469cefe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9111734754171462000, guid: 2109f94a4c2037c49844af49e469cefe,
         type: 3}
