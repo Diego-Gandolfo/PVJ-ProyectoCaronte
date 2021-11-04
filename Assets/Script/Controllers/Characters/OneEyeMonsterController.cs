@@ -31,55 +31,61 @@ public class OneEyeMonsterController : EnemyController
     // Update is called once per frame
     protected override void Update()
     {
-        base.Update();
-        CheckVisibleData();
-
-        transform.position = Vector3.MoveTowards(transform.position, randomSpots[currentRandomSpot].position, _actorStats.OriginalSpeed * Time.deltaTime);
-
-        if (!hasTakenDamage)
+        if (!HealthController.IsDead)
         {
-            if (animator != null)
-                animator.SetBool("HasDetectedPlayer", false);
+            base.Update();
+            CheckVisibleData();
 
-            canDiscountTimeToShoot = false;
+            transform.position = Vector3.MoveTowards(transform.position, randomSpots[currentRandomSpot].position, _actorStats.OriginalSpeed * Time.deltaTime);
 
-            if (Vector2.Distance(transform.position, randomSpots[currentRandomSpot].position) < minDistance)
+            if (!hasTakenDamage)
             {
-                if (idleTime <= 0)
+                if (animator != null)
+                    animator.SetBool("HasDetectedPlayer", false);
+
+                canDiscountTimeToShoot = false;
+
+                if (Vector2.Distance(transform.position, randomSpots[currentRandomSpot].position) < minDistance)
                 {
-                    currentRandomSpot = Random.Range(0, randomSpots.Length);
-                    idleTime = currentIdleTime;
+                    if (idleTime <= 0)
+                    {
+                        currentRandomSpot = Random.Range(0, randomSpots.Length);
+                        idleTime = currentIdleTime;
+                    }
+
+                    else idleTime -= Time.deltaTime;
                 }
-            
-                else idleTime -= Time.deltaTime;
+            }
+            else
+            {
+                if (animator != null)
+                    animator.SetBool("HasDetectedPlayer", true);
+
+                PlayerController player = LevelManager.instance.Player;
+                FollowPlayer(player);
+
+                canDiscountTimeToShoot = true;
+                if (canDiscountTimeToShoot)
+                {
+                    currentTimeToShoot += Time.deltaTime;
+                    if (currentTimeToShoot >= timeToShoot)
+                    {
+                        AttackPlayer();
+                    }
+                }
             }
         }
-        else
-        {
-            if (animator != null)
-                animator.SetBool("HasDetectedPlayer", true);
-
-            PlayerController player = LevelManager.instance.Player;
-            FollowPlayer(player);
-
-            canDiscountTimeToShoot = true;
-            if (canDiscountTimeToShoot)
-            {
-                currentTimeToShoot += Time.deltaTime;
-                if (currentTimeToShoot >= timeToShoot)
-                {
-                    AttackPlayer();
-                }
-            }
-        } 
     }
 
     private void FollowPlayer(PlayerController player)
     {
-        if (hasTakenDamage)
+        if (!HealthController.IsDead)
         {
-            transform.LookAt(player.transform.position);
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
+            if (hasTakenDamage)
+            {
+                transform.LookAt(player.transform.position);
+                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
+            }
         }
     }
 
@@ -108,5 +114,12 @@ public class OneEyeMonsterController : EnemyController
         animator.SetTrigger("IsAttacking");
         Instantiate(enemyBullet, firePoint.position, Quaternion.LookRotation(firePoint.position));
         currentTimeToShoot = 0.0f;
+    }
+
+    protected override void OnDie()
+    {
+        base.OnDie();
+        animator.SetBool("Die", true);
+        Destroy(gameObject, 2.0f);
     }
 }
