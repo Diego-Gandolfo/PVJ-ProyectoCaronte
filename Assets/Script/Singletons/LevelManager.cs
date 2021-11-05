@@ -97,7 +97,6 @@ public class LevelManager : MonoBehaviour
     public void Respawn()
     {
         Player.transform.position = respawnPoint.position;
-        print("respawn: " + respawnPoint.position);
     }
 
     #endregion
