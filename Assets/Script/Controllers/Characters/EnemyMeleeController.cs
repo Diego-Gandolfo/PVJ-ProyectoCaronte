@@ -9,7 +9,7 @@ public class EnemyMeleeController : EnemyController
 
     [SerializeField] [Range(0, 50)] protected float _attackRadius;
     [SerializeField] private float minimumDetectionDistance = 10f; //Esta seria la distancia para detectarlo cuando camina. 
-    
+
     [SerializeField] private AudioSource defaultSounds;
     #endregion
 
@@ -46,13 +46,13 @@ public class EnemyMeleeController : EnemyController
     protected override void Update()
     {
         base.Update();
-        if (!HealthController.IsDead) 
+        if (!HealthController.IsDead)
         {
             DetectTarget();
             DoSound();
             DoAnimation();
             CheckVisibleData();
-        }   
+        }
     }
 
     #endregion
@@ -83,7 +83,7 @@ public class EnemyMeleeController : EnemyController
     private void DetectTarget()
     {
         Collider[] _collisions = Physics.OverlapBox(transform.position, _detectionArea, Quaternion.identity, _attackStats.TargetList);
-        
+
         if (_collisions.Length > 0)
         {
             PlayerController player = _collisions[0].GetComponent<PlayerController>();
@@ -104,18 +104,18 @@ public class EnemyMeleeController : EnemyController
         if (_collisions.Length > 0)
         {
             PlayerController player = _collisions[0].GetComponent<PlayerController>();
-            if(player != null)
+            if (player != null)
             {
                 playerInRange = true;
 
-                if(!_isAttackAnimationRunning && !weapon.IsAttacking)
+                if (!_isAttackAnimationRunning && !weapon.IsAttacking)
                 {
                     _isAttackAnimationRunning = true;
                     weapon.Attack(player);
                     animator.SetTrigger("Stab Attack");
                 }
-            }        
-        } 
+            }
+        }
         else
         {
             playerInRange = false;
