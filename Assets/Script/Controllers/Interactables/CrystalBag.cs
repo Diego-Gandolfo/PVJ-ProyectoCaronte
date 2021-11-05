@@ -6,6 +6,7 @@ using UnityEngine;
 public class CrystalBag : MonoBehaviour, IInteractable
 {
     private int crystals = 1;
+    [SerializeField] private int maxCrystalsToCarry;
     private InteractableController interactableController;
 
     void Start()
@@ -17,6 +18,10 @@ public class CrystalBag : MonoBehaviour, IInteractable
     public void SetCrystalQuantity(int number)
     {
         crystals = number;
+        if(crystals >= maxCrystalsToCarry)
+        {
+            crystals = maxCrystalsToCarry;
+        }
     }
 
     public void Interact()

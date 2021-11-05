@@ -9,7 +9,7 @@ public class InputController : MonoBehaviour
     [SerializeField] private Vector3 rotationSensibility = new Vector3(300f, 300f, 0);
     [SerializeField] private float clampMin = -20;
     [SerializeField] private float clampMax = 20;
-
+    private bool canInteract;
     public static InputController instance;
 
     private Vector2 rotation;
@@ -50,11 +50,13 @@ public class InputController : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+    private void Start()
+    {
+    }
 
     private void Update()
     {
         CheckEscape();
-
         if (GameManager.instance != null && LevelManager.instance != null)
         {
             if (!GameManager.instance.IsGameFreeze && LevelManager.instance.Player != null)
@@ -136,8 +138,16 @@ public class InputController : MonoBehaviour
 
     private void CheckAction()
     {
-        if (Input.GetKeyDown(action))
+        if (Input.GetKeyDown(action) && canInteract)
             OnAction?.Invoke();
     }
+    #endregion
+    #region Public
+    public void CanInteract(bool canInteractWithItems)
+    {
+        canInteract = canInteractWithItems;
+    }
+
+
     #endregion
 }

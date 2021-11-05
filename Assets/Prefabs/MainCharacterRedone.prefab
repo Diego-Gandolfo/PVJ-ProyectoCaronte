@@ -9847,8 +9847,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 769
   weapon: {fileID: 3457291127151309888}
-  deathBag: {fileID: 8446697737743301578, guid: 2109f94a4c2037c49844af49e469cefe,
+  deathBag: {fileID: 3021675946231860137, guid: aea95b22cbe57c448ba62a8aed3aec96,
     type: 3}
+  cristalDroppedAmmount: 0
 --- !u!114 &6355265869036301437
 MonoBehaviour:
   m_ObjectHideFlags: 0

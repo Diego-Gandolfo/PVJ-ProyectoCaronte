@@ -23,6 +23,8 @@ public class PlayerController : ActorController
 
     [Header("Prefabs")]
     [SerializeField] private GameObject deathBag;
+    [Header("Cristal Bag")]
+    [SerializeField] private int cristalDroppedAmmount;
     #endregion
 
     #region Private Fields
@@ -40,7 +42,7 @@ public class PlayerController : ActorController
     private bool isDoubleJumping;
     private float currentSpeed;
     private float distanceGround = 0.4f;
-
+    private bool canMove = true;
     private float timeToPlaySound = 0.5f;
     private float currentTimeToPlaySound;
     #endregion
@@ -51,7 +53,6 @@ public class PlayerController : ActorController
     public Action<bool, RaycastHit> IsShooting;
 
     #endregion
-
     #region Unity Methods
 
     protected override void Awake()
@@ -66,10 +67,12 @@ public class PlayerController : ActorController
 
     private void Start()
     {
+        canMove = true;
         GameManager.instance.SetCursorActive(false);
         LevelManager.instance.SetPlayer(this);
         SubscribeEvents();
         currentTimeToPlaySound = timeToPlaySound;
+        InputController.instance.CanInteract(true);
     }
 
     private void Update()
@@ -105,18 +108,23 @@ public class PlayerController : ActorController
     {
         if (!isUsingWeapon)
         {
+            if (canMove)
+            {
+
             Vector3 movement = (transform.right * horizontal + transform.forward * vertical).normalized;
             transform.position += movement * currentSpeed * Time.deltaTime;
-            
-            if (canPlaySound && CheckIfGrounded() /*&& !IsSprinting*/)
-            {
-                if(horizontal != 0 || vertical != 0)
+                if (canPlaySound && CheckIfGrounded() /*&& !IsSprinting*/)
                 {
-                    canPlaySound = false;
-                    AudioManager.instance.PlaySound(SoundClips.Steps);
-                    currentTimeToPlaySound = 0.0f;
+                    if (horizontal != 0 || vertical != 0)
+                    {
+                        canPlaySound = false;
+                        AudioManager.instance.PlaySound(SoundClips.Steps);
+                        currentTimeToPlaySound = 0.0f;
+                    }
                 }
             }
+            
+
         }
 
         animator.SetFloat("Speed", vertical);
@@ -136,22 +144,26 @@ public class PlayerController : ActorController
     {
         if (!isUsingWeapon)
         {
-            IsSprinting = value;
-            if (IsSprinting)
+            if (canMove)
             {
+                IsSprinting = value;
+                if (IsSprinting)
+                {
 
-                currentSpeed = _actorStats.BuffedSpeed;
-                animator.speed = _actorStats.BuffedAnimatorSpeed;
-                //canPlaySound = false;
-                //AudioManager.instance.PlaySound(SoundClips.Steps);
-                //currentTimeToPlaySound = 0.0f;
-                
+                    currentSpeed = _actorStats.BuffedSpeed;
+                    animator.speed = _actorStats.BuffedAnimatorSpeed;
+                    //canPlaySound = false;
+                    //AudioManager.instance.PlaySound(SoundClips.Steps);
+                    //currentTimeToPlaySound = 0.0f;
+
+                }
+                else
+                {
+                    currentSpeed = _actorStats.OriginalSpeed;
+                    animator.speed = _actorStats.OriginalAnimatorSpeed;
+                }
             }
-            else
-            {
-                currentSpeed = _actorStats.OriginalSpeed;
-                animator.speed = _actorStats.OriginalAnimatorSpeed;
-            }
+
         } else
         {
             IsSprinting = false;
@@ -226,21 +238,29 @@ public class PlayerController : ActorController
 
     protected override void OnDie()
     {
+        animator.Play("Die");
+        canMove = false;
+        InputController.instance.CanInteract(false);
+        
+    }
+    private void Respawn()
+    {
         base.OnDie();
-        DropableCrystales();
+        canMove = true;
         LevelManager.instance.Respawn();
         HUDManager.instance.UICrystal.ErrorAnimation();
         HealthController.ResetValues();
         oxygenSystem.ResetValues();
-    }
+        InputController.instance.CanInteract(true);
 
+    }
     private void DropableCrystales()
     {
+        Vector3 position = transform.position;
         if(LevelManager.instance.CrystalCounter > 0)
         {
-            var position = transform.position;
-            var current = LevelManager.instance.CrystalCounter / 2;
-            var bag = Instantiate(deathBag, position, transform.rotation);
+            var current = LevelManager.instance.CrystalCounter / 2; //Esto es  lo que le saca los cristales al jugador
+            var bag = Instantiate(deathBag, position, Quaternion.identity);
             bag.GetComponent<CrystalBag>().SetCrystalQuantity(current);
             LevelManager.instance.RemoveCrystal(current); 
         }
@@ -290,10 +310,12 @@ public class PlayerController : ActorController
         if((aiming || shooting) && !weapon.IsOverheat)
         {
             isUsingWeapon = true;
+            canMove = false;
         }
         else
         {
             isUsingWeapon = false;
+            canMove = true;
         }
     }
 
