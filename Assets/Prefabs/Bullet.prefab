@@ -108,7 +108,7 @@ MonoBehaviour:
   lifeTime: 5
   hittableMask:
     serializedVersion: 2
-    m_Bits: 4031
+    m_Bits: 12223
   shootParticles: {fileID: 1140227245688804152}
 --- !u!96 &4279247450337289250
 TrailRenderer:

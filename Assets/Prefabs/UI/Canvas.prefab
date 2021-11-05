@@ -2786,11 +2786,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1899403609474930201, guid: b28231334547ff44495ab6f19e3ea48b,
-        type: 3}
-      propertyPath: outOfOxigen
-      value: Becareful Kronk,you're getting out of Oxigen.
-      objectReference: {fileID: 0}
     - target: {fileID: 1899403609474930203, guid: b28231334547ff44495ab6f19e3ea48b,
         type: 3}
       propertyPath: m_Name

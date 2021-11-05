@@ -227,7 +227,9 @@ MonoBehaviour:
   textComponent: {fileID: 1899403608161977008}
   readSpeed: 0.05
   timeOfDialogueToDisappear: 2
-  outOfOxigen: Be careful Kronk, you're getting out of oxigen.
+  outOfOxigen: "Becareful Kronk, you're gettin' out of Oxygen. Go back to your ship
+    and use the Oxygen Generator to regen. If you didn\xB4t activate yet, it is the
+    one that is movin' near your ship!"
   mission1: 
 --- !u!95 &1899403609474930204
 Animator:
