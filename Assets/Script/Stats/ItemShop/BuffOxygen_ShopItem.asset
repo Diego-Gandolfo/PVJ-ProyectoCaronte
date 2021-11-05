@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BuffOxygen_ShopItem
   m_EditorClassIdentifier: 
   title: Oxygen Buff
-  image: {fileID: 21300000, guid: 85d71ca139b86eb49bcaf1cdc43c8850, type: 3}
+  image: {fileID: 21300000, guid: 8daac7c195cdfed498ae977d55630805, type: 3}
   price: 20
   description: Better oxygen system with less compsution rate!
   itemType: 3

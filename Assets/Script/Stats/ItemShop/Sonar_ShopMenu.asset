@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sonar_ShopMenu
   m_EditorClassIdentifier: 
   title: Sonar
-  image: {fileID: 21300000, guid: bb144e8af7582d947afd5084e9f82947, type: 3}
+  image: {fileID: 21300000, guid: 6af31d443b72601498d4d16541561993, type: 3}
   price: 3
   description: A machine that beeps and lets you know when crystals are near
   itemType: 1
