@@ -8,6 +8,7 @@ public class OneEyeMonsterController : EnemyController
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform[] randomSpots;
     [SerializeField] private float timeToShoot;
+    [SerializeField] private float maxDistanceToPlayer;
 
     private int currentRandomSpot;
 
@@ -36,7 +37,6 @@ public class OneEyeMonsterController : EnemyController
             base.Update();
             CheckVisibleData();
 
-            transform.position = Vector3.MoveTowards(transform.position, randomSpots[currentRandomSpot].position, _actorStats.OriginalSpeed * Time.deltaTime);
 
             if (!hasTakenDamage)
             {
@@ -45,6 +45,8 @@ public class OneEyeMonsterController : EnemyController
 
                 canDiscountTimeToShoot = false;
 
+                transform.position = Vector3.MoveTowards(transform.position, randomSpots[currentRandomSpot].position, _actorStats.OriginalSpeed * Time.deltaTime);
+             
                 if (Vector2.Distance(transform.position, randomSpots[currentRandomSpot].position) < minDistance)
                 {
                     if (idleTime <= 0)
@@ -56,7 +58,7 @@ public class OneEyeMonsterController : EnemyController
                     else idleTime -= Time.deltaTime;
                 }
             }
-            else
+            else if (hasTakenDamage)
             {
                 if (animator != null)
                     animator.SetBool("HasDetectedPlayer", true);
@@ -81,7 +83,7 @@ public class OneEyeMonsterController : EnemyController
     {
         if (!HealthController.IsDead)
         {
-            if (hasTakenDamage)
+            if (Vector2.Distance(transform.position, player.transform.position) >= maxDistanceToPlayer)
             {
                 transform.LookAt(player.transform.position);
                 transform.position = Vector3.MoveTowards(transform.position, player.transform.position, _actorStats.OriginalSpeed * Time.deltaTime);
@@ -94,18 +96,13 @@ public class OneEyeMonsterController : EnemyController
         if (!HealthController.IsDead)
         {
             if (hasTakenDamage)
-            {
                 outline.enabled = true;
-            }
+
             else
-            {
                 outline.enabled = false;
-            }
 
             if (HealthController.CurrentHealth != HealthController.MaxHealth)
-            {
                 lifeBar.SetBarVisible(hasTakenDamage);
-            }
         }
     }
 
@@ -114,6 +111,11 @@ public class OneEyeMonsterController : EnemyController
         animator.SetTrigger("IsAttacking");
         Instantiate(enemyBullet, firePoint.position, Quaternion.LookRotation(firePoint.position));
         currentTimeToShoot = 0.0f;
+    }
+
+    protected override void OnTakeDamage()
+    {
+        base.OnTakeDamage();
     }
 
     protected override void OnDie()

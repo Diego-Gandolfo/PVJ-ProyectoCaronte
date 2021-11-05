@@ -55,7 +55,7 @@ public abstract class EnemyController : ActorController
     {
         if (!HealthController.IsDead)
         {
-            AudioManager.instance.PlaySound(SoundClips.AlienWound);
+            //AudioManager.instance.PlaySound(SoundClips.AlienWound);
 
             hasTakenDamage = true;
             outline.enabled = true;

@@ -15114,6 +15114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2774441945229623972, guid: 99d88826e623d62439748e6d7b2cfcb3,
         type: 3}
+      propertyPath: maxDistanceToPlayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774441945229623972, guid: 99d88826e623d62439748e6d7b2cfcb3,
+        type: 3}
       propertyPath: randomSpots.Array.data[0]
       value: 
       objectReference: {fileID: 508840753}
