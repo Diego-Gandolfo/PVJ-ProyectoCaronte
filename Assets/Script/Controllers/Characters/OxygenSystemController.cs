@@ -28,6 +28,7 @@ public class OxygenSystemController : MonoBehaviour
     private float currentTime;
     private float timeToPlayOxygenRecoverSoundAgain = 1.0f;
     private float oxygenRecoverSoundDuration = 3.0f;
+    private bool firsTimeAsphixiation = false;
 
     #endregion
 
@@ -90,6 +91,11 @@ public class OxygenSystemController : MonoBehaviour
 
         if (currentOxygen <= (maxOxygen / 3))
         {
+            if (firsTimeAsphixiation == false)
+            {
+                DialogueSystem.instance.ShowDialog(DialogueSystem.Dialogues.Oxigen);
+                firsTimeAsphixiation = true;
+            }
             oxygenToConsume /= 2; // para que consuma la mitad
         }
 
@@ -137,6 +143,7 @@ public class OxygenSystemController : MonoBehaviour
         {
             healtController.TakeDamage(asphyxiationDamage);
             PlayHeartbeatSound();
+
         }
         //OnAsphyxiation?.Invoke(); //(No borrar) TODO: UI/Sound effect for lack of oxygen, 
     }
