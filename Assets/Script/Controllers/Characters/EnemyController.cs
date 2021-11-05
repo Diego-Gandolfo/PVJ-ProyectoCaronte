@@ -10,10 +10,12 @@ public abstract class EnemyController : ActorController
     [SerializeField] protected float activeDamageTimer = 15f;
 
     #region Protected Fields
-    
+
     protected Outline outline;
     protected LifeBarController lifeBar;
+    
     protected bool hasTakenDamage;
+
     protected float damageTimer;
 
     #endregion
@@ -23,7 +25,7 @@ public abstract class EnemyController : ActorController
     protected override void Awake()
     {
         base.Awake();
-        
+
         outline = GetComponent<Outline>();
         lifeBar = GetComponent<LifeBarController>();
 
@@ -71,9 +73,6 @@ public abstract class EnemyController : ActorController
 
         if (lifeBar != null) lifeBar.SetBarVisible(false);
         if (outline != null) outline.enabled = false;
-
-        
     }
-
     #endregion
 }
