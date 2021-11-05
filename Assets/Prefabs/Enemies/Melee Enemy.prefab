@@ -1698,6 +1698,7 @@ GameObject:
   - component: {fileID: 8652598703804105797}
   - component: {fileID: 8888427003028918612}
   - component: {fileID: 8305091208220104077}
+  - component: {fileID: 7754864046548665384}
   m_Layer: 3
   m_Name: Enemy Components
   m_TagString: Enemy
@@ -1831,6 +1832,7 @@ MonoBehaviour:
   _actorStats: {fileID: 11400000, guid: dcf6b3e6b1dcb6c41b878e8b90c02863, type: 2}
   _attackStats: {fileID: 11400000, guid: 84718f264bdb56549b33e724e4c8898a, type: 2}
   _detectionArea: {x: 30, y: 5, z: 30}
+  activeDamageTimer: 15
   _attackRadius: 1
   minimumDetectionDistance: 10
   defaultSounds: {fileID: 8652598703804105797}
@@ -2059,6 +2061,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7754864046548665384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7521643662446928162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6bf3bc03bc4a0c4da538c4e9bec27b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tinyEnemyPrefab: {fileID: 8249418959779145978, guid: 806322fa5f452514ba081a7d27556b42,
+    type: 3}
+  _summonThreshold: 10
+  _amountToSummon: 4
+  _minDistance: 1
+  _maxDistance: 2
 --- !u!1 &7690187869331484669
 GameObject:
   m_ObjectHideFlags: 0
