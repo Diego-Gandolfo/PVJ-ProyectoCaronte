@@ -18,6 +18,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private float readSpeed;
     [SerializeField] private float timeOfDialogueToDisappear;
     [Header("Advices")]
+    //[SerializeField] private dialogSO dialog; TODO, Dialogos con Scriptables Objects 
     [SerializeField] private string outOfOxigen;
     [Header("Missions")]
     [SerializeField] private string mission1;
@@ -32,7 +33,6 @@ public class DialogueSystem : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
     void Start()
