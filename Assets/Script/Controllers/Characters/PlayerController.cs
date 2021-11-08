@@ -258,12 +258,12 @@ public class PlayerController : ActorController
     private void DropableCrystales()
     {
         Vector3 position = transform.position;
-        if(LevelManager.instance.CrystalCounter > 0)
+        if(LevelManager.instance.CrystalsInPlayer > 0)
         {
-            var current = LevelManager.instance.CrystalCounter / 2; //Esto es  lo que le saca los cristales al jugador
+            var current = LevelManager.instance.CrystalsInPlayer / 2; //Esto es  lo que le saca los cristales al jugador
             var bag = Instantiate(deathBag, position, Quaternion.identity);
             bag.GetComponent<CrystalBag>().SetCrystalQuantity(current);
-            LevelManager.instance.RemoveCrystal(current); 
+            LevelManager.instance.RemoveCrystalsInPlayer(current); 
         }
     }
 

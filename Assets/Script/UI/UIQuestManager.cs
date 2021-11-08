@@ -97,14 +97,14 @@ public class UIQuestManager : MonoBehaviour
     public void CrystalQuest()
     {
         title = "Search & Collect";
-        message = "Find  \n <b>" + LevelManager.instance.CrystalsNeeded + " CRYSTALS</b> \n <size=20><i>(shoot'em to break)</i></size>";
+        //message = "Find  \n <b>" + LevelManager.instance.CrystalsNeeded + " CRYSTALS</b> \n <size=20><i>(shoot'em to break)</i></size>";
         SetQuest();
     }
 
     public void DeliverQuest()
     {
         title = "Delivery";
-        message = "Deliver  \n <b>" + LevelManager.instance.CrystalsNeeded + " CRYSTALS</b> \n <size=20><i>(use the yellow machine)</i></size>";
+        //message = "Deliver  \n <b>" + LevelManager.instance.CrystalsNeeded + " CRYSTALS</b> \n <size=20><i>(use the yellow machine)</i></size>";
         SetQuest();
     }
 

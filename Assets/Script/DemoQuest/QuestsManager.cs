@@ -103,8 +103,8 @@ public class QuestsManager : MonoBehaviour
             _titleMessage.text = _crystalTitle;
             //_questMessage.text = _crystalQuest;
             
-            string message = "Find  \n <b>" + LevelManager.instance.CrystalsNeeded + " CRYSTALS </b> \n <size=20><i> (shoot'em to break)</i></size>";
-            _questMessage.text = message;
+            //string message = "Find  \n <b>" + LevelManager.instance.CrystalsNeeded + " CRYSTALS </b> \n <size=20><i> (shoot'em to break)</i></size>";
+            //_questMessage.text = message;
 
             _questBox.SetActive(false);
 

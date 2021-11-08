@@ -70,7 +70,7 @@ public class InputController : MonoBehaviour
                 CheckAction();
 
                 if (Input.GetKeyDown(KeyCode.F1))
-                    LevelManager.instance.AddCrystal(1);
+                    LevelManager.instance.AddCrystalInPlayer(1);
             }
         }
 

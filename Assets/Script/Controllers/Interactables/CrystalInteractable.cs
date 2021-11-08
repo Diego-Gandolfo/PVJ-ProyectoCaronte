@@ -16,7 +16,7 @@ public class CrystalInteractable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        LevelManager.instance.AddCrystal(value); //Agarramos el numero actual de contador y le sumamos uno.
+        LevelManager.instance.AddCrystalInPlayer(value); //Agarramos el numero actual de contador y le sumamos uno.
         interactableController.ActivateOnce();
         Destroy(gameObject); //Nos destruimos //TODO: Maybe a pool?       
     }

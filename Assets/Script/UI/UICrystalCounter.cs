@@ -11,7 +11,7 @@ public class UICrystalCounter : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        LevelManager.instance.OnCrystalUpdate += UpdateCrystalCounter;
+        LevelManager.instance.OnCrystalsInPlayerUpdate += UpdateCrystalCounter;
     }
 
     public void UpdateCrystalCounter(int number)
@@ -26,6 +26,6 @@ public class UICrystalCounter : MonoBehaviour
 
     public void OnDestroy()
     {
-        LevelManager.instance.OnCrystalUpdate -= UpdateCrystalCounter;
+        LevelManager.instance.OnCrystalsInPlayerUpdate -= UpdateCrystalCounter;
     }
 }

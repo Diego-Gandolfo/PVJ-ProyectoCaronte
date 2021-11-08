@@ -58,7 +58,6 @@ MonoBehaviour:
   hud: {fileID: 639006403967514767}
   crosshair: {fileID: 1485697616}
   sonarManager: {fileID: 7717259024934095252}
-  questUIManager: {fileID: 8407135934105166828}
   shopManager: {fileID: 4112887986144383025}
   crystalCounter: {fileID: 856657792058153521}
 --- !u!114 &1986989086680540617
@@ -2830,6 +2829,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dialogue Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899403609474930203, guid: b28231334547ff44495ab6f19e3ea48b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1899403609474930206, guid: b28231334547ff44495ab6f19e3ea48b,
         type: 3}

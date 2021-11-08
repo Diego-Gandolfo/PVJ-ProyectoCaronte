@@ -24,7 +24,7 @@ public class ItemUI : MonoBehaviour
         {
             buyButton.interactable = false;
             AudioManager.instance.PlaySound(SoundClips.ShopItemBuy);
-            LevelManager.instance.RemoveCrystal(item.SO.price);
+            LevelManager.instance.TakeCrystals(item.SO.price);
             HUDManager.instance.ShopManagerUI.UpdateCounter();
             item.Interact();
 

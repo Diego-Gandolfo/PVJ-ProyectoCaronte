@@ -26,7 +26,7 @@ public class CrystalBag : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        LevelManager.instance.AddCrystal(crystals);
+        LevelManager.instance.AddCrystalInPlayer(crystals);
         Destroy(gameObject); //TODO: Maybe a pool? 
     }
 }

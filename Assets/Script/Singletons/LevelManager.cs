@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
     #region Serialized Fields
 
     [SerializeField] private string currentLevel = "TerraplainLevel";
-    [SerializeField] private int currentCrystalsNeeded = 30;
+    //[SerializeField] private int currentCrystalsNeeded = 30;
     [SerializeField] private Transform respawnPoint;
 
     #endregion
@@ -27,15 +27,18 @@ public class LevelManager : MonoBehaviour
     #region Events
 
     public Action<PlayerController> OnPlayerAssing;
-    public Action<int> OnCrystalUpdate;
+    public Action<int> OnCrystalsInPlayerUpdate;
+    public Action<int> OnCrystalsInBankUpdate;
 
     #endregion
 
     #region Propertys
 
     public PlayerController Player { get; private set; }
-    public int CrystalCounter { get; private set; }
-    public int CrystalsNeeded => currentCrystalsNeeded;
+    public int CrystalCounter => CrystalsInBank + CrystalsInPlayer;
+    public int CrystalsInBank { get; private set; }
+
+    public int CrystalsInPlayer { get; private set; }
 
     #endregion
 
@@ -52,7 +55,6 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         GameManager.instance.CurrentLevel = currentLevel;
-        //_questManager = HUDManager.instance.QuestManager;
     }
 
     #endregion
@@ -77,21 +79,42 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene("Victory");
     }
 
-    public void AddCrystal(int number)
+    public void AddCrystalInPlayer(int number)
     {
-        CrystalCounter += number;
-        OnCrystalUpdate?.Invoke(CrystalCounter);
-
-        //if (CrystalCounter >= CrystalsNeeded && _questManager.IsMissionActive)
-        //{
-        //    _questManager.QuestVisible(false);
-        //}
+        CrystalsInPlayer += number;
+        OnCrystalsInPlayerUpdate?.Invoke(CrystalsInPlayer);
     }
 
-    public void RemoveCrystal(int number)
+    public void RemoveCrystalsInPlayer(int number)
     {
-        CrystalCounter -= number;
-        OnCrystalUpdate?.Invoke(CrystalCounter);
+        CrystalsInPlayer -= number;
+        OnCrystalsInPlayerUpdate?.Invoke(CrystalsInPlayer);
+    }
+
+    public void SetCrystalsInBank(int number)
+    {
+        RemoveCrystalsInPlayer(number);
+        CrystalsInBank += number;
+        OnCrystalsInBankUpdate?.Invoke(CrystalsInBank);
+    }
+
+    public void RemoveCrystalsInBank(int number)
+    {
+        CrystalsInBank -= number;
+        OnCrystalsInBankUpdate?.Invoke(CrystalsInBank);
+    }
+
+    public void TakeCrystals(int number)
+    {
+        if(number > CrystalsInPlayer) //Si el monto es mayor que lo que tiene el player en la mochila...
+        {
+            int total = number - CrystalsInPlayer; //Saca lo que falta
+            RemoveCrystalsInPlayer(CrystalsInPlayer); //Saca todo al player
+            RemoveCrystalsInBank(total); //Saca lo que falta del banco
+        } else
+        {
+            RemoveCrystalsInPlayer(CrystalsInPlayer - number); //Saca todo del player
+        }
     }
 
     public void Respawn()

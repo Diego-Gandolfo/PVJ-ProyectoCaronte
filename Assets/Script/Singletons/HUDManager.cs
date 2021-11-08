@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
-    [SerializeField] private GameObject hud;
-    [SerializeField] private GameObject crosshair;
-    [SerializeField] private SonarManager sonarManager;
-    [SerializeField] private UIQuestManager questUIManager;
-    [SerializeField] private GameObject shopManager;
-    [SerializeField] private UICrystalCounter crystalCounter;
+    [SerializeField] private GameObject hud = null;
+    [SerializeField] private GameObject crosshair = null;
+    [SerializeField] private SonarManager sonarManager = null;
+    [SerializeField] private GameObject shopManager = null;
+    [SerializeField] private UICrystalCounter crystalCounter = null;
 
     private LifeBarController lifeBar;
     private PromptTrigger promptTrigger;
@@ -23,7 +22,6 @@ public class HUDManager : MonoBehaviour
     public PauseMenuController PauseMenu { get; private set; }
     public UICrystalCounter UICrystal => crystalCounter;
 
-    //public UIQuestManager QuestManager => questUIManager;
 
     void Awake()
     {
@@ -81,7 +79,6 @@ public class HUDManager : MonoBehaviour
     public void ShowHUD(bool value)
     {
         hud.SetActive(value);
-        //QuestManager.ShowBox(QuestManager.IsMissionActive);
     }
 
     public void SetShopVisible(bool value)
