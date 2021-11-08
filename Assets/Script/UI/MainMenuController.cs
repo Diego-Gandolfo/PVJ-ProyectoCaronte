@@ -21,8 +21,10 @@ public class MainMenuController : MonoBehaviour
     [Header("Credits Settings")]
     [SerializeField] private Button goBackCreditsButton;
 
+    private Animator animator;
     void Start()
     {
+        animator = GetComponent<Animator>();
         GameManager.instance.SetCursorActive(true);
         playButton.onClick.AddListener(OnPlayHandler);
         creditsButton.onClick.AddListener(OnCreditsHandler);
@@ -42,10 +44,18 @@ public class MainMenuController : MonoBehaviour
         AudioManager.instance.PlaySound(SoundClips.InteractableClick);
 
         GameManager.instance.SetCursorActive(false);
+
+        animator.Play("Enter To Game Cinematic");
+        creditsButton.gameObject.SetActive(false);
+        exitButton.gameObject.SetActive(false);
+        playButton.gameObject.SetActive(false);
         //AudioManager.instance.PlaySound(SoundClips.MouseClick);
+        
+    }
+    private void OnPlayAnimationExecution()
+    {
         SceneManager.LoadScene(level01);
     }
-
     private void OnCreditsHandler()
     {
         AudioManager.instance.PlaySound(SoundClips.InteractableClick);
