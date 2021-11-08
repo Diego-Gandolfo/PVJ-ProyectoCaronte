@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46636acba7de0d44198a832c29ac6b6d, type: 3}
   m_Name: Mascara_ShopMenu
   m_EditorClassIdentifier: 
-  title: Sonar
-  image: {fileID: 21300000, guid: 6af31d443b72601498d4d16541561993, type: 3}
-  price: 3
-  description: A machine that beeps and lets you know when crystals are near
+  title: Face Mask +
+  image: {fileID: -2413806693520163455, guid: 46b3939295dec6740a42dbaeb628c92f, type: 3}
+  price: 45
+  description: An  upgrade for better air filtering systems

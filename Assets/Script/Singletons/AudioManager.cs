@@ -19,7 +19,8 @@ public enum SoundClips
     InteractableClick,
     AlienWound,
     AttackSound,
-    PlayerTakesDamage
+    PlayerTakesDamage,
+    ShopItemBuy
 }
 
 public class AudioManager : MonoBehaviour
@@ -33,7 +34,6 @@ public class AudioManager : MonoBehaviour
 
     [Header("Sounds")]
     [SerializeField] private AudioSource soundsAudioSource;
-
     [SerializeField] private AudioClip shoot;
     [SerializeField] private AudioClip heartbeat;
     [SerializeField] private List<AudioClip> jumpsSounds;
@@ -47,11 +47,14 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip negative;
     [SerializeField] private AudioClip oxygenRecover;
     [SerializeField] private AudioClip capsuleActivated;
-    [SerializeField] private AudioClip uiPopUp;
-    [SerializeField] private AudioClip interactableClick;
     [SerializeField] private AudioClip alienWound;
     [SerializeField] private AudioClip attackSound;
     [SerializeField] private AudioClip playerTakesDamage;
+
+    [Header("UI Sounds")]
+    [SerializeField] private AudioClip uiPopUp;
+    [SerializeField] private AudioClip interactableClick;
+    [SerializeField] private AudioClip shopItemBuy;
 
     public void Awake()
     {
@@ -153,6 +156,11 @@ public class AudioManager : MonoBehaviour
             case SoundClips.PlayerTakesDamage:
                 soundsAudioSource.volume = 1f;
                 soundsAudioSource.PlayOneShot(playerTakesDamage);
+                break;
+
+            case SoundClips.ShopItemBuy:
+                soundsAudioSource.volume = 1f;
+                soundsAudioSource.PlayOneShot(shopItemBuy);
                 break;
 
             default:

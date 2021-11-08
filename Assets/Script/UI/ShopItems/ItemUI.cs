@@ -23,12 +23,15 @@ public class ItemUI : MonoBehaviour
         if(LevelManager.instance.CrystalCounter >= item.SO.price)
         {
             buyButton.interactable = false;
+            AudioManager.instance.PlaySound(SoundClips.ShopItemBuy);
             LevelManager.instance.RemoveCrystal(item.SO.price);
-            item.Interact();
             HUDManager.instance.ShopManagerUI.UpdateCounter();
+            item.Interact();
+
         }
         else
         {
+            AudioManager.instance.PlaySound(SoundClips.Negative);
             HUDManager.instance.ShopManagerUI.DoWarningQuantityCrystals();
         }
     }

@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46636acba7de0d44198a832c29ac6b6d, type: 3}
   m_Name: BuffOxygen_ShopItem
   m_EditorClassIdentifier: 
-  title: Oxygen Buff
+  title: Oxygen System +
   image: {fileID: 21300000, guid: 8daac7c195cdfed498ae977d55630805, type: 3}
-  price: 20
+  price: 30
   description: Better oxygen system with less compsution rate!
-  itemType: 3
