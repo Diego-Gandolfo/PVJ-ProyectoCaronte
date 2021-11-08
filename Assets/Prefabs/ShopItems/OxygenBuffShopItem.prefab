@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemScriptableObject: {fileID: 11400000, guid: c3311a872993038458555ccb4fac875c,
     type: 2}
+  newMaxOxygen: 150

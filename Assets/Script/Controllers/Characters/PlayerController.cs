@@ -336,4 +336,9 @@ public class PlayerController : ActorController
     {
         canDoDoubleJump = true;
     }
+
+    public void UpgradeMaxOygen(float oxygen)
+    {
+        oxygenSystem.SetMaxOxygen(oxygen);
+    }
 }

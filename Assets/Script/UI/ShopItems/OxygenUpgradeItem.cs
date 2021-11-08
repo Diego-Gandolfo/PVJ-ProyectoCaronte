@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class OxygenUpgradeItem : BaseItemShop
 {
+    [SerializeField] private float newMaxOxygen;
+
     public override void Interact()
     {
-        //TODO: hacer oxygen upgrade
+        LevelManager.instance.Player.UpgradeMaxOygen(newMaxOxygen);
     }
 }

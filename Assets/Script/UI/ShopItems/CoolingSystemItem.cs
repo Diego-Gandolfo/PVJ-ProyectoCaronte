@@ -6,6 +6,6 @@ public class CoolingSystemItem : BaseItemShop
 {
     public override void Interact()
     {
-        //TODO: hacer anti venom mask upgrade
+        //TODO: hacer la mejora del cooling system
     }
 }

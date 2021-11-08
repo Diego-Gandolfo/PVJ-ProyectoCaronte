@@ -181,5 +181,10 @@ public class OxygenSystemController : MonoBehaviour
         OnChangeInOxygen?.Invoke(currentOxygen, maxOxygen);
     }
 
+    public void SetMaxOxygen(float oxygen)
+    {
+        maxOxygen = oxygen;
+    }
+
     #endregion
 }
