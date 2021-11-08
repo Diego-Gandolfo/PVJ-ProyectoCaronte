@@ -2857,6 +2857,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 451446166}
     m_Modifications:
+    - target: {fileID: 973976169753600521, guid: 3eb8cd2860779264480d798846e224df,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1313806713868915686, guid: 3eb8cd2860779264480d798846e224df,
         type: 3}
       propertyPath: m_SizeDelta.x

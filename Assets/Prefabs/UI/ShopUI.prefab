@@ -699,7 +699,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 275185102228754082}
   m_HandleRect: {fileID: 7036636492342755549}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -865,6 +865,7 @@ MonoBehaviour:
   - {fileID: 5500138798101411030, guid: f09635ff4925ccb45ad01c13f1f36588, type: 3}
   - {fileID: 5177877166406481909, guid: 5de0031065f9a9145913143599b48d66, type: 3}
   - {fileID: 4419220024051195554, guid: 934b8b052f5c2bd49a2090c117a9fb89, type: 3}
+  - {fileID: 8670578928282318728, guid: a43c2bce8abbf5745aec876c7b26696e, type: 3}
   currentCrystals: {fileID: 9057201091278815380}
   closeButton: {fileID: 3459655664977475608}
 --- !u!1 &9102970168655164247
