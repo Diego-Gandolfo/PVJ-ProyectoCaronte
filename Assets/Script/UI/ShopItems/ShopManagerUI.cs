@@ -24,10 +24,13 @@ public class ShopManagerUI : MonoBehaviour
 
         for (int i = 0; i < itemScriptableObject.Length; i++)
         {
-            GameObject item = Instantiate(itemTemplatePrefab, itemsContainer.transform);
-            var itemUI = item.GetComponent<ItemUI>();
-            itemUI.SetItemInfo(itemScriptableObject[i]);
-            itemsList.Add(item);
+            if (!itemScriptableObject[i].SO.isDisabled)
+            {
+                GameObject item = Instantiate(itemTemplatePrefab, itemsContainer.transform);
+                var itemUI = item.GetComponent<ItemUI>();
+                itemUI.SetItemInfo(itemScriptableObject[i]);
+                itemsList.Add(item);
+            }
         }
     }
 

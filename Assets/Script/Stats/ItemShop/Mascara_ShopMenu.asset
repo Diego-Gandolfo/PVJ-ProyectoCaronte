@@ -16,3 +16,4 @@ MonoBehaviour:
   image: {fileID: -2413806693520163455, guid: 46b3939295dec6740a42dbaeb628c92f, type: 3}
   price: 45
   description: An  upgrade for better air filtering systems
+  isDisabled: 1

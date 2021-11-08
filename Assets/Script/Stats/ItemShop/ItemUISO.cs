@@ -10,5 +10,6 @@ public class ItemUISO : ScriptableObject
     public Sprite image;
     public int price;
     public string description;
+    public bool isDisabled;
     //public ItemType itemType;
 }
