@@ -9850,6 +9850,7 @@ MonoBehaviour:
   deathBag: {fileID: 3021675946231860137, guid: aea95b22cbe57c448ba62a8aed3aec96,
     type: 3}
   cristalDroppedAmmount: 0
+  introductionDialogue: {fileID: 0}
 --- !u!114 &6355265869036301437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9880,6 +9881,7 @@ MonoBehaviour:
   sprintMultiplier: 2
   asphyxiationDamage: 5
   heartBeatTick: 1
+  dialogueTrigger: {fileID: 0}
 --- !u!1 &951006845917179496
 GameObject:
   m_ObjectHideFlags: 0

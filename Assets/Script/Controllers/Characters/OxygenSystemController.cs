@@ -14,7 +14,8 @@ public class OxygenSystemController : MonoBehaviour
     [SerializeField] private float sprintMultiplier = 0.25f;
     [SerializeField] private int asphyxiationDamage;
     [SerializeField] private float heartBeatTick;
-
+    [SerializeField]private DialogueTrigger dialogueTrigger;
+    
     #endregion
 
     #region Private Fields
@@ -22,7 +23,6 @@ public class OxygenSystemController : MonoBehaviour
     // Components
     private HealthController healtController;
     private PlayerController player;
-
     // Parameters
     private bool isInSafeZone;
     private float currentTime;
@@ -93,7 +93,7 @@ public class OxygenSystemController : MonoBehaviour
         {
             if (firsTimeAsphixiation == false)
             {
-                DialogueSystem.instance.ShowDialog(DialogueSystem.Dialogues.Oxigen);
+                dialogueTrigger.ReproduceDialogue();
                 firsTimeAsphixiation = true;
             }
             oxygenToConsume /= 2; // para que consuma la mitad
