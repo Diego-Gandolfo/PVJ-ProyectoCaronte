@@ -10,10 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 361d3810b1233244aafce7679cb936f6, type: 3}
-  m_Name: OxigenAdvice
+  m_Name: FirstDieNoAbyss
   m_EditorClassIdentifier: 
-  dialogueStrings:
-  - Cuidado, Kronk!, Te estas quedando sin oxigeno vuelve a tu base y usa el generador
-    de oxigeno
-  - Si no lo activaste aun, es la maquina que se esta moviendo cerca de la nave!
-  endDialog: {fileID: 0}
+  dialogueStrings: []
