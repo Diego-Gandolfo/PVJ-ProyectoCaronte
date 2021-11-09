@@ -35,6 +35,11 @@ public class ShopManagerUI : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        UpdateCounter();
+    }
+
     public void UpdateCounter()
     {
         currentCrystalsInPlayer.text = LevelManager.instance.CrystalsInPlayer.ToString();

@@ -113,7 +113,7 @@ public class LevelManager : MonoBehaviour
             RemoveCrystalsInBank(total); //Saca lo que falta del banco
         } else
         {
-            RemoveCrystalsInPlayer(CrystalsInPlayer - number); //Saca todo del player
+            RemoveCrystalsInPlayer(number); //Saca todo del player
         }
     }
 
