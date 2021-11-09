@@ -34,7 +34,7 @@ public class UIShipItem : MonoBehaviour
         }
         else
         {
-            _animator?.SetTrigger("Error");
+            _animator?.Play("ShipButtonError");
             AudioManager.instance.PlaySound(SoundClips.Negative);
         }
     }

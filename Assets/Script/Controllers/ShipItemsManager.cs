@@ -9,6 +9,8 @@ public class ShipItemsManager : MonoBehaviour
     private List<ShipItemSO> shipList = new List<ShipItemSO>();
     public Action OnCompleted;
 
+    public List<ShipItemSO> PlayerInventory => playerList;
+
     public bool CheckIfPlayerHasItem(ShipItemSO item)
     {
         if (playerList.Contains(item))
