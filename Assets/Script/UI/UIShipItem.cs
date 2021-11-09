@@ -30,6 +30,7 @@ public class UIShipItem : MonoBehaviour
             buttonText.text = giveItem;
             LevelManager.instance.ShipManager.RemoveFromPlayer(item);
             LevelManager.instance.ShipManager.AddItemToShip(item);
+            HUDManager.instance.ShipManagerUI.CheckInventory();
             //TODO: play some sound as feedback;
         }
         else
