@@ -12,15 +12,7 @@ public class LevelManager : MonoBehaviour
 
     #region Serialized Fields
 
-    [SerializeField] private string currentLevel = "TerraplainLevel";
-    //[SerializeField] private int currentCrystalsNeeded = 30;
     [SerializeField] private Transform respawnPoint;
-
-    #endregion
-
-    #region Private Fields
-
-    //private UIQuestManager _questManager;
 
     #endregion
 
@@ -32,13 +24,14 @@ public class LevelManager : MonoBehaviour
 
     #endregion
 
-    #region Propertys
+    #region Properties
 
     public PlayerController Player { get; private set; }
+    public ShipItemsManager ShipManager { get; private set; }
     public int CrystalCounter => CrystalsInBank + CrystalsInPlayer;
     public int CrystalsInBank { get; private set; }
-
     public int CrystalsInPlayer { get; private set; }
+    public bool HasAllShipItems { get; private set; } //Esta seria la variable para llamar al final. 
 
     #endregion
 
@@ -54,10 +47,17 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.CurrentLevel = currentLevel;
+        ShipManager = GetComponent<ShipItemsManager>();
+        ShipManager.OnCompleted += OnCompleted;
     }
 
     #endregion
+
+    private void OnCompleted() //Solo ocurre si el player consiguio todos los items
+    {
+        HasAllShipItems = true;
+        //TODO: Hacer el final o algo?
+    }
 
     #region Public Methods
 
@@ -121,6 +121,5 @@ public class LevelManager : MonoBehaviour
     {
         Player.transform.position = respawnPoint.position;
     }
-
     #endregion
 }

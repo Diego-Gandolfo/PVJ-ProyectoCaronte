@@ -50,9 +50,6 @@ public class InputController : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-    private void Start()
-    {
-    }
 
     private void Update()
     {
@@ -69,8 +66,16 @@ public class InputController : MonoBehaviour
                 CheckAiming();
                 CheckAction();
 
+
+                //CHEATS
                 if (Input.GetKeyDown(KeyCode.F1))
                     LevelManager.instance.AddCrystalInPlayer(1);
+
+                if (Input.GetKeyDown(KeyCode.F2))
+                    LevelManager.instance.AddCrystalInPlayer(10);
+
+                if (Input.GetKeyDown(KeyCode.P))
+                    LevelManager.instance.Player.HealthController.TakeDamage(10); 
             }
         }
 

@@ -17,8 +17,6 @@ public class ShopManagerUI : MonoBehaviour
     private List<GameObject> itemsList = new List<GameObject>();
     private Animator _animator;
 
-    public bool IsActive { get; private set; }
-
     private void Start()
     {
         _animator = shopManager.GetComponent<Animator>();
@@ -45,7 +43,7 @@ public class ShopManagerUI : MonoBehaviour
 
     public void OnCloseScreen()
     {
-        HUDManager.instance.SetShopVisible(false);
+        HUDManager.instance.SetShopScreenVisible(false);
     }
 
     public void SaveToBank()

@@ -7,17 +7,18 @@ public class DialogueSystem : MonoBehaviour
 {
     public static DialogueSystem instance;
     private Animator animator;
+
     [Header("Properties")]
     [SerializeField] private TextMeshProUGUI textComponent;
     [SerializeField] private float readSpeed;
     [SerializeField] private float timeOfDialogueToDisappear;
+
     private void Awake()
     {
         if (instance != null)
         {
             Destroy(gameObject);
         }
-
         else
         {
             instance = this;
@@ -29,16 +30,12 @@ public class DialogueSystem : MonoBehaviour
         textComponent.text = string.Empty;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
     public void StartDialogue(DialogueSO dialog)
     {
         animator.SetBool("Enabled", true);
         StartCoroutine(TypeLine(dialog));
-        
     }
+
     IEnumerator TypeLine(DialogueSO dialogToRead)
     {
         //foreach (char character in dialogToRead.dialogueStrings[]())
@@ -79,6 +76,5 @@ public class DialogueSystem : MonoBehaviour
             #endregion
         }
         animator.SetBool("Enabled", false);
-        
     }
 }

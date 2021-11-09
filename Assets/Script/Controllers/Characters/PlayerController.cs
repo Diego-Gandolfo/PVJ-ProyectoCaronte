@@ -87,10 +87,6 @@ public class PlayerController : ActorController
         }
         else
             IsInOverheat();
-
-
-        if (Input.GetKeyDown(KeyCode.P)) 
-            HealthController.TakeDamage(10); //TODO: BORRAR 
     }
     #endregion
 

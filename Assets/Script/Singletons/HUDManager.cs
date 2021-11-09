@@ -9,15 +9,19 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private GameObject crosshair = null;
     [SerializeField] private SonarManager sonarManager = null;
     [SerializeField] private GameObject shopManager = null;
+    [SerializeField] private GameObject shipManager = null;
     [SerializeField] private UICrystalCounter crystalCounter = null;
+    [SerializeField] private GameObject dialogueSystem = null;
 
     private LifeBarController lifeBar;
     private PromptTrigger promptTrigger;
     private bool isShopActive;
+    private bool isShipActive;
 
     public static HUDManager instance;
     public SonarManager SonarManager => sonarManager;
     public ShopManagerUI ShopManagerUI { get; private set; }
+    public UIShipScreenManager ShipManagerUI { get; private set; }
     public OverHeatManager OverHeatManager { get; private set; }
     public PauseMenuController PauseMenu { get; private set; }
     public UICrystalCounter UICrystal => crystalCounter;
@@ -49,7 +53,10 @@ public class HUDManager : MonoBehaviour
         OverHeatManager = GetComponent<OverHeatManager>();
         PauseMenu = GetComponent<PauseMenuController>();
         ShopManagerUI = shopManager.GetComponent<ShopManagerUI>();
-        SetShopVisible(false);
+        ShipManagerUI = shipManager.GetComponent<UIShipScreenManager>();
+        dialogueSystem.SetActive(true);
+        SetShopScreenVisible(false);
+        SetShipScreenVisible(false);
     }
 
     private void SubscribeEvents()
@@ -60,10 +67,15 @@ public class HUDManager : MonoBehaviour
 
     private void OnPause()
     {
-        if (isShopActive)
-            SetShopVisible(false);
+        if (isShopActive || isShipActive)
+        {
+            SetShopScreenVisible(false);
+            SetShipScreenVisible(false);
+        }
         else
+        {
             PauseMenu.CheckPause();
+        }
     }
 
     public void ShowPrompt(bool value)
@@ -81,15 +93,25 @@ public class HUDManager : MonoBehaviour
         hud.SetActive(value);
     }
 
-    public void SetShopVisible(bool value)
+    public void SetShopScreenVisible(bool value)
     {
         isShopActive = value;
+        SetInteractiveScreenVisible(value);
+    }
+
+    public void SetShipScreenVisible(bool value)
+    {
+        isShipActive = value;
+        SetInteractiveScreenVisible(value);
+    }
+
+    public void SetInteractiveScreenVisible(bool value)
+    {
         TooltipSystem.instance.Reset();
-        ShowHUD(!isShopActive);
-        ShopManagerUI.UpdateCounter();
-        shopManager.SetActive(isShopActive);
-        GameManager.instance.Pause(isShopActive);
-        GameManager.instance.SetCursorActive(isShopActive);
+        ShowHUD(!value);
+        shipManager.SetActive(value);
+        GameManager.instance.Pause(value);
+        GameManager.instance.SetCursorActive(value);
     }
 
     public LifeBarController GetLifeBar()

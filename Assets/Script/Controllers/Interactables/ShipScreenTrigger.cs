@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(InteractableController))]
-public class ShopMachineController : MonoBehaviour, IInteractable
+public class ShipScreenTrigger : MonoBehaviour, IInteractable
 {
-
     void Start()
     {
         GetComponent<InteractableController>().interactable = this;
@@ -13,7 +12,7 @@ public class ShopMachineController : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        HUDManager.instance.SetShopScreenVisible(true);
+        HUDManager.instance.SetShipScreenVisible(true);
         AudioManager.instance.PlaySound(SoundClips.UIPopUp);
     }
 }
