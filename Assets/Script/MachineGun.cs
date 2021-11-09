@@ -9,6 +9,10 @@ public class MachineGun : MonoBehaviour
     [SerializeField] private float maxShootingTime;
     [SerializeField] private ParticleSystem overheatParticles;
     [SerializeField] private ParticleSystem flashParticles;
+    [SerializeField] private float coolingModificator = 10f;
+    [SerializeField] private float coolingModificatorOnOverheat = 4f;
+    [SerializeField] private float currentMultiplier = 4f;
+    private int multiplier = 2;
 
     private bool canPlaySound;
     private bool isShooting;
@@ -16,7 +20,8 @@ public class MachineGun : MonoBehaviour
     private Animator animator;
     private RaycastHit target;
     private float overheatSoundDuration = 2.0f;
-
+    private bool isRefrigeratorActive;
+    
     public bool IsOverheat { get; private set; }
 
     void Start()
@@ -41,12 +46,36 @@ public class MachineGun : MonoBehaviour
             }
             else //si no esta disparando, resta. 
             {
-                if (currentShootingTime >= 0)
+                if (!isRefrigeratorActive)
                 {
-                    if (!IsOverheat)
-                        currentShootingTime -= (Time.deltaTime / 10f);
-                    else
-                        currentShootingTime -= (Time.deltaTime / 4f);
+                    if (currentShootingTime >= 0)
+                    {
+                        if (!IsOverheat)
+                            currentShootingTime -= (Time.deltaTime / coolingModificator);
+                        else
+                            currentShootingTime -= (Time.deltaTime / coolingModificatorOnOverheat);
+                    }
+                }
+                else
+                {
+                    if (currentShootingTime >= 0)
+                    {
+                        if (!IsOverheat)
+                            currentShootingTime -= (Time.deltaTime / (coolingModificator / multiplier));
+                        else
+                            currentShootingTime -= (Time.deltaTime / (coolingModificatorOnOverheat/multiplier));
+                    }
+
+                    //if (currentShootingTime >= 0)
+                    //{
+                    //    print("entre");
+                    //    currentMultiplier += currentMultiplier / Time.deltaTime;
+                    //    currentShootingTime -= (Time.deltaTime / currentMultiplier);
+                    //} else
+                    //{
+                    //    currentMultiplier = 4f;
+                    //}
+
                 }
             }
 
@@ -105,5 +134,10 @@ public class MachineGun : MonoBehaviour
     {
         isShooting = value;
         target = hit;
+    }
+
+    public void UpgradeBuff()
+    {
+        isRefrigeratorActive = true;
     }
 }

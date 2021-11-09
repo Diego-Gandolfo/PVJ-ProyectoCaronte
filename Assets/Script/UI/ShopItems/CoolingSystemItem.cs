@@ -6,6 +6,6 @@ public class CoolingSystemItem : BaseItemShop
 {
     public override void Interact()
     {
-        //TODO: hacer la mejora del cooling system
+        LevelManager.instance.Player.UpgradeCoolingSystem();
     }
 }

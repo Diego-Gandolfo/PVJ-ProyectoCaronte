@@ -337,4 +337,8 @@ public class PlayerController : ActorController
     {
         oxygenSystem.SetMaxOxygen(oxygen);
     }
+    public void UpgradeCoolingSystem()
+    {
+        weapon.UpgradeBuff();
+    }
 }
