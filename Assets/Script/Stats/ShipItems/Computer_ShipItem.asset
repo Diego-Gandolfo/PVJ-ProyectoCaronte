@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Computer_ShipItem
   m_EditorClassIdentifier: 
   title: Computer
-  image: {fileID: 21300000, guid: fc0883ca9b452d2418d2c986ffd950b8, type: 3}
+  image: {fileID: 21300000, guid: 52e4ce0c2b332e74889db09166191762, type: 3}
   description: The main component of the ship, can fly without one
-  isDisabled: 0
