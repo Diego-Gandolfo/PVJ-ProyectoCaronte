@@ -29,6 +29,7 @@ public class ShopManagerUI : MonoBehaviour
             {
                 GameObject item = Instantiate(itemTemplatePrefab, itemsContainer.transform);
                 var itemUI = item.GetComponent<ItemUI>();
+                print(itemUI);
                 itemUI.SetItemInfo(itemScriptableObject[i]);
                 itemsList.Add(item);
             }

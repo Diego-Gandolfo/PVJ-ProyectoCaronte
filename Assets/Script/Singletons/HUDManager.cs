@@ -96,12 +96,14 @@ public class HUDManager : MonoBehaviour
     public void SetShopScreenVisible(bool value)
     {
         isShopActive = value;
+        shopManager.SetActive(value);
         SetInteractiveScreenVisible(value);
     }
 
     public void SetShipScreenVisible(bool value)
     {
         isShipActive = value;
+        shipManager.SetActive(value);
         SetInteractiveScreenVisible(value);
     }
 
@@ -109,7 +111,6 @@ public class HUDManager : MonoBehaviour
     {
         TooltipSystem.instance.Reset();
         ShowHUD(!value);
-        shipManager.SetActive(value);
         GameManager.instance.Pause(value);
         GameManager.instance.SetCursorActive(value);
     }

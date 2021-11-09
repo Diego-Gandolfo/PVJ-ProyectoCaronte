@@ -11,5 +11,4 @@ public class ItemUISO : ScriptableObject
     public int price;
     public string description;
     public bool isDisabled;
-    //public ItemType itemType;
 }

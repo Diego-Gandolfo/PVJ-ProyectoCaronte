@@ -1247,7 +1247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopManager: {fileID: 8804509935954942043}
-  itemTemplatePrefab: {fileID: 664437912836595555, guid: 4389df26c8f716549b885d8715d8ea20,
+  itemTemplatePrefab: {fileID: 664437912836595555, guid: 2b446c013412b6d42824eef450570ae7,
     type: 3}
   itemsContainer: {fileID: 8644726826492143248}
   itemScriptableObject:
