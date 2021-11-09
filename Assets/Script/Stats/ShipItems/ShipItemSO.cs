@@ -8,5 +8,4 @@ public class ShipItemSO : ScriptableObject
     public string title;
     public Sprite image;
     public string description;
-    public bool isDisabled;
 }

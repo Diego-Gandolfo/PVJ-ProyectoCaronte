@@ -29,6 +29,12 @@ public class UIShipScreenManager : MonoBehaviour
             itemUI.SetItemInfo(shipItems[i]);
             itemsList.Add(item);
         }
+        CheckInventory();
+    }
+
+    private void OnEnable()
+    {
+        CheckInventory();
     }
 
     public void OnCloseScreen()
@@ -38,12 +44,25 @@ public class UIShipScreenManager : MonoBehaviour
 
     public void CheckInventory()
     {
-
-        for (int i = 0; i < shipItems.Length; i++)
+        if (LevelManager.instance.ShipManager.PlayerInventory.Count > 0)
         {
-            GameObject item = Instantiate(inventoryPrefab, inventoryContainer.transform);
-            item.GetComponent<Image>().sprite = shipItems[i].image;
-            inventoryList.Add(item);
+            inventory.SetActive(true);
+            for (int i = inventoryList.Count - 1; i >= 0; i--)
+            {
+                Destroy(inventoryList[i]);
+            }
+            inventoryList.Clear();
+
+            for (int i = 0; i < LevelManager.instance.ShipManager.PlayerInventory.Count; i++)
+            {
+                GameObject item = Instantiate(inventoryPrefab, inventoryContainer.transform);
+                item.GetComponent<Image>().sprite = LevelManager.instance.ShipManager.PlayerInventory[i].image;
+                inventoryList.Add(item);
+            }
+        }
+        else
+        {
+            inventory.SetActive(false);
         }
     }
 }
