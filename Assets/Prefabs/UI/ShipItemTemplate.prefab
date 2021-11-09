@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8790876367353990906}
   - component: {fileID: 3969047345294037364}
+  - component: {fileID: 1590148568049005040}
   m_Layer: 5
   m_Name: ShipItemTemplate
   m_TagString: Untagged
@@ -58,6 +59,26 @@ MonoBehaviour:
   giveButton: {fileID: 175390119497369778}
   buttonText: {fileID: 6398949537803395714}
   trigger: {fileID: 6130394843548051053}
+  giveItem: on machine
+--- !u!95 &1590148568049005040
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664437912836595555}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3578c4a3f6dba374483123767aa2c4ff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1054796015829116694
 GameObject:
   m_ObjectHideFlags: 0

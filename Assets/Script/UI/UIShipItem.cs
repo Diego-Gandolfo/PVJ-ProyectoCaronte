@@ -10,12 +10,16 @@ public class UIShipItem : MonoBehaviour
     [SerializeField] private Button giveButton;
     [SerializeField] private Text buttonText;
     [SerializeField] private TooltipTrigger trigger;
-
+    [SerializeField] private string giveItem = "on machine";
+    
+    private Animator _animator;
     private ShipItemSO item;
+    private bool isOnShip;
 
     private void Start()
     {
         giveButton.onClick.AddListener(GiveEvent);
+        _animator = GetComponent<Animator>();
     }
 
     private void GiveEvent()
@@ -23,13 +27,14 @@ public class UIShipItem : MonoBehaviour
         if(LevelManager.instance.ShipManager.CheckIfPlayerHasItem(item))
         {
             giveButton.interactable = false;
-            buttonText.text = "on machine";
+            buttonText.text = giveItem;
             LevelManager.instance.ShipManager.RemoveFromPlayer(item);
             LevelManager.instance.ShipManager.AddItemToShip(item);
             //TODO: play some sound as feedback;
         }
         else
         {
+            _animator?.SetTrigger("Error");
             AudioManager.instance.PlaySound(SoundClips.Negative);
         }
     }

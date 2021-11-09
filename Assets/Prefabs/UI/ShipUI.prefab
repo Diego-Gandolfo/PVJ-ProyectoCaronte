@@ -508,7 +508,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 539971734407424641}
   m_HandleRect: {fileID: 7280312415310062846}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -676,7 +676,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8572342222456934445}
-  - component: {fileID: 8771843348921459027}
   - component: {fileID: 3312230878632752266}
   m_Layer: 5
   m_Name: ShipUI
@@ -708,25 +707,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -12}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &8771843348921459027
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9115317709644889208}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 61ae78cb190a6e643abdbf679904e693, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &3312230878632752266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,6 +866,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 600f5f57f813fcd499b1175c2788b8ed, type: 3}
+--- !u!224 &6447683747566246323 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6740819717891299333, guid: 600f5f57f813fcd499b1175c2788b8ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 357743582949589430}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3795637788237257787 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3484138570209074573, guid: 600f5f57f813fcd499b1175c2788b8ed,
@@ -898,12 +884,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &6447683747566246323 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6740819717891299333, guid: 600f5f57f813fcd499b1175c2788b8ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 357743582949589430}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3749388226157349297
 PrefabInstance:
   m_ObjectHideFlags: 0
