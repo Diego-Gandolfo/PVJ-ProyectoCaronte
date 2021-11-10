@@ -53,23 +53,12 @@ public class BulletBehaviour : MonoBehaviour
         else if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             Instantiate(venomProjectile, transform.position, Quaternion.identity);
-            print("instantiate venom");
-            //Destroy(gameObject, 0.5f);
         }
 
         else if (other.gameObject.layer == LayerMask.NameToLayer("Enviroment"))
         {
             Instantiate(venomProjectile, transform.position, Quaternion.identity);
-            print("instantiate venom");
-            //Destroy(gameObject, 0.5f);
         }
-
-        //else if (other.gameObject.layer == LayerMask.NameToLayer("Default"))
-        //{
-        //    Instantiate(venomProjectile, transform.position, Quaternion.identity);
-        //    print("instantiate venom");
-        //    //Destroy(gameObject, 0.5f);
-        //}
     }
 
     private void CalculatePlayerPosition()
