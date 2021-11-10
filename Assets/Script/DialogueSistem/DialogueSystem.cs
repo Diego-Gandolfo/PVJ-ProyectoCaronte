@@ -1,40 +1,46 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
+
 public class DialogueSystem : MonoBehaviour
 {
-    public static DialogueSystem instance;
-    private Animator animator;
+    #region Serialized Fields
 
     [Header("Properties")]
     [SerializeField] private TextMeshProUGUI textComponent;
     [SerializeField] private float readSpeed;
     [SerializeField] private float timeOfDialogueToDisappear;
 
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-        }
-    }
+    #endregion
+
+    #region Private Fields
+
+    private Animator animator;
+
+    #endregion
+
+    #region Unity Methods
+
     void Start()
     {
+        DialogueManager.Instance.SetDialogueSystem(this);
         animator = GetComponent<Animator>();
         textComponent.text = string.Empty;
     }
+
+    #endregion
+
+    #region Public Methods
 
     public void StartDialogue(DialogueSO dialog)
     {
         animator.SetBool("Enabled", true);
         StartCoroutine(TypeLine(dialog));
     }
+
+    #endregion
+
+    #region Coroutines
 
     IEnumerator TypeLine(DialogueSO dialogToRead)
     {
@@ -77,4 +83,6 @@ public class DialogueSystem : MonoBehaviour
         }
         animator.SetBool("Enabled", false);
     }
+
+    #endregion
 }

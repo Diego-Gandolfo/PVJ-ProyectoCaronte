@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8397721097009301880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 636207329171256687}
+  - component: {fileID: 6052210755407402579}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &636207329171256687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8397721097009301880}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6052210755407402579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8397721097009301880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c8ccac4f2ad639408394c27373c215e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firstBackpackSO: {fileID: 11400000, guid: 7598302ac6fd4fb4ebc054acf0e99b2f, type: 2}
+  _firstCrystalSO: {fileID: 11400000, guid: 1db2fa2fed174024d84820448a484b4d, type: 2}
+  _firstDieByAbyssSO: {fileID: 11400000, guid: 2816ad5645a695841b7a9e1a10ca7437, type: 2}
+  _firstDieNoAbyssSO: {fileID: 11400000, guid: 64ecf98c50741e047bfd0b8acfd136fe, type: 2}
+  _firstPartOfShipSO: {fileID: 11400000, guid: d207cf9f5aa14be4290c5a757b72be7c, type: 2}
+  _introDialogueSO: {fileID: 11400000, guid: c6b835bd939d5c94e9b69ffbb653c2dc, type: 2}
+  _lastPartOfShipRepairedSO: {fileID: 11400000, guid: 3a751acee7e5aa14d9c67c90c021cd88,
+    type: 2}
+  _oxygenAdviceSO: {fileID: 11400000, guid: 3db91bea656bcfe4b930ef25a0b4a69a, type: 2}

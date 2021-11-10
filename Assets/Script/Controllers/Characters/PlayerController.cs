@@ -31,7 +31,7 @@ public class PlayerController : ActorController
     // Components
     private Rigidbody rigidBody;
     private OxygenSystemController oxygenSystem;
-    [SerializeField]private DialogueTrigger introductionDialogue;
+
     // Movement
     private bool isUsingWeapon;
     private bool isPlayAimSound;
@@ -73,7 +73,7 @@ public class PlayerController : ActorController
         SubscribeEvents();
         currentTimeToPlaySound = timeToPlaySound;
         InputController.instance.CanInteract(true);
-        introductionDialogue.ReproduceDialogue();
+        DialogueManager.Instance.StartIntroDialogue();
     }
 
     private void Update()

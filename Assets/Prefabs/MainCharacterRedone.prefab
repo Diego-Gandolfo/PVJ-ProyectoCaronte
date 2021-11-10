@@ -10948,6 +10948,9 @@ MonoBehaviour:
   maxShootingTime: 5
   overheatParticles: {fileID: 1004675564}
   flashParticles: {fileID: 1952603633}
+  coolingModificator: 10
+  coolingModificatorOnOverheat: 4
+  currentMultiplier: 4
 --- !u!1 &4870838804330255143
 GameObject:
   m_ObjectHideFlags: 0

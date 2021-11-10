@@ -11,6 +11,11 @@ public class ShipItemsManager : MonoBehaviour
 
     public List<ShipItemSO> PlayerInventory => playerList;
 
+    private void Start()
+    {
+        DialogueManager.Instance.SuscribeOnCompleted(this);
+    }
+
     public bool CheckIfPlayerHasItem(ShipItemSO item)
     {
         if (playerList.Contains(item))
@@ -44,7 +49,7 @@ public class ShipItemsManager : MonoBehaviour
 
     public void CheckIfCompleted()
     {
-        if(shipList.Count > HUDManager.instance.ShipManagerUI.itemsNeeded)
+        if(shipList.Count >= HUDManager.instance.ShipManagerUI.itemsNeeded)
         {
             OnCompleted?.Invoke();
         }
