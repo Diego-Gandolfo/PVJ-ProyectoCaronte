@@ -10,6 +10,8 @@ public class BulletBehaviour : MonoBehaviour
     [SerializeField] private float lifetime;
     [SerializeField] private float speed;
 
+    [SerializeField] private GameObject venomProjectile;
+
     private PlayerController player;
 
     private Vector3 lastPlayerPosition;
@@ -32,13 +34,42 @@ public class BulletBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<HealthController>() != null)
-        {
-            HealthController health = other.gameObject.GetComponent<HealthController>();
-            health.TakeDamage(damage);
+        PlayerController player = other.gameObject.GetComponent<PlayerController>();
 
-            Destroy(gameObject);
+        if (player != null)
+        {
+            HealthController playerHealth = player.GetComponent<HealthController>();
+
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+
+                Instantiate(venomProjectile, transform.position, Quaternion.identity);
+            
+                Destroy(gameObject, 0.5f);
+            }
         }
+
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            Instantiate(venomProjectile, transform.position, Quaternion.identity);
+            print("instantiate venom");
+            //Destroy(gameObject, 0.5f);
+        }
+
+        else if (other.gameObject.layer == LayerMask.NameToLayer("Enviroment"))
+        {
+            Instantiate(venomProjectile, transform.position, Quaternion.identity);
+            print("instantiate venom");
+            //Destroy(gameObject, 0.5f);
+        }
+
+        //else if (other.gameObject.layer == LayerMask.NameToLayer("Default"))
+        //{
+        //    Instantiate(venomProjectile, transform.position, Quaternion.identity);
+        //    print("instantiate venom");
+        //    //Destroy(gameObject, 0.5f);
+        //}
     }
 
     private void CalculatePlayerPosition()
