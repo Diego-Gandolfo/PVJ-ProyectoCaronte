@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361d3810b1233244aafce7679cb936f6, type: 3}
   m_Name: FirstCrystal
   m_EditorClassIdentifier: 
-  dialogueStrings: []
+  dialogueStrings:
+  - I see you got your first crystal. Well done!
+  - Get some and then you can exchange them for upgrades near your ship. With some
+    of them you will be able to access new places and others will help you to perform
+    better.
+  - You can also deposit the Crystals that you collect to avoid losing them if something
+    happens during your explorations.

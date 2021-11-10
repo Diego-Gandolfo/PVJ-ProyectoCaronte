@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361d3810b1233244aafce7679cb936f6, type: 3}
   m_Name: FirstPartOfShip
   m_EditorClassIdentifier: 
-  dialogueStrings: []
+  dialogueStrings:
+  - Good work, Kronk! This is one of the parts you need to repair the ship.
+  - Remember to take it to your base and interact with the ship to fix it.
