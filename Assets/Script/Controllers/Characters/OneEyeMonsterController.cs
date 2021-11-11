@@ -20,7 +20,7 @@ public class OneEyeMonsterController : EnemyController
     private bool canDiscountTimeToShoot;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         animator = GetComponent<Animator>();
         canDiscountTimeToShoot = false;
@@ -45,6 +45,7 @@ public class OneEyeMonsterController : EnemyController
 
                 canDiscountTimeToShoot = false;
 
+                transform.LookAt(randomSpots[currentRandomSpot]);
                 transform.position = Vector3.MoveTowards(transform.position, randomSpots[currentRandomSpot].position, _actorStats.OriginalSpeed * Time.deltaTime);
              
                 if (Vector2.Distance(transform.position, randomSpots[currentRandomSpot].position) < minDistance)
