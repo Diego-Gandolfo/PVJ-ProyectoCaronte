@@ -187,7 +187,7 @@ public class DialogueManager : MonoBehaviour
     IEnumerator DieNoAbyssCoroutine(float delay)
     {
         yield return new WaitForSeconds(delay);
-        _dialogueSystem.StartDialogue(_firstDieSO);
+        _dialogueSystem.AddToDialogueQueue(_firstDieSO);
     }
 
     #endregion
