@@ -46,7 +46,7 @@ MonoBehaviour:
   _firstBackpackSO: {fileID: 11400000, guid: 7598302ac6fd4fb4ebc054acf0e99b2f, type: 2}
   _firstCrystalSO: {fileID: 11400000, guid: 1db2fa2fed174024d84820448a484b4d, type: 2}
   _firstDieByAbyssSO: {fileID: 11400000, guid: 2816ad5645a695841b7a9e1a10ca7437, type: 2}
-  _firstDieNoAbyssSO: {fileID: 11400000, guid: 64ecf98c50741e047bfd0b8acfd136fe, type: 2}
+  _firstDieSO: {fileID: 11400000, guid: 64ecf98c50741e047bfd0b8acfd136fe, type: 2}
   _firstPartOfShipSO: {fileID: 11400000, guid: d207cf9f5aa14be4290c5a757b72be7c, type: 2}
   _introDialogueSO: {fileID: 11400000, guid: c6b835bd939d5c94e9b69ffbb653c2dc, type: 2}
   _lastPartOfShipRepairedSO: {fileID: 11400000, guid: 3a751acee7e5aa14d9c67c90c021cd88,

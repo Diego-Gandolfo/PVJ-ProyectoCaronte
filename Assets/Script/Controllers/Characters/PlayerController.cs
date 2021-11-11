@@ -74,6 +74,7 @@ public class PlayerController : ActorController
         currentTimeToPlaySound = timeToPlaySound;
         InputController.instance.CanInteract(true);
         DialogueManager.Instance.StartIntroDialogue();
+        HealthController.OnDieByAbyss += OnDie;
     }
 
     private void Update()
@@ -238,11 +239,10 @@ public class PlayerController : ActorController
         animator.Play("Die");
         canMove = false;
         InputController.instance.CanInteract(false);
-        
     }
+    
     private void Respawn()
     {
-        base.OnDie();
         canMove = true;
         LevelManager.instance.Respawn();
         HUDManager.instance.UICrystal.ErrorAnimation();

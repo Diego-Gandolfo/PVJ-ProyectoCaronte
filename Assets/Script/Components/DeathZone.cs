@@ -5,22 +5,11 @@ using UnityEngine;
 
 public class DeathZone : MonoBehaviour
 {
-    #region Events
-
-    public event Action OnDieByAbyss;
-
-    #endregion
-
     #region Unity Methods
-
-    private void Start()
-    {
-        DialogueManager.Instance.SuscribeOnDieByAbyss(this);
-    }
 
     private void OnTriggerEnter(Collider other)
     {
-        var healthController = other.gameObject.GetComponent<HealthController>();
+        var healthController = other.gameObject.GetComponent<HealthController>(); // TODO: acceder al actor y sacar de ahi el HealthController
 
         if (healthController == null)
         {
@@ -29,8 +18,7 @@ public class DeathZone : MonoBehaviour
 
         if (healthController != null)
         {
-            if (healthController.gameObject.CompareTag("Player")) OnDieByAbyss?.Invoke();
-            healthController.Die();
+            healthController.DieByAbyss();
         }
     }
 

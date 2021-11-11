@@ -90652,7 +90652,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 3.5333333
+  - time: 3.6333334
     functionName: Respawn
     data: 
     objectReferenceParameter: {fileID: 0}
