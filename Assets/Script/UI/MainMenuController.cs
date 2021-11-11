@@ -9,11 +9,11 @@ public class MainMenuController : MonoBehaviour
     [Header("AllMenus Settings")]
     [SerializeField] private GameObject mainMenu = null;
     [SerializeField] private GameObject creditsMenu = null;
-
     [Header("MainMenu Settings")]
     [SerializeField] private Button playButton = null;
     [SerializeField] private Button creditsButton = null;
     [SerializeField] private Button exitButton = null;
+    [SerializeField] private bool playAnimation;
 
     private bool mainMenuCheck;
     [SerializeField] private string level01 = "TerraplainLevel";
@@ -44,11 +44,18 @@ public class MainMenuController : MonoBehaviour
         AudioManager.instance.PlaySound(SoundClips.InteractableClick);
 
         GameManager.instance.SetCursorActive(false);
+        if (playAnimation)
+        {
 
         animator.Play("Enter To Game Cinematic");
         creditsButton.gameObject.SetActive(false);
         exitButton.gameObject.SetActive(false);
         playButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            OnPlayAnimationExecution();
+        }
         //AudioManager.instance.PlaySound(SoundClips.MouseClick);
         
     }

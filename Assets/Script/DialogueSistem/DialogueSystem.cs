@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class DialogueSystem : MonoBehaviour
 {
@@ -10,13 +12,14 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textComponent;
     [SerializeField] private float readSpeed;
     [SerializeField] private float timeOfDialogueToDisappear;
-
+    [SerializeField] private List<DialogueSO> dialogueQueue = new List<DialogueSO>();
+    [SerializeField] private bool canSkipAllText;
     #endregion
 
     #region Private Fields
 
+    private bool isReproducingDialogue = false;
     private Animator animator;
-
     #endregion
 
     #region Unity Methods
@@ -32,43 +35,59 @@ public class DialogueSystem : MonoBehaviour
 
     #region Public Methods
 
-    public void StartDialogue(DialogueSO dialog)
+    public void AddToDialogueQueue(DialogueSO dialog)
+    {
+        print(dialog.dialogueStrings[0]);
+        dialogueQueue.Add(dialog);
+    }
+    public void StartDialogue()
     {
         animator.SetBool("Enabled", true);
-        StartCoroutine(TypeLine(dialog));
+        StartCoroutine(TypeLine());
+
     }
+    private void Update()
+    {
+        CheckForDialogue();
 
+    }
+    private void CheckForDialogue()
+    {
+        if (!isReproducingDialogue && dialogueQueue.Count > 0)
+        {
+            StartDialogue();
+        }
+    }
     #endregion
-
+    
     #region Coroutines
 
-    IEnumerator TypeLine(DialogueSO dialogToRead)
+    IEnumerator TypeLine()
     {
-        //foreach (char character in dialogToRead.dialogueStrings[]())
-        //{
-            //textComponent.text += character;
-            //yield return new WaitForSeconds(readSpeed);
-        //}
-        for (int i = 0; i < dialogToRead.dialogueStrings.Count; i++)
+        isReproducingDialogue = true;
+        var dialogueToReproduce = dialogueQueue[0].dialogueStrings;
+        for (int i = 0; i < dialogueToReproduce.Count; i++)
         {
-            foreach (char character in dialogToRead.dialogueStrings[i])
+            foreach (char character in dialogueToReproduce[i])
             {
                 textComponent.text += character;
-                if (Input.GetKey(KeyCode.Return))
-                {
-                    yield return new WaitForSeconds(0);
-                }
-                else
-                {
-                    yield return new WaitForSeconds(readSpeed);
-                }
+                yield return new WaitForSeconds(readSpeed);
+                    
             }
-            if (dialogToRead.dialogueStrings.Count == 1)
+
+            //if (Input.GetKeyDown(KeyCode.Return) && canSkipAllText)
+            //{
+            //    textComponent.text = dialogueToReproduce[i];
+            //}
+
+
+            if (dialogueQueue[0].dialogueStrings.Count == 1)
             {
                 yield return new WaitForSeconds(timeOfDialogueToDisappear);
+
             }
             #region Si se quiere que el jugador pueda pasar el texto con el enter
-            if (i < dialogToRead.dialogueStrings.Count)
+            if (i < dialogueQueue[0].dialogueStrings.Count)
             {
                 yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
                 {
@@ -81,6 +100,8 @@ public class DialogueSystem : MonoBehaviour
             //textComponent.text = string.Empty;
             #endregion
         }
+        dialogueQueue.RemoveAt(0);
+        isReproducingDialogue = false;
         animator.SetBool("Enabled", false);
     }
 

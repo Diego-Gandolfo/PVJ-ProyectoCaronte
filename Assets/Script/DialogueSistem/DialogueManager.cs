@@ -80,7 +80,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (_oxygenAdviceFlag) return;
 
-        _dialogueSystem.StartDialogue(_oxygenAdviceSO);
+        _dialogueSystem.AddToDialogueQueue(_oxygenAdviceSO);
         _oxygenAdviceFlag = true;
     }
 
@@ -88,7 +88,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (_firstBackpackFlag) return;
 
-        _dialogueSystem.StartDialogue(_firstBackpackSO);
+        _dialogueSystem.AddToDialogueQueue(_firstBackpackSO);
         _firstBackpackFlag = true;
     }
 
@@ -96,7 +96,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (_firstCrystalFlag) return;
 
-        _dialogueSystem.StartDialogue(_firstCrystalSO);
+        _dialogueSystem.AddToDialogueQueue(_firstCrystalSO);
         _firstCrystalFlag = true;
     }
 
@@ -112,7 +112,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (_firstPartOfShipFlag) return;
 
-        _dialogueSystem.StartDialogue(_firstPartOfShipSO);
+        _dialogueSystem.AddToDialogueQueue(_firstPartOfShipSO);
         _firstPartOfShipFlag = true;
     }
 
@@ -120,7 +120,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (_lastPartOfShipRepairedFlag) return;
 
-        _dialogueSystem.StartDialogue(_lastPartOfShipRepairedSO);
+        _dialogueSystem.AddToDialogueQueue(_lastPartOfShipRepairedSO);
         _lastPartOfShipRepairedFlag = true;
     }
 
@@ -135,7 +135,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartIntroDialogue()
     {
-        _dialogueSystem.StartDialogue(_introDialogueSO);
+        _dialogueSystem.AddToDialogueQueue(_introDialogueSO);
     }
 
     public void SuscribeOnAsphyxiation(OxygenSystemController oxygenSystemController)
@@ -170,7 +170,7 @@ public class DialogueManager : MonoBehaviour
     IEnumerator DieByAbyssCoroutine(float delay)
     {
         yield return new WaitForSeconds(delay);
-        _dialogueSystem.StartDialogue(_firstDieByAbyssSO);
+        _dialogueSystem.AddToDialogueQueue(_firstDieByAbyssSO);
     }
 
     #endregion
