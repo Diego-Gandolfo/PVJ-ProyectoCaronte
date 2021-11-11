@@ -6,11 +6,16 @@ public class DamageVignette : MonoBehaviour
 {
     private Animator animator;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         LevelManager.instance.OnPlayerAssing += OnPlayerAssign;
         animator = GetComponent<Animator>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 
     private void OnPlayerAssign(PlayerController player)
