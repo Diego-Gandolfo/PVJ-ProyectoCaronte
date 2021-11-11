@@ -39,7 +39,6 @@ public class Venom : MonoBehaviour
                 {
                     playerHealth.TakeDamage(damage);
                     currentTimeToDamage = 0.0f;
-                    print("damaging player");
                 }
             }
         }
@@ -49,8 +48,6 @@ public class Venom : MonoBehaviour
     {
         HealthController playerHealth = other.gameObject.GetComponent<HealthController>();
         if (playerHealth != null)
-        {
             canStartCount = false;
-        }
     }
 }
