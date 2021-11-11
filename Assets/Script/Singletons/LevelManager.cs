@@ -65,6 +65,7 @@ public class LevelManager : MonoBehaviour
     {
         Player = player;
         OnPlayerAssing?.Invoke(player);
+        DialogueManager.Instance.SuscribeOnDie();
     }
 
     public void GameOver()

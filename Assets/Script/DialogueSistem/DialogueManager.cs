@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private DialogueSO _firstBackpackSO;
     [SerializeField] private DialogueSO _firstCrystalSO;
     [SerializeField] private DialogueSO _firstDieByAbyssSO;
-    [SerializeField] private DialogueSO _firstDieNoAbyssSO;
+    [SerializeField] private DialogueSO _firstDieSO;
     [SerializeField] private DialogueSO _firstPartOfShipSO;
     [SerializeField] private DialogueSO _introDialogueSO;
     [SerializeField] private DialogueSO _lastPartOfShipRepairedSO;
@@ -32,7 +33,7 @@ public class DialogueManager : MonoBehaviour
     private bool _firstBackpackFlag;
     private bool _firstCrystalFlag;
     private bool _firstDieByAbyssFlag;
-    private bool _firstDieNoAbyssFlag;
+    private bool _firstDieFlag;
     private bool _firstPartOfShipFlag;
     //private bool _introDialogueFlag;
     private bool _lastPartOfShipRepairedFlag;
@@ -69,7 +70,7 @@ public class DialogueManager : MonoBehaviour
         _firstBackpackFlag = false;
         _firstCrystalFlag = false;
         _firstDieByAbyssFlag = false;
-        _firstDieNoAbyssFlag = false;
+        _firstDieFlag = false;
         _firstPartOfShipFlag = false;
         //_introDialogueFlag = false;
         _lastPartOfShipRepairedFlag = false;
@@ -100,7 +101,15 @@ public class DialogueManager : MonoBehaviour
         _firstCrystalFlag = true;
     }
 
-    private void OnDieByAbysshandler()
+    private void OnDieHandler()
+    {
+        if (_firstDieFlag) return;
+
+        StartCoroutine(DieNoAbyssCoroutine(5f));
+        _firstDieFlag = true;
+    }
+
+    private void OnDieByAbyssHandler()
     {
         if (_firstDieByAbyssFlag) return;
 
@@ -148,9 +157,11 @@ public class DialogueManager : MonoBehaviour
         crystalBag.OnBackpackPickedUp += OnBackpackPickedUpHandler;
     }
 
-    public void SuscribeOnDieByAbyss(DeathZone deathZone)
+    public void SuscribeOnDie()
     {
-        deathZone.OnDieByAbyss += OnDieByAbysshandler;
+        var healtController = LevelManager.instance.Player.HealthController;
+        healtController.OnDie += OnDieHandler;
+        healtController.OnDieByAbyss += OnDieByAbyssHandler;
     }
 
     public void SuscribeOnShipItemPickedUp(ShipItemInteractable shipItemInteractable)
@@ -171,6 +182,12 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         _dialogueSystem.AddToDialogueQueue(_firstDieByAbyssSO);
+    }
+    
+    IEnumerator DieNoAbyssCoroutine(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _dialogueSystem.StartDialogue(_firstDieSO);
     }
 
     #endregion

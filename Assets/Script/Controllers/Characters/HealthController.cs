@@ -15,6 +15,7 @@ public class HealthController : MonoBehaviour, IDamageable
 
     #region Events
     public Action OnDie;
+    public Action OnDieByAbyss;
     public Action OnTakeDamage;
     public Action<int> OnUpdateLife; //currentLife, MaxLife
     #endregion
@@ -60,6 +61,12 @@ public class HealthController : MonoBehaviour, IDamageable
     {
         OnDie?.Invoke();
     }
+
+    public virtual void DieByAbyss()
+    {
+        OnDieByAbyss?.Invoke();
+    }
+
 
     public void SetLifeBar(LifeBarController controller)
     {
