@@ -9,7 +9,7 @@ public class DeathZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var healthController = other.gameObject.GetComponent<HealthController>(); // TODO: acceder al actor y sacar de ahi el HealthController
+        var healthController = other.gameObject.GetComponent<HealthController>();
 
         if (healthController == null)
         {
