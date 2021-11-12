@@ -27,12 +27,13 @@ public class OxygenBar : MonoBehaviour
 
     #region Unity Methods
 
-    private void Start()
+    private void Awake()
     {
         LevelManager.instance.OnPlayerAssing += OnPlayerAssing;
         animator = GetComponent<Animator>();
         vignetteAnimator = vignette.GetComponent<Animator>();
     }
+
     private void Update()
     {
         lerpTime +=Time.deltaTime * Time.deltaTime;
@@ -57,7 +58,6 @@ public class OxygenBar : MonoBehaviour
         if (oxygenBarImage != null)
         {
             oxygenBarImage.fillAmount = Mathf.Lerp(oxygenBarImage.fillAmount, (currentOxygen/maxOxygen), lerpTime);
-
             animator.SetBool("Dying", currentOxygen <= (maxOxygen / 3));
             vignetteAnimator.SetBool("Dying", currentOxygen <= (maxOxygen / 4));
         }
