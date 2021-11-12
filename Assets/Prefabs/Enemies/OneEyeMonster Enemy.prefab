@@ -1680,7 +1680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeBar: {fileID: 2001154511008780935}
-  lifeBarImage: {fileID: 2136411111551545773}
+  lifeBarImage: {fileID: 8337712400197932015}
   percentage: {fileID: 0}
 --- !u!114 &2901524078202338319
 MonoBehaviour:
