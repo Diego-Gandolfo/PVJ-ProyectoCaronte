@@ -15,11 +15,13 @@ public class UIShipScreenManager : MonoBehaviour
 
     private List<GameObject> itemsList = new List<GameObject>();
     private List<GameObject> inventoryList = new List<GameObject>();
+    public Animator Animator { get; private set; }
 
     public int itemsNeeded => shipItems.Length;
 
     private void Start()
     {
+        Animator = GetComponent<Animator>();
         closeButton?.onClick.AddListener(OnCloseScreen);
 
         for (int i = 0; i < shipItems.Length; i++)
@@ -29,7 +31,6 @@ public class UIShipScreenManager : MonoBehaviour
             itemUI.SetItemInfo(shipItems[i]);
             itemsList.Add(item);
         }
-        CheckInventory();
     }
 
     private void OnEnable()
@@ -44,25 +45,28 @@ public class UIShipScreenManager : MonoBehaviour
 
     public void CheckInventory()
     {
-        if (LevelManager.instance.ShipManager.PlayerInventory.Count > 0)
+        if(LevelManager.instance != null)
         {
-            inventory.SetActive(true);
-            for (int i = inventoryList.Count - 1; i >= 0; i--)
+            if (LevelManager.instance.ShipManager.PlayerInventory.Count > 0)
             {
-                Destroy(inventoryList[i]);
-            }
-            inventoryList.Clear();
+                inventory.SetActive(true);
+                for (int i = inventoryList.Count - 1; i >= 0; i--)
+                {
+                    Destroy(inventoryList[i]);
+                }
+                inventoryList.Clear();
 
-            for (int i = 0; i < LevelManager.instance.ShipManager.PlayerInventory.Count; i++)
-            {
-                GameObject item = Instantiate(inventoryPrefab, inventoryContainer.transform);
-                item.GetComponent<Image>().sprite = LevelManager.instance.ShipManager.PlayerInventory[i].image;
-                inventoryList.Add(item);
+                for (int i = 0; i < LevelManager.instance.ShipManager.PlayerInventory.Count; i++)
+                {
+                    GameObject item = Instantiate(inventoryPrefab, inventoryContainer.transform);
+                    item.GetComponent<Image>().sprite = LevelManager.instance.ShipManager.PlayerInventory[i].image;
+                    inventoryList.Add(item);
+                }
             }
-        }
-        else
-        {
-            inventory.SetActive(false);
+            else
+            {
+                inventory.SetActive(false);
+            }
         }
     }
 }

@@ -35,6 +35,7 @@ public class UIShipItem : MonoBehaviour
         }
         else
         {
+            HUDManager.instance.ShipManagerUI.Animator.Play("ShipSystem_MissingItem");
             _animator?.Play("ShipButtonError");
             AudioManager.instance.PlaySound(SoundClips.Negative);
         }

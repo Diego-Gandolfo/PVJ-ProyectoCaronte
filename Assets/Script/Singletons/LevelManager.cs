@@ -40,16 +40,19 @@ public class LevelManager : MonoBehaviour
     public void Awake()
     {
         if (instance != null)
+        {
             Destroy(gameObject);
+        }
         else
+        {
             instance = this;
-    }
+        }
 
-    private void Start()
-    {
         ShipManager = GetComponent<ShipItemsManager>();
         ShipManager.OnCompleted += OnCompleted;
     }
+
+
 
     #endregion
 

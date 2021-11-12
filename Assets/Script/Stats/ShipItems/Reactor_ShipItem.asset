@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Reactor_ShipItem
   m_EditorClassIdentifier: 
   title: Reactor
-  image: {fileID: 21300000, guid: a13b550dfc260cf438d0b502794cb6f6, type: 3}
+  image: {fileID: 21300000, guid: 0c702c57f81ef9343b52b7c551bc9e28, type: 3}
   description: Provides energy for the ship
