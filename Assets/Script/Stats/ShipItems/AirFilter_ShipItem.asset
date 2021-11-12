@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AirFilter_ShipItem
   m_EditorClassIdentifier: 
   title: Air Filter
-  image: {fileID: 21300000, guid: 044724d9e7e23d14daa1cfc0023c1f65, type: 3}
+  image: {fileID: 21300000, guid: d27b69979c839e04faf016bd9da7641d, type: 3}
   description: A n air filter for the ship

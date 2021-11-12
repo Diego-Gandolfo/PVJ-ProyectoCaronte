@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class DeathZone : MonoBehaviour
 
         if (healthController != null)
         {
-            healthController.Die();
+            healthController.DieByAbyss();
         }
     }
 

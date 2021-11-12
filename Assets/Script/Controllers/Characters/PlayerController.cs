@@ -23,6 +23,7 @@ public class PlayerController : ActorController
 
     [Header("Prefabs")]
     [SerializeField] private GameObject deathBag;
+
     [Header("Cristal Bag")]
     [SerializeField] private int cristalDroppedAmmount;
     #endregion
@@ -31,7 +32,7 @@ public class PlayerController : ActorController
     // Components
     private Rigidbody rigidBody;
     private OxygenSystemController oxygenSystem;
-    [SerializeField]private DialogueTrigger introductionDialogue;
+
     // Movement
     private bool isUsingWeapon;
     private bool isPlayAimSound;
@@ -73,7 +74,8 @@ public class PlayerController : ActorController
         SubscribeEvents();
         currentTimeToPlaySound = timeToPlaySound;
         InputController.instance.CanInteract(true);
-        introductionDialogue.ReproduceDialogue();
+        DialogueManager.Instance.StartIntroDialogue();
+        HealthController.OnDieByAbyss += OnDie;
     }
 
     private void Update()
@@ -238,11 +240,10 @@ public class PlayerController : ActorController
         animator.Play("Die");
         canMove = false;
         InputController.instance.CanInteract(false);
-        
     }
+    
     private void Respawn()
     {
-        base.OnDie();
         canMove = true;
         LevelManager.instance.Respawn();
         HUDManager.instance.UICrystal.ErrorAnimation();

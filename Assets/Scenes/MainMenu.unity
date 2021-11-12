@@ -5728,6 +5728,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7832856132720395106, guid: 70599adf3c9b4cb4c86c2a13b01e5b21,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70599adf3c9b4cb4c86c2a13b01e5b21, type: 3}
 --- !u!1 &1044937220
@@ -6006,7 +6011,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401520295}
-  m_LocalRotation: {x: -0.50675726, y: 0.45962414, z: 0.40060848, w: 0.6094716}
+  m_LocalRotation: {x: -0.50675726, y: 0.45962414, z: 0.40060845, w: 0.6094716}
   m_LocalPosition: {x: -0.00191, y: 0.00985, z: 0.00155}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -11637,6 +11642,7 @@ MonoBehaviour:
   playButton: {fileID: 1306701865}
   creditsButton: {fileID: 874446297}
   exitButton: {fileID: 247323315}
+  playAnimation: 0
   level01: TerraplainLevel
   goBackCreditsButton: {fileID: 50121670}
 --- !u!23 &1711813854484651077

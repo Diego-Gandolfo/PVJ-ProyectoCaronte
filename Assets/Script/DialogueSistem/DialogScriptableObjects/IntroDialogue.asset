@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: IntroDialogue
   m_EditorClassIdentifier: 
   dialogueStrings:
-  - Buenas, Kronk! Nos alegramos que hayas llegado a Caronte y que a pesar de los
-    problemas te encuentres bien!
-  - "Hemos realizado una revisi\xF3n de los sistemas de la nave y parecen estar faltando
-    algunas partes importantes."
-  - "Deber\xE1s recorrer Caronte para poder recuperarlas, sin ellas no podr\xE1s
-    regresar!"
-  - "Pero no olvides la raz\xF3n por la cual te enviamos all\xED! Debes tratar de
-    volver con la mayor cantidad de Cristales posibles"
+  - Welcome, Kronk! We are glad that you have arrived in Caronte and that despite
+    the problems you are well!
+  - We've done a review of the ship's systems and some important parts appear to
+    be missing.
+  - You must look arround Caronte, whitout them you are not going to beable to return
+    home!
+  - But don't forget why we sent you there! You must try to return with as many Crystals
+    as possible!

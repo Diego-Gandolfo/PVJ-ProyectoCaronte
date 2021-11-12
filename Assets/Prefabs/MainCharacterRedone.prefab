@@ -9744,6 +9744,7 @@ GameObject:
   - component: {fileID: 1434150396799790331}
   - component: {fileID: 6355265869036301437}
   - component: {fileID: 7990734501827032521}
+  - component: {fileID: 1635191907441353281}
   m_Layer: 6
   m_Name: MainCharacterRedone
   m_TagString: Player
@@ -9850,7 +9851,6 @@ MonoBehaviour:
   deathBag: {fileID: 3021675946231860137, guid: aea95b22cbe57c448ba62a8aed3aec96,
     type: 3}
   cristalDroppedAmmount: 0
-  introductionDialogue: {fileID: 0}
 --- !u!114 &6355265869036301437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9881,7 +9881,14 @@ MonoBehaviour:
   sprintMultiplier: 2
   asphyxiationDamage: 5
   heartBeatTick: 1
-  dialogueTrigger: {fileID: 0}
+--- !u!81 &1635191907441353281
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859750694658385290}
+  m_Enabled: 1
 --- !u!1 &951006845917179496
 GameObject:
   m_ObjectHideFlags: 0
@@ -10948,6 +10955,9 @@ MonoBehaviour:
   maxShootingTime: 5
   overheatParticles: {fileID: 1004675564}
   flashParticles: {fileID: 1952603633}
+  coolingModificator: 10
+  coolingModificatorOnOverheat: 4
+  currentMultiplier: 4
 --- !u!1 &4870838804330255143
 GameObject:
   m_ObjectHideFlags: 0
