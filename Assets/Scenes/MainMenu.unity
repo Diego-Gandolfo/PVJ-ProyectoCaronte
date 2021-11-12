@@ -11642,7 +11642,7 @@ MonoBehaviour:
   playButton: {fileID: 1306701865}
   creditsButton: {fileID: 874446297}
   exitButton: {fileID: 247323315}
-  playAnimation: 1
+  playAnimation: 0
   level01: TerraplainLevel
   goBackCreditsButton: {fileID: 50121670}
 --- !u!23 &1711813854484651077
