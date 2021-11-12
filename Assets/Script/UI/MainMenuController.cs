@@ -44,25 +44,27 @@ public class MainMenuController : MonoBehaviour
         AudioManager.instance.PlaySound(SoundClips.InteractableClick);
 
         GameManager.instance.SetCursorActive(false);
+
         if (playAnimation)
         {
-
-        animator.Play("Enter To Game Cinematic");
-        creditsButton.gameObject.SetActive(false);
-        exitButton.gameObject.SetActive(false);
-        playButton.gameObject.SetActive(false);
+            animator.Play("Enter To Game Cinematic");
+            creditsButton.gameObject.SetActive(false);
+            exitButton.gameObject.SetActive(false);
+            playButton.gameObject.SetActive(false);
         }
         else
         {
             OnPlayAnimationExecution();
         }
+
         //AudioManager.instance.PlaySound(SoundClips.MouseClick);
-        
     }
+
     private void OnPlayAnimationExecution()
     {
         SceneManager.LoadScene(level01);
     }
+
     private void OnCreditsHandler()
     {
         AudioManager.instance.PlaySound(SoundClips.InteractableClick);
