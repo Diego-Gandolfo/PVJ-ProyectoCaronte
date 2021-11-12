@@ -12,11 +12,14 @@ public class Venom : MonoBehaviour
     private bool canStartCount;
     private bool canDamage;
 
+    private void Start()
+    {
+        PlayVenomSound();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        PlayVenomSound();
-
         if (canStartCount)
         {
             currentTimeToDamage += Time.deltaTime;

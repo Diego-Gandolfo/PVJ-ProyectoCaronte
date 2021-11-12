@@ -22,7 +22,8 @@ public enum SoundClips
     PlayerTakesDamage,
     ShopItemBuy,
     Venom,
-    OneEyeMonsterShoot
+    OneEyeMonsterShoot,
+    Dialogue
 }
 
 public class AudioManager : MonoBehaviour
@@ -54,6 +55,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip playerTakesDamage;
     [SerializeField] private AudioClip venom;
     [SerializeField] private AudioClip oneEyeMonsterShoot;
+    [SerializeField] private AudioClip dialogue;
 
     [Header("UI Sounds")]
     [SerializeField] private AudioClip uiPopUp;
@@ -176,6 +178,11 @@ public class AudioManager : MonoBehaviour
                 soundsAudioSource.volume = 0.5f;
                 soundsAudioSource.PlayOneShot(oneEyeMonsterShoot);
                 break;
+
+            //case SoundClips.Dialogue:
+            //    soundsAudioSource.volume = 1f;
+            //    soundsAudioSource.PlayOneShot(dialogue);
+            //    break;
 
             default:
                 break;
