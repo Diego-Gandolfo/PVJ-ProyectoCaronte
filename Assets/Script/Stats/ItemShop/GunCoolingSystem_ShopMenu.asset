@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: GunCoolingSystem
   image: {fileID: -2413806693520163455, guid: 46b3939295dec6740a42dbaeb628c92f, type: 3}
-  price: 45
+  price: 20
   description: Faster cooling system1
   isDisabled: 0
