@@ -23,6 +23,7 @@ public class PlayerController : ActorController
 
     [Header("Prefabs")]
     [SerializeField] private GameObject deathBag;
+
     [Header("Cristal Bag")]
     [SerializeField] private int cristalDroppedAmmount;
     #endregion
