@@ -15,6 +15,8 @@ public class Venom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PlayVenomSound();
+
         if (canStartCount)
         {
             currentTimeToDamage += Time.deltaTime;
@@ -49,5 +51,10 @@ public class Venom : MonoBehaviour
         HealthController playerHealth = other.gameObject.GetComponent<HealthController>();
         if (playerHealth != null)
             canStartCount = false;
+    }
+
+    private void PlayVenomSound()
+    {
+        AudioManager.instance.PlaySound(SoundClips.Venom);
     }
 }

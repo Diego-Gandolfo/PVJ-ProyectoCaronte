@@ -45,7 +45,9 @@ public class BulletBehaviour : MonoBehaviour
                 playerHealth.TakeDamage(damage);
 
                 Instantiate(venomProjectile, transform.position, Quaternion.identity);
-            
+                
+                
+
                 Destroy(gameObject, 0.5f);
             }
         }
@@ -53,11 +55,13 @@ public class BulletBehaviour : MonoBehaviour
         else if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             Instantiate(venomProjectile, transform.position, Quaternion.identity);
+
         }
 
         else if (other.gameObject.layer == LayerMask.NameToLayer("Enviroment"))
         {
             Instantiate(venomProjectile, transform.position, Quaternion.identity);
+
         }
     }
 
@@ -65,4 +69,6 @@ public class BulletBehaviour : MonoBehaviour
     {
         lastPlayerPosition = player.transform.position - transform.position;
     }
+
+
 }

@@ -110,6 +110,7 @@ public class OneEyeMonsterController : EnemyController
     private void AttackPlayer()
     {
         animator.SetTrigger("IsAttacking");
+        AudioManager.instance.PlaySound(SoundClips.OneEyeMonsterShoot);
         Instantiate(enemyBullet, firePoint.position, Quaternion.LookRotation(firePoint.position));
         currentTimeToShoot = 0.0f;
     }
