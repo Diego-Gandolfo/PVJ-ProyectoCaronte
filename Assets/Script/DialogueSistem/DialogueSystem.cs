@@ -37,7 +37,6 @@ public class DialogueSystem : MonoBehaviour
 
     public void AddToDialogueQueue(DialogueSO dialog)
     {
-        print(dialog.dialogueStrings[0]);
         dialogueQueue.Add(dialog);
     }
     public void StartDialogue()
