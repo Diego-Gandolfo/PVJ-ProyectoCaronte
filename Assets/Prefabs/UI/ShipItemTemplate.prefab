@@ -61,7 +61,6 @@ MonoBehaviour:
   buttonText: {fileID: 6398949537803395714}
   trigger: {fileID: 6130394843548051053}
   giveItem: on machine
-  _animator: {fileID: 1590148568049005040}
 --- !u!95 &1590148568049005040
 Animator:
   serializedVersion: 3
@@ -450,7 +449,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: give
+  m_Text: still missing
 --- !u!1 &5603395894565355233
 GameObject:
   m_ObjectHideFlags: 0
