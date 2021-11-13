@@ -15,6 +15,7 @@ public class UIShipScreenManager : MonoBehaviour
 
     private List<GameObject> itemsList = new List<GameObject>();
     private List<GameObject> inventoryList = new List<GameObject>();
+    private List<UIShipItem> uiShipItemList = new List<UIShipItem>();
     public Animator Animator { get; private set; }
 
     public int itemsNeeded => shipItems.Length;
@@ -28,6 +29,7 @@ public class UIShipScreenManager : MonoBehaviour
         {
             GameObject item = Instantiate(itemTemplatePrefab, itemsContainer.transform);
             var itemUI = item.GetComponent<UIShipItem>();
+            uiShipItemList.Add(itemUI);
             itemUI.SetItemInfo(shipItems[i]);
             itemsList.Add(item);
         }
@@ -36,6 +38,7 @@ public class UIShipScreenManager : MonoBehaviour
     private void OnEnable()
     {
         CheckInventory();
+        SetButtonsColors();
     }
 
     public void OnCloseScreen()
@@ -67,6 +70,14 @@ public class UIShipScreenManager : MonoBehaviour
             {
                 inventory.SetActive(false);
             }
+        }
+    }
+
+    public void SetButtonsColors()
+    {
+        for (int i = 0; i < uiShipItemList.Count; i++)
+        {
+            uiShipItemList[i].ChangeButtonColor(LevelManager.instance.ShipManager.PlayerInventory);
         }
     }
 }
