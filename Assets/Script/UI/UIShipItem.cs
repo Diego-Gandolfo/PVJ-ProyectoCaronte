@@ -20,6 +20,10 @@ public class UIShipItem : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         giveButton.onClick.AddListener(GiveEvent);
+    }
+
+    private void Start()
+    {
         buttonText.text = missingItem;
     }
 
@@ -54,9 +58,6 @@ public class UIShipItem : MonoBehaviour
 
     public void ChangeButtonColor(List<ShipItemSO> shipItemSOs)
     {
-        if (_animator == null)
-            _animator = GetComponent<Animator>();
-
         if (giveButton.enabled)
         {
             if (shipItemSOs.Contains(item))

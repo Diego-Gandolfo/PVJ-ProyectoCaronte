@@ -15,6 +15,7 @@ public class ShipScreenTrigger : MonoBehaviour, IInteractable
         if (!LevelManager.instance.HasAllShipItems)
         {
             HUDManager.instance.SetShipScreenVisible(true);
+            HUDManager.instance.ShipManagerUI.CheckShipItems();
             AudioManager.instance.PlaySound(SoundClips.UIPopUp);
         }
         else

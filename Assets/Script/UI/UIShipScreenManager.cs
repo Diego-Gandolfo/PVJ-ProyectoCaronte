@@ -20,10 +20,9 @@ public class UIShipScreenManager : MonoBehaviour
 
     public int itemsNeeded => shipItems.Length;
 
-    private void Start()
+    private void Awake()
     {
         Animator = GetComponent<Animator>();
-        closeButton?.onClick.AddListener(OnCloseScreen);
 
         for (int i = 0; i < shipItems.Length; i++)
         {
@@ -35,7 +34,12 @@ public class UIShipScreenManager : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    private void Start()
+    {
+        closeButton?.onClick.AddListener(OnCloseScreen);
+    }
+
+    public void CheckShipItems()
     {
         CheckInventory();
         SetButtonsColors();
@@ -77,7 +81,7 @@ public class UIShipScreenManager : MonoBehaviour
     {
         for (int i = 0; i < uiShipItemList.Count; i++)
         {
-            uiShipItemList[i].ChangeButtonColor(LevelManager.instance.ShipManager.PlayerInventory);
+            uiShipItemList[i].ChangeButtonColor(LevelManager.instance?.ShipManager.PlayerInventory);
         }
     }
 }
