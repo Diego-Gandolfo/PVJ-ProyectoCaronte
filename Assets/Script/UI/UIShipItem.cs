@@ -56,16 +56,16 @@ public class UIShipItem : MonoBehaviour
         {
             if (shipItemSOs.Contains(item))
             {
-                print(item.name + " lo tengo");
-                _animator.SetBool("Status", false);
                 buttonText.text = "give";
+                _animator.SetBool("Missing", false);
             }
             else
             {
-                print(item.name + " no tengo");
-                _animator.SetBool("Status", true);
                 buttonText.text = "still missing";
+                _animator.SetBool("Missing", true);
             }
+
+
         }
     }
 }
