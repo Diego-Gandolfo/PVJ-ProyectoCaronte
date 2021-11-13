@@ -24,7 +24,7 @@ public class DialogueSystem : MonoBehaviour
 
     #region Unity Methods
 
-    void Start()
+    void Awake()
     {
         DialogueManager.Instance.SetDialogueSystem(this);
         animator = GetComponent<Animator>();
