@@ -12,13 +12,15 @@ public class UIShipItem : MonoBehaviour
     [SerializeField] private Text buttonText;
     [SerializeField] private TooltipTrigger trigger;
     [SerializeField] private string giveItem = "on machine";
-    [SerializeField] private Animator _animator;
+    [SerializeField] private string missingItem = "still missing";
+    private Animator _animator;
     private ShipItemSO item;
 
-    private void Start()
+    private void Awake()
     {
-        giveButton.onClick.AddListener(GiveEvent);
         _animator = GetComponent<Animator>();
+        giveButton.onClick.AddListener(GiveEvent);
+        buttonText.text = missingItem;
     }
 
     private void GiveEvent()
@@ -52,20 +54,21 @@ public class UIShipItem : MonoBehaviour
 
     public void ChangeButtonColor(List<ShipItemSO> shipItemSOs)
     {
+        if (_animator == null)
+            _animator = GetComponent<Animator>();
+
         if (giveButton.enabled)
         {
             if (shipItemSOs.Contains(item))
             {
                 buttonText.text = "give";
-                _animator.SetBool("Missing", false);
+                _animator.SetBool("Found", true);
             }
             else
             {
-                buttonText.text = "still missing";
-                _animator.SetBool("Missing", true);
+                buttonText.text = missingItem;
+                _animator.SetBool("Found", false);
             }
-
-
         }
     }
 }
