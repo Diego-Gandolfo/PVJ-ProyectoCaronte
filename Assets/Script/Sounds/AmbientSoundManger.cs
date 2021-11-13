@@ -7,18 +7,15 @@ public class AmbientSoundManger : MonoBehaviour
     private AudioSource audioSource;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         audioSource = GetComponent<AudioSource>();    
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (GameManager.instance.IsGameFreeze)
-            //audioSource.volume = 0.3f;
-            audioSource.mute = true;
-        else
-            audioSource.mute = false;
+        if (GameManager.instance.IsGameFreeze) audioSource.mute = true;
+        else audioSource.mute = false;
     }
 }
