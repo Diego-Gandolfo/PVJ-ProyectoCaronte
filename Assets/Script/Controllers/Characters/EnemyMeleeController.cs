@@ -11,6 +11,9 @@ public class EnemyMeleeController : EnemyController
     [SerializeField] private float minimumDetectionDistance = 10f; //Esta seria la distancia para detectarlo cuando camina. 
 
     [SerializeField] private AudioSource defaultSounds;
+    [SerializeField] private LayerMask _obstacleLayers;
+    [SerializeField] private LayerMask _groundLayers;
+    [SerializeField] private float _jumpForce;
     #endregion
 
     #region Private
@@ -29,6 +32,9 @@ public class EnemyMeleeController : EnemyController
     //Sound parameters
     private float timeToPlaySound = 0.5f;
     private float currentTimeToPlaySound;
+
+    // Jump parameters
+    private bool _canJump;
     #endregion
 
     #region Unity Methods
@@ -52,6 +58,12 @@ public class EnemyMeleeController : EnemyController
             DoSound();
             DoAnimation();
             CheckVisibleData();
+
+            if (ObstacleDetection())
+                Jump();
+
+            if (!_canJump)
+                CheckIsGrounded();
         }
     }
 
@@ -131,7 +143,8 @@ public class EnemyMeleeController : EnemyController
                 canFollow = true;
 
                 transform.LookAt(player.transform.position);
-                _rigidbody.velocity = transform.forward * _actorStats.OriginalSpeed;
+                var direction = transform.forward * _actorStats.OriginalSpeed + new Vector3(0f, _rigidbody.velocity.y, 0f);
+                _rigidbody.velocity = direction;
 
                 PlayFootstepsSound();
             }
@@ -195,6 +208,45 @@ public class EnemyMeleeController : EnemyController
         Gizmos.color = Color.red;
         //Gizmos.DrawWireCube(transform.position, _detectionArea);
         //Gizmos.DrawWireSphere(weapon.AttackPoint.position, _attackRadius);
+    }
+
+    private bool ObstacleDetection()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position, transform.forward);
+
+        if (Physics.Raycast(ray, out hit, 1f, _obstacleLayers))
+        {
+            if (hit.collider != null)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void Jump()
+    {
+        if (_canJump)
+        {
+            _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            _canJump = false;
+        }
+    }
+
+    private void CheckIsGrounded()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position, -transform.up);
+
+        if (Physics.Raycast(ray, out hit, 0.1f, _groundLayers))
+        {
+            if (hit.collider != null)
+            {
+                _canJump = true;
+            }
+        }
     }
 
     #endregion
