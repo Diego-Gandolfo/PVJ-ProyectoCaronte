@@ -43,6 +43,7 @@ public class Venom : MonoBehaviour
                 if (canDamage)
                 {
                     playerHealth.TakeDamage(damage);
+                    HUDManager.instance.LifeBar.SetBarColor(Color.magenta);
                     currentTimeToDamage = 0.0f;
                 }
             }
@@ -54,6 +55,7 @@ public class Venom : MonoBehaviour
         HealthController playerHealth = other.gameObject.GetComponent<HealthController>();
         if (playerHealth != null)
             canStartCount = false;
+        HUDManager.instance.LifeBar.SetBarColor(Color.green);
     }
 
     private void PlayVenomSound()

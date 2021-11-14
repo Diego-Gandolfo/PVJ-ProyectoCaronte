@@ -65,4 +65,9 @@ public class LifeBarController : MonoBehaviour
         uiHealth = MaxHealth;
         currentHealth = MaxHealth;
     }
+
+    public void SetBarColor(Color color)
+    {
+        lifeBarImage.color = color;
+    }
 }

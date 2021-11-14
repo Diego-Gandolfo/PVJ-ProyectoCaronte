@@ -14,6 +14,8 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private GameObject dialogueSystem = null;
 
     private LifeBarController lifeBar;
+    public LifeBarController LifeBar { get => lifeBar; }
+
     private PromptTrigger promptTrigger;
     private bool isShopActive;
     private bool isShipActive;
