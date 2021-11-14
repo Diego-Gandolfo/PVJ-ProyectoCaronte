@@ -32,18 +32,13 @@ public class DialogueSystem : MonoBehaviour
         animator = GetComponent<Animator>();
         textComponent.text = string.Empty;
     }
+    private void Start()
+    {
+        InputController.instance.OnSkipDialogue += SkipDialogueListener;
+    }
     private void Update()
     {
         CheckForDialogue();
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            wantToSkip = true;
-        }
-        else
-        {
-            wantToSkip = false;
-        }
-
     }
     void NextLine()
     {
@@ -89,6 +84,10 @@ public class DialogueSystem : MonoBehaviour
         {
             StartDialogue();
         }
+    }
+    private void SkipDialogueListener(bool value)
+    {
+        wantToSkip = value;
     }
     #endregion
     

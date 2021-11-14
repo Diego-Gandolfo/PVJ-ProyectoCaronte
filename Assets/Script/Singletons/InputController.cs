@@ -35,6 +35,7 @@ public class InputController : MonoBehaviour
     public Action<float, float> OnMove;
     public Action<Vector2> OnRotate;
     public Action OnAction;
+    public Action<bool> OnSkipDialogue;
     #endregion
 
     #region Unity
@@ -65,7 +66,7 @@ public class InputController : MonoBehaviour
                 CheckShoot();
                 CheckAiming();
                 CheckAction();
-
+                CheckDialogueSkipping();
 
                 //CHEATS
                 if (Input.GetKeyDown(KeyCode.F1))
@@ -145,6 +146,18 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetKeyDown(action) && canInteract)
             OnAction?.Invoke();
+    }
+    private void CheckDialogueSkipping()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            OnSkipDialogue?.Invoke(true);
+        }
+        else
+        {
+            OnSkipDialogue?.Invoke(false);
+
+        }
     }
     #endregion
     #region Public
