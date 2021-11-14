@@ -2884,6 +2884,7 @@ Transform:
   - {fileID: 1992274724}
   - {fileID: 1092904207}
   - {fileID: 184555225}
+  - {fileID: 755860804}
   m_Father: {fileID: 1988713016}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3152,6 +3153,81 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &755860803
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 706049596}
+    m_Modifications:
+    - target: {fileID: 3196224735080650761, guid: 44927a0431d507848b28ca8f061b5463,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196224735080650761, guid: 44927a0431d507848b28ca8f061b5463,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 450.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196224735080650761, guid: 44927a0431d507848b28ca8f061b5463,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 53.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196224735080650761, guid: 44927a0431d507848b28ca8f061b5463,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 573.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196224735080650761, guid: 44927a0431d507848b28ca8f061b5463,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5978242
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196224735080650761, guid: 44927a0431d507848b28ca8f061b5463,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.018517744
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196224735080650761, guid: 44927a0431d507848b28ca8f061b5463,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.80129427
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196224735080650761, guid: 44927a0431d507848b28ca8f061b5463,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.013815591
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196224735080650761, guid: 44927a0431d507848b28ca8f061b5463,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196224735080650761, guid: 44927a0431d507848b28ca8f061b5463,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -106.549
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196224735080650761, guid: 44927a0431d507848b28ca8f061b5463,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 2.648
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624846226651083933, guid: 44927a0431d507848b28ca8f061b5463,
+        type: 3}
+      propertyPath: m_Name
+      value: ParkourPiedas1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 44927a0431d507848b28ca8f061b5463, type: 3}
+--- !u!4 &755860804 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3196224735080650761, guid: 44927a0431d507848b28ca8f061b5463,
+    type: 3}
+  m_PrefabInstance: {fileID: 755860803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &766492645
 PrefabInstance:
   m_ObjectHideFlags: 0
