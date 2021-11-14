@@ -10952,7 +10952,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6903580764886999615, guid: fa7e67293d9c0a04dadaf7a4e4e61c3a,
     type: 3}
   effectShoot: {fileID: 0}
-  maxShootingTime: 5
+  maxBullets: 10
   overheatParticles: {fileID: 1004675564}
   flashParticles: {fileID: 1952603633}
   coolingModificator: 10
