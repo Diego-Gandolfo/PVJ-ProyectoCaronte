@@ -59,3 +59,10 @@ MonoBehaviour:
   rotationSensibility: {x: 300, y: 300, z: 0}
   clampMin: -20
   clampMax: 30
+  jump: 32
+  shoot: 323
+  aiming: 324
+  pause: 27
+  sprint: 304
+  action: 101
+  skipDialogue: 99

@@ -55,6 +55,7 @@ public class DialogueSystem : MonoBehaviour
     void SkipAllText()
     {
         textComponent.text = dialogueLines[currentLine];
+        wantToSkip = false;
     }
     void ReproduceNextDialogue()
     {
@@ -85,9 +86,9 @@ public class DialogueSystem : MonoBehaviour
             StartDialogue();
         }
     }
-    private void SkipDialogueListener(bool value)
+    private void SkipDialogueListener()
     {
-        wantToSkip = value;
+        wantToSkip = true;
     }
     #endregion
     
@@ -100,8 +101,9 @@ public class DialogueSystem : MonoBehaviour
         dialogueLines = dialogueQueue[0].dialogueStrings;
         for (int i = 0; i < dialogueLines.Count; i++)
         {
-            foreach (char character in dialogueLines[currentLine])
+            for (int i1 = 0; i1 < dialogueLines[currentLine].Length; i1++)
             {
+                char character = dialogueLines[currentLine][i1];
                 if (!wantToSkip)
                 { 
                 textComponent.text += character;
@@ -110,6 +112,7 @@ public class DialogueSystem : MonoBehaviour
                 else
                 {
                     SkipAllText();
+                    i1 = dialogueLines[currentLine].Length;
                 }
             }
             yield return new WaitForSeconds(timeOfDialogueToDisappear);

@@ -17,12 +17,13 @@ public class InputController : MonoBehaviour
     #region KeyCodes
     private string horizontalAxis = "Horizontal";
     private string verticalAxis = "Vertical";
-    private KeyCode jump = KeyCode.Space;
-    private KeyCode shoot = KeyCode.Mouse0;
-    private KeyCode aiming = KeyCode.Mouse1;
-    private KeyCode pause = KeyCode.Escape;
-    private KeyCode sprint = KeyCode.LeftShift;
-    private KeyCode action = KeyCode.E;
+    [SerializeField] private KeyCode jump = KeyCode.Space;
+    [SerializeField] private KeyCode shoot = KeyCode.Mouse0;
+    [SerializeField] private KeyCode aiming = KeyCode.Mouse1;
+    [SerializeField] private KeyCode pause = KeyCode.Escape;
+    [SerializeField] private KeyCode sprint = KeyCode.LeftShift;
+    [SerializeField] private KeyCode action = KeyCode.E;
+    [SerializeField] private KeyCode skipDialogue = KeyCode.Tab;
     #endregion
 
     #region Events
@@ -35,7 +36,7 @@ public class InputController : MonoBehaviour
     public Action<float, float> OnMove;
     public Action<Vector2> OnRotate;
     public Action OnAction;
-    public Action<bool> OnSkipDialogue;
+    public Action OnSkipDialogue;
     #endregion
 
     #region Unity
@@ -149,14 +150,9 @@ public class InputController : MonoBehaviour
     }
     private void CheckDialogueSkipping()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(skipDialogue))
         {
-            OnSkipDialogue?.Invoke(true);
-        }
-        else
-        {
-            OnSkipDialogue?.Invoke(false);
-
+            OnSkipDialogue?.Invoke();
         }
     }
     #endregion
