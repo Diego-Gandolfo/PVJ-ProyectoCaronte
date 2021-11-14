@@ -18,6 +18,7 @@ public class OxigenCapsuleController : MonoBehaviour, IInteractable
         interactableController = GetComponent<InteractableController>();
         interactableController.interactable = this;
         Desactivate();
+        DialogueManager.Instance.SuscribeOnOxygenCapsuleActivation(this);
     }
     public void Interact()
     {

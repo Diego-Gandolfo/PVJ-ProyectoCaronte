@@ -52,3 +52,6 @@ MonoBehaviour:
   _lastPartOfShipRepairedSO: {fileID: 11400000, guid: 3a751acee7e5aa14d9c67c90c021cd88,
     type: 2}
   _oxygenAdviceSO: {fileID: 11400000, guid: 3db91bea656bcfe4b930ef25a0b4a69a, type: 2}
+  _firstOverheatSO: {fileID: 11400000, guid: df7bd7e669e8ee648a712546503f276c, type: 2}
+  _firstOxygenCapsuleActivationSO: {fileID: 11400000, guid: 8beeb4ca8dc1e5e4085913a6f3bdf105,
+    type: 2}

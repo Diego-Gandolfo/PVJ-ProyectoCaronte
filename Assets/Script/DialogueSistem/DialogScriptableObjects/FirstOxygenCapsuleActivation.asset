@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361d3810b1233244aafce7679cb936f6, type: 3}
   m_Name: FirstOxygenCapsuleActivation
   m_EditorClassIdentifier: 
-  dialogueStrings: []
+  dialogueStrings:
+  - Well done! Now you have an area to recover Oxygen. Go back to the Oxygen Generator
+    every time you need to take a breath.
+  - In each area we have placed an Oxygen Generator. When you cross into another
+    area remember to look for it!

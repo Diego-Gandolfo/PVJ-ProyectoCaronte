@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,11 +24,14 @@ public class MachineGun : MonoBehaviour
     private bool isRefrigeratorActive;
     public bool IsOverheat { get; private set; }
 
+    public event Action OnOverheat;
+
     void Start()
     {
         var particles = overheatParticles.main;
         particles.duration = maxBullets;
         currentBullets = 0;
+        DialogueManager.Instance.SuscribeOnOverheat(this);
     }
 
     void Update()
@@ -41,6 +45,7 @@ public class MachineGun : MonoBehaviour
                 {
                     IsOverheat = true;
                     PlayOverheatSound();
+                    OnOverheat?.Invoke();
                 }
             }
             else //si no esta disparando, resta. 
