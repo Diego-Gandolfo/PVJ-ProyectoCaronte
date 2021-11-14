@@ -6,7 +6,7 @@ public class MachineGun : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private ParticleSystem effectShoot;
-    [SerializeField] private float maxShootingTime;
+    [SerializeField] private float maxBullets;
     [SerializeField] private ParticleSystem overheatParticles;
     [SerializeField] private ParticleSystem flashParticles;
     [SerializeField] private float coolingModificator = 10f;
@@ -16,18 +16,18 @@ public class MachineGun : MonoBehaviour
 
     private bool canPlaySound;
     private bool isShooting;
-    private float currentShootingTime;
+    private float currentBullets;
     private Animator animator;
     private RaycastHit target;
     private float overheatSoundDuration = 2.0f;
     private bool isRefrigeratorActive;
-    
     public bool IsOverheat { get; private set; }
 
     void Start()
     {
         var particles = overheatParticles.main;
-        particles.duration = maxShootingTime;
+        particles.duration = maxBullets;
+        currentBullets = 0;
     }
 
     void Update()
@@ -36,9 +36,8 @@ public class MachineGun : MonoBehaviour
         {
             if (isShooting && !IsOverheat)
             {
-                currentShootingTime += Time.deltaTime; // sacar el time delta time por un tema de como funciona con el calculo por frame.
-
-                if (currentShootingTime >= maxShootingTime)
+                
+                if (currentBullets >= maxBullets)
                 {
                     IsOverheat = true;
                     PlayOverheatSound();
@@ -48,22 +47,22 @@ public class MachineGun : MonoBehaviour
             {
                 if (!isRefrigeratorActive)
                 {
-                    if (currentShootingTime >= 0)
+                    if (currentBullets >= 0)
                     {
                         if (!IsOverheat)
-                            currentShootingTime -= (Time.deltaTime / coolingModificator);
+                            currentBullets -= (Time.deltaTime / coolingModificator);
                         else
-                            currentShootingTime -= (Time.deltaTime / coolingModificatorOnOverheat);
+                            currentBullets -= (Time.deltaTime / coolingModificatorOnOverheat);
                     }
                 }
                 else
                 {
-                    if (currentShootingTime >= 0)
+                    if (currentBullets >= 0)
                     {
                         if (!IsOverheat)
-                            currentShootingTime -= (Time.deltaTime / (coolingModificator / multiplier));
+                            currentBullets -= (Time.deltaTime / (coolingModificator / multiplier));
                         else
-                            currentShootingTime -= (Time.deltaTime / (coolingModificatorOnOverheat/multiplier));
+                            currentBullets -= (Time.deltaTime / (coolingModificatorOnOverheat/multiplier));
                     }
 
                     //if (currentShootingTime >= 0)
@@ -86,7 +85,7 @@ public class MachineGun : MonoBehaviour
             else
                 animator.SetBool("IsShooting", false);
 
-            HUDManager.instance.OverHeatManager.UpdateStatBar(currentShootingTime, maxShootingTime);
+            HUDManager.instance.OverHeatManager.UpdateStatBar(currentBullets, maxBullets);
         } else
         {
             isShooting = false;
@@ -98,6 +97,7 @@ public class MachineGun : MonoBehaviour
         //TODO: Particle system play del firepoint (effecto como si estuviera disparando la bala que sale del arma)
         flashParticles.Play();
         Instantiate(bulletPrefab, target.point, Quaternion.LookRotation(target.normal)); //Instancia en el lugar donde pego la bala. No la vemos recorrer el camino. 
+        currentBullets++;
     }
 
     private void OnOverHeat()
@@ -107,7 +107,7 @@ public class MachineGun : MonoBehaviour
             isShooting = false;
             overheatParticles.Play();
 
-            if (currentShootingTime <= 0)
+            if (currentBullets <= 0)
                 IsOverheat = false;
         } else
         {
@@ -134,10 +134,15 @@ public class MachineGun : MonoBehaviour
     {
         isShooting = value;
         target = hit;
+        
     }
 
     public void UpgradeBuff()
     {
         isRefrigeratorActive = true;
+    }
+    void Refrigeration()
+    {
+
     }
 }
