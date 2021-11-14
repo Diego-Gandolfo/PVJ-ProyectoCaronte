@@ -13,13 +13,15 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private float readSpeed;
     [SerializeField] private float timeOfDialogueToDisappear;
     [SerializeField] private List<DialogueSO> dialogueQueue = new List<DialogueSO>();
-    [SerializeField] private bool canSkipAllText;
     #endregion
 
     #region Private Fields
 
+    private List<String> dialogueLines = new List<string>();
     private bool isReproducingDialogue = false;
     private Animator animator;
+    private int currentLine;
+    private bool wantToSkip;
     #endregion
 
     #region Unity Methods
@@ -30,7 +32,43 @@ public class DialogueSystem : MonoBehaviour
         animator = GetComponent<Animator>();
         textComponent.text = string.Empty;
     }
+    private void Update()
+    {
+        CheckForDialogue();
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            wantToSkip = true;
+        }
+        else
+        {
+            wantToSkip = false;
+        }
 
+    }
+    void NextLine()
+    {
+        if(currentLine < dialogueLines.Count)
+        {
+            textComponent.text = string.Empty;
+            currentLine++;
+        }
+        if (currentLine >= dialogueLines.Count)
+        {
+            ReproduceNextDialogue();
+        }
+    }
+    void SkipAllText()
+    {
+        textComponent.text = dialogueLines[currentLine];
+    }
+    void ReproduceNextDialogue()
+    {
+
+        dialogueQueue.RemoveAt(0);
+        isReproducingDialogue = false;
+        animator.SetBool("Enabled", false);
+        
+    }
     #endregion
 
     #region Public Methods
@@ -43,11 +81,6 @@ public class DialogueSystem : MonoBehaviour
     {
         animator.SetBool("Enabled", true);
         StartCoroutine(TypeLine());
-
-    }
-    private void Update()
-    {
-        CheckForDialogue();
 
     }
     private void CheckForDialogue()
@@ -63,46 +96,27 @@ public class DialogueSystem : MonoBehaviour
 
     IEnumerator TypeLine()
     {
+        currentLine = 0;
         isReproducingDialogue = true;
-        var dialogueToReproduce = dialogueQueue[0].dialogueStrings;
-        for (int i = 0; i < dialogueToReproduce.Count; i++)
+        dialogueLines = dialogueQueue[0].dialogueStrings;
+        for (int i = 0; i < dialogueLines.Count; i++)
         {
-            foreach (char character in dialogueToReproduce[i])
+            foreach (char character in dialogueLines[currentLine])
             {
+                if (!wantToSkip)
+                { 
                 textComponent.text += character;
                 yield return new WaitForSeconds(readSpeed);
-                    
-            }
-
-            //if (Input.GetKeyDown(KeyCode.Return) && canSkipAllText)
-            //{
-            //    textComponent.text = dialogueToReproduce[i];
-            //}
-
-
-            if (dialogueQueue[0].dialogueStrings.Count == 1)
-            {
-                yield return new WaitForSeconds(timeOfDialogueToDisappear);
-
-            }
-            #region Si se quiere que el jugador pueda pasar el texto con el enter
-            if (i < dialogueQueue[0].dialogueStrings.Count)
-            {
-                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+                }
+                else
                 {
-                    textComponent.text = string.Empty;
+                    SkipAllText();
                 }
             }
-            #endregion
-            #region Si se quiere que el dialogo se reproduzca automaticamente
-            //yield return new WaitForSeconds(timeOfDialogueToDisappear);
-            //textComponent.text = string.Empty;
-            #endregion
+            yield return new WaitForSeconds(timeOfDialogueToDisappear);
+            NextLine();
         }
-        dialogueQueue.RemoveAt(0);
-        isReproducingDialogue = false;
-        animator.SetBool("Enabled", false);
     }
 
-    #endregion
+  #endregion
 }
