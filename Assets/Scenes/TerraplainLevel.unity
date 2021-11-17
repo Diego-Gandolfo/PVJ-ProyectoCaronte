@@ -11154,6 +11154,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TESTEO
       objectReference: {fileID: 0}
+    - target: {fileID: 6006576835400446645, guid: 0ce0e681a018fa545b6a0bcf61e9c739,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6345700939345848335, guid: 0ce0e681a018fa545b6a0bcf61e9c739,
         type: 3}
       propertyPath: m_RootOrder
