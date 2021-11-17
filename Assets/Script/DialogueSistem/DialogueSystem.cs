@@ -32,17 +32,25 @@ public class DialogueSystem : MonoBehaviour
         animator = GetComponent<Animator>();
         textComponent.text = string.Empty;
     }
+
     private void Start()
     {
         InputController.instance.OnSkipDialogue += SkipDialogueListener;
     }
+
     private void Update()
     {
         CheckForDialogue();
     }
+
+    #endregion
+
+    #region Private Methods
+
     void NextLine()
     {
-        if(currentLine < dialogueLines.Count)
+        wantToSkip = false;
+        if (currentLine < dialogueLines.Count)
         {
             textComponent.text = string.Empty;
             currentLine++;
@@ -52,19 +60,35 @@ public class DialogueSystem : MonoBehaviour
             ReproduceNextDialogue();
         }
     }
+
     void SkipAllText()
     {
         textComponent.text = dialogueLines[currentLine];
         wantToSkip = false;
     }
+
     void ReproduceNextDialogue()
     {
-
+        wantToSkip = false;
         dialogueQueue.RemoveAt(0);
         isReproducingDialogue = false;
         animator.SetBool("Enabled", false);
-        
     }
+
+    private void CheckForDialogue()
+    {
+        if (!isReproducingDialogue && dialogueQueue.Count > 0)
+        {
+            wantToSkip = false;
+            StartDialogue();
+        }
+    }
+
+    private void SkipDialogueListener()
+    {
+        wantToSkip = true;
+    }
+
     #endregion
 
     #region Public Methods
@@ -73,22 +97,11 @@ public class DialogueSystem : MonoBehaviour
     {
         dialogueQueue.Add(dialog);
     }
+
     public void StartDialogue()
     {
         animator.SetBool("Enabled", true);
         StartCoroutine(TypeLine());
-
-    }
-    private void CheckForDialogue()
-    {
-        if (!isReproducingDialogue && dialogueQueue.Count > 0)
-        {
-            StartDialogue();
-        }
-    }
-    private void SkipDialogueListener()
-    {
-        wantToSkip = true;
     }
     #endregion
     
@@ -106,8 +119,8 @@ public class DialogueSystem : MonoBehaviour
                 char character = dialogueLines[currentLine][i1];
                 if (!wantToSkip)
                 { 
-                textComponent.text += character;
-                yield return new WaitForSeconds(readSpeed);
+                    textComponent.text += character;
+                    yield return new WaitForSeconds(readSpeed);
                 }
                 else
                 {
