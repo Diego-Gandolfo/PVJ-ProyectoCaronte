@@ -10955,8 +10955,8 @@ MonoBehaviour:
   maxBullets: 50
   overheatParticles: {fileID: 1004675564}
   flashParticles: {fileID: 1952603633}
-  coolingModificator: 10
-  coolingModificatorOnOverheat: 4
+  coolingModificator: 2
+  coolingModificatorOnOverheat: 0.5
   currentMultiplier: 4
 --- !u!1 &4870838804330255143
 GameObject:
