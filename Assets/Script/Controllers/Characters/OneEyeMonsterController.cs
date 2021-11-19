@@ -10,6 +10,8 @@ public class OneEyeMonsterController : EnemyController
     [SerializeField] private float timeToShoot;
     [SerializeField] private float maxDistanceToPlayer;
 
+    private PlayerController _player;
+
     private int currentRandomSpot;
 
     private float minDistance = 0.2f;
@@ -64,8 +66,8 @@ public class OneEyeMonsterController : EnemyController
                 if (animator != null)
                     animator.SetBool("HasDetectedPlayer", true);
 
-                PlayerController player = LevelManager.instance.Player;
-                FollowPlayer(player);
+                if (_player == null) _player = LevelManager.instance.Player;
+                FollowPlayer(_player);
 
                 canDiscountTimeToShoot = true;
                 if (canDiscountTimeToShoot)
