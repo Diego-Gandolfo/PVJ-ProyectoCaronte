@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GunCoolingSystem_ShopMenu
   m_EditorClassIdentifier: 
   title: GunCoolingSystem
-  image: {fileID: -2413806693520163455, guid: 46b3939295dec6740a42dbaeb628c92f, type: 3}
+  image: {fileID: 21300000, guid: b1700481b102d434089e44c9050d0494, type: 3}
   price: 20
-  description: Faster cooling system1
+  description: Faster cooling system!
   isDisabled: 0

@@ -104,6 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4402574040425403796}
+  - component: {fileID: 2921396004431378166}
   m_Layer: 0
   m_Name: Cystals
   m_TagString: Untagged
@@ -131,6 +132,20 @@ Transform:
   m_Father: {fileID: 4402574041415369453}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2921396004431378166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4402574040425403797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49b5f3cd24b00f44bc9f5171cb5142b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1851988461269485976}
+  crystalGroup: {fileID: 4402574040425403796}
 --- !u!1 &4402574041409643328
 GameObject:
   m_ObjectHideFlags: 0
@@ -3353,6 +3368,12 @@ PrefabInstance:
 --- !u!4 &8771029929457210550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3062263758533571592, guid: 53993d76cc6787b47896128809c8cba5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6036984685613015230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1851988461269485976 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5364974798113401126, guid: 53993d76cc6787b47896128809c8cba5,
     type: 3}
   m_PrefabInstance: {fileID: 6036984685613015230}
   m_PrefabAsset: {fileID: 0}

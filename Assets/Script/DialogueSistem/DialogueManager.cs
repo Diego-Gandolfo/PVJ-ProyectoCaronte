@@ -21,6 +21,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private DialogueSO _introDialogueSO;
     [SerializeField] private DialogueSO _lastPartOfShipRepairedSO;
     [SerializeField] private DialogueSO _oxygenAdviceSO;
+    [SerializeField] private DialogueSO _firstOverheatSO;
+    [SerializeField] private DialogueSO _firstOxygenCapsuleActivationSO;
 
     #endregion
 
@@ -35,9 +37,10 @@ public class DialogueManager : MonoBehaviour
     private bool _firstDieByAbyssFlag;
     private bool _firstDieFlag;
     private bool _firstPartOfShipFlag;
-    //private bool _introDialogueFlag;
     private bool _lastPartOfShipRepairedFlag;
     private bool _oxygenAdviceFlag;
+    private bool _firstOverheat;
+    private bool _firstOxygenCapsuleActivation;
 
     #endregion
 
@@ -75,6 +78,8 @@ public class DialogueManager : MonoBehaviour
         //_introDialogueFlag = false;
         _lastPartOfShipRepairedFlag = false;
         _oxygenAdviceFlag = false;
+        _firstOxygenCapsuleActivation = false;
+        _firstOverheat = false;
     }
 
     private void OnAsphyxiationHandler()
@@ -133,6 +138,22 @@ public class DialogueManager : MonoBehaviour
         _lastPartOfShipRepairedFlag = true;
     }
 
+    private void OnOxygenCapsuleActivationHandler()
+    {
+        if (_firstOxygenCapsuleActivation) return;
+
+        _dialogueSystem.AddToDialogueQueue(_firstOxygenCapsuleActivationSO);
+        _firstOxygenCapsuleActivation = true;
+    }
+
+    private void OnOverheatHandler()
+    {
+        if (_firstOverheat) return;
+
+        _dialogueSystem.AddToDialogueQueue(_firstOverheatSO);
+        _firstOverheat = true;
+    }
+
     #endregion
 
     #region Public Methods
@@ -172,6 +193,16 @@ public class DialogueManager : MonoBehaviour
     public void SuscribeOnCompleted(ShipItemsManager shipItemsManager)
     {
         shipItemsManager.OnCompleted += OnCompletedHandler;
+    }
+
+    public void SuscribeOnOverheat(MachineGun machineGun)
+    {
+        machineGun.OnOverheat += OnOverheatHandler;
+    }
+
+    public void SuscribeOnOxygenCapsuleActivation(OxigenCapsuleController oxigenCapsuleController)
+    {
+        oxigenCapsuleController.OnOxygenCapsuleActivation += OnOxygenCapsuleActivationHandler;
     }
 
     #endregion

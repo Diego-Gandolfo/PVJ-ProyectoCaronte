@@ -1831,9 +1831,17 @@ MonoBehaviour:
   _actorStats: {fileID: 11400000, guid: 25f5e8ef514173c44a1b171dcbc6e50c, type: 2}
   _attackStats: {fileID: 11400000, guid: 657c8a38ee844f748a00723e5b4f17a4, type: 2}
   _detectionArea: {x: 30, y: 5, z: 30}
+  activeDamageTimer: 15
   _attackRadius: 0.25
   minimumDetectionDistance: 10
   defaultSounds: {fileID: 5359791463475042044}
+  _obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 2560
+  _groundLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  _jumpForce: 0.5
 --- !u!114 &4369962038243472794
 MonoBehaviour:
   m_ObjectHideFlags: 0

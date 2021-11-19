@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +10,15 @@ public class OxigenCapsuleController : MonoBehaviour, IInteractable
     private InteractableController interactableController;
     private Animator animator;
 
+    public event Action OnOxygenCapsuleActivation;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
         interactableController = GetComponent<InteractableController>();
         interactableController.interactable = this;
         Desactivate();
+        DialogueManager.Instance.SuscribeOnOxygenCapsuleActivation(this);
     }
     public void Interact()
     {
@@ -26,6 +30,7 @@ public class OxigenCapsuleController : MonoBehaviour, IInteractable
         animator.SetBool("IsActive", true);
         forceField.SetActive(true);
         interactableController.ActivateOnce();
+        OnOxygenCapsuleActivation?.Invoke();
         //HUDManager.instance.QuestManager.CrystalQuest();
         //QuestsManager.Instance?.StartCrystalQuest();
         AudioManager.instance.PlaySound(SoundClips.CapsuleActivated);
