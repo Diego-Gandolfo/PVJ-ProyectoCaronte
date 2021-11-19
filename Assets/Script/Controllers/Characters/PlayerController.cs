@@ -188,6 +188,7 @@ public class PlayerController : ActorController
             {
                 if (!isDoubleJumping && canDoDoubleJump)
                 {
+                    rigidBody.velocity = new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z);
                     isDoubleJumping = true;
                     DoJump();
                 }
