@@ -124,6 +124,7 @@ public class DialogueSystem : MonoBehaviour
                 }
                 else
                 {
+                    yield return new WaitUntil(() => wantToSkip);
                     SkipAllText();
                     i1 = dialogueLines[currentLine].Length;
                 }

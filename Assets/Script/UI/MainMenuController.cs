@@ -14,9 +14,11 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private Button creditsButton = null;
     [SerializeField] private Button exitButton = null;
     [SerializeField] private bool playAnimation;
+    [SerializeField] private bool endAnimationPlay;
 
     private bool mainMenuCheck;
     [SerializeField] private string level01 = "TerraplainLevel";
+    [SerializeField] private int mainMenuScene;
 
     [Header("Credits Settings")]
     [SerializeField] private Button goBackCreditsButton;
@@ -37,6 +39,10 @@ public class MainMenuController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !mainMenuCheck)//Esto es porque si no estan en uno de los sub menus, pueden volver para atras con Escape
             OnGoBackHandler();
+        if(endAnimationPlay && playAnimation)
+        {
+            animator.Play("EndAnimation");
+        }
     }
 
     private void OnPlayHandler()
@@ -63,6 +69,10 @@ public class MainMenuController : MonoBehaviour
     private void OnPlayAnimationExecution()
     {
         SceneManager.LoadScene(level01);
+    }
+    private void BackToMainMenue()
+    {
+        SceneManager.LoadScene(mainMenuScene);
     }
 
     private void OnCreditsHandler()
