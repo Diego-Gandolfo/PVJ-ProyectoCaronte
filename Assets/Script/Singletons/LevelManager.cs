@@ -80,7 +80,7 @@ public class LevelManager : MonoBehaviour
     public void Victory()
     {
         GameManager.instance.SetCursorActive(true);
-        SceneManager.LoadScene("Victory");
+        SceneManager.LoadScene("Victory 2");
     }
 
     public void AddCrystalInPlayer(int number)

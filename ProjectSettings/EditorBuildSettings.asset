@@ -8,21 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 8abc232d8c8e5334eb41c925ee56f782
-  - enabled: 0
-    path: Assets/Scenes/Antiguos/Demo_Final.unity
-    guid: 5ddd2ae466f6df948aae9650daa9bbcd
-  - enabled: 0
-    path: Assets/Scenes/Antiguos/Level.unity
-    guid: 29ccb5b0fc97a584b881eb5837c3621b
   - enabled: 1
     path: Assets/Scenes/TerraplainLevel.unity
     guid: ec9957a6f8349c84d9aa2cacd505e355
   - enabled: 1
     path: Assets/Scenes/Victory.unity
     guid: 2a7bc61f0ba08e14ab8166d5cc2842d8
-  - enabled: 0
-    path: Assets/Scenes/Antiguos/GameOver.unity
-    guid: 7f5794935d000794a96b6d7bb5f724ff
+  - enabled: 1
+    path: Assets/Scenes/Victory 2.unity
+    guid: bc91f1fac7cc157458c6a80534488c66
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: b85bbe9a5cf3efd4e8304b0c27ce6ae8,
       type: 2}
