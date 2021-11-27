@@ -17,12 +17,6 @@ public class LevelManager : MonoBehaviour
 
     #endregion
 
-    #region Private Fields
-
-    private int _crystalSpent;
-
-    #endregion
-
     #region Events
 
     public Action<PlayerController> OnPlayerAssing;
@@ -37,9 +31,10 @@ public class LevelManager : MonoBehaviour
     public PlayerController Player { get; private set; }
     public ShipItemsManager ShipManager { get; private set; }
     public int CrystalCounter => CrystalsInBank + CrystalsInPlayer;
-    public int TotalCrystalsPickedUp => CrystalsInBank + CrystalsInPlayer + _crystalSpent;
+    public int TotalCrystalsPickedUp => CrystalsInBank + CrystalsInPlayer + CrystalsSpent;
     public int CrystalsInBank { get; private set; }
     public int CrystalsInPlayer { get; private set; }
+    public int CrystalsSpent { get; private set; }
     public bool HasAllShipItems { get; private set; } //Esta seria la variable para llamar al final. 
 
     #endregion
@@ -59,6 +54,11 @@ public class LevelManager : MonoBehaviour
 
         ShipManager = GetComponent<ShipItemsManager>();
         ShipManager.OnCompleted += OnCompleted;
+    }
+
+    private void Start()
+    {
+        GameManager.instance.SetReportTotalCrystalsInLevel(_totalCrystalAmount);
     }
 
     #endregion
@@ -91,6 +91,7 @@ public class LevelManager : MonoBehaviour
     public void Victory()
     {
         GameManager.instance.SetCursorActive(true);
+        GameManager.instance.SetReportCrystalAmounts(CrystalsInBank, CrystalsInPlayer, CrystalsSpent);
         SceneManager.LoadScene("Victory 2");
     }
 
@@ -137,7 +138,7 @@ public class LevelManager : MonoBehaviour
             RemoveCrystalsInPlayer(number); //Saca todo del player
         }
 
-        _crystalSpent += number;
+        CrystalsSpent += number;
     }
 
     public void Respawn()
