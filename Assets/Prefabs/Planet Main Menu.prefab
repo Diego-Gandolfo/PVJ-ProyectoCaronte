@@ -9823,8 +9823,9 @@ MonoBehaviour:
   playButton: {fileID: 0}
   creditsButton: {fileID: 0}
   exitButton: {fileID: 0}
-  playAnimation: 0
+  playAnimation: 1
   level01: TerraplainLevel
+  mainMenuScene: 0
   goBackCreditsButton: {fileID: 0}
 --- !u!1001 &3903614148869193755
 PrefabInstance:
