@@ -51,7 +51,7 @@ public class VictoryMenuController : MonoBehaviour
     private void SetTextsUI()
     {
         var gameManager = GameManager.instance;
-        var crystalsPickedUp = gameManager.ReportCrystalsInPlayer + gameManager.ReportCrystalsInBank;
+        var crystalsPickedUp = gameManager.ReportCrystalsInPlayer + gameManager.ReportCrystalsInBank + gameManager.ReportCrystalsSpent;
         var crystalsDelivered = crystalsPickedUp - gameManager.ReportCrystalsSpent;
 
         _crystalsPickedUpText.text = crystalsPickedUp.ToString();
