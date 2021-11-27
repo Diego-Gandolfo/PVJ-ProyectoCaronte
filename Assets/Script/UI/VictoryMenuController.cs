@@ -75,6 +75,10 @@ public class VictoryMenuController : MonoBehaviour
                 _messageText.text += "\nBut you've spent a lot ... Still, good job!";
             }
         }
+        else if (crystalsPickedUp == 0)
+        {
+            _messageText.text = "You haven't got a single crystal, we expected more from you.";
+        }
         else if (crystalsPickedUp >= (gameManager.ReportTotalCrystalsInLevel / 2))
         {
             _messageText.text = "You have collected more than half of the crystals of Caronte!";
@@ -108,10 +112,6 @@ public class VictoryMenuController : MonoBehaviour
             {
                 _messageText.text += "\nAnd you have spent quite a bit. We hope you do better next time.";
             }
-        }
-        else if (crystalsPickedUp == 0)
-        {
-            _messageText.text = "You haven't got a single crystal, we expected more from you.";
         }
     }
 
