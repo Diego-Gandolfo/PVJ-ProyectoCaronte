@@ -104,11 +104,11 @@ public class VictoryMenuController : MonoBehaviour
             {
                 _messageText.text += "\nBut you haven't spent a single one, so good job!";
             }
-            else if (crystalsDelivered >= (crystalsPickedUp / 2))
+            else if (crystalsDelivered > (crystalsPickedUp / 2))
             {
                 _messageText.text += "\nAnd you've tried not to spend too much. Nice job!";
             }
-            else if (crystalsDelivered < (crystalsPickedUp / 2))
+            else if (crystalsDelivered <= (crystalsPickedUp / 2))
             {
                 _messageText.text += "\nAnd you have spent quite a bit. We hope you do better next time.";
             }
