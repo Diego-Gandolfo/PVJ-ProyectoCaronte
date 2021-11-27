@@ -13,6 +13,13 @@ public class LevelManager : MonoBehaviour
     #region Serialized Fields
 
     [SerializeField] private Transform respawnPoint;
+    [SerializeField] private int _totalCrystalAmount; // La cantidad total de cristales que hay en el juego
+
+    #endregion
+
+    #region Private Fields
+
+    private int _crystalSpent;
 
     #endregion
 
@@ -21,6 +28,7 @@ public class LevelManager : MonoBehaviour
     public Action<PlayerController> OnPlayerAssing;
     public Action<int> OnCrystalsInPlayerUpdate;
     public Action<int> OnCrystalsInBankUpdate;
+    public event Action OnLastCrystalPickedUp;
 
     #endregion
 
@@ -29,6 +37,7 @@ public class LevelManager : MonoBehaviour
     public PlayerController Player { get; private set; }
     public ShipItemsManager ShipManager { get; private set; }
     public int CrystalCounter => CrystalsInBank + CrystalsInPlayer;
+    public int TotalCrystalsPickedUp => CrystalsInBank + CrystalsInPlayer + _crystalSpent;
     public int CrystalsInBank { get; private set; }
     public int CrystalsInPlayer { get; private set; }
     public bool HasAllShipItems { get; private set; } //Esta seria la variable para llamar al final. 
@@ -52,15 +61,17 @@ public class LevelManager : MonoBehaviour
         ShipManager.OnCompleted += OnCompleted;
     }
 
-
-
     #endregion
+
+    #region Private Methods
 
     private void OnCompleted() //Solo ocurre si el player consiguio todos los items
     {
         HasAllShipItems = true;
         //TODO: Hacer el final o algo?
     }
+    
+    #endregion
 
     #region Public Methods
 
@@ -87,6 +98,12 @@ public class LevelManager : MonoBehaviour
     {
         CrystalsInPlayer += number;
         OnCrystalsInPlayerUpdate?.Invoke(CrystalsInPlayer);
+
+        if (TotalCrystalsPickedUp >= _totalCrystalAmount)
+        {
+            print("hola?");
+            OnLastCrystalPickedUp?.Invoke();
+        }
     }
 
     public void RemoveCrystalsInPlayer(int number)
@@ -119,11 +136,14 @@ public class LevelManager : MonoBehaviour
         {
             RemoveCrystalsInPlayer(number); //Saca todo del player
         }
+
+        _crystalSpent += number;
     }
 
     public void Respawn()
     {
         Player.transform.position = respawnPoint.position;
     }
+
     #endregion
 }

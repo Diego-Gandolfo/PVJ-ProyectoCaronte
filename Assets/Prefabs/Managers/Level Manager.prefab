@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 0}
+  _totalCrystalAmount: 76
 --- !u!114 &1987328650
 MonoBehaviour:
   m_ObjectHideFlags: 0

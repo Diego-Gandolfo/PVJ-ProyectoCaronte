@@ -15,6 +15,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Scriptable Objects")]
     [SerializeField] private DialogueSO _firstBackpackSO;
     [SerializeField] private DialogueSO _firstCrystalSO;
+    [SerializeField] private DialogueSO _lastCrystalSO;
     [SerializeField] private DialogueSO _firstDieByAbyssSO;
     [SerializeField] private DialogueSO _firstDieSO;
     [SerializeField] private DialogueSO _firstPartOfShipSO;
@@ -34,6 +35,7 @@ public class DialogueManager : MonoBehaviour
     // Flags
     private bool _firstBackpackFlag;
     private bool _firstCrystalFlag;
+    private bool _lastCrystalFlag;
     private bool _firstDieByAbyssFlag;
     private bool _firstDieFlag;
     private bool _firstPartOfShipFlag;
@@ -62,6 +64,7 @@ public class DialogueManager : MonoBehaviour
     {
         InitializeFlags();
         LevelManager.instance.OnCrystalsInPlayerUpdate += OnCrystalsInPlayerUpdateHandler;
+        LevelManager.instance.OnLastCrystalPickedUp += OnLastCrystalPickedUpHandler;
     }
 
     #endregion
@@ -72,6 +75,7 @@ public class DialogueManager : MonoBehaviour
     {
         _firstBackpackFlag = false;
         _firstCrystalFlag = false;
+        _lastCrystalFlag = false;
         _firstDieByAbyssFlag = false;
         _firstDieFlag = false;
         _firstPartOfShipFlag = false;
@@ -104,6 +108,14 @@ public class DialogueManager : MonoBehaviour
 
         _dialogueSystem.AddToDialogueQueue(_firstCrystalSO);
         _firstCrystalFlag = true;
+    }
+
+    private void OnLastCrystalPickedUpHandler()
+    {
+        if (_lastCrystalFlag) return;
+
+        _dialogueSystem.AddToDialogueQueue(_lastCrystalSO);
+        _lastCrystalFlag = true;
     }
 
     private void OnDieHandler()
