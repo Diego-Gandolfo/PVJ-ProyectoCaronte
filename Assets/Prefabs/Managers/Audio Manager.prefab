@@ -62,9 +62,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 574d383423074d5479fb2aa86668eeee, type: 3}
   - {fileID: 8300000, guid: 8cac2257cf6cdb34d935e7e614917231, type: 3}
   crystalCrashSound:
-  - {fileID: 8300000, guid: 7587ebe7a513cc548b57618a969fb31b, type: 3}
-  - {fileID: 8300000, guid: 6b5dff430a0064843a080937ff10fbbf, type: 3}
-  - {fileID: 8300000, guid: 244f86807e2e5d64bbe915f5e2b3bb37, type: 3}
+  - {fileID: 8300000, guid: 9cc659c4ad01e8b4a8857ce8c3a0b352, type: 3}
+  - {fileID: 8300000, guid: 61be32ea606776a45ac9520d46d5e2c1, type: 3}
+  - {fileID: 8300000, guid: 00235d2c359b2704d8b3b42e3ec4b069, type: 3}
   overheat: {fileID: 8300000, guid: c3f0845e6318e9a4badf5eced4134536, type: 3}
   negative: {fileID: 8300000, guid: 2cb53f70395c843468ccf1487f42078e, type: 3}
   oxygenRecover: {fileID: 8300000, guid: 3c91d9923854e54469d700ad04b00306, type: 3}

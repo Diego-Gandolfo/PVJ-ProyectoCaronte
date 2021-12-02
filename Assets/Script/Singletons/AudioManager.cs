@@ -199,10 +199,10 @@ public class AudioManager : MonoBehaviour
                 soundsAudioSource.PlayOneShot(crystalPickUp);
                 break;
 
-            //case SoundClips.CrystalCrash:
-            //    soundsAudioSource.volume = 1f;
-            //    PlayCrystalCrash();
-            //    break;
+            case SoundClips.CrystalCrash:
+                soundsAudioSource.volume = 0.5f;
+                PlayCrystalCrash();
+                break;
 
             default:
                 break;
@@ -221,9 +221,9 @@ public class AudioManager : MonoBehaviour
         soundsAudioSource.PlayOneShot(jumpsSounds[randomJumps]);
     }
 
-    //private void PlayCrystalCrash()
-    //{
-    //    int randomSound = Random.Range(0, crystalCrashSound.Count);
-    //    soundsAudioSource.PlayOneShot(crystalCrashSound[randomSound]);
-    //}
+    private void PlayCrystalCrash()
+    {
+        int randomSound = Random.Range(0, crystalCrashSound.Count);
+        soundsAudioSource.PlayOneShot(crystalCrashSound[randomSound]);
+    }
 }
