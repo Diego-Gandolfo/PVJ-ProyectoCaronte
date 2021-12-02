@@ -87,6 +87,8 @@ public class DialogueSystem : MonoBehaviour
     private void SkipDialogueListener()
     {
         wantToSkip = true;
+        if (isReproducingDialogue && dialogueQueue.Count > 0)
+            AudioManager.instance.PlaySound(SoundClips.SkipDialogue);
     }
 
     #endregion

@@ -71,6 +71,7 @@ MonoBehaviour:
   venom: {fileID: 8300000, guid: f064ecfdfb968e94eb4bb571e9d8d2ea, type: 3}
   oneEyeMonsterShoot: {fileID: 8300000, guid: 3e7f30398a3bb4e40b3a54f6840a65a8, type: 3}
   dialogue: {fileID: 8300000, guid: 8f95b499605ea32469a8e6c34db42429, type: 3}
+  skipDialogueSound: {fileID: 8300000, guid: c8327da2342e11f49bee4c445eb74719, type: 3}
   uiPopUp: {fileID: 8300000, guid: 34a6d88010b057d408387dd2fed88556, type: 3}
   interactableClick: {fileID: 8300000, guid: 94e4a2e4e8e50df4cae6700b22763f9a, type: 3}
   shopItemBuy: {fileID: 8300000, guid: c6012a3b3677c5e408bc6ee8737bedc6, type: 3}

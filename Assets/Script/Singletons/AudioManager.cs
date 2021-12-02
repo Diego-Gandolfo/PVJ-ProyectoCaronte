@@ -23,7 +23,8 @@ public enum SoundClips
     ShopItemBuy,
     Venom,
     OneEyeMonsterShoot,
-    Dialogue
+    Dialogue,
+    SkipDialogue
 }
 
 public class AudioManager : MonoBehaviour
@@ -40,9 +41,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip shoot;
     [SerializeField] private AudioClip heartbeat;
     [SerializeField] private List<AudioClip> jumpsSounds;
-    //[SerializeField] private AudioClip jumpOne;
-    //[SerializeField] private AudioClip jumpTwo;
-    //[SerializeField] private AudioClip jumpThree;
     [SerializeField] private AudioClip aim;
     [SerializeField] private List<AudioClip> footStepsSounds;
     //[SerializeField] private AudioClip machineGunLoad;
@@ -56,6 +54,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip venom;
     [SerializeField] private AudioClip oneEyeMonsterShoot;
     [SerializeField] private AudioClip dialogue;
+    [SerializeField] private AudioClip skipDialogueSound;
 
     [Header("UI Sounds")]
     [SerializeField] private AudioClip uiPopUp;
@@ -177,6 +176,11 @@ public class AudioManager : MonoBehaviour
             case SoundClips.OneEyeMonsterShoot:
                 soundsAudioSource.volume = 0.5f;
                 soundsAudioSource.PlayOneShot(oneEyeMonsterShoot);
+                break;
+
+            case SoundClips.SkipDialogue:
+                soundsAudioSource.volume = 0.2f;
+                soundsAudioSource.PlayOneShot(skipDialogueSound);
                 break;
 
             //case SoundClips.Dialogue:
