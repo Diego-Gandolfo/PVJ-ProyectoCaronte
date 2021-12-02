@@ -19,6 +19,7 @@ public class VenomProjectileBehaviour : MonoBehaviour
         currentTimeToDestroy += Time.deltaTime;
         if (currentTimeToDestroy >= timeToDestroy)
         {
+            HUDManager.instance.LifeBar.ResetBarColor();
             Destroy(gameObject);
         }
     }

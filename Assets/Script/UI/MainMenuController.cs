@@ -17,6 +17,7 @@ public class MainMenuController : MonoBehaviour
 
     private bool mainMenuCheck;
     [SerializeField] private string level01 = "TerraplainLevel";
+    [SerializeField] private int mainMenuScene;
 
     [Header("Credits Settings")]
     [SerializeField] private Button goBackCreditsButton;
@@ -63,6 +64,10 @@ public class MainMenuController : MonoBehaviour
     private void OnPlayAnimationExecution()
     {
         SceneManager.LoadScene(level01);
+    }
+    private void BackToMainMenue()
+    {
+        SceneManager.LoadScene(mainMenuScene);
     }
 
     private void OnCreditsHandler()

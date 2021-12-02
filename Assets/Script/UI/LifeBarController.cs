@@ -13,6 +13,7 @@ public class LifeBarController : MonoBehaviour
     private float uiHealth;
     private float currentLerpTime;
 
+    private Color32 initialColor;
 
     public float MaxHealth { get; set; }
     public bool IsVisible { get; private set; }
@@ -26,6 +27,26 @@ public class LifeBarController : MonoBehaviour
             uiHealth = MaxHealth;
             currentHealth = uiHealth;
         }
+
+        SetBarColorsValues();
+    }
+
+    private void SetBarColorsValues()
+    {
+        initialColor.a = 255;
+        initialColor.r = 46;
+        initialColor.g = 126;
+        initialColor.b = 2;
+    }
+
+    public void ResetBarColor()
+    {
+        lifeBarImage.color = initialColor;
+    }
+
+    public void SetBarColor(Color color)
+    {
+        lifeBarImage.color = color;
     }
 
     private void Update()
@@ -64,10 +85,5 @@ public class LifeBarController : MonoBehaviour
         MaxHealth = health.MaxHealth;
         uiHealth = MaxHealth;
         currentHealth = MaxHealth;
-    }
-
-    public void SetBarColor(Color color)
-    {
-        lifeBarImage.color = color;
     }
 }

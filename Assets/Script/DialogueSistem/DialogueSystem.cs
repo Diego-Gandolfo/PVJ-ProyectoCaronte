@@ -128,7 +128,8 @@ public class DialogueSystem : MonoBehaviour
                     i1 = dialogueLines[currentLine].Length;
                 }
             }
-            yield return new WaitForSeconds(timeOfDialogueToDisappear);
+            yield return new WaitUntil(() => wantToSkip);  // Cuando termina el texto el jugador puede skipear el texto con una tecla;
+            //yield return new WaitForSeconds(timeOfDialogueToDisappear);    // Cuando termina el texto pasa un tiempo;
             NextLine();
         }
     }

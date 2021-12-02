@@ -57,11 +57,13 @@ public class CrystalGroups : MonoBehaviour
         if(crystalList.Count <= 0)
         {
             CrystalManager.instance.RemoveCrystalGroup(this);
+            canSound = false;
         }
     }
 
     private void DoEffects()
     {
+        CheckIfEmpty();
         var distance = Vector3.Distance(crystalGroup.position, CrystalManager.instance.PlayerLocation.position);
         if (timer <= 0)
         {

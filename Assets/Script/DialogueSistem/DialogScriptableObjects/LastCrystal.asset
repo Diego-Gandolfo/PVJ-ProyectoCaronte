@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 361d3810b1233244aafce7679cb936f6, type: 3}
+  m_Name: LastCrystal
+  m_EditorClassIdentifier: 
+  dialogueStrings:
+  - Awesome! You hace collected the last crystal!
+  - We have more than enough to ensure the survival of our colonies for a long time.
+  - Here on Earth we are immensely grateful to you, Kronk, for all the effort you
+    have put into your mission!

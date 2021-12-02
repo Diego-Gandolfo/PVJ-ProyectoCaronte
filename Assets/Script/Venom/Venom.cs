@@ -55,7 +55,7 @@ public class Venom : MonoBehaviour
         HealthController playerHealth = other.gameObject.GetComponent<HealthController>();
         if (playerHealth != null)
             canStartCount = false;
-        HUDManager.instance.LifeBar.SetBarColor(Color.green);
+        HUDManager.instance.LifeBar.ResetBarColor();
     }
 
     private void PlayVenomSound()
