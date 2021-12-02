@@ -61,6 +61,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 89183ef2cca713c49a9e98da2f41dfee, type: 3}
   - {fileID: 8300000, guid: 574d383423074d5479fb2aa86668eeee, type: 3}
   - {fileID: 8300000, guid: 8cac2257cf6cdb34d935e7e614917231, type: 3}
+  crystalCrashSound:
+  - {fileID: 8300000, guid: 7587ebe7a513cc548b57618a969fb31b, type: 3}
+  - {fileID: 8300000, guid: 6b5dff430a0064843a080937ff10fbbf, type: 3}
+  - {fileID: 8300000, guid: 244f86807e2e5d64bbe915f5e2b3bb37, type: 3}
   overheat: {fileID: 8300000, guid: c3f0845e6318e9a4badf5eced4134536, type: 3}
   negative: {fileID: 8300000, guid: 2cb53f70395c843468ccf1487f42078e, type: 3}
   oxygenRecover: {fileID: 8300000, guid: 3c91d9923854e54469d700ad04b00306, type: 3}
@@ -73,6 +77,7 @@ MonoBehaviour:
   dialogue: {fileID: 8300000, guid: 8f95b499605ea32469a8e6c34db42429, type: 3}
   skipDialogueSound: {fileID: 8300000, guid: c8327da2342e11f49bee4c445eb74719, type: 3}
   monsterGrowl: {fileID: 8300000, guid: e62c90e8e7100394d9dec43a04be4218, type: 3}
+  crystalPickUp: {fileID: 8300000, guid: 6df9c0c88f974fb4d93032d49d7f5cea, type: 3}
   uiPopUp: {fileID: 8300000, guid: 34a6d88010b057d408387dd2fed88556, type: 3}
   interactableClick: {fileID: 8300000, guid: 94e4a2e4e8e50df4cae6700b22763f9a, type: 3}
   shopItemBuy: {fileID: 8300000, guid: c6012a3b3677c5e408bc6ee8737bedc6, type: 3}

@@ -25,7 +25,9 @@ public enum SoundClips
     OneEyeMonsterShoot,
     Dialogue,
     SkipDialogue,
-    MonsterGrowl
+    MonsterGrowl,
+    CrystalPickUp,
+    CrystalCrash
 }
 
 public class AudioManager : MonoBehaviour
@@ -44,6 +46,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private List<AudioClip> jumpsSounds;
     [SerializeField] private AudioClip aim;
     [SerializeField] private List<AudioClip> footStepsSounds;
+    [SerializeField] private List<AudioClip> crystalCrashSound;
     //[SerializeField] private AudioClip machineGunLoad;
     [SerializeField] private AudioClip overheat;
     [SerializeField] private AudioClip negative;
@@ -57,6 +60,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip dialogue;
     [SerializeField] private AudioClip skipDialogueSound;
     [SerializeField] private AudioClip monsterGrowl;
+    [SerializeField] private AudioClip crystalPickUp;
 
     [Header("UI Sounds")]
     [SerializeField] private AudioClip uiPopUp;
@@ -190,6 +194,16 @@ public class AudioManager : MonoBehaviour
                 soundsAudioSource.PlayOneShot(monsterGrowl);
                 break;
 
+            case SoundClips.CrystalPickUp:
+                soundsAudioSource.volume = 1f;
+                soundsAudioSource.PlayOneShot(crystalPickUp);
+                break;
+
+            //case SoundClips.CrystalCrash:
+            //    soundsAudioSource.volume = 1f;
+            //    PlayCrystalCrash();
+            //    break;
+
             default:
                 break;
         }
@@ -206,4 +220,10 @@ public class AudioManager : MonoBehaviour
         int randomJumps = Random.Range(0, jumpsSounds.Count);
         soundsAudioSource.PlayOneShot(jumpsSounds[randomJumps]);
     }
+
+    //private void PlayCrystalCrash()
+    //{
+    //    int randomSound = Random.Range(0, crystalCrashSound.Count);
+    //    soundsAudioSource.PlayOneShot(crystalCrashSound[randomSound]);
+    //}
 }

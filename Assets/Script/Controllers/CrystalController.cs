@@ -12,7 +12,7 @@ public class CrystalController : MonoBehaviour
     private Outline outline;
     private HealthController healthController;
     public Action<CrystalController> OnDie;
-
+    private EnemyFootstepsSound sound;
     void Start()
     {
         outline = GetComponent<Outline>();
@@ -23,6 +23,8 @@ public class CrystalController : MonoBehaviour
 
     private void OnDieListener()
     {
+        PlaySound();
+
         var spawn = Instantiate(crystalDrop);
         spawn.transform.position = transform.position;
 
@@ -37,5 +39,10 @@ public class CrystalController : MonoBehaviour
         
         gameObject.SetActive(false);
         OnDie?.Invoke(this);
+    }
+
+    private void PlaySound()
+    {
+        AudioManager.instance.PlaySound(SoundClips.CrystalCrash);
     }
 }
