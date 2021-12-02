@@ -13,7 +13,8 @@ public abstract class EnemyController : ActorController
 
     protected Outline outline;
     protected LifeBarController lifeBar;
-    
+
+    public bool HasTakenDamage => hasTakenDamage;
     protected bool hasTakenDamage;
 
     protected float damageTimer;

@@ -24,7 +24,8 @@ public enum SoundClips
     Venom,
     OneEyeMonsterShoot,
     Dialogue,
-    SkipDialogue
+    SkipDialogue,
+    MonsterGrowl
 }
 
 public class AudioManager : MonoBehaviour
@@ -55,6 +56,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip oneEyeMonsterShoot;
     [SerializeField] private AudioClip dialogue;
     [SerializeField] private AudioClip skipDialogueSound;
+    [SerializeField] private AudioClip monsterGrowl;
 
     [Header("UI Sounds")]
     [SerializeField] private AudioClip uiPopUp;
@@ -183,10 +185,10 @@ public class AudioManager : MonoBehaviour
                 soundsAudioSource.PlayOneShot(skipDialogueSound);
                 break;
 
-            //case SoundClips.Dialogue:
-            //    soundsAudioSource.volume = 1f;
-            //    soundsAudioSource.PlayOneShot(dialogue);
-            //    break;
+            case SoundClips.MonsterGrowl:
+                soundsAudioSource.volume = 1f;
+                soundsAudioSource.PlayOneShot(monsterGrowl);
+                break;
 
             default:
                 break;
