@@ -15078,22 +15078,22 @@ PrefabInstance:
     - target: {fileID: 1193184523668244134, guid: 8e082dd723e07f045b49d9fe254ca46a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99241436
       objectReference: {fileID: 0}
     - target: {fileID: 1193184523668244134, guid: 8e082dd723e07f045b49d9fe254ca46a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.12293874
       objectReference: {fileID: 0}
     - target: {fileID: 1193184523668244134, guid: 8e082dd723e07f045b49d9fe254ca46a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1193184523668244134, guid: 8e082dd723e07f045b49d9fe254ca46a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.000000014901161
       objectReference: {fileID: 0}
     - target: {fileID: 1193184523668244134, guid: 8e082dd723e07f045b49d9fe254ca46a,
         type: 3}
@@ -15115,10 +15115,25 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1259141485}
+    - target: {fileID: 1193184523668244135, guid: 8e082dd723e07f045b49d9fe254ca46a,
+        type: 3}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 1259141485}
     - target: {fileID: 1193184523668244313, guid: 8e082dd723e07f045b49d9fe254ca46a,
         type: 3}
       propertyPath: m_Name
       value: PlayerFollowCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 3729492782811734795, guid: 8e082dd723e07f045b49d9fe254ca46a,
+        type: 3}
+      propertyPath: m_SmoothingTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3729492782811734795, guid: 8e082dd723e07f045b49d9fe254ca46a,
+        type: 3}
+      propertyPath: m_CollideAgainst.m_Bits
+      value: 769
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e082dd723e07f045b49d9fe254ca46a, type: 3}
@@ -15527,11 +15542,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3922716793551148284, guid: bdb52869bbeb1e74e870dc40613021af,
-        type: 3}
-      propertyPath: m_ShowToolkit
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4377336063896479096, guid: bdb52869bbeb1e74e870dc40613021af,
         type: 3}
       propertyPath: m_RootOrder
@@ -15591,21 +15601,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 4377336063896479103, guid: bdb52869bbeb1e74e870dc40613021af,
-        type: 3}
-      propertyPath: field of view
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 4377336063896479103, guid: bdb52869bbeb1e74e870dc40613021af,
-        type: 3}
-      propertyPath: m_RenderingPath
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4422765684433246560, guid: bdb52869bbeb1e74e870dc40613021af,
-        type: 3}
-      propertyPath: m_ShowCameraFrustum
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdb52869bbeb1e74e870dc40613021af, type: 3}
