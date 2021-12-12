@@ -8902,14 +8902,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerAimCamera
       objectReference: {fileID: 0}
-    - target: {fileID: 2401549375930010260, guid: a20f0811dcc984348805e294a914f002,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2401549375930010474, guid: a20f0811dcc984348805e294a914f002,
         type: 3}
       propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 1259141485}
+    - target: {fileID: 2401549375930010474, guid: a20f0811dcc984348805e294a914f002,
+        type: 3}
+      propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1259141485}
     - target: {fileID: 2401549375930010475, guid: a20f0811dcc984348805e294a914f002,
@@ -15124,6 +15124,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerFollowCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 3729492782811734795, guid: 8e082dd723e07f045b49d9fe254ca46a,
+        type: 3}
+      propertyPath: m_CollideAgainst.m_Bits
+      value: 8961
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e082dd723e07f045b49d9fe254ca46a, type: 3}
