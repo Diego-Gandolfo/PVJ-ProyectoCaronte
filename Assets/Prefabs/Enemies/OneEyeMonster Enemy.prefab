@@ -1738,7 +1738,7 @@ MonoBehaviour:
   - {fileID: 2097753186}
   - {fileID: 1304660450}
   - {fileID: 874064764}
-  timeToShoot: 10
+  timeToShoot: 5
   maxDistanceToPlayer: 2
 --- !u!82 &8454043559156156937
 AudioSource:
@@ -1849,10 +1849,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5033f73dda9e2b44bb80c3e560a7008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actorStats: {fileID: 0}
-  _attackStats: {fileID: 0}
-  _detectionArea: {x: 30, y: 5, z: 30}
-  activeDamageTimer: 15
 --- !u!1 &783524658554664698
 GameObject:
   m_ObjectHideFlags: 0

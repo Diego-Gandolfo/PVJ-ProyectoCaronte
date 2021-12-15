@@ -111,8 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf4d4a55e06df3642866d9ce10a3090b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  timeToDamage: 1
+  damage: 2
+  timeToDamage: 0.5
 --- !u!114 &2177417499371129306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55155ae0c30d1464fbc7a5b8b164439a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToDestroy: 5
+  timeToDestroy: 10
 --- !u!198 &1412385283499545210
 ParticleSystem:
   m_ObjectHideFlags: 0
