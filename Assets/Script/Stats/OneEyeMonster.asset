@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9e252161a66ef41a5680eedd44bc60, type: 3}
   m_Name: OneEyeMonster
   m_EditorClassIdentifier: 
-  _maxLife: 50
+  _maxLife: 100
   _speed: 2
   _buffedSpeed: 10
   _animatorSpeed: 1
